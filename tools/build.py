@@ -582,7 +582,10 @@ AHD_AREA = {"maruti-360": ("bodakdev-ahmedabad", "Bodakdev, Ahmedabad"), "gala-i
             "arvind-forreste": ("nasmed-gandhinagar", "Nasmed, Gandhinagar"), "arvind-uplands-3": ("nal-sarovar-ahmedabad", "Nal Sarovar Road, Ahmedabad"),
             "arvind-aqua-city": ("kadi-thol-road-ahmedabad", "Kadi–Thol Road, Ahmedabad"), "bsafal-rethal-greens": ("sanand-ahmedabad", "Sanand, Ahmedabad"),
             "suryam-repose": ("thol-ahmedabad", "Greater Thol, Ahmedabad"), "suryam-the-sage": ("thol-ahmedabad", "Greater Thol, Ahmedabad"),
-            "shivalik-farmland": ("sanand-viramgam-ahmedabad", "Sanand–Viramgam, Ahmedabad")}
+            "shivalik-farmland": ("sanand-viramgam-ahmedabad", "Sanand–Viramgam, Ahmedabad"),
+            "godrej-altus": ("vastrapur-ahmedabad", "Vastrapur, Ahmedabad"), "venus-the-universe": ("nehru-nagar-ahmedabad", "Nehru Nagar, Ahmedabad"),
+            "venus-pashmina": ("bodakdev-ahmedabad", "Bodakdev, Ahmedabad"), "venus-stratum": ("nehru-nagar-ahmedabad", "Nehru Nagar, Ahmedabad"),
+            "shilp-business-gateway": ("sg-highway-ahmedabad", "S.G. Highway, Ahmedabad")}
 def slugify(t): return re.sub(r'[^a-z0-9]+', '-', t.lower()).strip('-')
 def area_of(p):
     if p["market"] in AREA_SLUG: return AREA_SLUG[p["market"]], AREA_NAME[p["market"]]
@@ -594,7 +597,7 @@ def page_url(p):
 for p in ALL: p["page"] = page_url(p)
 
 def kind_words(p):
-    if "Commercial" in p["cats"] and p["market"] == "ahmedabad" and p["id"] != "navratna-gulmohar": return "offices and showrooms"
+    if "Commercial" in p["cats"] and p["id"] != "navratna-gulmohar": return "offices and showrooms" if p["market"] != "abroad" else "offices"
     if p["id"] == "navratna-gulmohar": return "homes, offices and shops"
     if "Weekend villas & plots" in p["cats"]: return "weekend villas and plots" if "Villas & townhouses" in p["cats"] else "weekend and farm plots"
     if "Villas & townhouses" in p["cats"] and p["market"] != "abroad": return "villas"
@@ -673,7 +676,7 @@ def property_page(p):
   </div>
 </section>
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>"""
-    interest = ("Global property" if p["market"] == "abroad" else "GIFT City — Residential" if p["market"] == "gift"
+    interest = ("Global property" if p["market"] == "abroad" else ("GIFT City — Commercial" if "Commercial" in p["cats"] else "GIFT City — Residential") if p["market"] == "gift"
                 else "Offices &amp; showrooms — Ahmedabad" if "Commercial" in p["cats"] else "5 BHK &amp; penthouses" if "5 BHK" in p["cats"]
                 else "Land in Gujarat — Buy" if "Weekend villas & plots" in p["cats"] and "Villas & townhouses" not in p["cats"] else "Villas" if "Villas & townhouses" in p["cats"] else "4 BHK Apartments" if "4 BHK" in p["cats"]
                 else "3 BHK Apartments" if "3 BHK" in p["cats"] else "2 BHK Apartments")
@@ -719,12 +722,12 @@ def areas_block():
 
 def seo_home():
     cols = [
-      ("Luxury flats in Ahmedabad", f"Large 4 and 5 BHK homes are concentrated along S.G. Highway: {plink('maruti-360')}, {plink('anamika-high-point')}, {plink('gala-ikebana')} and {plink('suryam-the-banyan')} in Bodakdev, and {plink('trogon-centre-court')} on S.P. Ring Road near Vaishnodevi Circle."),
+      ("Luxury flats in Ahmedabad", f"Large 4 and 5 BHK homes are concentrated along S.G. Highway: {plink('maruti-360')}, {plink('anamika-high-point')}, {plink('gala-ikebana')}, {plink('venus-pashmina')} and {plink('suryam-the-banyan')} in Bodakdev, {plink('godrej-altus')} in Vastrapur, {plink('venus-the-universe')} at Nehru Nagar, and {plink('trogon-centre-court')} on S.P. Ring Road near Vaishnodevi Circle."),
       ("Luxury properties in Shantigram", f"Adani Shantigram is a gated township between Ahmedabad and Gandhinagar with a golf course and a lake. Compare {plink('belrosa')}, {plink('shilp-skyline')} and {plink('ambrosia')}, or villas at {plink('north-park')}, in the <a href=\"shantigram.html\">3D township map</a>."),
-      ("Offices and showrooms on S.G. Highway", f"Vaishnodevi Circle is the city's newest business address, with {plink('shivalik-wave')}, {plink('trogon-twin-towers')} and the upcoming {plink('antonia')}; on Sindhu Bhavan Road, {plink('ashridhar-wynn')}. At Iscon Cross Road, {plink('navratna-gulmohar')} combines offices, shops and homes."),
+      ("Offices and showrooms on S.G. Highway", f"Vaishnodevi Circle is the city's newest business address, with {plink('shivalik-wave')}, {plink('trogon-twin-towers')} and the upcoming {plink('antonia')}; {plink('shilp-business-gateway')} near Nirma University; on Sindhu Bhavan Road, {plink('ashridhar-wynn')}; at Nehru Nagar, {plink('venus-stratum')}. At Iscon Cross Road, {plink('navratna-gulmohar')} combines offices, shops and homes."),
       ("New projects in GIFT City", f"Homes near India's first international financial centre: {plink('sobha-elysia')}, {plink('shivalik-presente')}, {plink('savvy-marina')}, {plink('bakeri-stella')}, {plink('shivalik-skyview')}, {plink('shilp-north-sky')} and {plink('nila-vida')}, with prices and RERA numbers. See the <a href=\"gift-city.html\">GIFT City 3D map</a>."),
       ("Weekend homes, plots and land", f"Weekend villas and plots near Thol, Kadi and Sanand: {plink('ashridhar-kalrav-seasons')}, {plink('arvind-aqua-city')}, {plink('suryam-repose')} and {plink('shivalik-farmland')} (<a href=\"projects.html#weekend-villas-plots\">all weekend homes</a>). We also handle residential plots, farm land, industrial and commercial land in all 34 districts, with title and document checks before you pay. See <a href=\"land.html\">land for sale in Gujarat</a>."),
-      ("Property abroad for Indian buyers", f"Dubai, Singapore, Monaco, Phuket, Pattaya and Kuala Lumpur, from developers such as Emaar and CDL. Start with {plink('emaar-valo')} or browse <a href=\"global.html\">all markets</a>."),
+      ("Property abroad for Indian buyers", f"Dubai, Singapore, Monaco, Phuket, Pattaya and Kuala Lumpur, from developers such as Emaar, Binghatti, Danube and CDL. Start with {plink('binghatti-burj-jacob')}, {plink('danube-bayz-101')} and {plink('emaar-valo')}, or browse <a href=\"global.html\">all markets</a>."),
     ]
     grid = "".join(f'<article class="seo-col reveal" style="--d:{(i % 3) * .06:.2f}s"><h3>{E(t)}</h3><p>{b}</p></article>' for i, (t, b) in enumerate(cols))
     faq = "".join(f'<details class="seo-faq reveal"><summary>{E(q)}</summary><p>{E(a)}</p></details>' for q, a in HOME_FAQ)

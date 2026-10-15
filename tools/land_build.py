@@ -360,7 +360,7 @@ def land_sell(idp="ls"):
     <div class="section-header seq">
       <span class="section-tag">Sell your land</span>
       <h2>Post your land for sale</h2>
-      <p>Fill in the details from your 7/12 or property card and draw the land on the map. When the checks pass, your land appears on this page with its boundary, a 3D view and its FSI. Your phone number is never shown: buyers contact us, and we call you.</p>
+      <p>Fill in the details from your 7/12 or property card and draw the land on the map. We check the details, then publish your land on this page with its boundary, a 3D view and its FSI. Your phone number is never shown: buyers contact us, and we call you.</p>
     </div>
     <div class="ls-wrap panel reveal">
     <form class="inquiry-form ls-form" data-land-sell data-custom novalidate>
@@ -403,7 +403,7 @@ def land_sell(idp="ls"):
       <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
       <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
-      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Land that passes goes live at once; anything else is verified by our team first.</p>
+      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day.</p>
     </form>
     <div class="form-success ls-done" data-ls-done role="status" hidden>
       <i class="fas fa-check-circle"></i><h3></h3><p></p>
