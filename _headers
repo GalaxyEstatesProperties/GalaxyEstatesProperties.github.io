@@ -1,0 +1,9 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-+CE4Es6UaMpxI84udVYkuX8s/zke12bZlhvokdX0iE0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://township.homedeliveryrealtors.com; font-src 'self' data:; connect-src 'self' https://formsubmit.co https://api.callmebot.com; frame-src https://maps.google.com https://www.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+/assets/*
+  Cache-Control: public, max-age=604800

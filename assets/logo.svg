@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Galaxy Estates Properties">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EBD9A6"/>
+      <stop offset="1" stop-color="#B8903F"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30.5" fill="#07142A" stroke="url(#g)" stroke-width="1.8"/>
+  <ellipse cx="32" cy="32" rx="25" ry="9.5" fill="none" stroke="url(#g)" stroke-width="1.3" opacity=".85" transform="rotate(-28 32 32)"/>
+  <path d="M32 11 L35.4 28.6 L53 32 L35.4 35.4 L32 53 L28.6 35.4 L11 32 L28.6 28.6 Z" fill="url(#g)"/>
+  <circle cx="32" cy="32" r="2.2" fill="#07142A"/>
+</svg>
