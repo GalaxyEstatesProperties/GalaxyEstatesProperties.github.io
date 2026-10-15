@@ -250,7 +250,7 @@ def land_form(idp="l"):
   <div class="form-actions">
     <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
   </div>
-  <p class="form-note">Your details go straight to our team, and WhatsApp opens so you can chat with an advisor right away. To stop spam, we also record your device type and approximate location with the enquiry.</p>
+  <p class="form-note"><i class="fas fa-lock"></i> Your data is secure. We never share your details with anyone without your consent. Your number is checked and confirmed on WhatsApp only to make sure every enquiry comes from a genuine buyer, not a fake one. To stop spam, we also note your device type and approximate location with the enquiry.</p>
 </form>
 <div class="form-success" role="status">
   <i class="fas fa-check-circle"></i><h3>Enquiry sent</h3><p data-s="msg"></p>
@@ -403,7 +403,7 @@ def land_sell(idp="ls"):
       <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
       <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
-      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day.</p>
+      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day. <i class="fas fa-lock"></i> Your phone number and email are never published or shared without your consent.</p>
     </form>
     <div class="form-success ls-done" data-ls-done role="status" hidden>
       <i class="fas fa-check-circle"></i><h3></h3><p></p>
