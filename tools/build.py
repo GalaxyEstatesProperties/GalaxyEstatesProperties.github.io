@@ -115,6 +115,7 @@ def head(title, desc, page, extra="", fname="index"):
 <meta http-equiv="Content-Security-Policy" content="{CSP}"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="google-site-verification" content="HE9_46DcpVA3ongsECA8PNhgCoWHJfCqUYxHAGLrgRI"/>
+<meta name="google-site-verification" content="PnEn19TreyUuHWWwyu8MaODXWLLrcWz96qDNPAGMi3M"/>
 <meta name="format-detection" content="telephone=no"/>
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}"/>
