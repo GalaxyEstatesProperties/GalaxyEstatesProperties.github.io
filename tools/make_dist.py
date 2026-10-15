@@ -76,9 +76,12 @@ if '<base href' not in h:
     h = h.replace('<meta charset="UTF-8"/>', '<meta charset="UTF-8"/>\n<base href="/"/>\n<meta http-equiv="refresh" content="6;url=/"/>', 1)
     open(p404, 'w', encoding='utf-8').write(h)
 
+# ---------- custom domain for GitHub Pages ----------
+open(OUT + '/CNAME', 'w').write('galaxyestatesproperties.co.in\n')
+
 # ---------- sitemap + robots for search engines ----------
 import datetime
-URL = 'https://galaxyestatesproperties.github.io/'
+URL = 'https://galaxyestatesproperties.co.in/'
 today = datetime.date.today().isoformat()
 pages = sorted(os.path.basename(f) for f in glob.glob(OUT + '/*.html') if not f.endswith('404.html'))
 with open(OUT + '/sitemap.xml', 'w') as sm:

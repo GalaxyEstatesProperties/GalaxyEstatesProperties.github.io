@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tools/
 
-Sitemap: https://galaxyestatesproperties.github.io/sitemap.xml
+Sitemap: https://galaxyestatesproperties.co.in/sitemap.xml

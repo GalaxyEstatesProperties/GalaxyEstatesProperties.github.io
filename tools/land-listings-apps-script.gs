@@ -2,7 +2,7 @@
  * Galaxy Estates Properties: land listings back end (Google Apps Script, free).
  *
  * What it does
- *  - Receives "Post your land" submissions from galaxyestatesproperties.github.io/land.html
+ *  - Receives "Post your land" submissions from galaxyestatesproperties.co.in/land.html
  *  - Re-checks them on the server (phone, map link, boundary, area against the 7/12, location),
  *    saves them in this Google Sheet and emails you every submission with the seller's phone.
  *  - Publishes only listings whose Status is LIVE (or SOLD). Phone and email are never published.
@@ -210,7 +210,7 @@ function doPost(e) {
         'Area: ' + r.areaValue + ' ' + r.areaUnit + ' (' + r.areaDeclaredM2 + ' sq.m)   Drawn: ' + r.areaDrawnM2 + ' sq.m',
         'Price: Rs ' + r.price + ' (' + r.priceUnit + ')', 'Authority/zone/road: ' + r.auth + ' / ' + r.zone + ' / ' + r.road + (r.corridor ? ' (within 200 m)' : ''),
         'Map link: ' + r.link, 'Notes: ' + (r.notes || '-'), '', 'Sheet: ' + ss.getUrl(),
-        'Listing: https://galaxyestatesproperties.github.io/land.html#land-' + id].join('\n')
+        'Listing: https://galaxyestatesproperties.co.in/land.html#land-' + id].join('\n')
     });
     return json_({ ok: true, id: id, status: status, reason: res.reasons.join('; ') });
   } catch (err) {

@@ -104,7 +104,7 @@ CSP = ("default-src 'self'; "
        "frame-src https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests")
 
-SITE_URL = "https://galaxyestatesproperties.github.io/"
+SITE_URL = "https://galaxyestatesproperties.co.in/"
 
 def head(title, desc, page, extra="", fname="index"):
     return f"""<!DOCTYPE html>
@@ -748,8 +748,8 @@ def seo_home():
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>"""
 
 BUSINESS_LD = {"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "Galaxy Estates Properties",
-  "url": "https://galaxyestatesproperties.github.io/", "logo": "https://galaxyestatesproperties.github.io/assets/logo.svg",
-  "image": "https://galaxyestatesproperties.github.io/assets/img/p/belrosa.webp", "telephone": "+91-84880-62309", "email": "samirdabhi2309@gmail.com",
+  "url": "https://galaxyestatesproperties.co.in/", "logo": "https://galaxyestatesproperties.co.in/assets/logo.svg",
+  "image": "https://galaxyestatesproperties.co.in/assets/img/p/belrosa.webp", "telephone": "+91-84880-62309", "email": "samirdabhi2309@gmail.com",
   "address": {"@type": "PostalAddress", "addressLocality": "Kalol", "addressRegion": "Gujarat", "addressCountry": "IN"},
   "areaServed": ["Ahmedabad", "Gandhinagar", "GIFT City", "Kalol", "Gujarat", "India"],
   "founder": {"@type": "Person", "name": "Er. Samir Dabhi"},
