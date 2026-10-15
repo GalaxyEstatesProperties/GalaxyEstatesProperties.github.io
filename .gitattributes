@@ -1,0 +1,5 @@
+# GitHub language statistics: count our own (minified) CSS and JavaScript, and the Python build source
+assets/*.js linguist-generated=false linguist-detectable=true
+assets/*.css linguist-generated=false linguist-detectable=true
+tools/*.py linguist-detectable=true
+assets/vendor/** linguist-vendored

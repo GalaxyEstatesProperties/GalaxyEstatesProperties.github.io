@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+CE4Es6UaMpxI84udVYkuX8s/zke12bZlhvokdX0iE0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://township.homedeliveryrealtors.com; font-src 'self' data:; connect-src 'self' https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is; frame-src https://maps.google.com https://www.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+CE4Es6UaMpxI84udVYkuX8s/zke12bZlhvokdX0iE0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://township.homedeliveryrealtors.com https://server.arcgisonline.com https://tile.openstreetmap.org; font-src 'self' data:; connect-src 'self' https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; frame-src https://maps.google.com https://www.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="google-site-verification" content="HE9_46DcpVA3ongsECA8PNhgCoWHJfCqUYxHAGLrgRI"/>
 <meta name="format-detection" content="telephone=no"/>
@@ -19,11 +19,12 @@
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg"/>
 <link rel="preconnect" href="https://township.homedeliveryrealtors.com"/>
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
-<link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=0b77240b"/>
+<link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=4ad2970a"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=e6b97a94"/>
+<link rel="stylesheet" href="assets/style.css?v=2b46f8f2"/>
 <link rel="stylesheet" href="assets/motion.css?v=76da65e8"/>
 
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css?v=ec929f11"/>
 </head>
 <body data-page="land">
 <div class="page-loader" aria-hidden="true"><div class="loader-mark"><img decoding="async" src="assets/logo.svg" alt="" width="64" height="64"/><span>Galaxy Estates Properties</span><div class="loader-bar"></div></div></div>
@@ -84,7 +85,8 @@
       <p class="land-lead hs" style="--hd:0.37">Plots, farm land, industrial and commercial parcels in all 34 districts. Tell us what you want to buy or sell. We help with the search, the document checks and the site visits.</p>
       <div class="btn-row hs" style="--hd:0.46">
         <button type="button" class="cta-btn primary" data-enquire="Land in Gujarat" data-interest="Land in Gujarat — Buy"><i class="fas fa-magnifying-glass-location"></i> I want to buy land</button>
-        <button type="button" class="cta-btn secondary" data-enquire="Land in Gujarat" data-interest="Land in Gujarat — Sell"><i class="fas fa-signs-post"></i> I want to sell land</button>
+        <a class="cta-btn secondary" href="#sell"><i class="fas fa-signs-post"></i> Post my land for sale</a>
+        <a class="cta-btn ghost" href="#for-sale"><i class="fas fa-map-location-dot"></i> Land for sale</a>
       </div>
       <div class="land-facts">
         <div class="lf hs" style="--hd:0.55"><strong>34</strong><span>districts covered</span></div>
@@ -113,6 +115,43 @@
 </section>
 
 <div class="ticker" role="region" aria-label="Towns and corridors we cover"><div class="ticker-track"><ul><li>Ahmedabad</li><li>Gandhinagar</li><li>GIFT City</li><li>Sanand</li><li>Dholera</li><li>Mehsana</li><li>Palanpur</li><li>Vadodara</li><li>Anand</li><li>Surat</li><li>Bharuch</li><li>Vapi</li><li>Rajkot</li><li>Jamnagar</li><li>Bhavnagar</li><li>Junagadh</li><li>Bhuj</li><li>Mundra</li></ul><ul aria-hidden="true"><li>Ahmedabad</li><li>Gandhinagar</li><li>GIFT City</li><li>Sanand</li><li>Dholera</li><li>Mehsana</li><li>Palanpur</li><li>Vadodara</li><li>Anand</li><li>Surat</li><li>Bharuch</li><li>Vapi</li><li>Rajkot</li><li>Jamnagar</li><li>Bhavnagar</li><li>Junagadh</li><li>Bhuj</li><li>Mundra</li></ul></div></div>
+
+<section class="section" id="for-sale" data-land-market data-api="" data-static="assets/land-listings.json">
+  <div class="container">
+    <div class="section-header seq">
+      <span class="section-tag">Land for sale</span>
+      <h2>Land posted by owners</h2>
+      <p>Each land is shown with its own boundary as the owner drew it, its area checked against the 7/12, and the maximum FSI for its zone. Ask us for the documents and a site visit.</p>
+      <p class="lm-count" data-lm-count></p>
+    </div>
+    <div class="lm-grid" data-lm-list aria-live="polite"><div class="lm-empty"><i class="fas fa-spinner fa-spin"></i><p>Loading land listings…</p></div></div>
+  </div>
+
+  <div class="modal-overlay land-detail" id="landDetail" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="ldTitle">
+      <button type="button" class="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      <span class="project-category" data-ld="type"></span>
+      <h2 id="ldTitle" data-ld="title"></h2>
+      <div class="price" data-ld="price"></div>
+      <div class="ld-views">
+        <figure><div class="ld-3d" data-ld="3d"></div><figcaption>3D: the plot in its zone colour; the gold block shows the maximum built-up area (illustrative massing). Drag to turn, pinch or scroll to zoom. Red arrow points north.</figcaption></figure>
+        <figure><div class="ld-map" data-ld="map"></div><figcaption>The exact boundary drawn by the owner, on satellite imagery.</figcaption></figure>
+      </div>
+      <h3 class="detail-h">What can be built (estimate)</h3>
+      <div class="ld-fsi" data-ld="fsi"></div>
+      <p class="ld-fine">Estimated under the Gujarat CGDCR-2017 tables for the zone and road the owner declared. The zoning certificate from the development authority, any TP-scheme deduction and later amendments decide the final figure; we check these before you pay anything.</p>
+      <dl class="ld-facts" data-ld="facts"></dl>
+      <p class="ld-checks"><i class="fas fa-shield-halved"></i> <span data-ld="checks"></span></p>
+      <p class="ld-notes" data-ld="notes" hidden></p>
+      <div class="btn-row">
+        <button type="button" class="cta-btn primary" data-ld="enquire"><i class="fas fa-calendar-alt"></i> Enquire / site visit</button>
+        <a class="cta-btn wa" data-ld="wa" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a class="cta-btn ghost" data-ld="link" href="#" target="_blank" rel="noopener noreferrer nofollow" hidden><i class="fas fa-map-location-dot"></i> Owner's map link</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- BUY / SELL -->
 <section class="section" id="how">
@@ -342,6 +381,64 @@
   </div>
 </section>
 
+<section class="section bg-alt" id="sell">
+  <div class="container">
+    <div class="section-header seq">
+      <span class="section-tag">Sell your land</span>
+      <h2>Post your land for sale</h2>
+      <p>Fill in the details from your 7/12 or property card and draw the land on the map. When the checks pass, your land appears on this page with its boundary, a 3D view and its FSI. Your phone number is never shown: buyers contact us, and we call you.</p>
+    </div>
+    <div class="ls-wrap panel reveal">
+    <form class="inquiry-form ls-form" data-land-sell data-custom novalidate>
+      <fieldset><legend>1. You</legend>
+        <div class="form-row"><div class="form-group"><input id="ls-name" name="name" type="text" placeholder=" " autocomplete="name" maxlength="80"/><label for="ls-name">Full name (as on the 7/12) *</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-phone" name="phone" type="tel" placeholder=" " inputmode="tel" autocomplete="tel" maxlength="20"/><label for="ls-phone">Mobile number (kept private) *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-row"><div class="form-group"><input id="ls-email" name="email" type="email" placeholder=" " autocomplete="email" maxlength="120"/><label for="ls-email">Email (optional)</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><select id="ls-role" name="role"><option value="Owner">Owner</option><option value="Joint owner">Joint owner</option><option value="Power of attorney holder">Power of attorney holder</option><option value="Broker with written mandate">Broker with the owner&#x27;s written mandate</option></select><label for="ls-role">You are</label><span class="field-error" aria-live="polite"></span></div></div>
+      </fieldset>
+      <fieldset><legend>2. The land (from the 7/12 or property card)</legend>
+        <div class="form-row"><div class="form-group"><select id="ls-type" name="type"><option value="Agricultural (old tenure)">Agricultural (old tenure)</option><option value="Agricultural (new tenure)">Agricultural (new tenure)</option><option value="NA residential">NA residential</option><option value="NA commercial">NA commercial</option><option value="NA industrial">NA industrial</option><option value="Final plot in a TP scheme">Final plot in a TP scheme</option></select><label for="ls-type">Land type *</label><span class="field-error" aria-live="polite"></span></div>
+          <div class="form-group"><input id="ls-district" name="district" type="text" list="ls-districts" placeholder=" " autocomplete="off" maxlength="40"/><datalist id="ls-districts"><option value="Ahmedabad"></option><option value="Amreli"></option><option value="Anand"></option><option value="Aravalli"></option><option value="Banaskantha"></option><option value="Bharuch"></option><option value="Bhavnagar"></option><option value="Botad"></option><option value="Chhota Udaipur"></option><option value="Dahod"></option><option value="Dang"></option><option value="Devbhumi Dwarka"></option><option value="Gandhinagar"></option><option value="Gir Somnath"></option><option value="Jamnagar"></option><option value="Junagadh"></option><option value="Kheda"></option><option value="Kutch"></option><option value="Mahisagar"></option><option value="Mehsana"></option><option value="Morbi"></option><option value="Narmada"></option><option value="Navsari"></option><option value="Panchmahal"></option><option value="Patan"></option><option value="Porbandar"></option><option value="Rajkot"></option><option value="Sabarkantha"></option><option value="Surat"></option><option value="Surendranagar"></option><option value="Tapi"></option><option value="Vadodara"></option><option value="Valsad"></option><option value="Vav-Tharad"></option></datalist><label for="ls-district">District *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-row"><div class="form-group"><input id="ls-taluka" name="taluka" type="text" placeholder=" " maxlength="60"/><label for="ls-taluka">Taluka *</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-village" name="village" type="text" placeholder=" " maxlength="60"/><label for="ls-village">Village / town *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-row"><div class="form-group"><input id="ls-survey" name="survey" type="text" placeholder=" " maxlength="60"/><label for="ls-survey">Survey / block no. (7/12)</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-pcard" name="pcard" type="text" placeholder=" " maxlength="60"/><label for="ls-pcard">Property card / city survey no.</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-group"><input id="ls-tp" name="tp" type="text" placeholder=" " maxlength="80"/><label for="ls-tp">TP scheme and final plot no. (if any)</label><span class="field-error" aria-live="polite"></span></div>
+        <div class="form-row"><div class="form-group"><input id="ls-areaValue" name="areaValue" type="text" placeholder=" " inputmode="decimal" maxlength="20"/><label for="ls-areaValue">Area as on the 7/12 *</label><span class="field-error" aria-live="polite"></span></div>
+          <div class="form-group"><select id="ls-areaUnit" name="areaUnit"><option value="has" selected>Hectare-are-sq.m, e.g. 0-80-94</option><option value="sqm">sq.m</option><option value="sqyd">sq.yd (vaar)</option><option value="sqft">sq.ft</option><option value="guntha">guntha</option><option value="vigha16">vigha = 16 guntha</option><option value="vigha20">vigha = 20 guntha</option><option value="acre">acre</option><option value="hectare">hectare</option></select><label for="ls-areaUnit">Unit *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-row"><div class="form-group"><input id="ls-price" name="price" type="text" placeholder=" " inputmode="numeric" maxlength="14"/><label for="ls-price">Asking price in ₹ (e.g. 25000000) *</label><span class="field-error" aria-live="polite"></span></div>
+          <div class="form-group"><select id="ls-priceUnit" name="priceUnit"><option value="total">Total for the land</option><option value="sqyd">Per sq.yd</option><option value="sqm">Per sq.m</option><option value="vigha16">Per vigha</option><option value="acre">Per acre</option></select><label for="ls-priceUnit">Price is *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <p class="ls-price" data-ls-price aria-live="polite"></p>
+      </fieldset>
+      <fieldset><legend>3. Zoning</legend>
+        <div class="form-row"><div class="form-group"><select id="ls-auth" name="auth"><option value="AUDA">AUDA / AMC (Ahmedabad)</option><option value="GUDA">GUDA (Gandhinagar, outside GMC limits)</option><option value="SUDA">SUDA / SMC (Surat)</option><option value="VUDA">VUDA / VMC (Vadodara)</option><option value="RUDA">RUDA / RMC (Rajkot)</option><option value="TOWN">Other town development plan</option><option value="OUT">Village land outside any development plan</option><option value="UNSURE">Not sure</option></select><label for="ls-auth">Development authority *</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><select id="ls-zone" name="zone"></select><label for="ls-zone">Zone *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-row"><div class="form-group"><select id="ls-road" name="road"><option value="none">No public road / kutcha track</option><option value="r6">Under 9 m</option><option value="r9">9 m to under 12 m</option><option value="r12">12 m to under 18 m</option><option value="r18">18 m to under 36 m</option><option value="r36">36 m to under 45 m</option><option value="r45">45 m and wider</option></select><label for="ls-road">Road touching the land *</label><span class="field-error" aria-live="polite"></span></div>
+          <label class="ls-check" hidden><input type="checkbox" name="corridor"/> <span>The land is within 200 m of this road</span></label></div>
+      </fieldset>
+      <fieldset><legend>4. Location and boundary</legend>
+        <div class="form-group"><input id="ls-link" name="link" type="url" placeholder=" " inputmode="url" maxlength="400"/><label for="ls-link">Google Maps link of the land *</label><span class="field-error" aria-live="polite"></span></div>
+        <p class="ls-help">Open Google Maps, drop a pin on your land, tap Share and paste the link here. Then tap each corner of the land on the satellite map below, in order around the boundary. Drag a corner to adjust it.</p>
+        <div class="ls-tools"><button type="button" class="cta-btn ghost small" data-ls-locate><i class="fas fa-location-crosshairs"></i> I am at the land: use my location</button>
+          <button type="button" class="cta-btn ghost small" data-ls-undo><i class="fas fa-rotate-left"></i> Undo corner</button>
+          <button type="button" class="cta-btn ghost small" data-ls-clear><i class="fas fa-eraser"></i> Clear</button>
+          <button type="button" class="cta-btn ghost small" data-ls-3d disabled><i class="fas fa-cube"></i> Preview in 3D</button></div>
+        <div class="ls-map" data-ls-map tabindex="0" aria-label="Map: tap the corners of your land"></div>
+        <p class="ls-area"><i class="fas fa-draw-polygon"></i> <span data-ls-area></span></p>
+        <ul class="ls-checks" data-ls-checks aria-live="polite"></ul>
+        <div class="ls-3d" data-ls-3dbox hidden></div>
+        <div class="ls-fsi" data-ls-fsi aria-live="polite"></div>
+        <span class="field-error" data-err="map" aria-live="polite"></span>
+      </fieldset>
+      <div class="form-group"><textarea id="ls-notes" name="notes" rows="3" maxlength="600" placeholder=" "></textarea><label for="ls-notes">Anything buyers should know (water, power, fencing, title status)</label></div>
+      <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
+      <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
+      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Land that passes goes live at once; anything else is verified by our team first.</p>
+    </form>
+    <div class="form-success ls-done" data-ls-done role="status" hidden>
+      <i class="fas fa-check-circle"></i><h3></h3><p></p>
+      <button type="button" class="cta-btn ghost small" data-ls-again>Post another land</button>
+    </div>
+    </div>
+  </div>
+</section>
+
 <!-- ENQUIRY -->
 <section class="section bg-alt" id="enquire">
   <div class="container">
@@ -491,98 +588,13 @@
   <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="track" cx="24" cy="24" r="22"/><circle class="prog" cx="24" cy="24" r="22"/></svg>
   <i class="fas fa-arrow-up"></i>
 </button>
-
-<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button type="button" class="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
-    <h2 id="modalTitle">Book a private visit</h2>
-    <p class="modal-subtitle" id="modalSubtitle">Private consultation</p>
-    <div class="form-shell">
-<form class="inquiry-form" novalidate data-project="General enquiry">
-  <div class="form-row">
-    <div class="form-group"><input id="m-name" name="name" type="text" placeholder=" " autocomplete="name" required/><label for="m-name">Full name *</label><span class="field-error" aria-live="polite"></span></div>
-    <div class="form-group"><input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder=" " autocomplete="tel" required/><label for="m-phone">Phone *</label><span class="field-error" aria-live="polite"></span></div>
-  </div>
-  <div class="form-group"><input id="m-email" name="email" type="email" placeholder=" " autocomplete="email"/><label for="m-email">Email (optional)</label><span class="field-error" aria-live="polite"></span></div>
-  <div class="form-row">
-    <div class="form-group">
-      <select id="m-interest" name="interest" data-label="Interested in">
-        <option>2 BHK Apartments</option><option selected>3 BHK Apartments</option><option>4 BHK Apartments</option>
-        <option>5 BHK &amp; penthouses</option><option>Penthouses</option><option>Villas</option><option>GIFT City — Residential</option><option>GIFT City — Commercial</option><option>Offices &amp; showrooms — Ahmedabad</option><option>Investment advice</option><option>Land in Gujarat — Buy</option><option>Land in Gujarat — Sell</option><option>Global property</option>
-      </select><label for="m-interest">Interested in</label>
-    </div>
-    <div class="form-group">
-      <select id="m-visit" name="visit" data-label="Preferred visit">
-        <option>Weekday morning</option><option>Weekday evening</option><option selected>Weekend</option><option>Video call walkthrough</option>
-      </select><label for="m-visit">Preferred visit</label>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group">
-      <select id="m-who" name="who" data-label="You are">
-        <option>Buying for myself / family</option><option>Investor</option><option>NRI buyer</option><option>Selling my property</option><option>Broker / channel partner</option>
-      </select><label for="m-who">You are</label>
-    </div>
-    <div class="form-group">
-      <select id="m-when" name="when" data-label="Plan to buy">
-        <option>Within 3 months</option><option>3 – 6 months</option><option>6 – 12 months</option><option>Just exploring</option>
-      </select><label for="m-when">Plan to buy</label>
-    </div>
-  </div>
-  <div class="form-group"><textarea id="m-message" name="message" rows="3" placeholder=" "></textarea><label for="m-message">Message (optional)</label></div>
-  <div class="form-actions">
-    <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
-  </div>
-  <p class="form-note">Your details go straight to our team, and WhatsApp opens so you can chat with an advisor right away. To stop spam, we also record your device type and approximate location with the enquiry.</p>
-</form>
-<div class="form-success" role="status">
-  <i class="fas fa-check-circle"></i><h3>Enquiry sent</h3><p data-s="msg"></p>
-  <button type="button" class="cta-btn ghost small" data-form-reset>Start a new enquiry</button>
-</div>
-</div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="detailOverlay" aria-hidden="true">
-  <div class="modal-content detail-modal" role="dialog" aria-modal="true" aria-labelledby="dName">
-    <button type="button" class="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
-    <div class="detail-media"><img decoding="async" data-d="img" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="/><div class="project-art" data-d="art" hidden aria-hidden="true"><span class="pa-city" data-d="artcity"></span><span class="pa-country" data-d="artcountry"></span></div></div>
-    <div class="detail-body">
-      <span class="project-category" data-d="cat"></span>
-      <h2 id="dName" data-d="name"></h2>
-      <p class="project-location"><i class="fas fa-map-marker-alt"></i> <span data-d="loc"></span> <a class="project-map" data-d="map" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">View on Google Maps</a></p>
-      <p class="project-dev" data-d="devwrap">by <span data-d="dev"></span></p>
-      <div class="price" data-d="price"></div><span class="price-label" data-d="plabel"></span>
-      <p class="detail-blurb" data-d="blurb"></p>
-      <p class="travel-refund" data-d="refund" hidden><i class="fas fa-plane"></i> <span><strong>Travel cost refunded.</strong> Fly out to see it before you buy: when your purchase completes through us, we refund your travel cost for the visit.</span></p>
-      <dl class="unit-strip big">
-        <div><dt>Total units</dt><dd data-d="total"></dd></div>
-        <div><dt>Available</dt><dd data-d="avail"></dd></div>
-        <div><dt>Possession</dt><dd data-d="poss"></dd></div>
-      </dl>
-      <h3 class="detail-h">Unit types, sizes and prices</h3>
-      <div class="mix-wrap"><table class="mix-table">
-        <thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th></tr></thead>
-        <tbody data-d="mix"></tbody>
-      </table></div>
-      <div class="detail-specs">
-        <div class="wide"><small>Overall size range</small><strong data-d="size"></strong></div>
-        <div class="wide" data-d="buildwrap"><small>Project</small><strong data-d="build"></strong></div>
-        <div class="wide"><small data-d="reglabel">RERA</small><strong data-d="rera" style="font-size:.8rem;word-break:break-word"></strong></div>
-      </div>
-      <p class="detail-source">Source: <span data-d="source"></span>. Prices and availability change; we confirm both before you book.</p>
-      <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-d="enquire"><i class="fas fa-calendar-alt"></i> Enquire</button>
-        <a class="cta-btn wa" data-d="wa" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-      <a class="cta-btn ghost" data-d="page" href="projects.html" style="width:100%;margin-top:12px"><i class="fas fa-file-lines"></i> Open the full project page</a>
-      <a class="cta-btn ghost" data-d="3d" href="shantigram.html#explorer" style="width:100%;margin-top:12px"><i class="fas fa-cube"></i> See it in the 3D township</a>
-    </div>
-  </div>
-</div>
+<script src="assets/overlays.js?v=2c5eeff7"></script>
 <script src="assets/data.js?v=fe9dc516"></script>
-<script src="assets/main.js?v=7252f6cf"></script>
+<script src="assets/main.js?v=1a29f33c"></script>
 <script src="assets/motion.js?v=8d13ac1f"></script>
 <script src="assets/land.js?v=ccfebecc"></script>
+<script src="assets/vendor/leaflet/leaflet.js?v=5a640ff8"></script>
+<script src="assets/vendor/three.min.js?v=7a7802bf"></script>
+<script src="assets/land-market.js?v=a85d0216"></script>
 </body>
 </html>

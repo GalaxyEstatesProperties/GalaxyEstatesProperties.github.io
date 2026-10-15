@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Make the deployable copy of the site in /home/claude/site-dist:
+   - copies the built site
+   - trims Font Awesome to the icons actually used (CSS rules + font glyphs)
+   - minifies CSS and JS with esbuild
+   - stamps asset URLs with a version so browsers fetch fresh files after each update
+"""
+import os, re, shutil, subprocess, glob, hashlib, sys
+SRC = '/home/claude/vr-realtors'
+OUT = '/home/claude/galaxyestatesproperties.github.io'
+SKIP = {'preview.bat', 'preview.sh', 'serve.ps1', 'serve.py'}   # local-preview helpers, not needed online
+
+if os.path.isdir(OUT):
+    keep_git = os.path.join(OUT, '.git')
+    for n in os.listdir(OUT):
+        if n == '.git' or n == 'CNAME': continue
+        p = os.path.join(OUT, n)
+        shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
+else:
+    os.makedirs(OUT)
+for n in os.listdir(SRC):
+    if n in SKIP: continue
+    s, d = os.path.join(SRC, n), os.path.join(OUT, n)
+    shutil.copytree(s, d) if os.path.isdir(s) else shutil.copy2(s, d)
+
+# ---------- Font Awesome: keep only used icons ----------
+text = ''
+for f in glob.glob(OUT + '/*.html') + glob.glob(OUT + '/assets/*.js'):
+    text += open(f, encoding='utf-8').read()
+used = set(re.findall(r'\bfa-([a-z0-9-]+)', text))
+cssp = OUT + '/assets/vendor/fa/all.min.css'
+css = open(cssp, encoding='utf-8').read()
+codes = set()
+def keep(m):
+    names = [s[4:] for s in m.group(1).split(',') if s]
+    if any(n in used for n in names):
+        codes.add(m.group(2)); return m.group(0)
+    return ''
+css2 = re.sub(r'((?:\.fa-[a-z0-9-]+,?)+)\{--fa:"([^"]*)"\}', keep, css)
+open(cssp, 'w', encoding='utf-8').write(css2)
+unis = []
+for c in codes:
+    for part in re.findall(r'\\([0-9a-fA-F]+)', c):
+        unis.append('U+' + part)
+    for ch in re.sub(r'\\[0-9a-fA-F]+', '', c):
+        unis.append('U+%04X' % ord(ch))
+unis = sorted(set(unis))
+for font in glob.glob(OUT + '/assets/vendor/webfonts/*.woff2'):
+    tmp = font + '.sub'
+    subprocess.run(['pyftsubset', font, '--unicodes=' + ','.join(unis), '--flavor=woff2',
+                    '--layout-features=*', '--output-file=' + tmp], check=True, capture_output=True)
+    os.replace(tmp, font)
+print(f'icons kept: {len(codes)} (css {len(css)//1024}KB -> {len(css2)//1024}KB)')
+
+# ---------- minify our own CSS / JS ----------
+own = [f for f in glob.glob(OUT + '/assets/*.js') + glob.glob(OUT + '/assets/*.css')]
+for f in own:
+    before = os.path.getsize(f)
+    r = subprocess.run(['npx', '--yes', 'esbuild@0.28.2', f, '--minify', ('--target=safari13,ios13,chrome80,firefox78,edge88' if f.endswith('.css') else '--target=es2019'), '--legal-comments=inline', '--log-level=error', '--outfile=' + f, '--allow-overwrite'],
+                       capture_output=True, text=True)
+    if r.returncode: sys.exit('minify failed for ' + f + ': ' + r.stderr)
+    print(f'{os.path.basename(f):22} {before//1024:4}KB -> {os.path.getsize(f)//1024}KB')
+
+# ---------- cache-busting: ?v=<content hash> on every local css/js/font reference ----------
+def ver(path):
+    return hashlib.sha1(open(os.path.join(OUT, path), 'rb').read()).hexdigest()[:8]
+for f in glob.glob(OUT + '/*.html'):
+    h = open(f, encoding='utf-8').read()
+    h = re.sub(r'<img(?![^>]*decoding=)', '<img decoding="async"', h)   # decode images off the main thread
+    h = re.sub(r'(src|href)="(assets/[^"?#]+\.(?:js|css))"', lambda m: f'{m.group(1)}="{m.group(2)}?v={ver(m.group(2))}"', h)
+    open(f, 'w', encoding='utf-8').write(h)
+# ---------- 404: works at any depth and sends visitors home after a few seconds ----------
+p404 = OUT + '/404.html'
+h = open(p404, encoding='utf-8').read()
+if '<base href' not in h:
+    h = h.replace('<meta charset="UTF-8"/>', '<meta charset="UTF-8"/>\n<base href="/"/>\n<meta http-equiv="refresh" content="6;url=/"/>', 1)
+    open(p404, 'w', encoding='utf-8').write(h)
+
+# ---------- sitemap + robots for search engines ----------
+import datetime
+URL = 'https://galaxyestatesproperties.github.io/'
+today = datetime.date.today().isoformat()
+pages = sorted(os.path.basename(f) for f in glob.glob(OUT + '/*.html') if not f.endswith('404.html'))
+with open(OUT + '/sitemap.xml', 'w') as sm:
+    sm.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+    for pgf in pages:
+        loc = URL if pgf == 'index.html' else URL + pgf
+        sm.write(f'  <url><loc>{loc}</loc><lastmod>{today}</lastmod><priority>{"1.0" if pgf == "index.html" else "0.8"}</priority></url>\n')
+    sm.write('</urlset>\n')
+with open(OUT + '/robots.txt', 'w') as rb:
+    rb.write('User-agent: *\nAllow: /\nDisallow: /tools/\n\nSitemap: ' + URL + 'sitemap.xml\n')
+for n in ('README.txt',):   # internal notes stay off the public site
+    if os.path.exists(os.path.join(OUT, n)): os.remove(os.path.join(OUT, n))
+# ---------- site source (Python build scripts) kept in the repo, so the site can be rebuilt from it ----------
+TOOLS = OUT + '/tools'
+os.makedirs(TOOLS, exist_ok=True)
+SPD = os.path.dirname(os.path.abspath(__file__))
+for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 'make_dist.py', 'land-listings-apps-script.gs'):
+    shutil.copy2(os.path.join(SPD, n), os.path.join(TOOLS, n))
+open(TOOLS + '/README.md', 'w').write("""# Site source
+
+The pages of this website are generated by these Python scripts:
+
+- `build.py` builds every page from the HTML templates and the project data
+- `props_build.py` holds the project listings (prices, sizes, RERA numbers, sources)
+- `land_build.py` builds the land-for-sale page
+- `global_build.py` builds the property-abroad page
+- `make_dist.py` minifies CSS/JS, trims icons, stamps cache versions and writes the sitemap
+- `land-listings-apps-script.gs` is the free Google Sheet back end for land posted by owners (setup steps inside)
+""")
+open(OUT + '/.gitattributes', 'w').write("""# GitHub language statistics: count our own (minified) CSS and JavaScript, and the Python build source
+assets/*.js linguist-generated=false linguist-detectable=true
+assets/*.css linguist-generated=false linguist-detectable=true
+tools/*.py linguist-detectable=true
+assets/vendor/** linguist-vendored
+""")
+total = sum(os.path.getsize(os.path.join(dp, n)) for dp, _, ns in os.walk(OUT) if os.sep + '.git' not in dp for n in ns)
+print(f'dist size {total//1024}KB')
