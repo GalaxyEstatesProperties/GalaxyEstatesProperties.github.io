@@ -250,7 +250,7 @@ def land_form(idp="l"):
   <div class="form-actions">
     <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
   </div>
-  <p class="form-note"><i class="fas fa-lock"></i> Your data is secure. We never share your details with anyone without your consent. Your number is checked and confirmed on WhatsApp only to make sure every enquiry comes from a genuine buyer, not a fake one. To stop spam, we also note your device type and approximate location with the enquiry.</p>
+  <p class="form-note"><i class="fas fa-lock"></i> Your data is secure. We never share your details with anyone without your consent. Every enquiry is checked only to make sure it comes from a genuine buyer, not a fake one. To stop spam, we also note your device type and approximate location with the enquiry.</p>
 </form>
 <div class="form-success" role="status">
   <i class="fas fa-check-circle"></i><h3>Enquiry sent</h3><p data-s="msg"></p>
