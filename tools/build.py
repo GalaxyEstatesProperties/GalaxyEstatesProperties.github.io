@@ -37,7 +37,7 @@ PROJECTS = [
   dict(id="belrosa", name="Belrosa", cats=["4 BHK"], label="4 BHK", price="₹5.32 Cr*", priceLabel="Onwards",
        size="5450 – 6800 sq.ft. (3000 – 3740 sq.ft. carpet)", possession="Sep 2030", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA15538/180725/310530",
        img=IMG+"2025/08/Untitled-design-768x702.png", color="#C9A962"),
-  dict(id="shivalik-shantigram", name="Shivalik Shantigram, Signature Collection", cats=["4 BHK", "5 BHK"], label="4 & 5 BHK + triplex penthouses", price="₹7.20 Cr*", priceLabel="4 BHK onwards (market listing, to be confirmed)",
+  dict(id="shivalik-shantigram", name="Shivalik Shantigram, Signature Collection", cats=["4 BHK", "5 BHK"], label="4 & 5 BHK + triplex penthouses", price="Price on call", priceLabel="Box price shared on call",
        size="3,968 – 10,933 sq.ft. carpet", possession="Dec 2030 (as listed)", rera="Not yet published on GujRERA. We confirm the registration before any booking",
        img="", color="#C8925E"),
   dict(id="north-park", name="The North Park", cats=["Villas"], label="Villas", price="On request", priceLabel="4 BHK villas",
@@ -68,7 +68,7 @@ for p in PROJECTS:
     p["cats"] = ["Adani Shantigram"] + [("Villas & townhouses" if c == "Villas" else ("1-2 BHK / studio" if c == "2 BHK" else c)) for c in p["cats"]]
     if p["id"] == "shivalik-shantigram":
         p["blurb"] = ("Shivalik Group's new signature towers inside Adani Shantigram, at the south-west corner of the Belvedere golf course: four towers with one home per floor, "
-                      "33 levels (about 147 m) and triplex penthouses on top. Details and prices are from a market listing (Oct 2026) and the project is not yet on GujRERA or Shivalik's website, "
+                      "33 levels (about 147 m) and triplex penthouses on top. Details are from a market listing (Oct 2026); the box price is shared on call and the project is not yet on GujRERA or Shivalik's website, "
                       "so treat every figure as provisional until the developer's price sheet and RERA registration are out. The picture is our own 3D model drawn from the published site plan, not a developer photo.")
     if p["id"] == "belrosa":
         p["blurb"] = "Belrosa is the tallest residential tower in Adani Shantigram: 125 m and 32 floors, with 100 apartments and 8 duplexes from 4 to 6 BHK, possession Sep 2030. Prices are on request."
@@ -615,16 +615,17 @@ def kind_words(p):
 # floor-by-floor 3D explorers (towers laid out from the published site plan; metres east / north of the plot centre)
 T3D = {
   "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="5 BHK & penthouses", levels=33, penthouseLevels=3, floorH=4.27, groundH=6.0,
-      plot=dict(w=107, d=97), faces="Golf course (north), as on the site plan",
+      plot=dict(w=107, d=97), faces="Golf course (north-east), across the township road",
+      geo=dict(name="GEO_SHANTIGRAM", x=-1312, y=1112, rot=-52, radius=950),
       groundUse="Double-height entrance lobby (as on the site plan)",
       towers=[dict(id="T1", x=-31.7, y=7.3, w=22, d=36, type="5"), dict(id="T2", x=-10.6, y=-0.9, w=18, d=36, type="4"),
               dict(id="T3", x=10.4, y=-10.1, w=22, d=36, type="5"), dict(id="T4", x=31.1, y=-19.2, w=19, d=36, type="4")],
       units={"4": dict(name="4 BHK apartment", short="4 BHK", carpet="3,968 sq.ft.", extra="3,468.16 sq.ft. RERA carpet + 400.96 sq.ft. deck + 98.81 sq.ft. utility",
-                       sba="7,936 sq.ft.", parking=4, price="From ₹7.20 Cr* (floor-wise price on request)", avail="Ask us (listing: 30 of 60 4 BHK homes open)"),
+                       sba="7,936 sq.ft.", parking=4, price="Price on call", avail="Ask us (listing: 30 of 60 4 BHK homes open)"),
              "5": dict(name="5 BHK apartment", short="5 BHK", carpet="5,041 sq.ft.", extra="4,473.52 sq.ft. RERA carpet + 468.66 sq.ft. deck + 98.81 sq.ft. utility",
-                       sba="10,082 sq.ft.", parking=5, price="From ₹8.90 Cr* (floor-wise price on request)", avail="Ask us (listing: 30 of 40 5 BHK homes open)"),
-             "P4": dict(name="4 BHK triplex penthouse", short="4 BHK PH", carpet="8,678 sq.ft. + 1,694 sq.ft. terrace", sba="17,356 sq.ft.", parking=7, price="₹17.82 Cr*", avail="Ask us"),
-             "P5": dict(name="5 BHK triplex penthouse", short="5 BHK PH", carpet="10,933 sq.ft. + 2,525 sq.ft. terrace", sba="21,866 sq.ft.", parking=7, price="₹22.28 Cr*", avail="Ask us")}),
+                       sba="10,082 sq.ft.", parking=5, price="Price on call", avail="Ask us (listing: 30 of 40 5 BHK homes open)"),
+             "P4": dict(name="4 BHK triplex penthouse", short="4 BHK PH", carpet="8,678 sq.ft. + 1,694 sq.ft. terrace", sba="17,356 sq.ft.", parking=7, price="Price on call", avail="Ask us"),
+             "P5": dict(name="5 BHK triplex penthouse", short="5 BHK PH", carpet="10,933 sq.ft. + 2,525 sq.ft. terrace", sba="21,866 sq.ft.", parking=7, price="Price on call", avail="Ask us")}),
 }
 def t3d_section(p):
     c = T3D.get(p["id"])
@@ -644,7 +645,7 @@ def t3d_section(p):
         <div class="t3d-panel" aria-live="polite"></div>
       </div>
     </div>
-    <p class="detail-source">Model drawn from the published site plan: tower positions, one home per floor and 33 levels are as listed, sizes are to scale and finishes are simplified. Prices marked * and availability are from a market listing (Oct 2026) and will be confirmed from the developer's price sheet and RERA filing.</p>
+    <p class="detail-source">Model drawn from the published site plan: tower positions, one home per floor and 33 levels are as listed, sizes are to scale and finishes are simplified. Surroundings (golf course, roads, Narmada canal, nearby buildings) are from OpenStreetMap; the site position is taken from the developer's location plan and is approximate. Prices are shared on call; availability will be confirmed from the developer's price sheet and RERA filing.</p>
   </div>
 </section>
 <script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
@@ -728,7 +729,7 @@ def property_page(p):
                 else "Land in Gujarat — Buy" if "Weekend villas & plots" in p["cats"] and "Villas & townhouses" not in p["cats"] else "Villas" if "Villas & townhouses" in p["cats"] else "4 BHK Apartments" if "4 BHK" in p["cats"]
                 else "3 BHK Apartments" if "3 BHK" in p["cats"] else "2 BHK Apartments")
     body = body.replace("<option selected>3 BHK Apartments</option>", "<option>3 BHK Apartments</option>").replace(f"<option>{interest}</option>", f"<option selected>{interest}</option>", 1)
-    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts((THREE + '<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
+    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts((THREE + '<script src="assets/geo-shantigram.js"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
 
 # ---------------------------------------------------------------- search-friendly content (home page)
 def plink(pid, text=None):
