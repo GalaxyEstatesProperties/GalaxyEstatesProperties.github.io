@@ -37,8 +37,8 @@ PROJECTS = [
   dict(id="belrosa", name="Belrosa", cats=["4 BHK"], label="4 BHK", price="₹5.32 Cr*", priceLabel="Onwards",
        size="5450 – 6800 sq.ft. (3000 – 3740 sq.ft. carpet)", possession="Sep 2030", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA15538/180725/310530",
        img=IMG+"2025/08/Untitled-design-768x702.png", color="#C9A962"),
-  dict(id="shivalik-shantigram", name="Shivalik Shantigram, Signature Collection", cats=["4 BHK", "5 BHK"], label="4 & 5 BHK + triplex penthouses", price="Price on call", priceLabel="Box price shared on call",
-       size="3,968 – 10,933 sq.ft. carpet", possession="Dec 2030 (as listed)", rera="Not yet published on GujRERA. We confirm the registration before any booking",
+  dict(id="shivalik-shantigram", name="Shivalik Shantigram, Signature Collection", cats=["4 BHK", "5 BHK"], label="4 & 5 BHK + 6 BHK penthouses", price="Price on call", priceLabel="Box price shared on call",
+       size="4,147.57 – 11,953.54 sq.ft. RERA area", possession="Dec 2031 (tentative)", rera="Not yet received (developer’s sheet, Oct 2026). We confirm the registration before any booking",
        img="", color="#C8925E"),
   dict(id="north-park", name="The North Park", cats=["Villas"], label="Villas", price="On request", priceLabel="4 BHK villas",
        size="550 sq. yard saleable area", possession="On request", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA01824/010318",
@@ -67,9 +67,11 @@ for p in PROJECTS:
     p.setdefault("total", PB.ASK_UNITS); p.setdefault("available", PB.ASK_AVAIL); p.setdefault("build", "")
     p["cats"] = ["Adani Shantigram"] + [("Villas & townhouses" if c == "Villas" else ("1-2 BHK / studio" if c == "2 BHK" else c)) for c in p["cats"]]
     if p["id"] == "shivalik-shantigram":
-        p["blurb"] = ("Shivalik Group's new signature towers inside Adani Shantigram, at the south-west corner of the Belvedere golf course: four towers with one home per floor, "
-                      "33 levels (about 147 m) and triplex penthouses on top. Details are from a market listing (Oct 2026); the box price is shared on call and the project is not yet on GujRERA or Shivalik's website, "
-                      "so treat every figure as provisional until the developer's price sheet and RERA registration are out. The picture is our own 3D model drawn from the published site plan, not a developer photo.")
+        p["blurb"] = ("Shivalik's Signature Collection inside Adani Shantigram, developed by Shivalik, Adesh and Adani and designed by Architect Hafeez Contractor. "
+                      "Four towers on a 10,571 sq m (12,643 sq yd) plot on the edge of the golf course: one home per floor, 31 floors and 138.5 m tall, 4.3 m floor to floor, "
+                      "4 & 5 BHK simplex homes and four-level 6 BHK penthouses. Every living room and deck faces the golf course, with the Narmada canal beyond. "
+                      "Figures are from the developer's brochure (V4.0, Oct 2026). The box price is shared on call, RERA registration is not yet received and possession is Dec 2031 (tentative). "
+                      "Plans and areas are indicative and may change.")
     if p["id"] == "belrosa":
         p["blurb"] = "Belrosa is the tallest residential tower in Adani Shantigram: 125 m and 32 floors, with 100 apartments and 8 duplexes from 4 to 6 BHK, possession Sep 2030. Prices are on request."
 for p in PB.GIFT + PB.AHD + PB.INTL:
@@ -425,7 +427,7 @@ def more_markets():
 
 
 RENDER_META = {
-  "shivalik-shantigram": ("Our 3D model", "Our 3D model of the four Shivalik towers by the golf course, drawn from the site plan. Explore every floor on its page."),
+  "shivalik-shantigram": ("Architect's render", "Architect Hafeez Contractor's render of the four Shivalik Signature towers. Explore every floor in 3D on its page."),
   "aster-neo": ("3D exterior", "Modern 2 BHK tower with a clean contemporary facade and podium greens."),
   "embrace": ("3D aerial", "Aerial perspective of the Embrace towers with landscaped grounds."),
   "elysium-novus": ("3D master plan", "Master-plan rendering with podium amenities, towers and landscaping."),
@@ -613,19 +615,31 @@ def kind_words(p):
     return p["label"].lower().replace("bhk", "BHK") + (" flats" if p["market"] != "abroad" and "BHK" in p["label"] else "")
 
 # floor-by-floor 3D explorers (towers laid out from the published site plan; metres east / north of the plot centre)
+def _sh_stack():
+    st = [dict(label="Ground floor", kind="M", use="Double-height entrance lobbies with reception, plus the ground-floor amenities: club, swimming pool, café, banquet and business lounge"),
+          dict(label="Floor 1", kind="M", use="Amenity deck: gym, yoga room, spa and saunas, bowling alley, golf simulator, sports bar, lounge and two guest suites")]
+    for f in range(2, 28):
+        if f == 16:
+            st.append(dict(label="Floor 16 (skip floor)", kind="S", use="Skip floor: no home on this level, as per the developer’s sheet"))
+        else:
+            st.append(dict(label=f"Floor {f}", kind="A", **({"terrace": True} if f == 2 else {})))
+    st.append(dict(label="Floors 28–31 (penthouse)", kind="P", levels=4))
+    return st
+
 T3D = {
-  "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="5 BHK & penthouses", levels=33, penthouseLevels=3, floorH=4.27, groundH=6.0,
-      plot=dict(w=107, d=97), faces="Golf course (north-east), across the township road",
-      geo=dict(name="GEO_SHANTIGRAM", x=-1312, y=1112, rot=-52, radius=950),
-      groundUse="Double-height entrance lobby (as on the site plan)",
-      towers=[dict(id="T1", x=-31.7, y=7.3, w=22, d=36, type="5"), dict(id="T2", x=-10.6, y=-0.9, w=18, d=36, type="4"),
-              dict(id="T3", x=10.4, y=-10.1, w=22, d=36, type="5"), dict(id="T4", x=31.1, y=-19.2, w=19, d=36, type="4")],
-      units={"4": dict(name="4 BHK apartment", short="4 BHK", carpet="3,968 sq.ft.", extra="3,468.16 sq.ft. RERA carpet + 400.96 sq.ft. deck + 98.81 sq.ft. utility",
-                       sba="7,936 sq.ft.", parking=4, price="Price on call", avail="Ask us (listing: 30 of 60 4 BHK homes open)"),
-             "5": dict(name="5 BHK apartment", short="5 BHK", carpet="5,041 sq.ft.", extra="4,473.52 sq.ft. RERA carpet + 468.66 sq.ft. deck + 98.81 sq.ft. utility",
-                       sba="10,082 sq.ft.", parking=5, price="Price on call", avail="Ask us (listing: 30 of 40 5 BHK homes open)"),
-             "P4": dict(name="4 BHK triplex penthouse", short="4 BHK PH", carpet="8,678 sq.ft. + 1,694 sq.ft. terrace", sba="17,356 sq.ft.", parking=7, price="Price on call", avail="Ask us"),
-             "P5": dict(name="5 BHK triplex penthouse", short="5 BHK PH", carpet="10,933 sq.ft. + 2,525 sq.ft. terrace", sba="21,866 sq.ft.", parking=7, price="Price on call", avail="Ask us")}),
+  "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="4 & 5 BHK simplex and 6 BHK penthouses", floorH=4.3, height=138.5, stack=_sh_stack(),
+      areaLabel="RERA area", plot=dict(w=112, d=95), faces="North-east, over the golf course to the Narmada canal (living room and deck)",
+      geo=dict(name="GEO_SHANTIGRAM", x=-1293, y=1089, rot=-52, radius=950),
+      towers=[dict(id="T1", x=-32.9, y=7.4, w=23, d=37, type="5", terrace="574 sq.ft."), dict(id="T2", x=-11.2, y=-0.9, w=20.5, d=37, type="4", terrace="1,377 sq.ft."),
+              dict(id="T3", x=11.5, y=-10.5, w=23.5, d=37.5, type="5", terrace="1,582 sq.ft."), dict(id="T4", x=34.0, y=-19.0, w=19.5, d=37, type="4", terrace="1,377 sq.ft.")],
+      units={"4": dict(name="4 BHK simplex", short="4 BHK", area="4,147.57 sq.ft.", extra="3,637.73 sq.ft. RERA carpet + 413.22 sq.ft. deck + 96.92 sq.ft. utility",
+                       sba="8,294 sq.ft.", parking=4, price="Price on call", avail="Ask for live availability"),
+             "5": dict(name="5 BHK simplex", short="5 BHK", area="5,174.65 sq.ft.", extra="4,620.13 sq.ft. RERA carpet + 457.90 sq.ft. deck + 96.92 sq.ft. utility",
+                       sba="10,348 sq.ft.", parking=5, price="Price on call", avail="Ask for live availability"),
+             "P4": dict(name="6 BHK Penthouse I, four levels", short="6 BHK PH I", area="9,627.43 sq.ft. (four levels combined)", extra="Terraces: 888 sq.ft. on level 3 and 1,988 sq.ft. on level 4",
+                        sba="19,255 sq.ft.", parking=7, price="Price on call", avail="Ask for live availability"),
+             "P5": dict(name="6 BHK Penthouse II, four levels", short="6 BHK PH II", area="11,953.54 sq.ft. (four levels combined)", extra="Terraces: 981 sq.ft. on level 3 and 1,785 sq.ft. on level 4",
+                        sba="23,867 sq.ft.", parking=7, price="Price on call", avail="Ask for live availability")}),
 }
 def t3d_section(p):
     c = T3D.get(p["id"])
@@ -635,7 +649,7 @@ def t3d_section(p):
     <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any tower and floor</h2>
       <p>Tap or click a floor in the model, or choose it from the lists, to see that home's size, parking, price and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
     <div class="t3d reveal" data-t3d="t3d-{p['id']}">
-      <div class="t3d-stage" aria-label="3D model of {E(p['name'])}: four towers"></div>
+      <div class="t3d-stage" aria-label="3D model of {E(p['name'])}: four towers, 31 floors"></div>
       <div class="t3d-side">
         <div class="t3d-pick">
           <label>Tower<select name="t3d-tower"></select></label>
@@ -645,7 +659,7 @@ def t3d_section(p):
         <div class="t3d-panel" aria-live="polite"></div>
       </div>
     </div>
-    <p class="detail-source">Model drawn from the published site plan: tower positions, one home per floor and 33 levels are as listed, sizes are to scale and finishes are simplified. Surroundings (golf course, roads, Narmada canal, nearby buildings) are from OpenStreetMap; the site position is taken from the developer's location plan and is approximate. Prices are shared on call; availability will be confirmed from the developer's price sheet and RERA filing.</p>
+    <p class="detail-source">Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.</p>
   </div>
 </section>
 <script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
