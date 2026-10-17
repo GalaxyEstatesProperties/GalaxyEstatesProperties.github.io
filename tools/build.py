@@ -80,6 +80,8 @@ for p in PB.GIFT + PB.AHD + PB.INTL:
                   if p['developer'] and p['developer'] != 'Ask us' else f"{p['name']} in {p['location']}, {p['country']}. {p['build']}. ") + \
                  f"Checked against: {p['source']}. Prices and availability change, so ask us for the current price sheet."
 ALL = PROJECTS + PB.GIFT + PB.AHD + PB.INTL
+import official as OFF
+OFF.apply(ALL)
 # every listing uses its own official exterior photo, stored on this site (assets/img/p/<id>.webp)
 for p in ALL:
     f = os.path.join(OUT, 'assets', 'img', 'p', p['id'] + '.webp')
@@ -630,8 +632,8 @@ T3D = {
   "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="4 & 5 BHK simplex and 6 BHK penthouses", floorH=4.3, height=138.5, stack=_sh_stack(), style="bronze", camR=300, camY=70,
       areaLabel="RERA area", plot=dict(w=112, d=95), faces="North-east, over the golf course to the Narmada canal (living room and deck)",
       geo=dict(name="GEO_SHANTIGRAM", file="assets/geo-shantigram.js", x=-1293, y=1089, rot=-52, radius=950),
-      towers=[dict(id="T1", x=-32.9, y=7.4, w=23, d=37, type="5", terrace="574 sq.ft."), dict(id="T2", x=-11.2, y=-0.9, w=20.5, d=37, type="4", terrace="1,377 sq.ft."),
-              dict(id="T3", x=11.5, y=-10.5, w=23.5, d=37.5, type="5", terrace="1,582 sq.ft."), dict(id="T4", x=34.0, y=-19.0, w=19.5, d=37, type="4", terrace="1,377 sq.ft.")],
+      towers=[dict(id="T1", x=-32.9, y=7.4, w=23, d=37, type="5", terrace="574 sq.ft. carpet (this floor only)"), dict(id="T2", x=-11.2, y=-0.9, w=20.5, d=37, type="4", terrace="1,377 sq.ft. carpet (this floor only)"),
+              dict(id="T3", x=11.5, y=-10.5, w=23.5, d=37.5, type="5", terrace="1,582 sq.ft. carpet (this floor only)"), dict(id="T4", x=34.0, y=-19.0, w=19.5, d=37, type="4", terrace="1,377 sq.ft. carpet (this floor only)")],
       units={"4": dict(name="4 BHK simplex", short="4 BHK", area="4,147.57 sq.ft.", extra="3,637.73 sq.ft. RERA carpet + 413.22 sq.ft. deck + 96.92 sq.ft. utility",
                        sba="8,294 sq.ft.", parking=4, price="Price on call", avail="Ask for live availability"),
              "5": dict(name="5 BHK simplex", short="5 BHK", area="5,174.65 sq.ft.", extra="4,620.13 sq.ft. RERA carpet + 457.90 sq.ft. deck + 96.92 sq.ft. utility",
@@ -733,6 +735,7 @@ def property_page(p):
     <h2 class="detail-h reveal">{E(p['name'])} unit types, sizes and prices</h2>
     <div class="mix-wrap reveal"><table class="mix-table"><thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th></tr></thead><tbody>{rows}</tbody></table></div>
     <p class="detail-source reveal">{E(p['blurb'])}</p>
+    {OFF.block(p, E)}
   </div>
 </section>
 {t3d_section(p)}
