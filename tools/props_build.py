@@ -7,6 +7,15 @@ ASK_AVAIL = "Ask for live availability"
 
 # ---------------------------------------------------------------- Shantigram enrichment (Adani Realty project pages, Oct 2026)
 SH_EXTRA = {
+  "shivalik-shantigram": dict(developer="Shivalik Group", build="4 towers (T1–T4) · one home per floor · 33 levels, about 147 m · 14 ft floor-to-floor · designed by Hafeez Contractor",
+      total="About 104 homes (as listed)", available="Ask for live availability",
+      size="3,968 – 10,933 sq.ft. carpet (super built-up 7,936 – 21,866 sq.ft.)",
+      imgnote="Our 3D model of the four towers, drawn from the published site plan (not a developer photo).",
+      source="Market listing on Realty of India (Oct 2026): sizes, prices, tower layout and site plan. Not yet on GujRERA or Shivalik's website: all figures provisional",
+      mix=[("4 BHK apartment (T2, T4)", "3,968 sq.ft. carpet · 7,936 sq.ft. super built-up · 4 parking", "₹7.20 Cr*", "Ask us"),
+           ("5 BHK apartment (T1, T3)", "5,041 sq.ft. carpet · 10,082 sq.ft. super built-up · 5 parking", "₹8.90 Cr*", "Ask us"),
+           ("4 BHK triplex penthouse (T2, T4)", "8,678 sq.ft. carpet + 1,694 sq.ft. terrace · 7 parking", "₹17.82 Cr*", "Ask us"),
+           ("5 BHK triplex penthouse (T1, T3)", "10,933 sq.ft. carpet + 2,525 sq.ft. terrace · 7 parking", "₹22.28 Cr*", "Ask us")]),
   "aster-neo": dict(developer="Adani Realty", possession="Ready (BU received)", build="Towers A, B, G and H · ground + 22 floors",
       size="634.85 sq.ft. RERA carpet (1205 sq.ft. saleable)",
       mix=[("2 BHK #Smartment", "634.85 sq.ft. RERA carpet · 1205 sq.ft. saleable", "₹78 Lakhs*", "")]),

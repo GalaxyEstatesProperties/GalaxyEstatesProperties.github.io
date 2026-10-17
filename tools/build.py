@@ -37,6 +37,9 @@ PROJECTS = [
   dict(id="belrosa", name="Belrosa", cats=["4 BHK"], label="4 BHK", price="₹5.32 Cr*", priceLabel="Onwards",
        size="5450 – 6800 sq.ft. (3000 – 3740 sq.ft. carpet)", possession="Sep 2030", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA15538/180725/310530",
        img=IMG+"2025/08/Untitled-design-768x702.png", color="#C9A962"),
+  dict(id="shivalik-shantigram", name="Shivalik Shantigram, Signature Collection", cats=["4 BHK", "5 BHK"], label="4 & 5 BHK + triplex penthouses", price="₹7.20 Cr*", priceLabel="4 BHK onwards (market listing, to be confirmed)",
+       size="3,968 – 10,933 sq.ft. carpet", possession="Dec 2030 (as listed)", rera="Not yet published on GujRERA. We confirm the registration before any booking",
+       img="", color="#C8925E"),
   dict(id="north-park", name="The North Park", cats=["Villas"], label="Villas", price="On request", priceLabel="4 BHK villas",
        size="550 sq. yard saleable area", possession="On request", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA01824/010318",
        img=IMG+"2025/05/Untitled-design-2.png", color="#D4AC6E"),
@@ -63,6 +66,10 @@ for p in PROJECTS:
     p["blurb"] = f"{p['name']} is a {kind} inside Adani Shantigram, {poss}. Sizes: {p['size']}. Prices marked * are indicative, as published by the developer (checked 12 Oct 2026); ask us for the current price sheet."
     p.setdefault("total", PB.ASK_UNITS); p.setdefault("available", PB.ASK_AVAIL); p.setdefault("build", "")
     p["cats"] = ["Adani Shantigram"] + [("Villas & townhouses" if c == "Villas" else ("1-2 BHK / studio" if c == "2 BHK" else c)) for c in p["cats"]]
+    if p["id"] == "shivalik-shantigram":
+        p["blurb"] = ("Shivalik Group's new signature towers inside Adani Shantigram, at the south-west corner of the Belvedere golf course: four towers with one home per floor, "
+                      "33 levels (about 147 m) and triplex penthouses on top. Details and prices are from a market listing (Oct 2026) and the project is not yet on GujRERA or Shivalik's website, "
+                      "so treat every figure as provisional until the developer's price sheet and RERA registration are out. The picture is our own 3D model drawn from the published site plan, not a developer photo.")
     if p["id"] == "belrosa":
         p["blurb"] = "Belrosa is the tallest residential tower in Adani Shantigram: 125 m and 32 floors, with 100 apartments and 8 duplexes from 4 to 6 BHK, possession Sep 2030. Prices are on request."
 for p in PB.GIFT + PB.AHD + PB.INTL:
@@ -79,7 +86,7 @@ for p in ALL:
     p['img'] = 'assets/img/p/' + p['id'] + '.webp'
     p.setdefault('mapq', p['name'] + ', ' + p['location'])
 for p in PROJECTS:
-    p['mapq'] = {'shilp-skyline': 'Shilp Skyline, Adani Shantigram, Ahmedabad', 'greenfield': 'Shivalik Greenfield, Adani Shantigram, Ahmedabad'}.get(p['id'], 'Adani ' + p['name'] + ', Adani Shantigram, Ahmedabad')
+    p['mapq'] = {'shivalik-shantigram': 'Belvedere Golf and Country Club, Shantigram, Ahmedabad', 'shilp-skyline': 'Shilp Skyline, Adani Shantigram, Ahmedabad', 'greenfield': 'Shivalik Greenfield, Adani Shantigram, Ahmedabad'}.get(p['id'], 'Adani ' + p['name'] + ', Adani Shantigram, Ahmedabad')
 
 E = html.escape
 
@@ -418,6 +425,7 @@ def more_markets():
 
 
 RENDER_META = {
+  "shivalik-shantigram": ("Our 3D model", "Our 3D model of the four Shivalik towers by the golf course, drawn from the site plan. Explore every floor on its page."),
   "aster-neo": ("3D exterior", "Modern 2 BHK tower with a clean contemporary facade and podium greens."),
   "embrace": ("3D aerial", "Aerial perspective of the Embrace towers with landscaped grounds."),
   "elysium-novus": ("3D master plan", "Master-plan rendering with podium amenities, towers and landscaping."),
@@ -604,6 +612,43 @@ def kind_words(p):
     if "Villas & townhouses" in p["cats"] and p["market"] != "abroad": return "villas"
     return p["label"].lower().replace("bhk", "BHK") + (" flats" if p["market"] != "abroad" and "BHK" in p["label"] else "")
 
+# floor-by-floor 3D explorers (towers laid out from the published site plan; metres east / north of the plot centre)
+T3D = {
+  "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="5 BHK & penthouses", levels=33, penthouseLevels=3, floorH=4.27, groundH=6.0,
+      plot=dict(w=107, d=97), faces="Golf course (north), as on the site plan",
+      groundUse="Double-height entrance lobby (as on the site plan)",
+      towers=[dict(id="T1", x=-31.7, y=7.3, w=22, d=36, type="5"), dict(id="T2", x=-10.6, y=-0.9, w=18, d=36, type="4"),
+              dict(id="T3", x=10.4, y=-10.1, w=22, d=36, type="5"), dict(id="T4", x=31.1, y=-19.2, w=19, d=36, type="4")],
+      units={"4": dict(name="4 BHK apartment", short="4 BHK", carpet="3,968 sq.ft.", extra="3,468.16 sq.ft. RERA carpet + 400.96 sq.ft. deck + 98.81 sq.ft. utility",
+                       sba="7,936 sq.ft.", parking=4, price="From ₹7.20 Cr* (floor-wise price on request)", avail="Ask us (listing: 30 of 60 4 BHK homes open)"),
+             "5": dict(name="5 BHK apartment", short="5 BHK", carpet="5,041 sq.ft.", extra="4,473.52 sq.ft. RERA carpet + 468.66 sq.ft. deck + 98.81 sq.ft. utility",
+                       sba="10,082 sq.ft.", parking=5, price="From ₹8.90 Cr* (floor-wise price on request)", avail="Ask us (listing: 30 of 40 5 BHK homes open)"),
+             "P4": dict(name="4 BHK triplex penthouse", short="4 BHK PH", carpet="8,678 sq.ft. + 1,694 sq.ft. terrace", sba="17,356 sq.ft.", parking=7, price="₹17.82 Cr*", avail="Ask us"),
+             "P5": dict(name="5 BHK triplex penthouse", short="5 BHK PH", carpet="10,933 sq.ft. + 2,525 sq.ft. terrace", sba="21,866 sq.ft.", parking=7, price="₹22.28 Cr*", avail="Ask us")}),
+}
+def t3d_section(p):
+    c = T3D.get(p["id"])
+    if not c: return ""
+    return f"""<section class="section bg-alt" id="floors">
+  <div class="container">
+    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any tower and floor</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see that home's size, parking, price and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    <div class="t3d reveal" data-t3d="t3d-{p['id']}">
+      <div class="t3d-stage" aria-label="3D model of {E(p['name'])}: four towers"></div>
+      <div class="t3d-side">
+        <div class="t3d-pick">
+          <label>Tower<select name="t3d-tower"></select></label>
+          <label>Floor<select name="t3d-floor"></select></label>
+          <div class="t3d-steps"><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
+        </div>
+        <div class="t3d-panel" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="detail-source">Model drawn from the published site plan: tower positions, one home per floor and 33 levels are as listed, sizes are to scale and finishes are simplified. Prices marked * and availability are from a market listing (Oct 2026) and will be confirmed from the developer's price sheet and RERA filing.</p>
+  </div>
+</section>
+<script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
+
 def property_page(p):
     _, area = area_of(p)
     words = kind_words(p)
@@ -639,7 +684,7 @@ def property_page(p):
 
 <section class="section">
   <div class="container prop-layout">
-    <figure class="prop-photo reveal"><img src="{p['img']}" alt="{E(p['name'])} exterior, {E(area)}" width="1000" height="600" loading="eager"/><figcaption>Official exterior render from the developer.</figcaption></figure>
+    <figure class="prop-photo reveal"><img src="{p['img']}" alt="{E(p['name'])} exterior, {E(area)}" width="1000" height="600" loading="eager"/><figcaption>{E(p.get("imgnote", "Official exterior render from the developer."))}</figcaption></figure>
     <div class="prop-facts reveal" style="--d:.08s">
       <p class="project-location"><i class="fas fa-map-marker-alt"></i> <span>{E(loc)}</span> <a class="project-map" href="{E(gopen)}" target="_blank" rel="noopener noreferrer">View on Google Maps</a></p>
       <p class="project-dev">by <span>{E(p['developer'])}</span></p>
@@ -655,7 +700,7 @@ def property_page(p):
       </div>
       {('<p class="travel-refund"><i class="fas fa-plane"></i> <span><strong>Travel cost refunded.</strong> Fly out to see it before you buy: when your purchase completes through us, we refund your travel cost for the visit.</span></p>') if p['market'] == 'abroad' else ''}
       <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-enquire="{p['id']}"><i class="fas fa-calendar-alt"></i> Book a site visit</button>
+        <button type="button" class="cta-btn primary" data-enquire="{p['id']}"><i class="fas fa-calendar-alt"></i> Book a site visit</button>{('<a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> 3D floor explorer</a>' if p['id'] in T3D else '')}
         <a class="cta-btn wa" data-whatsapp="Hello, I'd like the price sheet and availability for {E(p['name'])} ({E(area)})." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
@@ -666,6 +711,7 @@ def property_page(p):
     <p class="detail-source reveal">{E(p['blurb'])}</p>
   </div>
 </section>
+{t3d_section(p)}
 {mapsec}
 <section class="section">
   <div class="container">
@@ -682,7 +728,7 @@ def property_page(p):
                 else "Land in Gujarat — Buy" if "Weekend villas & plots" in p["cats"] and "Villas & townhouses" not in p["cats"] else "Villas" if "Villas & townhouses" in p["cats"] else "4 BHK Apartments" if "4 BHK" in p["cats"]
                 else "3 BHK Apartments" if "3 BHK" in p["cats"] else "2 BHK Apartments")
     body = body.replace("<option selected>3 BHK Apartments</option>", "<option>3 BHK Apartments</option>").replace(f"<option>{interest}</option>", f"<option selected>{interest}</option>", 1)
-    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts('')
+    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts((THREE + '<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
 
 # ---------------------------------------------------------------- search-friendly content (home page)
 def plink(pid, text=None):
