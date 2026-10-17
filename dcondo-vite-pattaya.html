@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
 <link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=2d3c2c69"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=e52f6321"/>
+<link rel="stylesheet" href="assets/style.css?v=5220fecc"/>
 <link rel="stylesheet" href="assets/motion.css?v=76da65e8"/>
 
 </head>
@@ -101,7 +101,7 @@
       </div>
       <p class="travel-refund"><i class="fas fa-plane"></i> <span><strong>Travel cost refunded.</strong> Fly out to see it before you buy: when your purchase completes through us, we refund your travel cost for the visit.</span></p>
       <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-enquire="dcondo-vite"><i class="fas fa-calendar-alt"></i> Book a site visit</button>
+        <button type="button" class="cta-btn primary" data-enquire="dcondo-vite"><i class="fas fa-calendar-alt"></i> Book a site visit</button><a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> 3D floor explorer</a>
         <a class="cta-btn wa" data-whatsapp="Hello, I'd like the price sheet and availability for dcondo vite (Pattaya, Thailand)." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
@@ -112,7 +112,25 @@
     <p class="detail-source reveal">dcondo vite by Sansiri in Pothisan Road, North Pattaya, Thailand. 2 buildings of 8 floors. Checked against: FazWaz and Keller Henson project pages: units, buildings and completion match; checked 12 Oct 2026. Prices and availability change, so ask us for the current price sheet.</p>
   </div>
 </section>
-
+<section class="section bg-alt" id="floors">
+  <div class="container">
+    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any tower and floor</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see the homes on that floor, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    <div class="t3d reveal" data-t3d="t3d-dcondo-vite">
+      <div class="t3d-stage" aria-label="3D model of dcondo vite"></div>
+      <div class="t3d-side">
+        <div class="t3d-pick">
+          <label>Tower<select name="t3d-tower"></select></label>
+          <label>Floor<select name="t3d-floor"></select></label>
+          <div class="t3d-steps"><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
+        </div>
+        <div class="t3d-panel" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="detail-source">Model built from published figures. Sansiri: 2 buildings of 8 floors. Position: the project’s Google Maps pin (checked 17 Oct 2026). Tower footprints and spacing are approximate; the row is lined up with the nearest road. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified.</p>
+  </div>
+</section>
+<script type="application/json" id="t3d-dcondo-vite">{"project": "dcondo vite", "interest": "Studio to 2 bedroom condos", "floorH": 3.2, "stack": [{"label": "Level 1", "kind": "A"}, {"label": "Level 2", "kind": "A"}, {"label": "Level 3", "kind": "A"}, {"label": "Level 4", "kind": "A"}, {"label": "Level 5", "kind": "A"}, {"label": "Level 6", "kind": "A"}, {"label": "Level 7", "kind": "A"}, {"label": "Level 8", "kind": "A"}], "towers": [{"id": "T1", "label": "Tower A", "x": -31.0, "y": 0.0, "w": 48, "d": 18, "type": "all"}, {"id": "T2", "label": "Tower B", "x": 31.0, "y": 0.0, "w": 48, "d": 18, "type": "all"}], "units": {"all": {"name": "Studio to 2 bedroom condos", "short": "Studio to 2 bedroom condos", "rows": [["Studio / 1 bedroom", "About 24 – 27 sq.m."], ["2 bedroom", "About 43 sq.m."]], "avail": "Ask for live availability"}}, "plot": {"w": 134, "d": 42}, "geo": {"name": "GEO_DCONDO_VITE", "file": "assets/geo/dcondo-vite.js", "x": 0, "y": 0, "rot": -38.4, "radius": 550}, "kind": "residential", "startFloor": "Level 5", "enqLabel": "Enquire about this floor", "note": "Model built from published figures. Sansiri: 2 buildings of 8 floors. Position: the project’s Google Maps pin (checked 17 Oct 2026). Tower footprints and spacing are approximate; the row is lined up with the nearest road. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified."}</script>
 
 <section class="section">
   <div class="container">
@@ -233,5 +251,8 @@
 <script src="assets/data.js?v=7506410b"></script>
 <script src="assets/main.js?v=1adce7b4"></script>
 <script src="assets/motion.js?v=8d13ac1f"></script>
+<script src="assets/vendor/three.min.js?v=7a7802bf"></script>
+<script src="assets/geo/dcondo-vite.js?v=ee4c8742"></script>
+<script src="assets/tower3d.js?v=badad550"></script>
 </body>
 </html>

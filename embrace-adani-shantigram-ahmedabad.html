@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
 <link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=2d3c2c69"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=e52f6321"/>
+<link rel="stylesheet" href="assets/style.css?v=5220fecc"/>
 <link rel="stylesheet" href="assets/motion.css?v=76da65e8"/>
 
 </head>
@@ -101,7 +101,7 @@
       </div>
       
       <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-enquire="embrace"><i class="fas fa-calendar-alt"></i> Book a site visit</button>
+        <button type="button" class="cta-btn primary" data-enquire="embrace"><i class="fas fa-calendar-alt"></i> Book a site visit</button><a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> 3D floor explorer</a>
         <a class="cta-btn wa" data-whatsapp="Hello, I'd like the price sheet and availability for Embrace (Adani Shantigram, Ahmedabad)." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
@@ -112,7 +112,25 @@
     <p class="detail-source reveal">Embrace is a 3 BHK residences inside Adani Shantigram, possession Nov 2027. Sizes: 987.91 – 2,238.14 sq.ft. RERA carpet. Prices marked * are indicative, as published by the developer (checked 12 Oct 2026); ask us for the current price sheet.</p>
   </div>
 </section>
-
+<section class="section bg-alt" id="floors">
+  <div class="container">
+    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any tower and floor</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see the homes on that floor, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    <div class="t3d reveal" data-t3d="t3d-embrace">
+      <div class="t3d-stage" aria-label="3D model of Embrace"></div>
+      <div class="t3d-side">
+        <div class="t3d-pick">
+          <label>Tower<select name="t3d-tower"></select></label>
+          <label>Floor<select name="t3d-floor"></select></label>
+          <div class="t3d-steps"><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
+        </div>
+        <div class="t3d-panel" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="detail-source">Model built from published figures. Adani Realty: 5 towers of 13 and 14 floors (which tower is taller is not published; the model shows one). Position: the same Google Maps pin as our Shantigram map. Tower blocks are laid out approximately. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified.</p>
+  </div>
+</section>
+<script type="application/json" id="t3d-embrace">{"project": "Embrace", "interest": "3 BHK", "floorH": 3.2, "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}, {"label": "Floor 13", "kind": "A"}], "towers": [{"id": "T1", "label": "Tower A", "x": -16, "y": -40, "w": 17, "d": 24, "type": "all", "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}]}, {"id": "T2", "label": "Tower B", "x": -16, "y": 0, "w": 17, "d": 24, "type": "all", "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}, {"label": "Floor 13", "kind": "A"}]}, {"id": "T3", "label": "Tower C", "x": -16, "y": 40, "w": 17, "d": 24, "type": "all", "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}]}, {"id": "T4", "label": "Tower D", "x": 16, "y": -20, "w": 17, "d": 24, "type": "all", "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}]}, {"id": "T5", "label": "Tower E", "x": 16, "y": 20, "w": 17, "d": 24, "type": "all", "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}]}], "units": {"all": {"name": "3 BHK", "short": "3 BHK", "rows": [["3 BHK lifestyle homes", "987.91 – 2,238.14 sq.ft. RERA carpet · From ₹1.42 Cr*"]], "avail": "Ask for live availability"}}, "plot": {"w": 64, "d": 112}, "geo": {"name": "GEO_SHANTIGRAM", "file": "assets/geo-shantigram.js", "x": 535.5, "y": 99.3, "rot": -60, "radius": 800}, "kind": "residential", "startFloor": "Floor 7", "enqLabel": "Enquire about this floor", "note": "Model built from published figures. Adani Realty: 5 towers of 13 and 14 floors (which tower is taller is not published; the model shows one). Position: the same Google Maps pin as our Shantigram map. Tower blocks are laid out approximately. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified."}</script>
 <section class="section bg-alt" id="location"><div class="container"><div class="map-wrap reveal" data-map>
   <div class="map-side">
     <h3>Where Embrace is</h3>
@@ -253,5 +271,8 @@
 <script src="assets/data.js?v=7506410b"></script>
 <script src="assets/main.js?v=1adce7b4"></script>
 <script src="assets/motion.js?v=8d13ac1f"></script>
+<script src="assets/vendor/three.min.js?v=7a7802bf"></script>
+<script src="assets/geo-shantigram.js?v=9ca27d4e"></script>
+<script src="assets/tower3d.js?v=badad550"></script>
 </body>
 </html>

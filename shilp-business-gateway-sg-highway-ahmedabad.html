@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
 <link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=2d3c2c69"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=e52f6321"/>
+<link rel="stylesheet" href="assets/style.css?v=5220fecc"/>
 <link rel="stylesheet" href="assets/motion.css?v=76da65e8"/>
 
 </head>
@@ -101,7 +101,7 @@
       </div>
       
       <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-enquire="shilp-business-gateway"><i class="fas fa-calendar-alt"></i> Book a site visit</button>
+        <button type="button" class="cta-btn primary" data-enquire="shilp-business-gateway"><i class="fas fa-calendar-alt"></i> Book a site visit</button><a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> 3D floor explorer</a>
         <a class="cta-btn wa" data-whatsapp="Hello, I'd like the price sheet and availability for Shilp Business Gateway (S.G. Highway, Ahmedabad)." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
@@ -112,7 +112,25 @@
     <p class="detail-source reveal">Shilp Business Gateway by Shilp Group in S.G. Highway, beside Nirma University, near Vaishnodevi Circle, Gota, Ahmedabad 382481, India. Ground + 11 floors · double-height lobby · director&#x27;s lounge with private lift. Checked against: Shilp Group official project page (shilpgroup.com: 2,303 – 5,082 sq.ft., RERA CN63AA09963); checked 15 Oct 2026. Prices and availability change, so ask us for the current price sheet.</p>
   </div>
 </section>
-
+<section class="section bg-alt" id="floors">
+  <div class="container">
+    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any floor</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see that floor’s offices and shops, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    <div class="t3d reveal" data-t3d="t3d-shilp-business-gateway">
+      <div class="t3d-stage" aria-label="3D model of Shilp Business Gateway"></div>
+      <div class="t3d-side">
+        <div class="t3d-pick">
+          <label>Tower<select name="t3d-tower"></select></label>
+          <label>Floor<select name="t3d-floor"></select></label>
+          <div class="t3d-steps"><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
+        </div>
+        <div class="t3d-panel" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="detail-source">Model built from published figures. Shilp: ground + 11 floors. Position: the project’s Google Maps pin (checked 17 Oct 2026). Tower footprints and spacing are approximate; the row is lined up with the nearest road. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified.</p>
+  </div>
+</section>
+<script type="application/json" id="t3d-shilp-business-gateway">{"project": "Shilp Business Gateway", "interest": "Offices & showrooms", "floorH": 4.0, "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}], "towers": [{"id": "T1", "label": "Shilp Business Gateway", "x": 0.0, "y": 0.0, "w": 44, "d": 30, "type": "all"}], "units": {"all": {"name": "Offices & showrooms", "short": "Offices & showrooms", "rows": [["Offices", "2,303 – 5,082 sq.ft."], ["Showrooms (ground and first floor)", "Size on request"]], "avail": "Ask for live availability"}}, "plot": {"w": 68, "d": 54}, "geo": {"name": "GEO_SHILP_BUSINESS_GATEWAY", "file": "assets/geo/shilp-business-gateway.js", "x": 0, "y": 0, "rot": -15.9, "radius": 650}, "kind": "commercial", "startFloor": "Floor 6", "enqLabel": "Enquire about this floor", "note": "Model built from published figures. Shilp: ground + 11 floors. Position: the project’s Google Maps pin (checked 17 Oct 2026). Tower footprints and spacing are approximate; the row is lined up with the nearest road. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified.", "perFloorLabel": "Units on each floor"}</script>
 <section class="section bg-alt" id="location"><div class="container"><div class="map-wrap reveal" data-map>
   <div class="map-side">
     <h3>Where Shilp Business Gateway is</h3>
@@ -253,5 +271,8 @@
 <script src="assets/data.js?v=7506410b"></script>
 <script src="assets/main.js?v=1adce7b4"></script>
 <script src="assets/motion.js?v=8d13ac1f"></script>
+<script src="assets/vendor/three.min.js?v=7a7802bf"></script>
+<script src="assets/geo/shilp-business-gateway.js?v=0209ee17"></script>
+<script src="assets/tower3d.js?v=badad550"></script>
 </body>
 </html>

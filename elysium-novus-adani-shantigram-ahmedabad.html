@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
 <link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=2d3c2c69"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=e52f6321"/>
+<link rel="stylesheet" href="assets/style.css?v=5220fecc"/>
 <link rel="stylesheet" href="assets/motion.css?v=76da65e8"/>
 
 </head>
@@ -101,7 +101,7 @@
       </div>
       
       <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-enquire="elysium-novus"><i class="fas fa-calendar-alt"></i> Book a site visit</button>
+        <button type="button" class="cta-btn primary" data-enquire="elysium-novus"><i class="fas fa-calendar-alt"></i> Book a site visit</button><a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> 3D floor explorer</a>
         <a class="cta-btn wa" data-whatsapp="Hello, I'd like the price sheet and availability for Elysium Novus (Adani Shantigram, Ahmedabad)." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
@@ -112,7 +112,25 @@
     <p class="detail-source reveal">Elysium Novus is a 2 &amp; 3 BHK residences inside Adani Shantigram, possession Apr 2029. Sizes: 668.44 – 1,016 sq.ft. RERA carpet. Prices marked * are indicative, as published by the developer (checked 12 Oct 2026); ask us for the current price sheet.</p>
   </div>
 </section>
-
+<section class="section bg-alt" id="floors">
+  <div class="container">
+    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any tower and floor</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see the homes on that floor, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    <div class="t3d reveal" data-t3d="t3d-elysium-novus">
+      <div class="t3d-stage" aria-label="3D model of Elysium Novus"></div>
+      <div class="t3d-side">
+        <div class="t3d-pick">
+          <label>Tower<select name="t3d-tower"></select></label>
+          <label>Floor<select name="t3d-floor"></select></label>
+          <div class="t3d-steps"><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
+        </div>
+        <div class="t3d-panel" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="detail-source">Model built from published figures. Gujarat RERA: 44.8 m tall; the floor count (ground + 13) is our estimate from that height. Position: the same Google Maps pin as our Shantigram map. Tower blocks are laid out approximately. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified.</p>
+  </div>
+</section>
+<script type="application/json" id="t3d-elysium-novus">{"project": "Elysium Novus", "interest": "2 & 3 BHK", "floorH": 3.2, "stack": [{"label": "Ground floor", "kind": "M", "use": "Entrance lobby and common areas"}, {"label": "Floor 1", "kind": "A"}, {"label": "Floor 2", "kind": "A"}, {"label": "Floor 3", "kind": "A"}, {"label": "Floor 4", "kind": "A"}, {"label": "Floor 5", "kind": "A"}, {"label": "Floor 6", "kind": "A"}, {"label": "Floor 7", "kind": "A"}, {"label": "Floor 8", "kind": "A"}, {"label": "Floor 9", "kind": "A"}, {"label": "Floor 10", "kind": "A"}, {"label": "Floor 11", "kind": "A"}, {"label": "Floor 12", "kind": "A"}, {"label": "Floor 13", "kind": "A"}], "towers": [{"id": "T1", "label": "Block C", "x": -15, "y": -38, "w": 16, "d": 22, "type": "all"}, {"id": "T2", "label": "Block D", "x": -15, "y": 0, "w": 16, "d": 22, "type": "all"}, {"id": "T3", "label": "Block E", "x": -15, "y": 38, "w": 16, "d": 22, "type": "all"}, {"id": "T4", "label": "Block F", "x": 15, "y": -38, "w": 16, "d": 22, "type": "all"}, {"id": "T5", "label": "Block G", "x": 15, "y": 0, "w": 16, "d": 22, "type": "all"}, {"id": "T6", "label": "Block J", "x": 15, "y": 38, "w": 16, "d": 22, "type": "all"}], "units": {"all": {"name": "2 & 3 BHK", "short": "2 & 3 BHK", "rows": [["2 BHK", "From 668.44 sq.ft. RERA carpet"], ["3 BHK", "Up to 1,016 sq.ft. RERA carpet · From ₹1.23 Cr*"]], "avail": "272 unbooked (Gujarat RERA filing)"}}, "plot": {"w": 60, "d": 104}, "geo": {"name": "GEO_SHANTIGRAM", "file": "assets/geo-shantigram.js", "x": 527.0, "y": -0.4, "rot": -60, "radius": 800}, "kind": "residential", "startFloor": "Floor 7", "enqLabel": "Enquire about this floor", "note": "Model built from published figures. Gujarat RERA: 44.8 m tall; the floor count (ground + 13) is our estimate from that height. Position: the same Google Maps pin as our Shantigram map. Tower blocks are laid out approximately. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap; buildings with no height in OpenStreetMap are shown low. Finishes are simplified.", "height": 44.8}</script>
 <section class="section bg-alt" id="location"><div class="container"><div class="map-wrap reveal" data-map>
   <div class="map-side">
     <h3>Where Elysium Novus is</h3>
@@ -253,5 +271,8 @@
 <script src="assets/data.js?v=7506410b"></script>
 <script src="assets/main.js?v=1adce7b4"></script>
 <script src="assets/motion.js?v=8d13ac1f"></script>
+<script src="assets/vendor/three.min.js?v=7a7802bf"></script>
+<script src="assets/geo-shantigram.js?v=9ca27d4e"></script>
+<script src="assets/tower3d.js?v=badad550"></script>
 </body>
 </html>

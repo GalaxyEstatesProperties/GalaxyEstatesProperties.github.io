@@ -627,9 +627,9 @@ def _sh_stack():
     return st
 
 T3D = {
-  "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="4 & 5 BHK simplex and 6 BHK penthouses", floorH=4.3, height=138.5, stack=_sh_stack(),
+  "shivalik-shantigram": dict(project="Shivalik Shantigram", interest="4 & 5 BHK simplex and 6 BHK penthouses", floorH=4.3, height=138.5, stack=_sh_stack(), style="bronze", camR=300, camY=70,
       areaLabel="RERA area", plot=dict(w=112, d=95), faces="North-east, over the golf course to the Narmada canal (living room and deck)",
-      geo=dict(name="GEO_SHANTIGRAM", x=-1293, y=1089, rot=-52, radius=950),
+      geo=dict(name="GEO_SHANTIGRAM", file="assets/geo-shantigram.js", x=-1293, y=1089, rot=-52, radius=950),
       towers=[dict(id="T1", x=-32.9, y=7.4, w=23, d=37, type="5", terrace="574 sq.ft."), dict(id="T2", x=-11.2, y=-0.9, w=20.5, d=37, type="4", terrace="1,377 sq.ft."),
               dict(id="T3", x=11.5, y=-10.5, w=23.5, d=37.5, type="5", terrace="1,582 sq.ft."), dict(id="T4", x=34.0, y=-19.0, w=19.5, d=37, type="4", terrace="1,377 sq.ft.")],
       units={"4": dict(name="4 BHK simplex", short="4 BHK", area="4,147.57 sq.ft.", extra="3,637.73 sq.ft. RERA carpet + 413.22 sq.ft. deck + 96.92 sq.ft. utility",
@@ -641,15 +641,24 @@ T3D = {
              "P5": dict(name="6 BHK Penthouse II, four levels", short="6 BHK PH II", area="11,953.54 sq.ft. (four levels combined)", extra="Terraces: 981 sq.ft. on level 3 and 1,785 sq.ft. on level 4",
                         sba="23,867 sq.ft.", parking=7, price="Price on call", avail="Ask for live availability")}),
 }
+import t3d_auto as _TA
+_TA.load_gift(os.path.join(OUT, "assets", "geo-gift.js"))
+_TA.write_geo(os.path.join(OUT, "assets"))
+for _k, _v in _TA.make(ALL).items():
+    T3D.setdefault(_k, _v)
+T3D["shivalik-shantigram"]["note"] = ("Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, "
+    "skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; "
+    "the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.")
+
 def t3d_section(p):
     c = T3D.get(p["id"])
     if not c: return ""
     return f"""<section class="section bg-alt" id="floors">
   <div class="container">
-    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>Pick any tower and floor</h2>
-      <p>Tap or click a floor in the model, or choose it from the lists, to see that home's size, parking, price and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>{"Pick any floor" if len(c["towers"]) == 1 else "Pick any tower and floor"}</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see {'that floor’s offices and shops' if c.get('kind') == 'commercial' else 'the homes on that floor'}, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
     <div class="t3d reveal" data-t3d="t3d-{p['id']}">
-      <div class="t3d-stage" aria-label="3D model of {E(p['name'])}: four towers, 31 floors"></div>
+      <div class="t3d-stage" aria-label="3D model of {E(p['name'])}"></div>
       <div class="t3d-side">
         <div class="t3d-pick">
           <label>Tower<select name="t3d-tower"></select></label>
@@ -659,7 +668,7 @@ def t3d_section(p):
         <div class="t3d-panel" aria-live="polite"></div>
       </div>
     </div>
-    <p class="detail-source">Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.</p>
+    <p class="detail-source">{E(c["note"])}</p>
   </div>
 </section>
 <script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
@@ -743,7 +752,7 @@ def property_page(p):
                 else "Land in Gujarat — Buy" if "Weekend villas & plots" in p["cats"] and "Villas & townhouses" not in p["cats"] else "Villas" if "Villas & townhouses" in p["cats"] else "4 BHK Apartments" if "4 BHK" in p["cats"]
                 else "3 BHK Apartments" if "3 BHK" in p["cats"] else "2 BHK Apartments")
     body = body.replace("<option selected>3 BHK Apartments</option>", "<option>3 BHK Apartments</option>").replace(f"<option>{interest}</option>", f"<option selected>{interest}</option>", 1)
-    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts((THREE + '<script src="assets/geo-shantigram.js"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
+    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts((THREE + f'<script src="{T3D[p["id"]]["geo"]["file"]}"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
 
 # ---------------------------------------------------------------- search-friendly content (home page)
 def plink(pid, text=None):
