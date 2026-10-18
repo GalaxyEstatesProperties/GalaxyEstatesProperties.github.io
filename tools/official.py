@@ -26,7 +26,8 @@ NOT_FOUND = {
   'arvind-uplands-3': 'Not found on Gujarat RERA under this name (searched 17 Oct 2026); the earlier reference MAA06869 belongs to Uplands Two. We confirm the registration before any booking',
 }
 WRONG_PICK = {'nila-vida', 'shilp-business-gateway', 'shilp-twin-towers', 'arvind-uplands-3'}
-KEEP_POSSESSION = {'aster-neo', 'venus-stratum', 'suryam-the-banyan', 'north-park', 'shilp-business-gateway'}
+KEEP_POSSESSION = {'aster-neo', 'venus-stratum', 'suryam-the-banyan', 'north-park', 'shilp-business-gateway', 'inspire-business-park', 'adani-center-point', 'ikaria', 'wtc-gift-city'}
+KEEP_TOTAL = {'wtc-gift-city', 'amora', 'storeys-golf-coast'}
 
 def dstr(s):
     if not s: return ''
@@ -43,10 +44,46 @@ def plural(t, n):
          'mixed development': 'homes and shops', 'residential flats and shops': 'flats and shops'}.get(t, t)
     return f'{n:,} {t}'
 
+import datetime as _dt
+def dstr(s):
+    if not s: return ''
+    s = s.strip().split(' ')[0]
+    for f in ('%d-%m-%Y', '%Y-%m-%d', '%d/%m/%Y'):
+        try: return _dt.datetime.strptime(s, f).strftime('%-d %b %Y')
+        except ValueError: pass
+    return s
+
+# projects added 18 Oct 2026, read from the register's public API (no personal data kept)
+import new_listings as NL
+RN = json.load(open(os.path.join(HERE, 't3dall', 'rera_new.json')))
+POLY = json.load(open(os.path.join(HERE, 't3dall', 'rera_poly.json')))
+for _pid, _eid in NL.RERA_ID.items():
+    _r = RN.get(str(_eid))
+    if not _r: continue
+    EXTRA[_pid] = dict(regNo=_r['reg'], name=_r['name'], ptype=_r['type'], promoter=(_r.get('promoter') or '').title().replace('Llp', 'LLP'),
+                       inv=[(b, n) for b, n in _r['inv']], dev=[(d['t'].strip().title(), d['n']) for d in _r['dev']], start=_r['start'], end=_r['end'],
+                       ext=(_r.get('ext') or '').split(' ')[0] if _r.get('ext') and dstr(_r['ext']) != dstr(_r['end']) else '',
+                       land=_r.get('land') or None, auth=_r.get('auth'), booked=[(d['t'].strip().title(), d['n'], d['booked']) for d in _r['dev'] if d.get('booked') is not None],
+                       note=None)
+    if _pid == 'wtc-gift-city':
+        _c = RN.get('995')
+        EXTRA[_pid]['note'] = (f"Tower C is registered separately: {_c['reg']}, {_c['inv'][0][1]} offices, completion {_c['end']}." if _c else None)
+MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+def progress(pid):
+    """Latest construction progress from the RERA quarterly reports (ignores quarters dated after this check)."""
+    key = ('new:' + str(NL.RERA_ID[pid])) if pid in NL.RERA_ID else pid
+    v = POLY.get(key) or {}
+    best = None
+    for q, pct in v.get('prog') or []:
+        try: m, y = q.split(); n = int(y) * 12 + MONTHS.index(m)
+        except Exception: continue
+        if n <= 2026 * 12 + 9 and (best is None or n >= best[0]): best = (n, q, pct)
+    return best
+
 def guj(pid):
     if pid in EXTRA:
         e = EXTRA[pid]
-        return dict(regNo=e['regNo'], name=e['name'], ptype=e['ptype'], promoter=e['promoter'], inv=e['inv'], dev=e['dev'], start=e['start'], end=e['end'], ext=e['ext'], land=e['land'], auth=e['auth'], note=e.get('note'))
+        return dict(regNo=e['regNo'], name=e['name'], ptype=e['ptype'], promoter=e['promoter'], inv=e['inv'], dev=e['dev'], start=e['start'], end=e['end'], ext=e['ext'], land=e['land'], auth=e['auth'], note=e.get('note'), booked=e.get('booked'))
     v = R.get(pid)
     if not v or not v.get('pick') or pid in WRONG_PICK: return None
     p = v['pick']; q = p.get('qpr') or {}; pd = p.get('pd') or {}
@@ -80,12 +117,16 @@ def apply(ALL):
                     ('Land under registration', f"{g['land']:,.0f} sq m ({g['land'] / 4046.86:.2f} acres)" if g.get('land') else 'As registered'),
                     ('Plans approved by', g['auth'] or 'As registered'),
                     ('Registered dates', f"Start {dstr(g['start'])} · completion {dstr(g['end'])}" + (f" (extended to {dstr(g['ext'])})" if g.get('ext') else ''))]
+            pr = progress(pid)
+            if pr: rows.append(('Construction progress', f"{pr[2]:g}% (architect's certificate in the RERA quarterly report, {pr[1]})"))
+            bk = [b for b in (g.get('booked') or []) if b[2] is not None]
+            if bk: rows.append(('Booked so far', ', '.join(f"{b[2]:,} of {b[1]:,} {plural(b[0], 0).split(' ', 1)[1]}" for b in bk) + ' (RERA filing)'))
             p['official'] = dict(title='Gujarat RERA registration', rows=rows, note=g.get('note'), src=f'Gujarat RERA public register, checked {CHECKED}', url=GUJ_URL,
                                  how='Search the registration number on the Gujarat RERA portal to see the approved plans and quarterly progress reports.')
             p['rera'] = g['regNo']
             if pid not in KEEP_POSSESSION and not p['possession'].startswith('Ready'):
                 p['possession'] = f'{end} (RERA completion date)'
-            p['total'] = units + ' (Gujarat RERA)'
+            if pid not in KEEP_TOTAL: p['total'] = units + ' (Gujarat RERA)'
         d = DLD.get(pid)
         if d and p['country'] != 'India':
             rows = [('DLD project number', f"#{d['no']} · {d['name']}"), ('Developer (as registered)', d['dev']), ('Construction progress', f"{d['pct']} complete · {d['status']} (DLD, {CHECKED})")]

@@ -47,6 +47,9 @@ PROJECTS = [
        size="648 sq. yard onwards", possession="On request", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA11300/020323",
        img=IMG+"2023/07/Villa-Render-1024x819.jpg", color="#E0C38C"),
 ]
+import new_listings as NL
+PROJECTS += [dict(p, img='', color='#C9A962') for p in NL.SH_NEW]
+PB.GIFT += [p for p in NL.GIFT_NEW if p['id'] not in {q['id'] for q in PB.GIFT}]
 for p in PROJECTS:
     kind = "villa community" if "Villas" in p["cats"] else f"{p['label']} residences"
     poss = ("ready to move" if p["possession"].startswith("Ready")
@@ -80,6 +83,16 @@ for p in PB.GIFT + PB.AHD + PB.INTL:
                   if p['developer'] and p['developer'] != 'Ask us' else f"{p['name']} in {p['location']}, {p['country']}. {p['build']}. ") + \
                  f"Checked against: {p['source']}. Prices and availability change, so ask us for the current price sheet."
 ALL = PROJECTS + PB.GIFT + PB.AHD + PB.INTL
+import official as OFF
+_NEW = {p["id"] for p in NL.SH_NEW + NL.GIFT_NEW}
+for p in ALL:     # blurbs and map links for the projects added 18 Oct 2026 (map link = centre of the RERA-registered plot)
+    if p['id'] not in _NEW: continue
+    where = 'inside Adani Shantigram' if p['market'] == 'shantigram' else 'in GIFT City'
+    p['blurb'] = (f"{p['name']} by {p['developer']}, {where}: {p['label'].lower()}. {p['build']}. Possession: {p['possession']}. "
+                  f"Checked against: {p['source']}. Prices marked * are indicative; ask us for the current price sheet.")
+    _poly = (OFF.POLY.get('new:' + str(NL.RERA_ID.get(p['id']))) or {}).get('poly') or []
+    if len(_poly) >= 3:
+        p['mapq'] = f"{sum(q[0] for q in _poly) / len(_poly):.6f},{sum(q[1] for q in _poly) / len(_poly):.6f}"
 import official as OFF
 import country_build as CB
 OFF.apply(ALL)
@@ -449,10 +462,19 @@ RENDER_META = {
   "north-park": ("3D exterior", "4 BHK villas at North Park."),
   "west-park": ("3D villa", "Build-to-suit villa rendering at West Park."),
   "shilp-skyline": ("3D exterior", "Render of the Skyline 4 BHK residences."),
+  "inspire-business-park": ("Photo", "The completed Inspire Business Park: Crown office buildings and Crest corporate houses."),
+  "inspire-corporate-capital": ("3D exterior", "The two glass office blocks of Inspire Corporate Capital."),
+  "inspire-edge": ("3D exterior", "Inspire Edge office building in Shantigram's business district."),
+  "adani-center-point": ("3D exterior", "Center Point retail centre by Vaishnodevi Circle."),
+  "amora": ("3D exterior", "Amora's 3 BHK towers above high-street retail."),
+  "storeys-golf-coast": ("3D exterior", "The Storeys Golf Coast towers from the Belvedere golf course."),
+  "storeys-infinity": ("3D exterior", "East and West towers of The Storeys Infinity."),
+  "ikaria": ("Photo", "Ikaria senior-living building, drone photo."),
 }
 def renders():
     out = []
     for i, p in enumerate(PROJECTS):
+        if p["id"] not in RENDER_META: continue
         badge, text = RENDER_META[p["id"]]
         out.append(f'''<article class="render-card reveal" data-pid="{p['id']}" style="--d:{(i % 3) * 0.06:.2f}s">
   <span class="render-badge">{E(badge)}</span>
@@ -556,7 +578,7 @@ def explorer_ui(legend_title, legend_sub, modes=("day", "dusk", "night"), views=
     <div class="x-legend">
       <div class="x-legend-head"><h4>{legend_title}<small>{legend_sub}</small></h4><button type="button" class="x-legend-toggle" aria-label="Show list"><i class="fas fa-list"></i></button></div>
       <ul></ul>
-      <div class="x-legend-foot">Roads, water, golf course and existing buildings from OpenStreetMap. Project positions from developer map pins; heights from published floor counts and RERA filings. Tower footprints are approximate.</div>
+      <div class="x-legend-foot">Roads, water, golf course and existing buildings from OpenStreetMap. Project plots: the outlines registered on the Gujarat RERA map service (developer map pins where none matches). Floors from the RERA unit lists and published floor counts; footprints from OpenStreetMap where mapped, otherwise estimated.</div>
     </div>
     <div class="x-toolbar">
       <div class="x-group" role="group" aria-label="Lighting">{mb}</div>
@@ -581,8 +603,8 @@ THREE = '<script src="assets/vendor/three.min.js"></script>\n'
 PAGES = {
   "index":        dict(title="Properties in Ahmedabad – Luxury Flats, Offices & Land | Galaxy Estates Properties", desc="New and luxury properties in Ahmedabad and Gandhinagar: 4 & 5 BHK flats in Adani Shantigram, Bodakdev and S.G. Highway, offices, GIFT City homes and land across Gujarat. Call +91 84880 62309.", page="home"),
   "projects":     dict(title="New Projects in Ahmedabad, GIFT City & Abroad – Prices & RERA | Galaxy Estates Properties", desc=f"{len(ALL)} new and luxury projects with prices, sizes, RERA numbers and availability: flats in Ahmedabad, offices on S.G. Highway, weekend villas and plots, Adani Shantigram, GIFT City and homes abroad.", page="projects"),
-  "shantigram":   dict(title="Luxury Properties in Adani Shantigram, Ahmedabad – 3D Map & Prices | Galaxy Estates", desc="Luxury 2, 3, 4 BHK flats and villas in Adani Shantigram, Ahmedabad: Belrosa, Skyline, Embrace, The North Park and more, with prices, RERA and an interactive 3D township map.", page="shantigram", scripts=THREE + '<script src="assets/geo-shantigram.js"></script>\n<script src="assets/navmap.js"></script>\n<script src="assets/shantigram.js"></script>\n'),
-  "gift-city":    dict(title="GIFT City Flats & Offices, Gandhinagar – Prices & 3D Map | Galaxy Estates Properties", desc="Buy flats and offices in GIFT City, Gandhinagar: Sobha Elysia, Vida by Nila Spaces and more, with prices, RERA numbers and an interactive 3D map of India's first IFSC.", page="gift-city", scripts=THREE + '<script src="assets/geo-gift.js"></script>\n<script src="assets/navmap.js"></script>\n<script src="assets/gift-city.js"></script>\n'),
+  "shantigram":   dict(title="Luxury Properties in Adani Shantigram, Ahmedabad – 3D Map & Prices | Galaxy Estates", desc="Luxury 2, 3, 4 BHK flats and villas in Adani Shantigram, Ahmedabad: Belrosa, Skyline, Embrace, The North Park and more, with prices, RERA and an interactive 3D township map.", page="shantigram", scripts=THREE + '<script src="assets/geo-shantigram.js"></script>\n<script src="assets/navmap.js"></script>\n<script src="assets/town-sites.js"></script>\n<script src="assets/shantigram.js"></script>\n'),
+  "gift-city":    dict(title="GIFT City Flats & Offices, Gandhinagar – Prices & 3D Map | Galaxy Estates Properties", desc="Buy flats and offices in GIFT City, Gandhinagar: Sobha Elysia, Vida by Nila Spaces and more, with prices, RERA numbers and an interactive 3D map of India's first IFSC.", page="gift-city", scripts=THREE + '<script src="assets/geo-gift.js"></script>\n<script src="assets/navmap.js"></script>\n<script src="assets/town-sites.js"></script>\n<script src="assets/gift-city.js"></script>\n'),
   "land":         dict(title="Land for Sale in Ahmedabad & Gujarat – Plots, Farm & Industrial Land | Galaxy Estates", desc="Buy or sell land in Ahmedabad and all 34 districts of Gujarat: residential plots, farm land, industrial and commercial land, with title checks, site visits and registration support.", page="land", scripts='<script src="assets/land.js"></script>\n<script src="assets/vendor/leaflet/leaflet.js"></script>\n' + THREE + '<script src="assets/land-market.js"></script>\n', extra_head='<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css"/>\n'),
   "global":       dict(title="Global Property for Indian Investors — Dubai, London, Singapore & More | Galaxy Estates Properties", desc="Buy homes and investment property in Dubai, London, Paris, Monaco, Singapore, Phuket, Bali, Kuala Lumpur and more. Market guides, developers, LRS guidance and shortlists from Galaxy Estates Properties.", page="global", scripts='<script src="assets/land.js"></script>\n<script src="assets/global.js"></script>\n'),
   "404":          dict(title="Page not found | Galaxy Estates Properties", desc="The page you were looking for could not be found.", page="404"),
@@ -660,6 +682,35 @@ for _k, _v in _TA.make(ALL).items():
 T3D["shivalik-shantigram"]["note"] = ("Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, "
     "skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; "
     "the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.")
+
+def write_town_sites():
+    """assets/town-sites.js: every Shantigram and GIFT City project's registered plot and buildings, from the same data as its 3D explorer, for the township maps."""
+    import math as _m
+    E_, D_ = 6378137.0, _m.pi / 180
+    out = {"GEO_SHANTIGRAM": {}, "GEO_GIFT": {}}
+    for pid, c in T3D.items():
+        g = c.get("geo") or {}
+        if g.get("name") not in out or pid == "shivalik-shantigram": continue
+        la0, lo0 = _TA.ORIGIN[g["name"]]
+        lat = la0 + g["y"] / (D_ * E_); lon = lo0 + g["x"] / (D_ * E_ * _m.cos(la0 * D_))
+        r = _m.radians(g.get("rot") or 0); cs, sn = _m.cos(r), _m.sin(r)
+        rotp = lambda x, y: [round(x * cs - y * sn, 1), round(x * sn + y * cs, 1)]
+        towers = []
+        for t in c["towers"]:
+            st = t.get("stack") or c["stack"]
+            h = sum(L.get("h") or L.get("levels", 1) * c["floorH"] for L in st)
+            if len(c["towers"]) == 1 and c.get("height"): h = max(h, c["height"])
+            x, y = rotp(t["x"], t["y"])
+            towers.append([x, y, t["w"], t["d"], round((g.get("rot") or 0) + (t.get("ang") or 0), 1), round(h, 1), len(st) - 1])
+        poly = [rotp(*q) for q in c["plotPoly"]] if c.get("plotPoly") else None
+        n = len(towers); top = max(t[6] for t in towers)
+        word = "building" if n == 1 else "buildings"
+        info = f"{n} {word} · up to ground + {top} floors"
+        out[g["name"]][pid] = dict(lat=round(lat, 7), lon=round(lon, 7), towers=towers, poly=poly, info=info, floors=top, commercial=c.get("kind") == "commercial")
+    js = ("/* Registered plots (Gujarat RERA map service) and buildings for the township maps, from the same data as each project's 3D floor explorer. Built " + "18 Oct 2026. */\n"
+          "window.TOWN_SITES=" + json.dumps(out, separators=(",", ":"), ensure_ascii=False) + ";\n")
+    open(os.path.join(OUT, "assets", "town-sites.js"), "w").write(js)
+write_town_sites()
 
 def t3d_section(p):
     c = T3D.get(p["id"])
@@ -888,7 +939,7 @@ def build():
         "FILTERS": filters(), "CARDS_SH": cards([p["id"] for p in PROJECTS]), "CARDS_GIFT": cards([p["id"] for p in PB.GIFT]),
         "FILTERS_SH": '<div class="project-filters reveal" role="group" aria-label="Filter residences">' + "".join(
             f'<button type="button" class="filter-btn{" active" if v == "All" else ""}" data-filter="{E(v)}" aria-pressed="{"true" if v == "All" else "false"}">{t}</button>'
-            for v, t in [("All", "All"), ("1-2 BHK / studio", "2 BHK"), ("3 BHK", "3 BHK"), ("4 BHK", "4 BHK"), ("Villas & townhouses", "Villas")]) + '</div>', "MORE_MARKETS": more_markets(),
+            for v, t in [("All", "All"), ("1-2 BHK / studio", "1–2 BHK"), ("3 BHK", "3 BHK"), ("4 BHK", "4 BHK"), ("Villas & townhouses", "Villas"), ("Commercial", "Commercial")]) + '</div>', "MORE_MARKETS": more_markets(),
         "DEV_NAMES": "\n".join(f'      <div class="developer-logo"><span>{E(d)}</span></div>' for d in ["Sobha", "Nila Spaces", "Emaar", "Frasers Property", "CDL", "Banyan Group", "Sansiri", "Lendlease", "Alliance Group"]), "N_ALL": str(len(ALL)), "N_ABROAD": str(len(PB.INTL)),
         "RENDERS": renders(),
         "CTA": cta(),
