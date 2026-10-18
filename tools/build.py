@@ -108,11 +108,11 @@ import hashlib, base64
 GATE_HASH = "sha256-" + base64.b64encode(hashlib.sha256(JS_GATE.encode()).digest()).decode()
 # Content-Security-Policy: only this site's own scripts run; data may go only to the lead email service.
 CSP = ("default-src 'self'; "
-       f"script-src 'self' '{GATE_HASH}'; "
+       f"script-src 'self' '{GATE_HASH}' https://www.googletagmanager.com; "
        "style-src 'self' 'unsafe-inline'; "
-       "img-src 'self' data: blob: https://township.homedeliveryrealtors.com https://server.arcgisonline.com https://tile.openstreetmap.org; "
+       "img-src 'self' data: blob: https://township.homedeliveryrealtors.com https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
        "font-src 'self' data:; "
-       "connect-src 'self' https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
+       "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
        "frame-src https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests")
 
@@ -125,6 +125,9 @@ def head(title, desc, page, extra="", fname="index"):
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <meta http-equiv="Content-Security-Policy" content="{CSP}"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QXRN29DKLR"></script>
+<script src="assets/ga.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="google-site-verification" content="HE9_46DcpVA3ongsECA8PNhgCoWHJfCqUYxHAGLrgRI"/>
 <meta name="google-site-verification" content="PnEn19TreyUuHWWwyu8MaODXWLLrcWz96qDNPAGMi3M"/>
