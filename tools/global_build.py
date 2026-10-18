@@ -249,6 +249,12 @@ def filters():
     return '<div class="project-filters gfilters reveal" role="group" aria-label="Filter markets by region">' + ''.join(out) + '</div>'
 
 
+GUIDES = {'dubai': ('dubai-uae-property.html', 'Dubai'), 'singapore': ('singapore-property.html', 'Singapore'), 'pattaya': ('thailand-property.html', 'Thailand'),
+          'phuket': ('thailand-property.html', 'Thailand'), 'kl': ('malaysia-property.html', 'Malaysia'), 'monaco': ('monaco-property.html', 'Monaco')}
+def guide_link(mid):
+    g = GUIDES.get(mid)
+    return f'<a class="cta-btn ghost small mkt-guide" href="{g[0]}"><i class="fas fa-book-open" aria-hidden="true"></i> Open the {E(g[1])} guide</a>' if g else ''
+
 def market_cards():
     out = []
     for i, m in enumerate(MARKETS):
@@ -283,6 +289,7 @@ def market_cards():
         {devs}
       </div>
     </details>
+    {guide_link(m['id'])}
     <button type="button" class="cta-btn primary small mkt-cta" data-enquire="Global property — {E(m['city'])}" data-interest="Global property"><i class="fas fa-paper-plane" aria-hidden="true"></i> Get a {E(m['city'])} shortlist</button>
   </div>
 </article>""")

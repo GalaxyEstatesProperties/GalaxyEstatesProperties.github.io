@@ -81,6 +81,7 @@ for p in PB.GIFT + PB.AHD + PB.INTL:
                  f"Checked against: {p['source']}. Prices and availability change, so ask us for the current price sheet."
 ALL = PROJECTS + PB.GIFT + PB.AHD + PB.INTL
 import official as OFF
+import country_build as CB
 OFF.apply(ALL)
 # every listing uses its own official exterior photo, stored on this site (assets/img/p/<id>.webp)
 for p in ALL:
@@ -174,7 +175,12 @@ def nav(solid=False):
             </ul>
           </li>
           <li><a href="land.html" class="nav-link" data-page="land">Gujarat Land</a></li>
-          <li><a href="global.html" class="nav-link" data-page="global">Global</a></li>
+          <li class="has-dropdown">
+            <button type="button" class="nav-link" aria-expanded="false" aria-haspopup="true">Global <i class="fas fa-chevron-down"></i></button>
+            <ul class="dropdown">
+              <li><a href="global.html" data-page="global"><i class="fas fa-earth-asia"></i><span><strong>All markets</strong><small>{len(G.MARKETS)} countries and cities abroad</small></span></a></li>
+{''.join(f'              <li><a href="{c["slug"]}.html" data-page="{c["slug"]}"><i class="fas fa-location-dot"></i><span><strong>{E(c["title"])}</strong><small>Guide for Indian investors</small></span></a></li>' + chr(10) for c in CB.COUNTRIES)}            </ul>
+          </li>
           <li><a href="virtual-tours.html" class="nav-link" data-page="virtual-tours">Virtual Tours</a></li>
           <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
           <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
@@ -697,11 +703,17 @@ def property_page(p):
           "image": SITE_URL + p["img"], "description": desc,
           "about": {"@type": "Place", "name": p["name"], "address": {"@type": "PostalAddress", "streetAddress": p["location"], "addressLocality": p["city"], "addressCountry": "IN" if p["country"] == "India" else p["country"]}},
           "provider": {"@type": "RealEstateAgent", "name": "Galaxy Estates Properties", "telephone": "+91-84880-62309", "url": SITE_URL}}
+    cpage = CB.page_for(p["country"]) if p["market"] == "abroad" else None
+    cname = next((c["title"] for c in CB.COUNTRIES if c["slug"] + ".html" == cpage), "")
+    sep = '<i class="fas fa-chevron-right"></i>'
+    crumbs = (f'<a href="index.html">Home</a>{sep}<a href="global.html">Global</a>{sep}<a href="{cpage}">{E(cname)}</a>{sep}' if cpage
+              else f'<a href="index.html">Home</a>{sep}<a href="projects.html">Properties</a>{sep}')
+    guide = (f'<p class="detail-source reveal"><a href="{cpage}"><i class="fas fa-book-open" aria-hidden="true"></i> Buying in {E(cname)} from India: rules, costs, developers and ongoing projects</a></p>' if cpage else '')
     body = f"""<section class="page-hero prop-hero">
   <div class="page-hero-bg" style="background-image:url('{p['img']}')"></div>
   <div class="page-hero-overlay"></div>
   <div class="container page-hero-content">
-    <div class="breadcrumb hs"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><a href="projects.html">Properties</a><i class="fas fa-chevron-right"></i><span>{E(p['name'])}</span></div>
+    <div class="breadcrumb hs">{crumbs}<span>{E(p['name'])}</span></div>
     <span class="section-tag hs">{E(p['label'])} · {E(area)}</span>
     <h1>{E(p['name'])}</h1>
     <p class="hs">{E(words[0].upper() + words[1:])} in {E(area)} by {E(p['developer'])}. {E(p['build'])}.</p>
@@ -736,6 +748,7 @@ def property_page(p):
     <div class="mix-wrap reveal"><table class="mix-table"><thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th></tr></thead><tbody>{rows}</tbody></table></div>
     <p class="detail-source reveal">{E(p['blurb'])}</p>
     {OFF.block(p, E)}
+    {guide}
   </div>
 </section>
 {t3d_section(p)}
@@ -934,6 +947,13 @@ def build():
     for p in ALL:
         with open(os.path.join(OUT, p["page"]), 'w', encoding='utf-8') as f:
             f.write(property_page(p))
+    for c in CB.COUNTRIES:
+        body = enhance(CB.build_body(c, ALL, card))
+        doc = (head(c['seo'], c['desc'], c['slug'], extra='<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css"/>\n', fname=c['slug']) + nav() + '<main id="main">\n' + body + '\n</main>\n'
+               + footer() + overlays() + scripts('<script src="assets/land.js"></script>\n<script src="assets/vendor/leaflet/leaflet.js"></script>\n<script src="assets/country.js"></script>\n'))
+        with open(os.path.join(OUT, c['slug'] + '.html'), 'w', encoding='utf-8') as f:
+            f.write(doc)
+    print("built", len(CB.COUNTRIES), "country pages")
     print("built", len(ALL), "project pages")
     # host files: GitHub Pages serves files as-is with .nojekyll; _headers is read by Netlify / Cloudflare Pages
     open(os.path.join(OUT, '.nojekyll'), 'w').close()
