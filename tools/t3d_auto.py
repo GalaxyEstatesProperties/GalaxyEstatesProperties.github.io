@@ -78,7 +78,7 @@ S = {
   'binghatti-burj-jacob': dict(n=1, levels_total=104, height=557, intl=True, floorH=4.0, src='Wikipedia (from Binghatti): 104 floors, 557 m with the crown', fp=(46, 40)),
   'danube-bayz-101': dict(n=1, levels_total=101, intl=True, src='Danube: 101 storeys (height not published)', fp=(46, 40)),
   'danube-diamondz': dict(n=1, levels_total=65, intl=True, src='Homes4Life listing: 65-storey tower', fp=(44, 34)),
-  'binghatti-mercedes-city': dict(n=1, vision=True, intl=True, height=341, src='Binghatti Vision Iconic brochure: ground + mezzanine + 5 podium levels + 67 residential floors + 4 mechanical levels + roof; Dubai Land Department project #4544: 1,426 homes and 27 shops; height about 341 m as marketed', fp=(64, 30)),
+  'binghatti-mercedes-city': dict(n=1, vision=True, intl=True, height=341, src='Binghatti Vision Iconic brochure: ground + mezzanine + 5 podium levels + 67 residential floors + 4 mechanical levels + roof; Dubai Land Department project #4544: 1,426 homes and 27 shops; height about 341 m as marketed; Mercedes-Benz Places | Binghatti City: 12 towers, Vision Iconic plus 11 staggered towers that fall in height away from it (Dezeen, 15 Jan 2026)', fp=(64, 30)),
   'danube-shahrukhz': dict(n=1, levels_total=55, intl=True, kind='commercial', src='Danube: 55-storey office tower', fp=(46, 36)),
 }
 
@@ -191,8 +191,13 @@ def make(ALL):
                 plot = dict(w=113, d=129)
                 pos_note = 'Position: the project’s Google Maps pin (checked 17 Oct 2026), turned so the showroom front faces the ring road as on the brochure’s site plan; footprints are scaled from that plan.'
             if s.get('vision'):
-                pos_note = 'Position: the Mercedes-Benz Places | Binghatti City pin (checked 17 Oct 2026); the exact plot of Vision Iconic inside the city is not published. The tower’s curved, stepped form is simplified to a block.'
-                towers[0]['label'] = 'Vision Iconic'
+                import bmc_city as BC
+                geo.update(x=BC.ORIGIN[0], y=BC.ORIGIN[1], rot=BC.ROT, radius=1100)
+                towers = [dict(id='T1', label='Vision Iconic', x=0, y=0, w=48, d=48, shape=BC.shape())]
+                plot = dict(w=BC.PLOT_R * 2, d=BC.PLOT_R * 2)
+                pos_note = ('Position and layout: Vision Iconic stands at the north-west end of Mercedes-Benz Places | Binghatti City, inside the road loop around the city’s Google Maps pin in Nad Al Sheba 1, '
+                            'as shown on the developer’s aerial renders; exact plot boundaries are not published. The gold circle has the area of the registered plot (22,282 sq m). '
+                            'The other 11 towers of the city are drawn for context from the renders: only Vision Iconic’s height (341 m) is published, so their heights are estimates. Vision Iconic’s curved wing is drawn as 20 steps falling from about 190 m to 40 m, read from the brochure renders; Burj Khalifa is marked 6 km away for orientation.')
         # ---- units
         rows = mix_rows(p)
         short = p['label'] if len(p['label']) <= 26 else p['label'][:24].rstrip(' ,&') + '…'
@@ -233,8 +238,8 @@ def make(ALL):
             vis_rows = [['1 bedroom', '1,017 homes'], ['2 bedroom', '281 homes'], ['3 bedroom', '110 homes'], ['4 bedroom', '9 homes'], ['5 bedroom', '9 homes'], ['Price', 'On request']]
             units['all'] = dict(name='Vision Iconic residences', short='1 – 5 bedroom', rows=vis_rows, avail='DLD: 1,426 homes registered (project #4544)')
             units['shop'] = dict(name='High-street retail', short='Retail', rows=[['Use', '27 ground-floor high-street shops (DLD: 27 commercial units)']], perFloor='', avail='Ask for availability')
-            st = ([dict(label='Ground floor', kind='A', unit='shop'), dict(label='Mezzanine', kind='M', use='Double-height grand lobby and valet drop-off')]
-                  + [dict(label=f'Podium {i}', kind='M', use='Podium level: parking and amenities, with the circular podium deck and 2,966 sq m water plaza') for i in range(1, 6)]
+            st = ([dict(label='Ground floor', kind='A', unit='shop', pod=True), dict(label='Mezzanine', kind='M', use='Double-height grand lobby and valet drop-off', pod=True)]
+                  + [dict(label=f'Podium {i}', kind='M', pod=True, use='Podium level: parking and amenities, with the circular podium deck and 2,966 sq m water plaza') for i in range(1, 6)]
                   + [dict(label=f'Residential floor {f}', kind='A') for f in range(1, 68)]
                   + [dict(label='Mechanical levels (4)', kind='X', use='Four mechanical service levels (their positions in the stack are not published; shown together here)', sub='Services', levels=4),
                      dict(label='Roof deck', kind='M', use='Dedicated roof deck with the illuminated beacon')])
@@ -260,6 +265,9 @@ def make(ALL):
         if s.get('height'): cfg['height'] = s['height']
         if s.get('per_floor'): cfg['perFloor'] = s['per_floor']
         if s.get('centre_court'): cfg['camTurn'] = 3.1416
+        if s.get('vision'):
+            import bmc_city as BC
+            cfg.update(BC.config())
         if kind == 'commercial': cfg['perFloorLabel'] = 'Units on each floor'
         out[pid] = cfg
     return out

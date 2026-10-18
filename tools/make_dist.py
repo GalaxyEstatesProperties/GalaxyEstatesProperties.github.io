@@ -98,7 +98,7 @@ for n in ('README.txt',):   # internal notes stay off the public site
 TOOLS = OUT + '/tools'
 os.makedirs(TOOLS, exist_ok=True)
 SPD = os.path.dirname(os.path.abspath(__file__))
-for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'make_dist.py', 'land-listings-apps-script.gs'):
+for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'bmc_city.py', 'country_build.py', 'make_dist.py', 'land-listings-apps-script.gs'):
     shutil.copy2(os.path.join(SPD, n), os.path.join(TOOLS, n))
 open(TOOLS + '/README.md', 'w').write("""# Site source
 
