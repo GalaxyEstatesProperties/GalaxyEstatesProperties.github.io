@@ -852,8 +852,24 @@ GUJ_CITIES = ["Gandhinagar", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnag
 IND_CITIES = ["Mumbai", "Pune", "Delhi NCR", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Indore", "Jaipur", "Udaipur"]
 NRI_PLACES = ["USA (New Jersey, New York, California, Texas)", "UK (London, Leicester)", "Canada (Toronto, Brampton)", "Australia (Sydney, Melbourne)",
               "New Zealand (Auckland)", "UAE (Dubai, Abu Dhabi)", "Singapore", "Kenya", "Tanzania", "Uganda"]
+NRI_COUNTRIES = ["United States", "United Kingdom", "Canada", "Australia", "New Zealand", "United Arab Emirates", "Singapore", "Kenya", "Tanzania", "Uganda"]
+def area_served_ld():
+    """Areas and PIN codes for search engines only (schema.org areaServed); not shown on the page."""
+    out = ["Ahmedabad", "GIFT City", "Gujarat", "India"]
+    for name, pin in AHD_AREAS:
+        city = "Kalol" if name == "Kalol" else "Ahmedabad"
+        out.append({"@type": "Place", "name": f"{name}, {city}",
+                    "address": {"@type": "PostalAddress", "addressLocality": city, "postalCode": pin, "addressRegion": "Gujarat", "addressCountry": "IN"}})
+    out += [{"@type": "City", "name": c} for c in GUJ_CITIES + IND_CITIES]
+    out += [{"@type": "Country", "name": c} for c in NRI_COUNTRIES]
+    return out
+
+SHOW_AREAS_ON_PAGE = False   # owner asked (Oct 2026) not to show the areas / PIN codes to visitors
+
 def areas_block():
-    chips = "".join(f'<li><span>{E(a)}</span><small>{p}</small></li>' for a, p in AHD_AREAS)
+    if not SHOW_AREAS_ON_PAGE:
+        return ""
+    chips ="".join(f'<li><span>{E(a)}</span><small>{p}</small></li>' for a, p in AHD_AREAS)
     return f"""<div class="areas reveal">
   <h3 class="seo-faq-h" style="margin-top:56px">Buyers we work with</h3>
   <p class="areas-lead">Most of our buyers already live in Ahmedabad and are moving up to a bigger home, or are investing near S.G. Highway, Shantigram and GIFT City. We meet them in their own area for the first conversation.</p>
@@ -891,9 +907,9 @@ def seo_home():
 
 BUSINESS_LD = {"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "Galaxy Estates Properties",
   "url": "https://galaxyestatesproperties.co.in/", "logo": "https://galaxyestatesproperties.co.in/assets/logo.svg",
-  "image": "https://galaxyestatesproperties.co.in/assets/img/p/belrosa.webp", "telephone": "+91-84880-62309", "email": "samirdabhi2309@gmail.com",
+  "image": "https://galaxyestatesproperties.co.in/assets/img/p/belrosa.webp", "telephone": "+91-84880-62309", "email": "director@galaxyestatesproperties.co.in",
   "address": {"@type": "PostalAddress", "addressLocality": "Kalol", "addressRegion": "Gujarat", "addressCountry": "IN"},
-  "areaServed": ["Ahmedabad", "Gandhinagar", "GIFT City", "Kalol", "Gujarat", "India"],
+  "areaServed": area_served_ld(),
   "founder": {"@type": "Person", "name": "Er. Samir Dabhi"},
   "description": "Property advisors for luxury flats, offices and land in Ahmedabad, Gandhinagar and GIFT City, and property abroad."}
 
