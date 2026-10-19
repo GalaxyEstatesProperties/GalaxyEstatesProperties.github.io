@@ -128,7 +128,7 @@ CSP = ("default-src 'self'; "
        "style-src 'self' 'unsafe-inline'; "
        "img-src 'self' data: blob: https://township.homedeliveryrealtors.com https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
        "font-src 'self' data:; "
-       "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
+       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
        "frame-src https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests")
 
@@ -213,6 +213,7 @@ def nav(solid=False):
     </div>
     <div class="nav-actions">
       <a href="tel:+918488062309" class="nav-phone" data-phone aria-label="Call +91 84880 62309"><i class="fas fa-phone"></i><span>+91 84880 62309</span></a>
+      <button type="button" class="nav-search" aria-label="Search the site (press /)"><i class="fas fa-magnifying-glass"></i></button>
       <button type="button" class="consultation-btn" id="scheduleBtn">Schedule visit</button>
       <button type="button" class="mobile-menu-btn" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
     </div>
@@ -391,6 +392,7 @@ def scripts(extra=""):
 <script src="assets/data.js"></script>
 <script src="assets/main.js"></script>
 <script src="assets/motion.js"></script>
+<script src="assets/search.js" defer></script>
 {extra}</body>
 </html>
 """
@@ -616,6 +618,7 @@ PAGES = {
   "404":          dict(title="Page not found | Galaxy Estates Properties", desc="The page you were looking for could not be found.", page="404"),
   "virtual-tours":dict(title="Virtual Tours & 3D Renderings | Galaxy Estates Properties", desc="Sample flat walkthroughs, drone tours and 3D renderings of Adani Shantigram projects, plus interactive 3D models of Shantigram and GIFT City.", page="virtual-tours"),
   "about":        dict(title="Real Estate Agent in Kalol & Ahmedabad – Er. Samir Dabhi | Galaxy Estates Properties", desc="Galaxy Estates Properties, Kalol: property advisor Er. Samir Dabhi for luxury homes, offices, land and industrial plots in Ahmedabad and Gandhinagar, and property abroad.", page="about"),
+  "search":       dict(title="Search | Galaxy Estates Properties", desc="Search every property, area, developer and guide on Galaxy Estates Properties.", page="search", extra_head='<meta name="robots" content="noindex, follow"/>\n'),
   "contact":      dict(title="Contact a Property Advisor in Kalol & Ahmedabad | Galaxy Estates Properties", desc="Call or WhatsApp +91 84880 62309 to book a site visit for flats, offices or land in Ahmedabad, Gandhinagar and GIFT City. Office in Kalol, Gujarat.", page="contact"),
 }
 
@@ -1040,6 +1043,8 @@ def build():
         with open(os.path.join(OUT, c['slug'] + '.html'), 'w', encoding='utf-8') as f:
             f.write(doc)
     print("built", len(CB.COUNTRIES), "country pages")
+    import search_index as _SI
+    print("search index entries:", _SI.run(ALL))
     print("built", len(ALL), "project pages")
     # host files: GitHub Pages serves files as-is with .nojekyll; _headers is read by Netlify / Cloudflare Pages
     open(os.path.join(OUT, '.nojekyll'), 'w').close()

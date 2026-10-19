@@ -153,22 +153,58 @@ def aster(p, base):
 def amogha(p, base):
     g = GEOM['amogha']; fr = frame('amogha')
     st = ground('Double-height entrance foyer and lobby') + homes(1, 14, 4)
-    T = [tower(fr, f'T{i+1}', lab, ll, st, 'all') for i, (lab, ll) in enumerate(sorted(g['towers'].items()))]
+    BL = wing_blocks(fr, ['amoAB', 'amoCD', 'amoEF', 'amoGH'], 'amo')
+    T = []
+    for i, W in enumerate('ABCDEFGH'):
+        b = BL[W]; ks = list(b['cells'])
+        stW = ground('Double-height entrance foyer and lobby') + homes(1, 14, 4)
+        for Lv in stW[1:]:
+            f_ = int(Lv['label'].split()[-1]); Lv['nos'] = [f'{W}-{f_}{k}' for k in ks]
+        t = _local_tower(f'T{i+1}', f'Wing {W}', b['outline'], stW, 'all', nolift=True)
+        t['plan'] = dict(cells=[[[round(a_ - t['x'], 2), round(b_ - t['y'], 2)] for a_, b_ in b['cells'][k]] for k in ks])
+        T += [t, core_tower(f'K{i+1}', f'Wing {W} lift core', b['core'], t, 'all')]
     units = {'all': u('Amogha · 3 BHK apartments', '3 BHK',
                       [['Size', '624.09 – 776.40 sq.ft. RERA carpet (Gujarat RERA: 57.98 – 72.13 sq m); Adani Realty’s unit plans (types A, B, C) list 812.35 – 826.13 sq.ft.'],
                        ['Wings', '8 wings (A–H) in joined pairs · ground + 14 floors · 4 homes per floor (Gujarat RERA: 448 homes)'],
                        ['Status', 'Completed (Adani Realty)'], ['RERA', 'PR/GJ/AHMEDABAD/DASKROI/AUDA/RAA08011/EX1/260224/280225']], perFloor='4 homes')}
     note = ('Amogha: 8 wings (A–H) built as four joined pairs, ground + 14 floors, 448 homes (Gujarat RERA: 112 homes in each pair, unit numbers on floors 1 to 14). '
-            'Wing letters and positions as printed on Adani Realty’s master layout; the clubhouse is drawn from the same plan.' + GEO_NOTE + SURR)
+            'Wing letters, positions and flat numbers as printed on Adani Realty’s master layout (e.g. wing C: 1 and 2 on the row away from the 34.5 m road, 4 and 3 on the road side; '
+            'each pair of wings is built round an open court with its own lift core); the clubhouse is drawn from the same plan.' + GEO_NOTE + SURR)
     return base_cfg('amogha', p, base, fr, T, units, st, 3.1, note, extra=dict(context=ctx_items(fr, g.get('ctx'))))
 
 def embrace(p, base):
     g = GEOM['embrace']; fr = frame('embrace')
     st4 = ground('Stilt: entrance lobby and parking') + homes(1, 14, 4)
     stC = ground('Stilt: entrance lobby; amenities next to the tower') + homes(1, 11, 2) + [dict(label='Floors 12–13 (penthouses)', kind='P', levels=2, unit='ph', note='2 duplex penthouses (lower level on floor 12, upper level on floor 13)')]
+    import shgeom as SG_, copy as _cp
+    from shapely.geometry import Polygon
+    from shapely.ops import unary_union
+    D = json.load(open(os.path.join(HERE, 'sat', 'plan_cells.json')))
+    def place_ll(P, bbox, rect, **kw):
+        return SG_.plan2ll('embrace', SG_.place([[(x - bbox[0]) / (bbox[2] - bbox[0]), (y - bbox[1]) / (bbox[3] - bbox[1])] for x, y in P], rect, **kw))
+    simp = lambda P, tol: [list(q) for q in Polygon(P).buffer(0).simplify(tol).exterior.coords[:-1]]
+    # towers A-B and D-E: the drawing turned upright (left tower of the drawing at the bottom); numbering is the same whichever way it is turned (each tower is the other turned half round)
+    pairs = {'Tower A': ('L', (1085, 178, 1335, 680)), 'Tower B': ('R', (1085, 178, 1335, 680)), 'Tower E': ('L', (215, 183, 465, 688)), 'Tower D': ('R', (215, 183, 465, 688))}
     T = []
     for i, lab in enumerate(['Tower A', 'Tower B', 'Tower C', 'Tower D', 'Tower E']):
-        T.append(tower(fr, f'T{i+1}', lab, g['towers'][lab], stC if lab == 'Tower C' else st4, 'c' if lab == 'Tower C' else 'all'))
+        if lab == 'Tower C':
+            d = D['emC']; bb = [150, 125, 1401, 914]; rect = (565, 98, 830, 250); kw = {}; side = 'C'; core_i = 0; st = _cp.deepcopy(stC); fl = range(1, 12); typ = 'c'
+        else:
+            d = D['emAB']; bb = [102, 185, 1485, 886]; side, rect = pairs[lab]; kw = dict(rot90=True); core_i = 0 if side == 'L' else 1; st = _cp.deepcopy(st4); fl = range(1, 15); typ = 'all'
+        # tower C: the master layout draws it about 13 m further towards the plot edge than it stands; it is placed on its roof in the satellite image
+        sh = (lambda la, lo: (la + 6.0 / 111320, lo - 12.0 / (111320 * math.cos(math.radians(la))))) if lab == 'Tower C' else (lambda la, lo: (la, lo))
+        cells = {k[-1]: simp([loc(fr, *sh(*q)) for q in place_ll(P, bb, rect, **kw)], 0.3) for k, P in d['cells'].items() if k[0] == side}
+        core = [loc(fr, *sh(*q)) for q in place_ll(d['core_rects'][core_i], bb, rect, **kw)]
+        U = unary_union([Polygon(P).buffer(0.3, join_style=2) for P in list(cells.values()) + [core]]).buffer(-0.3, join_style=2).simplify(0.35)
+        if U.geom_type != 'Polygon': U = max(U.geoms, key=lambda g_: g_.area)
+        ks = sorted(cells)
+        for Lv in st:
+            if Lv['kind'] == 'A' and int(Lv['label'].split()[-1]) in fl: Lv['nos'] = ks[:]
+        t = _local_tower(f'T{i+1}', lab, [list(q) for q in U.exterior.coords[:-1]], st, typ, nolift=True)
+        cl = [[[round(a_ - t['x'], 2), round(b_ - t['y'], 2)] for a_, b_ in cells[k]] for k in ks]
+        for Lv in st:
+            if Lv.get('nos'): Lv['plan'] = dict(cells=cl)
+        T += [t, core_tower(f'K{i+1}', f'{lab} lift core', core, t, typ)]
     sizes = ['Sizes', '987.91 sq.ft. (smallest registered home, Gujarat RERA 91.78 sq m) · 1,082.31 sq.ft. (Adani Realty) · 1,205 sq.ft. (Housiey price sheet) · penthouses up to 2,238.14 sq.ft. (Gujarat RERA 207.93 sq m); all RERA carpet']
     units = {'all': u('Embrace · 3 BHK (towers A, B, D, E)', '3 BHK',
                       [['Type', '3 BHK lifestyle homes: corner (type 1) and internal (type 2) plans, 4 homes per floor'], sizes, ['Price', 'From ₹1.42 Cr*, all inclusive'],
@@ -182,7 +218,9 @@ def embrace(p, base):
     note = ('Embrace: towers A and B are one joined building facing the main road, D and E a second joined building at the back, and tower C stands between them on the side, '
             'as on Adani Realty’s master layout. Homes: 112 in A+B, 112 in D+E and 24 in C (Gujarat RERA), i.e. 4 per floor on floors 1–14 in A, B, D, E; '
             'C has 2 homes per floor on floors 1–11 and 2 duplex penthouses on floors 12–13 (Adani Realty floor plans). '
-            'Adani Realty describes the towers as “13 and 14 floors”; the floor counts here are those that hold the registered homes.' + GEO_NOTE + SURR)
+            'Adani Realty describes the towers as “13 and 14 floors”; the floor counts here are those that hold the registered homes. '
+            'Each flat is where Adani Realty’s typical-floor plans place it, labelled with the number printed at its door (1–4 in A, B, D, E round the lift lobby and the open void between each pair; '
+            '1 and 2 in C); the full unit numbers are not in the public RERA list, so ask us for a specific home.' + GEO_NOTE + SURR)
     return base_cfg('embrace', p, base, fr, T, units, st4, 3.2, note)
 
 EN_RECTS = {'C': ('en_fp_cdef', 'L', (963, 548, 1216, 682)), 'D': ('en_fp_cdef', 'R', (963, 548, 1216, 682)),
@@ -240,6 +278,28 @@ def core_tower(tid, label, P, t, typ):
     return _local_tower(tid, label, P, [dict(label=L['label'], kind='M', use='Lifts, lobby and staircase (developer’s typical floor plan)', **({'levels': L['levels']} if L.get('levels') else {}))
                                          for L in t['stack']] + [MROOM], typ, nolabel=True, solid=True, nolift=True, crown=dict(type='cap', h=1.5))
 
+def wing_blocks(fr, keys, fit):
+    """wings cut from a master layout / floor plan (plan_cells.py): flats as numbered on the drawing (cell names '<wing><nn>'),
+    each wing's lift core, and the outline = flats + core, so open courts between wings stay open"""
+    import shgeom as SG_
+    from shapely.geometry import Polygon
+    from shapely.ops import unary_union
+    D = json.load(open(os.path.join(HERE, 'sat', 'plan_cells.json')))
+    toL = lambda P: [loc(fr, *q) for q in SG_.plan2ll(fit, P)]
+    simp = lambda P, tol: [list(q) for q in Polygon(P).buffer(0).simplify(tol).exterior.coords[:-1]]
+    out = {}
+    for key in keys:
+        d = D[key]; wings = sorted({k[:-2] for k in d['cells']})
+        for W in wings:
+            cells = {k[-2:]: simp(toL(P), 0.35) for k, P in d['cells'].items() if k[:-2] == W}
+            cx = sum(sum(p[0] for p in P) / len(P) for P in cells.values()) / len(cells); cy = sum(sum(p[1] for p in P) / len(P) for P in cells.values()) / len(cells)
+            cores = [toL(P) for P in d['core_rects']]
+            core = min(cores, key=lambda P: (sum(p[0] for p in P) / len(P) - cx) ** 2 + (sum(p[1] for p in P) / len(P) - cy) ** 2)
+            U = unary_union([Polygon(P).buffer(0.3, join_style=2) for P in list(cells.values()) + [core]]).buffer(-0.3, join_style=2).simplify(0.4)
+            if U.geom_type != 'Polygon': U = max(U.geoms, key=lambda g_: g_.area)
+            out[W] = dict(cells={k: cells[k] for k in sorted(cells)}, core=core, outline=[list(p) for p in U.exterior.coords[:-1]])
+    return out
+
 def elysium(p, base):
     fr = frame('elysium-novus')
     BL = elysium_blocks(fr)
@@ -295,12 +355,21 @@ def greenfield(p, base):
 def ambrosia(p, base):
     g = GEOM['ambrosia']; fr = frame('ambrosia')
     st = ground() + homes(1, 13, 4)
-    T = [tower(fr, f'T{i+1}', lab, g['towers'][lab], st, 'all') for i, lab in enumerate(['Wing A', 'Wing B', 'Wing C'])]
+    BL = wing_blocks(fr, ['ambA', 'ambB', 'ambC'], 'amb')
+    T = []
+    for i, W in enumerate('ABC'):
+        b = BL[W]; ks = list(b['cells'])
+        stW = ground() + homes(1, 13, 4)
+        for Lv in stW[1:]: Lv['nos'] = [k.lstrip('0') for k in ks]
+        t = _local_tower(f'T{i+1}', f'Wing {W}', b['outline'], stW, 'all', nolift=True)
+        t['plan'] = dict(cells=[[[round(a_ - t['x'], 2), round(b_ - t['y'], 2)] for a_, b_ in b['cells'][k]] for k in ks])
+        T += [t, core_tower(f'K{i+1}', f'Wing {W} lift core', b['core'], t, 'all')]
     units = {'all': u('Ambrosia · 4 BHK #Uberments', '4 BHK',
                       [['Types', '4 BHK Classic and 4 BHK Deluxe (Adani Realty unit plans)'], ['Size', '1,671.60 – 1,902.19 sq.ft. RERA carpet (Adani Realty)'],
                        ['Price', 'From ₹2.49 Cr*, all inclusive'], ['RERA', 'PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA10833/201022']], perFloor='4 homes')}
     note = ('Ambrosia: wings A, B and C around a central garden, B at the back and A and C on either side, as on Adani Realty’s master layout; each wing is the X-shaped plan of its typical floor. '
-            'Ground + 13 floors, 4 homes per floor (Gujarat RERA: 52 homes per wing, 156 in all).' + GEO_NOTE + SURR)
+            'Ground + 13 floors, 4 homes per floor (Gujarat RERA: 52 homes per wing, 156 in all). Each flat is where the complex layout numbers it (1–4 in every wing, two flats either side of '
+            'the cross-shaped lift lobby, with open courts between them); the full unit numbers are not in the public RERA list.' + GEO_NOTE + SURR)
     return base_cfg('ambrosia', p, base, fr, T, units, st, 3.2, note)
 
 def paarijat(p, base):
