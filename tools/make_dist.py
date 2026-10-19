@@ -131,7 +131,7 @@ for n in ('README.txt',):   # internal notes stay off the public site
 TOOLS = OUT + '/tools'
 os.makedirs(TOOLS, exist_ok=True)
 SPD = os.path.dirname(os.path.abspath(__file__))
-for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'bmc_city.py', 'country_build.py', 'new_listings.py', 'sitegeo.py', 'forms.py', 'rera_floors.py', 'shgeom.py', 'sh_models.py', 'gm_models.py', 'gmfit.py', 'facades.py', 'make_dist.py', 'land-listings-apps-script.gs'):
+for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'bmc_city.py', 'country_build.py', 'new_listings.py', 'sitegeo.py', 'forms.py', 'rera_floors.py', 'shgeom.py', 'sh_models.py', 'gm_models.py', 'gmfit.py', 'facades.py', 'gj_models.py', 'plan_cells.py', 'en_cells.py', 'search_index.py', 'satfetch.py', 'make_dist.py', 'land-listings-apps-script.gs'):
     shutil.copy2(os.path.join(SPD, n), os.path.join(TOOLS, n))
 if os.path.isdir(os.path.join(SPD, 'shivalik_wave')):
     shutil.copytree(os.path.join(SPD, 'shivalik_wave'), TOOLS + '/shivalik_wave', dirs_exist_ok=True)

@@ -513,6 +513,9 @@ def make(ALL):
     import gm_models as GMM          # second round of corrections from the official plans (gm_models.py)
     for pid in GMM.PIDS:
         if pid in P: out[pid] = GMM.build(pid, P[pid], out.get(pid) or {'geo': (out.get('north-park') or {}).get('geo', {})})
+    import gj_models as GJM          # projects outside Shantigram rebuilt from the developers' plans (gj_models.py)
+    for pid in GJM.PIDS:
+        if pid in P and pid in out: out[pid] = GJM.build(pid, P[pid], out[pid])
     import facades as FA            # facade colours and treatment from each project's render (facades.py)
     for pid, cfg in out.items(): FA.apply(pid, cfg)
     return out
