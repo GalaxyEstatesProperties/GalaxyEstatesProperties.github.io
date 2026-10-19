@@ -45,6 +45,9 @@ def vrange(norm, v0, v1):
     p = clip(norm, 0, 1, v1)
     return clip(p, 0, -1, -v0)
 
+GF_RECTS = {'Block A': (315, 478, 490, 820), 'Block B': (765, 478, 938, 820), 'Block C': (1215, 478, 1388, 820)}
+GF_TURN = dict(rot90=True, flipx=True, flipy=True)
+
 def place(norm, rect, rot90=False, flipx=False, flipy=False):
     """normalised outline (u, v in 0..1) into plan rectangle (x0, y0, x1, y1); rot90 turns a horizontal drawing upright"""
     x0, y0, x1, y1 = rect; out = []
@@ -117,9 +120,10 @@ def build():
                                       'Block J': plan2ll('ely', place(outline('en_fp_j'), (1178, 393, 1310, 513)))})
     # ---------------- Greenfield (Adani / Shivalik ground plan; Block A nearest the 34.5 m road, B, then C at the back)
     gfo = outline('gf_fp2')
-    G['greenfield'] = dict(towers={'Block A': plan2ll('gf', place(gfo, (315, 478, 490, 820), rot90=True)),
-                                   'Block B': plan2ll('gf', place(gfo, (765, 478, 938, 820), rot90=True)),
-                                   'Block C': plan2ll('gf', place(gfo, (1215, 478, 1388, 820), rot90=True))})
+    # typical-floor drawing turned so that its top faces north-east, as its compass rose shows (N at the top-left of the sheet)
+    G['greenfield'] = dict(towers={'Block A': plan2ll('gf', place(gfo, GF_RECTS['Block A'], **GF_TURN)),
+                                   'Block B': plan2ll('gf', place(gfo, GF_RECTS['Block B'], **GF_TURN)),
+                                   'Block C': plan2ll('gf', place(gfo, GF_RECTS['Block C'], **GF_TURN))})
     # ---------------- Ambrosia (Adani master layout; wing floor plans A, B, C)
     G['ambrosia'] = dict(towers={'Wing A': plan2ll('amb', place(outline('am_wa'), (1008, 400, 1265, 842), rot90=True)),
                                  'Wing B': plan2ll('amb', place(outline('am_wb'), (520, 200, 902, 485))),

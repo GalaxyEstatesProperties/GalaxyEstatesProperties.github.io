@@ -699,6 +699,10 @@ def write_town_sites():
     import math as _m
     E_, D_ = 6378137.0, _m.pi / 180
     out = {"GEO_SHANTIGRAM": {}, "GEO_GIFT": {}}
+    import re as _re
+    def _topfloor(st):      # highest floor number with homes or offices (labels "Floor 22", "Floors 23–24"); ground = 0
+        ns = [int(x) for L in st if L.get("kind") not in ("M", "S", "X") for x in _re.findall(r"\d+", L.get("label", ""))]
+        return max(ns) if ns else sum(L.get("levels", 1) for L in st) - 1
     for pid, c in T3D.items():
         g = c.get("geo") or {}
         if g.get("name") not in out or pid == "shivalik-shantigram": continue
@@ -708,11 +712,12 @@ def write_town_sites():
         rotp = lambda x, y: [round(x * cs - y * sn, 1), round(x * sn + y * cs, 1)]
         towers = []
         for t in c["towers"]:
+            if t.get("solid"): continue            # lift cores drawn inside a tower (they rise one storey above its roof)
             st = t.get("stack") or c["stack"]
             h = sum(L.get("h") or L.get("levels", 1) * c["floorH"] for L in st)
             if len(c["towers"]) == 1 and c.get("height"): h = max(h, c["height"])
             x, y = rotp(t["x"], t["y"])
-            towers.append([x, y, t["w"], t["d"], round((g.get("rot") or 0) + (t.get("ang") or 0), 1), round(h, 1), len(st) - 1])
+            towers.append([x, y, t["w"], t["d"], round((g.get("rot") or 0) + (t.get("ang") or 0), 1), round(h, 1), _topfloor(st)])
         poly = [rotp(*q) for q in c["plotPoly"]] if c.get("plotPoly") else None
         n = len(towers); top = max(t[6] for t in towers)
         word = "building" if n == 1 else "buildings"

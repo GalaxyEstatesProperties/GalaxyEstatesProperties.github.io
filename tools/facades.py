@@ -6,7 +6,7 @@ def F(wall, frame, glass='#33475b', style='punched', balc=0.6, **k):
 G = lambda glass, frame, **k: F(k.pop('wall', '#cfd5db'), frame, glass, k.pop('style', 'glass'), k.pop('balc', 0), **k)
 FACADE = {
   # Adani Shantigram
-  'aster-neo': F('#ece8e1', '#f6f3ee', accent='#e0a53a', fins=True),
+  'aster-neo': F('#d8d2c8', '#efebe5', '#3a4654', accent='#d98b3a', fins=True),
   'amogha': F('#e4e0da', '#f3f0eb', accent='#b0563a', fins=True),
   'embrace': F('#d9b39c', '#f1e6db', '#3d4b58'),
   'elysium-novus': F('#a7735b', '#ebe3d8', '#2f3c49', accent='#d9cdbd', fins=True),
