@@ -51,6 +51,52 @@ GENERIC = {   # listing id -> RERA unit-list key; floors decoded with std()
 }
 BLOCK_HINT = {'shilp-twin-towers': {'East Block': 'A', 'West tower': None}}
 
+def _pfx(u):
+    m = re.match(r'\s*([A-Za-z][A-Za-z0-9]*?)\s*[- ]\s*\d', u)
+    return m.group(1).upper() if m else None
+
+def flat_nos(pid, label, blk=None, dec=None):
+    """floor -> registered unit numbers of this tower on that floor (Gujarat RERA), for one block per flat in the 3D model"""
+    r = _tower_units(pid, label, blk)
+    if not r: return {}
+    L, dec2, raw = r
+    dec = dec or dec2
+    me = label.upper().replace('TOWER', '').replace('BLOCK', '').replace('WING', '').strip()
+    pf = {_pfx(u) for u in L} - {None}
+    if len(pf) > 1 and not raw and me in pf:   # a block shared by several towers: keep this tower's units
+        L = [u for u in L if _pfx(u) == me]
+    out = collections.defaultdict(list)
+    for u in L:
+        f = dec(u) if raw else (None if _num(u) is None else dec(_num(u)))
+        if f is not None: out[f].append(re.sub(r'\s+', ' ', u.strip()))
+    key = lambda u: (int((re.findall(r'\d+', u) or ['0'])[-1]), u)     # by the flat's number on the floor
+    return {f: sorted(v, key=key) for f, v in out.items() if len(v) <= 30}   # more than 30 on one floor: parking / storage codes, kept as one floor
+
+def _tower_units(pid, label, blk=None):
+    if pid == 'wtc-gift-city':
+        B = dict(blocks_of('new:978')); B.update(blocks_of('new:995')); b = match(label, B)
+        return (B[b], std, False) if b else None
+    if pid == 'inspire-business-park':
+        B = blocks_of('new:8530')
+        return (B[blk], std if blk == 'commercial tower' else low2, False) if blk in B else None
+    if pid == 'storeys-golf-coast':
+        side = label.split()[-1]
+        return ([u for u in blocks_of('new:26302')['A+B'] if u.startswith(side + '-')], lambda n: n, False)
+    if pid in ('sobha-elysia', 'sobha-avalon'):
+        key = 'sobha-elysia' if pid == 'sobha-elysia' else 'new:12616'
+        L = list(blocks_of(key).values())[0]
+        if pid == 'sobha-elysia':
+            t = '1' if label.endswith('A') else '2'
+            L = [u for u in L if u.split('-')[-1].strip().startswith(t)]
+        return (L, sobha, True)
+    key = GENERIC.get(pid)
+    if not key: return None
+    B = blocks_of(key)
+    if not B: return None
+    hint = BLOCK_HINT.get(pid, {})
+    b = hint[label] if label in hint else (match(label, B) or (list(B)[0] if len(B) == 1 else None))
+    return (B[b], std, False) if b else None
+
 def tower_counts(pid, label, blk=None):
     """-> (Counter floor -> units, how many towers share that count, block name) or None"""
     if pid == 'wtc-gift-city':
@@ -82,14 +128,21 @@ def tower_counts(pid, label, blk=None):
     share = len([x for x in _parts(b) if x]) if '+' in b or '&' in b else 1
     return (counts(B[b]), share, b)
 
-def stack_from(c, share, block, top=None, start_label='Floor', kind='residential', ground_use=None):
+def stack_from(c, share, block, top=None, start_label='Floor', kind='residential', ground_use=None, nos=None):
     word = 'units' if kind != 'residential' else 'homes'
     across = f' across blocks {block}' if share > 1 else ''
     hi = max(c) if c else 0
     if top: hi = max(hi, top)
     st = []
     g = c.get(0, 0)
-    if g: st.append(dict(label='Ground floor', kind='A', note=f'{g} {"unit" if g == 1 else "units"} registered at ground level{across} (Gujarat RERA)'))
+    nos = nos or {}
+    def lv(f, d):
+        mine = nos.get(f)
+        if mine:
+            d['nos'] = mine
+            if share > 1: d['note'] = f'{len(mine)} {word[:-1] if len(mine) == 1 else word} of this tower registered on this floor (Gujarat RERA)'
+        return d
+    if g: st.append(lv(0, dict(label='Ground floor', kind='A', note=f'{g} {"unit" if g == 1 else "units"} registered at ground level{across} (Gujarat RERA)')))
     else: st.append(dict(label='Ground floor', kind='M', use=ground_use or 'Entrance lobby and common areas (no units registered at ground level)'))
     first = min([f for f in c if f > 0] or [1])
     for f in sorted(x for x in c if x > 0):          # start of the main run of floors with units (5 in a row); gaps below it are podium / parking levels
@@ -100,7 +153,7 @@ def stack_from(c, share, block, top=None, start_label='Floor', kind='residential
         if not n and (f < first or f < main):
             st.append(dict(label=f'{start_label} {f}', kind='M', use='No units are registered on this floor: podium, parking or amenity level'))
         elif n:
-            st.append(dict(label=f'{start_label} {f}', kind='A', note=f'{n} {word[:-1] if n == 1 else word} registered on this floor{across} (Gujarat RERA)'))
+            st.append(lv(f, dict(label=f'{start_label} {f}', kind='A', note=f'{n} {word[:-1] if n == 1 else word} registered on this floor{across} (Gujarat RERA)')))
         else:
             st.append(dict(label=f'{start_label} {f}', kind='S', use='No unit is registered with this floor number in the Gujarat RERA register: a refuge, services or amenity floor, or a number the developer skipped'))
     return st

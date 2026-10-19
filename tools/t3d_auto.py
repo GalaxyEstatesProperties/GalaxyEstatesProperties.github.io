@@ -460,7 +460,7 @@ def make(ALL):
             for t in towers:
                 rc = RF.tower_counts(pid, t['label'], t.get('_blk'))
                 if rc and rc[0]:
-                    t['stack'] = RF.stack_from(rc[0], rc[1], rc[2], top=F.get('top'), kind=kind)
+                    t['stack'] = RF.stack_from(rc[0], rc[1], rc[2], top=F.get('top'), kind=kind, nos=RF.flat_nos(pid, t['label'], t.get('_blk')))
                     floors_src = ' Floors: from the unit numbers on the Gujarat RERA register (each floor shows how many units are registered on it).'
                 elif t.get('_above') is not None:
                     t['stack'] = stack(t['_above'])
@@ -507,6 +507,12 @@ def make(ALL):
             cfg.update(BC.config())
         if kind == 'commercial': cfg['perFloorLabel'] = 'Units on each floor'
         out[pid] = cfg
+    import sh_models as SHM          # Shantigram projects rebuilt from the official plans (sh_models.py)
+    for pid in SHM.PIDS:
+        if pid in P: out[pid] = SHM.build(pid, P[pid], out.get(pid))
+    import gm_models as GMM          # second round of corrections from the official plans (gm_models.py)
+    for pid in GMM.PIDS:
+        if pid in P: out[pid] = GMM.build(pid, P[pid], out.get(pid) or {'geo': (out.get('north-park') or {}).get('geo', {})})
     return out
 
 GIFTG = None; SHG = None

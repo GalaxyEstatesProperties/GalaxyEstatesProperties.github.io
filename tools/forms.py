@@ -123,6 +123,7 @@ NEW_S = {
   'amora': dict(src='Adani Realty and the Gujarat RERA register (90 homes, 38 shops)'),
   'storeys-golf-coast': dict(src='Adani Realty (North and South towers, one home per floor) and the Gujarat RERA register (35 homes)'),
   'storeys-infinity': dict(src='Adani Realty and the Gujarat RERA register (154 homes in the East and West towers)'),
+  'the-storeys': dict(src='Adani Realty and the Gujarat RERA register (35 homes)'),
   'ikaria': dict(src='Adani Realty and the Gujarat RERA register (140 homes)'),
   'shivalik-curv': dict(src='Gujarat RERA register (453 units); INI Design Studio and The Realty Today (32 storeys, 120 m)'),
   'shilp-centrica': dict(src='Gujarat RERA register (492 units); GIFT City Project listing (G+30)'),
