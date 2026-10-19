@@ -97,6 +97,76 @@ def ikebana(p, base):
     C['height'] = round(6.5 + 21 * FH, 1)
     return C
 
-PIDS = ('gala-ikebana',)
-BUILD = {'gala-ikebana': ikebana}
+# ------------------------------------------------------------------ Maruti 360 (Bodakdev)
+def maruti(p, base):
+    """towers from the developer's plans brochure (typical site plan + 4 BHK and 5 BHK typical floors), the site plan fitted to the plot walls
+    in Bing imagery (north edge on the road, east edge on the service road) and checked against the leaning towers in current Esri imagery"""
+    from shapely.geometry import Polygon, box
+    from shapely.ops import unary_union
+    R = json.load(open(os.path.join(HERE, 'sat', 'maruti_outlines.json'))); LL = json.load(open(os.path.join(HERE, 'sat', 'maruti_ll.json')))
+    meta = json.load(open(os.path.join(HERE, 'newimg', 'b_maruti.meta.json')))
+    # the same fit as sat/maruti_ll.json, for cells and cores (typical-plan pixels -> lat/lon)
+    import numpy as np
+    NWp, NEp, NWb, NEb = np.array([1765, 915.]), np.array([230, 915.]), np.array([190, 157.]), np.array([775, 197.])
+    vp, vb = NEp - NWp, NEb - NWb; sc = np.linalg.norm(vb) / np.linalg.norm(vp); th = math.atan2(vb[1], vb[0]) - math.atan2(vp[1], vp[0])
+    Rm = np.array([[math.cos(th), -math.sin(th)], [math.sin(th), math.cos(th)]])
+    SB = {'A': (375, 595, 794, 809), 'B': (925, 595, 1464, 808)}
+    def tp2ll(n):
+        x0, y0, x1, y1 = R[n]['bb']; X0, Y0, X1, Y1 = SB[n]
+        def f(x, y):
+            sp = np.array([X0 + (x - x0) * (X1 - X0) / (x1 - x0), Y0 + (y - y0) * (Y1 - Y0) / (y1 - y0)])
+            return G.px2ll(meta, *(NWb + sc * Rm @ (sp - NWp)))
+        return f
+    # cores (plan pixels of each typical floor): lift lobbies with the personal foyers, and the stair / service block on the road side
+    CORE = {'A': [(745, 668, 1240, 832), (595, 832, 1390, 1005)], 'B': [(670, 660, 1310, 800), (670, 790, 1320, 920)]}
+    MID = {'A': 991, 'B': 990}
+    FH = 3.72
+    with pin_origin('maruti-360'):
+        import sitegeo as SG
+        Pm = [SH.xy(*q) for q in LL['plot']]; rot, w, d, (cx, cy) = SG.mbr(Pm); fr = (cx, cy, rot)
+        T = []
+        for i, n in enumerate('AB'):
+            f = tp2ll(n)
+            O = Polygon(R[n]['P']).buffer(0)
+            core = unary_union([box(*b) for b in CORE[n]]).intersection(O)
+            bb = O.bounds
+            east = O.difference(core).intersection(box(bb[0] - 1, bb[1] - 1, MID[n], bb[3] + 1))      # plan left = east (the drawing has south at the top)
+            west = O.difference(core).intersection(box(MID[n], bb[1] - 1, bb[2] + 1, bb[3] + 1))
+            big = lambda g: max(g.geoms, key=lambda q: q.area) if g.geom_type != 'Polygon' else g
+            cells = [[list(q) for q in big(g).simplify(4).exterior.coords[:-1]] for g in (east, west)]
+            cpoly = big(core.buffer(0)); cpoly = [list(q) for q in cpoly.simplify(3).exterior.coords[:-1]]
+            outline = [list(q) for q in O.simplify(3).exterior.coords[:-1]]
+            typ = '4 BHK' if n == 'A' else '5 BHK'
+            st = [dict(label='Ground floor', kind='M', h=6.0, use='Entrance lobby and drop-off on the road side (north); the podium deck with the swimming pool, garden, play area and clubhouse lies behind the towers (Maruti typical site plan)')]
+            for f_ in range(1, 41):
+                st.append(dict(label=f'Floor {f_}', kind='A', h=FH, nos=[f'{n} east residence', f'{n} west residence'],
+                               note=f'Typical floor (Maruti 360 plans): two {typ} residences, east and west of the lift lobby, each with its own lifts, personal foyer and verandah on the south side'))
+            t = SH.tower(fr, f'T{i+1}', f'Tower {n} · {typ}', [f(*q) for q in outline], st, 'all', nolift=True, crown=dict(type='cap', h=2))
+            cl = [[[round(a - t['x'], 2), round(b - t['y'], 2)] for a, b in (SH.loc(fr, *f(*q)) for q in c)] for c in cells]
+            for L in st:
+                if L.get('nos'): L['plan'] = dict(cells=cl)
+            T.append(t)
+            T.append(SH._local_tower(f'K{i+1}', f'Tower {n} lift core', [SH.loc(fr, *f(*q)) for q in cpoly],
+                                     [dict(label=L['label'], kind='M', h=L.get('h'), use='Private lifts, service lift and staircases (Maruti typical floor plan)') for L in st] + [SH.MROOM],
+                                     'all', nolabel=True, solid=True, nolift=True, crown=dict(type='cap', h=1.5)))
+        pp = [[round(a, 1), round(b, 1)] for a, b in (SH.loc(fr, *q) for q in LL['plot'])]
+    rera = ['RERA', 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA12039/280623']
+    units = {'all': SH.u('Maruti 360 · 4 and 5 BHK residences', '4 & 5 BHK',
+                         [['Towers', 'Tower A: 4 BHK; tower B: 5 BHK (typical site plan). Duplex and penthouse homes in both (Maruti floor plans)'],
+                          ['Homes', '124 in all, 62 in each tower (Gujarat RERA); carpet 40,007.72 sq m in total'], ['Possession', 'RERA completion date 31 Dec 2028'], rera])}
+    note = ('Maruti 360: two towers on the plot next to Karnavati Club, from the developer’s plans brochure: tower A (east, 4 BHK) and tower B (west, 5 BHK), each with two residences per typical floor '
+            '(east and west of the lift lobby, verandahs facing south), the lift and stair core on the road side, and the podium with pool, garden and clubhouse behind. '
+            'The site plan is fitted to the plot walls in satellite imagery (north edge on the road, east edge on the S.G. Highway service road) and agrees with the towers now built. '
+            'Height: 501 ft (152.7 m) over 41 storeys (Maruti 360 website; its plans brochure says 37 storeys). Gujarat RERA registers 62 homes per tower, fewer than two on every floor: '
+            'some levels hold duplexes and the penthouses, so which floor is which comes from the RERA floor list, still to be added. Surroundings are from OpenStreetMap.')
+    C = json.loads(json.dumps(base))
+    st0 = T[0]['stack']
+    C.update(towers=T, units=units, stack=st0, floorH=FH, note=note, geo=proj_geo('maruti-360', base, fr), flatWord='', perFloor='2 homes (typical floor)', startFloor='Floor 20', camStay=True,
+             plotPoly=pp, clear=[pp], height=152.7, cellsNote='Positions follow Maruti’s typical floor plans; the duplex and penthouse levels are not yet placed.')
+    xs = [a for a, b in pp]; ys = [b for a, b in pp]
+    C['plot'] = dict(w=round(max(xs) - min(xs), 1), d=round(max(ys) - min(ys), 1))
+    return C
+
+PIDS = ('gala-ikebana', 'maruti-360')
+BUILD = {'gala-ikebana': ikebana, 'maruti-360': maruti}
 def build(pid, p, base): return BUILD[pid](p, base or {'geo': {}})

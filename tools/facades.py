@@ -59,7 +59,7 @@ FACADE = {
   'anamika-high-point': F('#c9b49a', '#8a6b4f', '#33414f'),
   'godrej-altus': F('#46503f', '#d8d0c4', '#3c4b58', accent='#8a6040', balc=0.9),
   'gala-ikebana': F('#b55a3e', '#d9cfc2', '#384451', accent='#5f8a4f', fins=True),
-  'maruti-360': F('#d9cdb8', '#8a7556', '#34424f'),
+  'maruti-360': F('#f1eee8', '#f6f4f0', '#35424e', accent='#8f6a48', fins=True, balc=0.8),
   'venus-pashmina': F('#a87a5a', '#dcc8ac', '#34414e'),
   'venus-stratum': G('#2a3c52', '#cfd3d8'),
   'venus-the-universe': F('#cbbcab', '#e6ddd1', '#3a4855'),
