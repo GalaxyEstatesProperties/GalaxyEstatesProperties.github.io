@@ -102,6 +102,7 @@ FORMS = {
   'trogon-twin-towers': dict(site='trogon-twin-towers', kind='commercial', height=125, towers=[T('Tower A', -24, 6, 30, 26, 32, crown=dict(type='slope', h=14)), T('Tower B', 24, 6, 30, 26, 32, crown=dict(type='slope', h=14, dir=-1))],
         context=[pod(0, -10, 110, 46, 12, r=20)],
         note='Twin towers with sloping tops on a curved showroom podium, as on the Trogon render; 125 m and offices to floor 32 (Gujarat RERA unit numbers).'),
+  # shivalik-wave: superseded by tools/shivalik_wave/t3d.json (brochure floor plans), loaded in build.py
   'shivalik-wave': dict(site='shivalik-wave', towers=[T('Shivalik Wave', 0, 6, 50, 32, shape='round')], context=[pod(0, -6, 72, 50, 12, r=14)], note='Rounded glass tower on a podium, as on the Shivalik render.'),
   'antonia': dict(towers=[T('Antonia', 0, 0, 34, 24, crown=dict(type='slope', h=16))], note='Slender tower with a sloping crown, as on the Antonia render.'),
   'ashridhar-wynn': dict(site='ashridhar-wynn', towers=[T('Wynn', 0, 8, 44, 30, tiers=[dict(from_=30, w=34, d=24)])], context=[pod(0, -6, 80, 56, 12)], note='Glass tower with a stepped top on a podium, as on the A. Shridhar render.'),
