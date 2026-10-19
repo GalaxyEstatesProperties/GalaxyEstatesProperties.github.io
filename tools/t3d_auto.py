@@ -513,6 +513,8 @@ def make(ALL):
     import gm_models as GMM          # second round of corrections from the official plans (gm_models.py)
     for pid in GMM.PIDS:
         if pid in P: out[pid] = GMM.build(pid, P[pid], out.get(pid) or {'geo': (out.get('north-park') or {}).get('geo', {})})
+    import facades as FA            # facade colours and treatment from each project's render (facades.py)
+    for pid, cfg in out.items(): FA.apply(pid, cfg)
     return out
 
 GIFTG = None; SHG = None
