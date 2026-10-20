@@ -37,7 +37,7 @@ FACADE = {
   'bakeri-stella': F('#f0eee9', '#e2ddd3', '#55697b'),
   'shilp-north-sky': F('#ece6dc', '#f6f2ec', '#3a4655', accent='#c9a27a', balc=0.6),
   'shilp-twin-towers': G('#8ea7bd', '#e4e8ec'),
-  'shilp-centrica': G('#4a4d5a', '#b9a07a'),
+  'shilp-centrica': G('#3d4552', '#c8b28a'),   # dark glass with bronze-gold frames (Shilp renders)
   'nakshatra-regalia': G('#2c3e57', '#9aa6b4'),
   'nakshatra-regalia-ii': G('#5e88a8', '#dfe4e8'),
   'the-identity': G('#3b6a99', '#c9a46a'),
