@@ -37,4 +37,4 @@ def fetch(name, lat, lon, z=19, w=1000, h=900, src='esri'):
     json.dump(dict(name=name, z=z, X0=X0, Y0=Y0, w=w, h=h), open(f'newimg/{name}.meta.json', 'w'))
     return im
 if __name__ == '__main__':
-    fetch(sys.argv[1], float(sys.argv[2]), float(sys.argv[3]), *(int(a) for a in sys.argv[4:]))
+    a = sys.argv; fetch(a[1], float(a[2]), float(a[3]), *(int(x) for x in a[4:7]), **({'src': a[7]} if len(a) > 7 else {}))

@@ -31,7 +31,7 @@ FACADE = {
   'shivalik-skyview': F('#ebe9e5', '#f4f3f0', '#26364a', style='piers', balc=0.6),
   'shivalik-presente': F('#f2efea', '#e9e3da', '#4b5f72', balc=1.0, balcD=2.4, accent='#b78a5c'),
   'shivalik-curv': G('#7ea0bd', '#eef1f4'),
-  'sobha-elysia': F('#c98a68', '#eadac7', '#34414e', balc=0.6),
+  'sobha-elysia': F('#e3dccf', '#f4f0e8', '#39424d', balc=0.7, accent='#c08a5c', fins=True),   # cream frames, dark glass, copper-lit balconies (SOBHA renders)
   'sobha-avalon': F('#e7e2da', '#cfc7ba', '#3b4b5b'),
   'savvy-marina': F('#d9d4cc', '#ebe7e1', '#2b3a49'),
   'bakeri-stella': F('#f0eee9', '#e2ddd3', '#55697b'),

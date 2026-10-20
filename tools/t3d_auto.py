@@ -516,6 +516,9 @@ def make(ALL):
     import gj_models as GJM          # projects outside Shantigram rebuilt from the developers' plans (gj_models.py)
     for pid in GJM.PIDS:
         if pid in P and pid in out: out[pid] = GJM.build(pid, P[pid], out[pid])
+    import pl_models as PLM          # third round: GIFT City and Ahmedabad projects from the developers' key plans (pl_models.py)
+    for pid in PLM.PIDS:
+        if pid in P and pid in out: out[pid] = PLM.build(pid, P[pid], out[pid])
     import facades as FA            # facade colours and treatment from each project's render (facades.py)
     for pid, cfg in out.items(): FA.apply(pid, cfg)
     return out
