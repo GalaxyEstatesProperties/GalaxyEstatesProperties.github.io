@@ -47,6 +47,7 @@ def mbr(P):
 def land_of(key):
     if key.startswith('new:'):
         return (RN.get(key[4:]) or {}).get('land')
+    if key in ('nila-vida', 'shilp-business-gateway', 'shilp-twin-towers', 'arvind-uplands-3'): return None   # the stored RERA pick is another project (official.WRONG_PICK)
     v = R.get(key) or {}
     return ((v.get('pick') or {}).get('pd') or {}).get('land')
 

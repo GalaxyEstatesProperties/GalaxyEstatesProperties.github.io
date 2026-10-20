@@ -185,6 +185,7 @@ def rera_area(pid):
     if pid in NL.RERA_ID:
         v = RERA_N.get(str(NL.RERA_ID[pid])) or {}
         return v.get('carpet'), v.get('covered')
+    if pid in ('nila-vida', 'shilp-business-gateway', 'shilp-twin-towers', 'arvind-uplands-3'): return None, None   # stored RERA pick is another project
     pd = ((RERA_R.get(pid) or {}).get('pick') or {}).get('pd') or {}
     return pd.get('carpet'), pd.get('covered')
 
