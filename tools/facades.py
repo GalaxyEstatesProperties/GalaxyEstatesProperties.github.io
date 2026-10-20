@@ -35,7 +35,7 @@ FACADE = {
   'sobha-avalon': F('#e7e2da', '#cfc7ba', '#3b4b5b'),
   'savvy-marina': F('#d9d4cc', '#ebe7e1', '#2b3a49'),
   'bakeri-stella': F('#f0eee9', '#e2ddd3', '#55697b'),
-  'shilp-north-sky': F('#d3a46f', '#f0e8dc', '#3a4655'),
+  'shilp-north-sky': F('#ece6dc', '#f6f2ec', '#3a4655', accent='#c9a27a', balc=0.6),
   'shilp-twin-towers': G('#8ea7bd', '#e4e8ec'),
   'shilp-centrica': G('#4a4d5a', '#b9a07a'),
   'nakshatra-regalia': G('#2c3e57', '#9aa6b4'),
