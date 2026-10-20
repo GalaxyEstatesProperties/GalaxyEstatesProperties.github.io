@@ -56,12 +56,14 @@ def ikebana(p, base):
         fr = SH.frame_from_poly([ll(*q) for q in outline]) if hasattr(SH, 'frame_from_poly') else None
         import sitegeo as SG
         Pm = [SH.xy(*ll(*q)) for q in outline]; rot, w, d, (cx, cy) = SG.mbr(Pm); fr = (cx, cy, rot)
-        FH = 3.25
-        st = [dict(label='Ground floor', kind='M', h=6.5, use='The Earth Level: entrance lobbies of blocks A, B and C with the play, social, functional, entertainment and fitness zones '
-                   '(box cricket, cafeteria, library, pilates, pool table, rock climbing, outdoor party lounge), and the swimming pool in the south court (Gala’s earth-level plan); basements below for parking (606 covered spaces, Gujarat RERA)')]
-        for f_ in range(1, 22):
-            st.append(dict(label=f'Floor {f_}', kind='A', h=FH, nos=[k[0] + '-' + k[1:] for k in order],
-                           plan=dict(cells=None), note='Typical floor (Gala Group plan): 7 homes, flats 01–03 round the lift lobbies of blocks A and C and flat 01 of block B'))
+        # heights measured on Gala's drone photo of 8 Oct 2025 (floor numbers painted on the slab edges of the east face, which is 58.2 m wide on the plan):
+        # typical floor to floor 3.27 m; the terracotta base (ground floor and floor 1) is 13.6 m to the floor-2 slab
+        FH = 3.27
+        TYP = 'Typical floor (Gala Group plan, odd and even floors): 7 homes: flats 01, 02 and 03 off the lobbies of blocks A and C, flat 01 off the block B lobby'
+        st = [dict(label='Ground floor', kind='M', h=7.0, use='Entrance foyers of blocks A, B and C, drop-off and parking, with the ramps to the basement and podium (Gala’s ground-floor plan); basements below (606 covered parking spaces, Gujarat RERA)'),
+              dict(label='Floor 1 · Earth Level', kind='M', h=6.6, use='The Earth Level amenity floor at the courtyard: play, social, functional, entertainment and fitness zones (box cricket, cafeteria, library, pilates, pool table, rock climbing, outdoor party lounge) and the swimming pool in the south court (Gala’s earth-level plan)')]
+        for f_ in range(2, 22):
+            st.append(dict(label=f'Floor {f_}', kind='A', h=FH, nos=[k[0] + '-' + k[1:] for k in order], plan=dict(cells=None), note=TYP))
         t = SH.tower(fr, 'T1', 'Ikebana', [ll(*q) for q in outline], st, 'all', nolift=True, crown=dict(type='cap', h=1.5))
         cl = [[[round(a - t['x'], 2), round(b - t['y'], 2)] for a, b in (SH.loc(fr, *ll(*q)) for q in cells[k])] for k in order]
         for L in st:
@@ -73,28 +75,29 @@ def ikebana(p, base):
                                      'all', nolabel=True, solid=True, nolift=True, crown=dict(type='cap', h=1.5)))
         rera = ['RERA', 'PR/GJ/AHMEDABAD/DASKROI/AUDA/RAA10949/191122']
         units = {'all': SH.u('Ikebana · 5 BHK residences', '5 BHK',
-                             [['Homes', '119 in all (Gujarat RERA), carpet 308 – 628.51 sq m (3,318 – 6,765 sq.ft.)'],
+                             [['Homes', '119 in all (Gujarat RERA), carpet 308.29 – 628.51 sq m (3,318 – 6,765 sq.ft.); the typical floor has 7, so some floors hold fewer, larger homes'],
                               ['Plans', 'Block A odd floor (flats 01 and 03 in the wings): 377.88 sq m carpet + 25.82 sq m balcony; block B odd floor (flat 01): 308.29 sq m carpet + 43.61 sq m balcony (Gala unit plans)'],
-                              ['Possession', 'RERA completion date 1 July 2027'], rera], perFloor='7 homes (typical floor)')}
+                              ['Possession', 'RERA completion date 1 Nov 2027'], rera], perFloor='7 homes (typical floor)')}
     plotPoly = base.get('plotPoly') if base else None
     note = ('Ikebana (Gala Group): one H-shaped tower, not three: blocks A (east wing, on Sindhu Bhavan Road), B (the central bar) and C (west wing) are its three lift cores. '
-            'The outline, cores and the seven flats of a typical floor are cut from Gala’s typical-floor plan (flats 01, 02 and 03 off the A and C lobbies — north wing, bar, south wing — and flat 01 off the B lobby). '
+            'The outline, cores and the seven flats of a typical floor are cut from Gala’s typical-floor plan (flats 01, 02 and 03 off the A and C lobbies, and flat 01 off the B lobby). '
             'The plan is fitted to the roof in current satellite imagery and moved to the building’s foot; position within about 3 m. '
-            'Height: 21 floors (Gala) at about 3.25 m floor to floor, scaled on Gala’s October 2025 construction photo against the 58 m east face of the plan, over a tall ground floor (about 6.5 m, estimated); '
-            'the roof is the Sky Level: dining space, wellness garden, party court and senior-citizen garden with green walkways (Gala’s sky-level plan). Gujarat RERA registers 119 homes (fewer than 7 on every floor, as some are larger sky-villa homes); the floor-by-floor list from the RERA filing is being added. '
-            'Plot: the site boundary on Gala’s ground-floor plan. Surroundings are from OpenStreetMap.')
+            'Floors: ground floor with the entrance foyers and parking, floor 1 the Earth Level amenity floor, homes from floor 2 to floor 21 (Gala: 21 floors), and the Sky Level gardens on the roof. '
+            'Heights are measured on Gala’s drone photo of 8 October 2025, which shows the floor numbers painted on the slabs: 3.27 m floor to floor, and a 13.6 m terracotta base for the ground floor and floor 1. '
+            'Gujarat RERA registers 119 homes (carpet 308.29 to 628.51 sq m), fewer than 7 on every floor, so some floors hold fewer, larger homes; Gala does not publish those plans, '
+            'so every home floor is drawn with the typical plan. Plot: the site boundary on Gala’s ground-floor plan. Surroundings are from OpenStreetMap.')
     C = json.loads(json.dumps(base))
     # plot: the site boundary of Gala's ground-floor plan, carried onto the typical plan through the three lift cores (they line up on both drawings)
     g2t = lambda x, y: ((x - (121 - 251 * 0.751)) / 0.751, (y - (304 - 187 * 0.764)) / 0.764)
     site = [[58, 147], [652, 117], [622, 547], [56, 556]]
     with pin_origin('gala-ikebana'):
         pp = [[round(a, 1), round(b, 1)] for a, b in (SH.loc(fr, *ll(*g2t(*q))) for q in site)]
-    C.update(towers=T, units=units, stack=st, floorH=FH, note=note, geo=proj_geo('gala-ikebana', base, fr), flatWord='Flat', perFloor='7 homes (typical floor)',
-             startFloor='Floor 10', camStay=True, cellsNote='Flat positions follow Gala’s typical floor plan; the RERA floor-by-floor list is being added.')
+    C.update(towers=T, units=units, stack=st, floorH=FH, note=note, geo=proj_geo('gala-ikebana', base, fr), flatWord='Flat', perFloor='7 homes (typical floor)', typicalOnly=True, perFloorLabel='Typical floor',
+             startFloor='Floor 10', camStay=True, cellsNote='Position as on Gala’s typical floor plan. Some floors hold fewer, larger homes (119 in all, Gujarat RERA), so ask us which homes are on this floor.')
     C['plotPoly'] = pp; C['clear'] = [pp]
     xs = [a for a, b in pp]; ys = [b for a, b in pp]
     C['plot'] = dict(w=round(max(xs) - min(xs), 1), d=round(max(ys) - min(ys), 1))
-    C['height'] = round(6.5 + 21 * FH, 1)
+    C['height'] = round(13.6 + 20 * FH, 1)
     return C
 
 # ------------------------------------------------------------------ Maruti 360 (Bodakdev)
@@ -158,11 +161,11 @@ def maruti(p, base):
             '(east and west of the lift lobby, verandahs facing south), the lift and stair core on the road side, and the podium with pool, garden and clubhouse behind. '
             'The site plan is fitted to the plot walls in satellite imagery (north edge on the road, east edge on the S.G. Highway service road) and agrees with the towers now built. '
             'Height: 501 ft (152.7 m) over 41 storeys (Maruti 360 website; its plans brochure says 37 storeys). Gujarat RERA registers 62 homes per tower, fewer than two on every floor: '
-            'some levels hold duplexes and the penthouses, so which floor is which comes from the RERA floor list, still to be added. Surroundings are from OpenStreetMap.')
+            'some levels hold the duplexes and penthouses (the developer publishes their plans, but not which floors they are on), so every floor is drawn with the typical plan. Surroundings are from OpenStreetMap.')
     C = json.loads(json.dumps(base))
     st0 = T[0]['stack']
-    C.update(towers=T, units=units, stack=st0, floorH=FH, note=note, geo=proj_geo('maruti-360', base, fr), flatWord='', perFloor='2 homes (typical floor)', startFloor='Floor 20', camStay=True,
-             plotPoly=pp, clear=[pp], height=152.7, cellsNote='Positions follow Maruti’s typical floor plans; the duplex and penthouse levels are not yet placed.')
+    C.update(towers=T, units=units, stack=st0, floorH=FH, note=note, geo=proj_geo('maruti-360', base, fr), flatWord='', perFloor='2 homes (typical floor)', typicalOnly=True, perFloorLabel='Typical floor', startFloor='Floor 20', camStay=True,
+             plotPoly=pp, clear=[pp], height=152.7, cellsNote='Position as on Maruti’s typical floor plan. Some levels hold duplexes and penthouses (62 homes per tower, Gujarat RERA), so ask us which homes are on this floor.')
     xs = [a for a, b in pp]; ys = [b for a, b in pp]
     C['plot'] = dict(w=round(max(xs) - min(xs), 1), d=round(max(ys) - min(ys), 1))
     return C
