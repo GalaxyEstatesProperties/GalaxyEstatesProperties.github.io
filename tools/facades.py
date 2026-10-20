@@ -51,7 +51,7 @@ FACADE = {
   'nila-vida': F('#efece6', '#d9d3c9', '#3b4b58', accent='#5f8a4f', fins=True),
   # Ahmedabad
   'navratna-gulmohar': G('#34495d', '#c9ced4'),
-  'trogon-twin-towers': G('#3c4c62', '#d2d7dd'),
+  'trogon-twin-towers': G('#2f405a', '#7f8b98'),
   'trogon-centre-court': F('#efece6', '#d4cfc6', '#3a4a5a', accent='#55595e'),
   'shivalik-wave': G('#3a4a58', '#b08a52'),
   'antonia': G('#2c3f52', '#cfd6dd'),
