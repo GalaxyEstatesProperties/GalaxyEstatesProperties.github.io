@@ -198,12 +198,15 @@ def embrace(p, base):
         U = unary_union([Polygon(P).buffer(0.3, join_style=2) for P in list(cells.values()) + [core]]).buffer(-0.3, join_style=2).simplify(0.35)
         if U.geom_type != 'Polygon': U = max(U.geoms, key=lambda g_: g_.area)
         ks = sorted(cells)
+        W = lab.split()[-1]
         for Lv in st:
-            if Lv['kind'] == 'A' and int(Lv['label'].split()[-1]) in fl: Lv['nos'] = ks[:]
+            if Lv['kind'] == 'A' and int(Lv['label'].split()[-1]) in fl:
+                f_ = int(Lv['label'].split()[-1]); Lv['nos'] = [f'{W}-{f_}{k.zfill(2)}' for k in ks]      # as in the Gujarat RERA unit list (A-101 ...)
         t = _local_tower(f'T{i+1}', lab, [list(q) for q in U.exterior.coords[:-1]], st, typ, nolift=True)
         cl = [[[round(a_ - t['x'], 2), round(b_ - t['y'], 2)] for a_, b_ in cells[k]] for k in ks]
         for Lv in st:
             if Lv.get('nos'): Lv['plan'] = dict(cells=cl)
+            if Lv['kind'] == 'P' and lab == 'Tower C': Lv['nos'] = ['C-1201', 'C-1202']     # duplex penthouses (Gujarat RERA), positions not drawn
         T += [t, core_tower(f'K{i+1}', f'{lab} lift core', core, t, typ)]
     sizes = ['Sizes', '987.91 sq.ft. (smallest registered home, Gujarat RERA 91.78 sq m) · 1,082.31 sq.ft. (Adani Realty) · 1,205 sq.ft. (Housiey price sheet) · penthouses up to 2,238.14 sq.ft. (Gujarat RERA 207.93 sq m); all RERA carpet']
     units = {'all': u('Embrace · 3 BHK (towers A, B, D, E)', '3 BHK',
@@ -220,7 +223,7 @@ def embrace(p, base):
             'C has 2 homes per floor on floors 1–11 and 2 duplex penthouses on floors 12–13 (Adani Realty floor plans). '
             'Adani Realty describes the towers as “13 and 14 floors”; the floor counts here are those that hold the registered homes. '
             'Each flat is where Adani Realty’s typical-floor plans place it, labelled with the number printed at its door (1–4 in A, B, D, E round the lift lobby and the open void between each pair; '
-            '1 and 2 in C); the full unit numbers are not in the public RERA list, so ask us for a specific home.' + GEO_NOTE + SURR)
+            '1 and 2 in C), which are the last two digits of the Gujarat RERA unit numbers (A-101 … E-1404, C-101 … C-1102).' + GEO_NOTE + SURR)
     return base_cfg('embrace', p, base, fr, T, units, st4, 3.2, note)
 
 EN_RECTS = {'C': ('en_fp_cdef', 'L', (963, 548, 1216, 682)), 'D': ('en_fp_cdef', 'R', (963, 548, 1216, 682)),
@@ -275,7 +278,7 @@ def plan_cells(fr, t, key, conv, levels, nos_pfx=None):
     return [list(q) for q in core.simplify(0.2).exterior.coords[:-1]]
 
 def core_tower(tid, label, P, t, typ):
-    return _local_tower(tid, label, P, [dict(label=L['label'], kind='M', use='Lifts, lobby and staircase (developer’s typical floor plan)', **({'levels': L['levels']} if L.get('levels') else {}))
+    return _local_tower(tid, label, P, [dict(label=L['label'], kind='M', use='Lifts, lobby and staircase (developer’s typical floor plan)', **({'levels': L['levels']} if L.get('levels') else {}), **({'h': L['h']} if L.get('h') else {}))
                                          for L in t['stack']] + [MROOM], typ, nolabel=True, solid=True, nolift=True, crown=dict(type='cap', h=1.5))
 
 def wing_blocks(fr, keys, fit):
@@ -306,15 +309,16 @@ def elysium(p, base):
     T = []
     for i, B in enumerate('CDEFGJ'):
         b = BL[B]; ks = list(b['cells']); n = len(ks)
-        st = ground('Stilt parking and entrance lobby') + homes(1, 14, n)
+        st = ground('Stilt parking and entrance lobby (hollow plinth); two basements of parking below') + homes(1, 14, n)
+        st[0]['h'] = 3.15                                    # AMC fire-safety opinion: hollow plinth / ground floor 3.15 m, floors 1-14 2.96 m
         for Lv in st[1:]:
-            f_ = int(Lv['label'].split()[-1]); Lv['nos'] = [f'{B}-{f_}{k}' for k in ks]
+            f_ = int(Lv['label'].split()[-1]); Lv['nos'] = [f'{B}-{f_}{k}' for k in ks]; Lv['h'] = 2.96
         typ = 'g' if B == 'G' else 'j' if B == 'J' else 'cdef'
         t = _local_tower(f'T{i+1}', f'Block {B}', b['outline'], st, typ, nolift=True)
         t['plan'] = dict(cells=[[[round(a_ - t['x'], 2), round(b_ - t['y'], 2)] for a_, b_ in b['cells'][k]] for k in ks])
         T.append(t)
         T.append(_local_tower(f'K{i+1}', f'Block {B} lift core', b['core'],
-                              [dict(label=Lv['label'], kind='M', use='Lifts, lobby and staircase (Adani Realty typical floor plan)') for Lv in st] + [MROOM], typ,
+                              [dict(label=Lv['label'], kind='M', h=Lv['h'], use='Lifts, lobby and staircase (Adani Realty typical floor plan)') for Lv in st] + [MROOM], typ,
                               nolabel=True, solid=True, nolift=True, crown=dict(type='cap', h=1.5)))
     sizes = ['Sizes in the project', '2 BHK: 717.42 sq.ft. · 3 BHK: 973.93 – 1,103.63 sq.ft. (Adani Realty); RERA carpet 668.44 – 1,016 sq.ft. (Gujarat RERA 62.10 – 94.39 sq m)']
     rera = ['RERA', 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Urban Development Authority/RAA14729/270125/311228']
@@ -324,15 +328,22 @@ def elysium(p, base):
     note = ('Elysium Novus: blocks C+D and E+F are joined pairs built round an open central void, G has two angled wings with 6 homes per floor and J is H-shaped with 4, '
             'each drawn from Adani Realty’s typical-floor plans with the flats where the plans number them (C and F: 101 top-left, 102 top inner, 103 bottom inner, 104 bottom-left; '
             'D and E mirrored; J: 104 and 101 at the top, 103 and 102 below; G: 106, 105, 104 on the left wing and 103, 102, 101 on the right). '
-            'Lift cores rise above the roofs. All blocks are ground (stilt) + 14 floors (Gujarat RERA unit numbers <block>-101 to 1406; 364 homes) and 44.8 m tall (Gujarat RERA).'
+            'Lift cores rise above the roofs. All blocks are ground (stilt) + 14 floors (Gujarat RERA unit numbers <block>-101 to 1406; 364 homes). '
+            'Floor heights are from the Ahmedabad fire-safety opinion filed on Gujarat RERA: hollow plinth / ground floor 3.15 m and 2.96 m for each of floors 1 to 14 '
+            '(so the roof of floor 14 is 44.59 m up); the opinion gives 44.95 m from ground level to the top slab for every block, over two basements of parking (3.75 m and 4.65 m).'
             + GEO_NOTE + ' The registered plot outline on the Gujarat RERA map sits slightly north-west of the buildings now under construction; the buildings are placed on the satellite image.' + SURR)
     st4 = ground() + homes(1, 14, 4)
-    return base_cfg('elysium-novus', p, base, fr, T, units, st4, 2.99, note, extra=dict(height=44.8))
+    st4[0]['h'] = 3.15
+    for Lv in st4[1:]: Lv['h'] = 2.96
+    return base_cfg('elysium-novus', p, base, fr, T, units, st4, 2.96, note, extra=dict(height=44.95, hSrc='AMC fire-safety opinion filed on Gujarat RERA'))
 
 def greenfield(p, base):
     g = GEOM['greenfield']; fr = frame('greenfield')
-    st = ground('Ground floor amenities (gym, mini theatre, library and more, per the developer’s ground-floor plan)') + homes(1, 19, 4) + \
+    st = ground('Ground floor amenities (gym, mini theatre, library and more, per the developer’s ground-floor plan); two basements of parking below') + homes(1, 19, 4) + \
          [dict(label='Floors 20–21 (penthouses)', kind='P', levels=2, unit='ph', note='4 duplex penthouses: lower level on floor 20, upper level on floor 21')]
+    st[0]['h'] = 3.62                                        # AMC fire-safety opinion (every block): ground 3.62 m, floors 1-20 3.15 m, floor 21 3.23 m; 69.85 m to the top slab
+    for Lv in st[1:-1]: Lv['h'] = 3.15
+    st[-1].update(h=6.38, hs=[3.15, 3.23])
     import copy as _cp, shgeom as SG_
     gfb = json.load(open(os.path.join(HERE, 'sat', 'gf_fp2_outline.json')))['bbox']
     T = []
@@ -348,9 +359,11 @@ def greenfield(p, base):
     note = ('Greenfield: three blocks in a row, Block A nearest the 34.5 m road at the entrance, then B and C, as labelled on the developer’s ground-floor plan and on the key plans '
             'of Adani Realty’s unit plans. Ground + 21 floors: 4 apartments per floor on floors 1–19 and 4 duplex penthouses on floors 20–21 (Gujarat RERA: 80 homes per block, unit numbers 101–2004). '
             'On floors 1–19 each flat sits where the developer’s first-floor and typical-floor plans number it (x01 and x02 on one side of the lift core, x03 and x04 on the other; the drawing is turned to its compass rose); '
-            'the penthouse floors have no published plan, so their positions are indicative.'
+            'the penthouse floors have no published plan, so their positions are indicative. '
+            'Floor heights are from the Ahmedabad fire-safety opinion filed on Gujarat RERA (the same for blocks A, B and C): ground floor 3.62 m, floors 1 to 20 3.15 m each and floor 21 3.23 m, '
+            '69.85 m from ground level to the top slab, over two basements of parking (4.20 m and 3.65 m).'
             + GEO_NOTE + SURR)
-    return base_cfg('greenfield', p, base, fr, T, units, st, 3.2, note)
+    return base_cfg('greenfield', p, base, fr, T, units, st, 3.15, note, extra=dict(height=69.85, hSrc='AMC fire-safety opinion filed on Gujarat RERA'))
 
 def ambrosia(p, base):
     g = GEOM['ambrosia']; fr = frame('ambrosia')
@@ -360,7 +373,8 @@ def ambrosia(p, base):
     for i, W in enumerate('ABC'):
         b = BL[W]; ks = list(b['cells'])
         stW = ground() + homes(1, 13, 4)
-        for Lv in stW[1:]: Lv['nos'] = [k.lstrip('0') for k in ks]
+        for Lv in stW[1:]:
+            f_ = int(Lv['label'].split()[-1]); Lv['nos'] = [f'{W}-{f_}{k}' for k in ks]      # flat k on the layout = unit x0k in the Gujarat RERA list
         t = _local_tower(f'T{i+1}', f'Wing {W}', b['outline'], stW, 'all', nolift=True)
         t['plan'] = dict(cells=[[[round(a_ - t['x'], 2), round(b_ - t['y'], 2)] for a_, b_ in b['cells'][k]] for k in ks])
         T += [t, core_tower(f'K{i+1}', f'Wing {W} lift core', b['core'], t, 'all')]
@@ -369,12 +383,14 @@ def ambrosia(p, base):
                        ['Price', 'From ₹2.49 Cr*, all inclusive'], ['RERA', 'PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA10833/201022']], perFloor='4 homes')}
     note = ('Ambrosia: wings A, B and C around a central garden, B at the back and A and C on either side, as on Adani Realty’s master layout; each wing is the X-shaped plan of its typical floor. '
             'Ground + 13 floors, 4 homes per floor (Gujarat RERA: 52 homes per wing, 156 in all). Each flat is where the complex layout numbers it (1–4 in every wing, two flats either side of '
-            'the cross-shaped lift lobby, with open courts between them); the full unit numbers are not in the public RERA list.' + GEO_NOTE + SURR)
+            'the cross-shaped lift lobby, with open courts between them), matching the Gujarat RERA unit numbers A-101 … C-1304.' + GEO_NOTE + SURR)
     return base_cfg('ambrosia', p, base, fr, T, units, st, 3.2, note)
 
 def paarijat(p, base):
     g = GEOM['paarijat']; fr = frame('paarijat', [q for ll in g['towers'].values() for q in ll])
-    st = ground() + homes(1, 14, 4)
+    st = ground('Parking and society amenity (hollow plinth); one basement of parking below') + homes(1, 14, 4)
+    st[0]['h'] = 3.15                                        # AMC fire-safety opinion (both blocks): ground 3.15 m, floors 1-14 2.975 m; 44.95 m to the top slab
+    for Lv in st[1:]: Lv['h'] = 2.975
     import copy as _cp, shgeom as SG_
     T = []
     for i, lab in enumerate(['Block A', 'Block B']):
@@ -386,8 +402,10 @@ def paarijat(p, base):
     note = ('Paarijat: Block A (towards the main road) and Block B, with the society amenity block between them, from Adani Realty’s floor plan (block names as printed) and its north arrow. '
             'Ground + 14 floors, 4 homes per floor (Gujarat RERA: 56 homes per block), each flat where Adani Realty’s first-floor and typical-floor plans number it '
             '(block B: 01 and 02 at one end, 04 and 03 at the other; block A turned the other way round). The plot outline on the RERA map is a thin strip that does not match the 6,203 sq m registered land, '
-            'so the gold outline here is drawn around the buildings.' + GEO_NOTE.replace(' Plot: the boundary registered on the Gujarat RERA map service.', '') + SURR)
-    cfg = base_cfg('paarijat', p, base, fr, T, units, st, 3.2, note, extra=dict(context=ctx_items(fr, g.get('ctx'))))
+            'so the gold outline here is drawn around the buildings. Floor heights are from the Ahmedabad fire-safety opinion filed on Gujarat RERA (the same for both blocks): '
+            'hollow plinth / ground floor 3.15 m and 2.975 m for each of floors 1 to 14 (the roof of floor 14 is 44.80 m up); the opinion gives 44.95 m from ground level to the top slab, '
+            'over a 5.28 m basement. The society amenity block between them is ground + 1 (3.05 m each), 6.55 m to its top slab.' + GEO_NOTE.replace(' Plot: the boundary registered on the Gujarat RERA map service.', '') + SURR)
+    cfg = base_cfg('paarijat', p, base, fr, T, units, st, 2.975, note, extra=dict(context=ctx_items(fr, g.get('ctx')), height=44.95, hSrc='AMC fire-safety opinion filed on Gujarat RERA'))
     xs = [t['x'] + a for t in T for a, b in t['pts']]; ys = [t['y'] + b for t in T for a, b in t['pts']]
     m = 8; x0, x1, y0, y1 = min(xs) - m, max(xs) + m, min(ys) - m, max(ys) + m
     cfg['plotPoly'] = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]]; cfg['plot'] = dict(w=round(x1 - x0, 1), d=round(y1 - y0, 1))

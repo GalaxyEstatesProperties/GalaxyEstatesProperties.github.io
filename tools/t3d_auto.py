@@ -56,7 +56,7 @@ S = {
   'shivalik-skyview':  dict(n=1, above=34, src='Shivalik: G+34 tower with 12 duplex penthouses (which floors is not published)', fp=(42, 28)),
   'shilp-north-sky':   dict(n=3, above=24, labels=['Block A', 'Block B', 'Block C'], src='Gujarat RERA: blocks A (224 units), B (223) and C (221): 646 homes and 22 shops; 25 storeys per the GharPe listing', fp=(34, 24)),
   'savvy-marina':  dict(n=3, above=32, labels=['T1', 'T2', 'T3'], src='Gujarat RERA: towers T1 (78 units), T2 (110) and T3 (82): 262 apartments and 8 shops; Savvy: 3 basements + ground + 32', fp=(34, 26)),
-  'bakeri-stella': dict(n=3, above=33, src='Bakeri: 3 interconnected towers, 3 basements + ground + 33', fp=(32, 24), gap=6),
+  'bakeri-stella': dict(n=3, above=33, height=118.85, src='Bakeri: 3 interconnected towers, 3 basements + ground + 33; 118.85 m tall (fire-safety opinion, Regional Fire Officer GIFT City, 12 Apr 2023, filed on Gujarat RERA; floor-by-floor heights are not published, so the floors share that height evenly). On the Gujarat RERA register the homes of tower B stop at floor 20 while towers A and C reach floor 33, so B is drawn lower', fp=(32, 24), gap=6),
   'shilp-twin-towers': dict(n=2, above=27, height=120, kind='commercial', labels=['West tower', 'East Block'], src='Shilp / INI Design Studio: twin towers of 28 floors, 120 m. Gujarat RERA: only the East Block is registered so far (275 offices, 4 shops)', fp=(40, 32)),
   # Ahmedabad
   'maruti-360':    dict(n=2, above=40, height=152.7, src='Maruti 360: 2 towers, 41 storeys, 501 ft (152.7 m), 124 homes', fp=(36, 28)),
@@ -522,6 +522,8 @@ def make(ALL):
         if pid in P and pid in out: out[pid] = PLM.build(pid, P[pid], out[pid])
     import facades as FA            # facade colours and treatment from each project's render (facades.py)
     for pid, cfg in out.items(): FA.apply(pid, cfg)
+    import rera_attach as RA        # registered carpet and balcony area of every flat (Gujarat RERA unit lists)
+    for pid, cfg in out.items(): RA.apply(pid, cfg)
     return out
 
 GIFTG = None; SHG = None

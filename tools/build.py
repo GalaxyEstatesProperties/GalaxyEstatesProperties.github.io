@@ -693,6 +693,7 @@ _SW = os.path.join(os.path.dirname(os.path.abspath(__file__)), "shivalik_wave", 
 if os.path.exists(_SW):
     T3D["shivalik-wave"] = json.load(open(_SW, encoding="utf-8"))
     import facades as _FA; _FA.apply("shivalik-wave", T3D["shivalik-wave"])
+    import rera_attach as _RA; _RA.apply("shivalik-wave", T3D["shivalik-wave"])
 T3D["shivalik-shantigram"]["note"] = ("Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, "
     "skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; "
     "the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.")

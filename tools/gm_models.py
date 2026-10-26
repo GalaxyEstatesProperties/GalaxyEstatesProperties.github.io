@@ -37,8 +37,8 @@ def west_park(p, base):
         v = PL[k]; n = int(k)
         big = n == 48
         lab = f'Plot {n:02d}'
-        t = SH.tower(fr, f'P{n}', lab, v['villa'], st, 'p' + k, nolabel=True, crown=dict(type='none'))
-        T.append(t)
+        t = SH.tower(fr, f'P{n}', lab, v['villa'], [dict(label='Villa', kind='A', nos=[f'Villa {n:02d}'])], 'p' + k, nolabel=True, crown=dict(type='none'))
+        T.append(t)      # plot n = VILLA- n on the Gujarat RERA list (the one type-B villa is 48 in both)
         rows = [['Plot', f'{lab} on Adani Realty’s master layout'],
                 ['Plot size', f'about {v["area"]:,} sq m as drawn on the master layout (Adani Realty: plots run from 358 to 1,765 sq m; ask us for this plot’s exact figure)'],
                 ['Villa', 'The larger built-to-suit villa on the layout (registered as type B, one villa)' if big else '1 BHK starter villa built by Adani Realty (ground floor), which the owner can expand and design (built to suit)'],
@@ -50,7 +50,8 @@ def west_park(p, base):
     note = ('The West Park: 61 build-to-suit villa plots on 38,827.5 sq m in Shantigram (Gujarat RERA: 61 villas, 60 of type A and 1 of type B). '
             'Plot numbers, plot lines and villa outlines are traced from Adani Realty’s official master layout, fitted to the plot registered on the Gujarat RERA map service (they agree within about 3 m). '
             'Each villa is drawn as built today: a single-storey 1 BHK villa that its owner can extend upwards and outwards (Adani Realty project photos, June 2026); '
-            'plot sizes are measured on the layout and are approximate.' + SURR)
+            'plot sizes are measured on the layout and are approximate. The plot numbers on the layout are the villa numbers on the Gujarat RERA list (villa 48, the one type-B villa, is the large plot in both), '
+            'so each villa shows its registered carpet area.' + SURR)
     club = json.load(open(os.path.join(HERE, 'gm', 'wp_ctx.json')))['club']
     ctx.append(dict(t='prism', p=local(fr, club), h=7, c='#b9c2cf', label='Clubhouse', size=9))
     return cfg_base(p, base, fr, T, units, st, 4.2, note, plotPoly, context=ctx, perFloorLabel='Villas', villas=True, camR=330, camY=4, camPh=1.05,
@@ -119,29 +120,31 @@ def center_point(p, base):
     st[0]['plan'] = dict(cells=[cl(rect(CP_SHOPS[k])) for k in g0], ft=['g' + k for k in g0]); st[0]['nos'] = ['Shop-' + k for k in g0]
     # floors 1-3: the brochure plans predate the 2025 revision registered on RERA, so shops sit indicatively in the U-shaped floor
     upper = Polygon(U); mplex = box(405, 85, 625, 545); rest = upper.difference(mplex)
-    f1 = split_cells(list(upper.exterior.coords)[:-1], 16)
-    st[1]['plan'] = dict(cells=[cl(c) for c in f1]); st[1]['nos'] = [f'Shop-1{i:02d}' for i in range(1, 17)]
+    # the latest quarterly unit list on Gujarat RERA (Form 3, Oct 2026): shops 101-120 on floor 1, 201-212 and 301-312 beside the multiplex on floors 2 and 3
+    f1 = split_cells(list(upper.exterior.coords)[:-1], 20)
+    st[1]['plan'] = dict(cells=[cl(c) for c in f1]); st[1]['nos'] = [f'Shop-1{i:02d}' for i in range(1, 21)]
     rest_pts = list(rest.exterior.coords)[:-1]
     f2 = [rect((405, 85, 625, 545))] + split_cells(rest_pts, 12)
     st[2]['plan'] = dict(cells=[cl(c) for c in f2], ft=['mx'] + [None] * 12); st[2]['nos'] = ['Multiplex 1–4'] + [f'Shop-2{i:02d}' for i in range(1, 13)]
-    f3 = [rect((405, 85, 625, 545))] + split_cells(rest_pts, 3)
-    st[3]['plan'] = dict(cells=[cl(c) for c in f3], ft=['mx', 'fc', 'qsr', 'bq']); st[3]['nos'] = ['Multiplex 1–4 (upper level)', 'Quick-service restaurant 1 + food court', 'Quick-service restaurant 2', 'Restaurant / banquet 3 + game zone']
+    f3 = [rect((405, 85, 625, 545))] + split_cells(rest_pts, 12)
+    st[3]['plan'] = dict(cells=[cl(c) for c in f3], ft=['mx'] + [None] * 12); st[3]['nos'] = ['Multiplex 1–4 (upper level)'] + [f'Shop-3{i:02d}' for i in range(1, 13)]
+    MX = 4 * 289.5825      # four multiplex units of 289.58 sq m carpet each, registered across floors 2 and 3
+    for L_ in (st[2], st[3]):
+        L_['frows'] = [[['RERA carpet (4 screens together)', f'{MX:,.2f} sq m ({MX * 10.7639:,.0f} sq.ft.)'], ['Registered as', 'Multiplex 1, 2, 3 and 4, each 289.58 sq m, across floors 2 and 3 (Gujarat RERA)']]] + [None] * 12
     t['stack'] = st
     ftypes = {('g' + k): dict(name=f'Shop {k} · ground floor', short='G', exact=True, rows=[['Shop', f'Shop-{k} on Adani Realty’s ground-floor plan'], ['Size on the plan', CP_SIZE[k]], ['Offered', 'On long lease (Adani Realty)']]) for k in g0}
     ftypes.update(mx=dict(name='Multiplex (4 screens)', short='Cinema', rows=[['Use', 'Multiplex 1–4, registered across the second and third floors (Gujarat RERA)'], ['Where', 'The cinema block on the road corner, as on the Adani Realty renders']]),
-                  fc=dict(name='Quick-service restaurant 1 + food court', short='F&B', rows=[['Use', 'Registered as one unit (Gujarat RERA); its floor is not stated, shown on the top floor']]),
-                  qsr=dict(name='Quick-service restaurant 2', short='F&B', rows=[['Use', 'Registered as one unit (Gujarat RERA); its floor is not stated, shown on the top floor']]),
-                  bq=dict(name='Restaurant / banquet 3 + game zone', short='F&B', rows=[['Use', 'Registered as one unit (Gujarat RERA); its floor is not stated, shown on the top floor']]))
+)
     units = {'all': SH.u('Center Point · shops and showrooms', 'Shops & showrooms',
         [['Size', '273.83 – 6,742.29 sq.ft. RERA carpet'], ['Offered', 'On long lease only (Adani Realty)'],
-         ['Registered', 'Shops 01–18 (ground), 101–116 (first), 201–212 (second), three restaurant / food-court units and multiplex screens 1–4 (Gujarat RERA unit list)'],
+         ['Registered', 'Shops 01–18 (ground), 101–120 (first), 201–212 (second), 301–312 (third) and multiplex screens 1–4 across the second and third floors: 66 units (Gujarat RERA quarterly unit list, Oct 2026)'],
          ['Status', 'BU received (Adani Realty)'], ['RERA', 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Urban Development Authority/CAA13080/A1C/EX1/080725/300925']])}
     ctx = [dict(t='flat', p=to_tower_local(fr, dict(x=0, y=0), [ll(q) for q in rect((625, 245, 770, 545))]), c='#8d97a6', z=0.6),
            dict(t='label', text='Atrium', **dict(zip(('x', 'y'), [round(v, 1) for v in SH.loc(fr, *ll((697, 395)))])), z=8, size=7)]
     note = ('Center Point: a ground + 3 retail building on the 6,484 sq m plot registered on the Gujarat RERA map service, laid out from Adani Realty’s ground-floor plan '
             '(fitted to the RERA plot, which it matches within about 1 m): shops on three sides of the open atrium facing the 24 m road, the 34.5 m road on the cinema side. '
-            'Ground-floor shops are drawn exactly as on that plan. The upper floors follow the RERA unit list after the 2025 revision (16 first-floor shops, 12 second-floor shops, '
-            'three restaurant / food-court units and the four-screen multiplex across floors 2 and 3); the brochure’s older upper-floor plans no longer match it, so those units are placed indicatively.' + SURR)
+            'Ground-floor shops are drawn exactly as on that plan. The upper floors follow the latest quarterly unit list on Gujarat RERA (20 first-floor shops, 12 shops each on floors 2 and 3 '
+            'and the four-screen multiplex across floors 2 and 3, 66 units in all); the brochure’s older upper-floor plans no longer match it, so those units are placed indicatively.' + SURR)
     return cfg_base(p, base, fr, [t], units, st, 5.0, note, local(fr, P), kind='commercial', perFloorLabel='Units on each floor', ftypes=ftypes, flatWord='',
                     startFloor='Ground floor', enqLabel='Enquire about this unit', context=ctx, clear=[local(fr, P)],
                     cellsNote='Indicative position: Adani Realty has not published plans for the revised upper floors.')
@@ -236,11 +239,16 @@ def golf_coast(p, base):
                                 ['Size', 'RERA carpet 4,664 sq.ft.; balcony 211 and wash area 104; total RERA area 4,979 sq.ft. (Adani Realty unit plan)']]),
                   dB=dict(name='5 BHK duplex, type B (east half)', short='5 BHK duplex B', exact=True,
                           rows=[['Home', '5 BHK duplex over two floors (lower and upper level), the east half of the North tower, facing the Narmada canal and the golf course'],
-                                ['Size', 'RERA carpet 4,509 sq.ft.; balcony 212 and wash area 99; total RERA area 4,820 sq.ft. (Adani Realty unit plan)']]))
+                                ['Size', 'RERA carpet 4,509 sq.ft.; balcony 212 and wash area 99; total RERA area 4,820 sq.ft. (Adani Realty unit plan)']]),
+                  ph=dict(name='Penthouse over floors 19 and 20 (South tower)', short='Penthouse', exact=True,
+                          rows=[['Home', 'B-19, the top home of the South tower: its registered carpet area is larger than a whole typical floor and the fire-safety opinion lists floor 20 as residential, so it is drawn over floors 19 and 20']]))
     T = []
     # South tower (RERA block B): one 4 BHK per floor, B-02 to B-19
-    stS = [dict(label='Ground floor', kind='M', use='Entrance foyer with owner and guest lifts; parking'), dict(label='Floor 1 (podium)', kind='M', use='Podium amenities around the green podium garden (Adani Realty podium plan)')]
-    stS += [dict(label=f'Floor {f}', kind='A', nos=[f'B-{f:02d}'], plan=dict(ft=['s4'])) for f in range(2, 20)]
+    GC = dict(g=4.65, f1=4.45, t=3.45)      # AMC fire-safety opinion (both towers): ground 4.65 m, floor 1 4.45 m, floors 2-20 3.45 m; 74.65 m to the top slab
+    stS = [dict(label='Ground floor', kind='M', h=GC['g'], use='Entrance foyer with owner and guest lifts; parking and meter room; one basement of parking below'),
+           dict(label='Floor 1 (podium)', kind='M', h=GC['f1'], use='Podium amenities around the green podium garden (Adani Realty podium plan)')]
+    stS += [dict(label=f'Floor {f}', kind='A', h=GC['t'], nos=[f'B-{f:02d}'], plan=dict(ft=['s4'])) for f in range(2, 19)]
+    stS += [dict(label='Floors 19–20 (penthouse)', kind='P', levels=2, h=2 * GC['t'], nos=['B-19'], plan=dict(ft=['ph']))]
     tS = SH.tower(fr, 'TB', 'South tower (B)', L['south'], stS, 'all', crown=dict(type='cap', h=2.5)); T.append(tS)
     # North tower (RERA block A): 5 BHK duplexes, type A on the west half and type B on the east half of each floor
     poly = Polygon(SH.tower(fr, 'x', 'x', L['north'], [], 'all')['pts'])
@@ -256,23 +264,26 @@ def golf_coast(p, base):
         g = P.intersection(hp); g = g if g.geom_type == 'Polygon' else max(g.geoms, key=lambda q: q.area)
         return [[round(a_, 2), round(b_, 2)] for a_, b_ in list(g.exterior.coords)[:-1]]
     W, Ehalf = half(-1), half(1)
-    stN = [dict(label='Ground floor', kind='M', use='Entrance foyer with owner and guest lifts; parking'), dict(label='Floor 1 (podium)', kind='M', use='Podium amenities: pool deck, gym, spa (Adani Realty podium plan)')]
-    stN += [dict(label=f'Floor {f}', kind='A', nos=['Type A duplex (west)', 'Type B duplex (east)'], plan=dict(cells=[W, Ehalf], ft=['dA', 'dB']),
-                 note='Each 5 BHK duplex spans two floors. The register numbers them A-02 to A-18 over floors 2–19 but does not publish which floor pair each number is on.') for f in range(2, 20)]
+    stN = [dict(label='Ground floor', kind='M', h=GC['g'], use='Entrance foyer with owner and guest lifts; parking and meter room; one basement of parking below'),
+           dict(label='Floor 1 (podium)', kind='M', h=GC['f1'], use='Podium amenities: pool deck, gym, spa (Adani Realty podium plan)')]
+    stN += [dict(label=f'Floor {f}', kind='A', h=GC['t'], nos=['Type A duplex (west)', 'Type B duplex (east)'], plan=dict(cells=[W, Ehalf], ft=['dA', 'dB']),
+                 note='Each 5 BHK duplex spans two floors. The register numbers them A-02 to A-18 over floors 2–20 but does not publish which floor pair each number is on.') for f in range(2, 21)]
     tN['stack'] = stN; T.append(tN)
     hull = Polygon([(t['x'] + a_, t['y'] + b_) for t in T for a_, b_ in t['pts']]).convex_hull
     hull = Polygon([(t['x'] + a_, t['y'] + b_) for t in T for a_, b_ in t['pts']])
     from shapely.geometry import MultiPoint
     hull = MultiPoint([(t['x'] + a_, t['y'] + b_) for t in T for a_, b_ in t['pts']]).convex_hull.buffer(-0.6)
     ctx = [dict(t='prism', p=[[round(a_, 2), round(b_, 2)] for a_, b_ in list(hull.exterior.coords)[:-1]], h=7.0, c='#5f7766', label='Podium garden and amenities', size=7)]
-    units = {'all': SH.u('The Storeys Golf Coast', '4 & 5 BHK', [['Homes', '35: 18 × 4 BHK simplex in the South tower (B-02 to B-19) and 17 × 5 BHK duplexes in the North tower (A-02 to A-18) (Gujarat RERA unit list)'],
+    units = {'all': SH.u('The Storeys Golf Coast', '4 & 5 BHK', [['Homes', '35: in the South tower 17 × 4 BHK simplex (B-02 to B-18) and the penthouse B-19 over floors 19–20; in the North tower 17 × 5 BHK duplexes (A-02 to A-18) (Gujarat RERA unit list)'],
              ['RERA', 'PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Urban Development Authority/RAA14971/170325/311228']])}
     note = ('The Storeys Golf Coast: two towers on a shared podium beside the Narmada canal and the Belvedere golf course. The North tower (RERA block A) holds the 5 BHK duplexes '
             'and faces the canal; the South tower (block B) has one 4 BHK simplex on each floor. Tower outlines and the 22 m gap between them are measured on current satellite imagery '
             '(the towers are standing; roofs are shifted back for the camera’s lean) and agree with Adani Realty’s site and podium plans; floors from the RERA unit numbers '
-            '(homes on floors 2–19 above the entrance level and the podium amenity floor). Sizes from Adani Realty’s unit plans.' + SURR)
-    return cfg_base(p, base, fr, T, units, stS, 3.6, note, local(fr, R['poly']), ftypes=ftypes, flatWord='', startFloor='Floor 10', clear=[local(fr, R['poly'])],
-                    enqLabel='Enquire about this home', context=ctx)
+            '(homes on floors 2 to 20 above the entrance level and the podium amenity floor; the South tower’s top home, B-19, is larger than a whole floor and is drawn over floors 19 and 20). '
+            'Floor heights are from the Ahmedabad fire-safety opinion filed on Gujarat RERA (the same for both towers): ground floor 4.65 m, floor 1 4.45 m and 3.45 m for each of floors 2 to 20, '
+            '74.65 m from ground level to the top slab. Sizes from Adani Realty’s unit plans.' + SURR)
+    return cfg_base(p, base, fr, T, units, stS, GC['t'], note, local(fr, R['poly']), ftypes=ftypes, flatWord='', startFloor='Floor 10', clear=[local(fr, R['poly'])],
+                    enqLabel='Enquire about this home', context=ctx, height=74.65, hSrc='AMC fire-safety opinion filed on Gujarat RERA')
 
 # ------------------------------------------------------------------ The Storeys (the golf-view towers, completed)
 def storeys(p, base):
@@ -308,6 +319,7 @@ def storeys(p, base):
         L['nos'] = ([ 'A-' + '-'.join(f'{x}02' for x in a2)] if a2 else []) + ([ 'A-' + '-'.join(f'{x}01' for x in a1)] if a1 else [])
     tW['stack'] = stW
     tE['stack'] = [dict(label='Ground floor', kind='M', use='Entrance foyer with lifts; stilt parking')] + [dict(label=f'Floor {fno}', kind='A', nos=[f'B-{fno}01'], plan=dict(ft=['sim'])) for fno in range(1, 19)]
+    for L in stW + tE['stack']: L['h'] = 3.65      # AMC fire-safety opinion (both towers): ground and floors 1-18 3.65 m each; 75.15 m to the top slab
     ftypes = dict(dup=dict(name='Duplex home (West tower)', short='Duplex', exact=True, rows=[['Home', 'Duplex over two floors with a 23 ft double-height living room; the two duplexes of the tower interlock floor by floor (Gujarat RERA unit numbers)']]),
                   tri=dict(name='Top home over three floors (West tower)', short='Triplex', exact=True, rows=[['Home', 'A-1601-1701-1801: the top home of the West tower runs over floors 16, 17 and 18 (Gujarat RERA)']]),
                   sim=dict(name='Single-storey home (East tower)', short='Simplex', exact=True, rows=[['Home', 'One home on the whole floor, with private lift foyer (Adani Realty)']]))
@@ -317,9 +329,11 @@ def storeys(p, base):
     note = ('The Storeys by Adani Realty and UB Heritage: two towers of ground + 18 floors beside the 34.5 m road on the golf course, 35 homes. The West tower holds 17 interlocking duplexes '
             '(each RERA unit number names its floors, e.g. A-201-301, and the top home A-1601-1701-1801 spans three floors); the East tower has one home per floor. '
             'Tower outlines and the gap between them are from Adani Realty’s master layout; their position and alignment are taken from current satellite imagery of the completed towers '
-            '(the plot drawn on the RERA map service sits about 25 m north-west of them). Which side of the West tower carries the 01 and 02 numbers is not marked on the published plans.' + SURR)
-    return cfg_base(p, base, fr, [tW, tE], units, stW, 3.5, note, local(fr, R['poly']), ftypes=ftypes, flatWord='', startFloor='Floor 9', enqLabel='Enquire about this home',
-                    cellsNote='The 01 / 02 sides of the West tower are drawn indicatively.')
+            '(the plot drawn on the RERA map service sits about 25 m north-west of them). Which side of the West tower carries the 01 and 02 numbers is not marked on the published plans. '
+            'Floor heights are from the Ahmedabad fire-safety opinion filed on Gujarat RERA (the same for both towers): 3.65 m for the ground floor and each of floors 1 to 18, so the roof of floor 18 is 69.35 m up; '
+            'the opinion gives 75.15 m from ground level to the top slab.' + SURR)
+    return cfg_base(p, base, fr, [tW, tE], units, stW, 3.65, note, local(fr, R['poly']), ftypes=ftypes, flatWord='', startFloor='Floor 9', enqLabel='Enquire about this home',
+                    cellsNote='The 01 / 02 sides of the West tower are drawn indicatively.', hSrc='AMC fire-safety opinion filed on Gujarat RERA')
 
 # ------------------------------------------------------------------ The Storeys Infinity
 def infinity(p, base):

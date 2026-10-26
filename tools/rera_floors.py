@@ -31,7 +31,7 @@ def blocks_of(key):
     return v if isinstance(v, dict) else {}
 
 def _parts(name):
-    return [x.strip().upper().replace('TOWER', '').replace('BLOCK', '').strip() for x in re.split(r'[+&]', name)]
+    return [x.strip().upper().replace('TOWER', '').replace('BLOCK', '').strip(' -') for x in re.split(r'[+&]', name)]
 
 def match(label, blocks):
     """the RERA block that holds this tower's units (block names such as 'A', 'A+B', 'Tower B', 'EAST TOWER+WEST TOWER')"""
@@ -48,11 +48,12 @@ GENERIC = {   # listing id -> RERA unit-list key; floors decoded with std()
   'amora': 'new:29423', 'storeys-infinity': 'new:31253', 'nakshatra-regalia': 'new:17488', 'nakshatra-regalia-ii': 'new:24736', 'the-identity': 'new:24889',
   'united-siban': 'new:25408', 'nila-prana': 'new:27689', 'kaavyaratna-reva': 'new:14674', 'kaavyaratna-narmada': 'new:16677', 'kaavyaratna-the-ganga': 'new:28376',
   'shivalik-curv': 'new:19668', 'inspire-edge': 'new:22138', 'adani-center-point': 'new:20011',
+  'bakeri-stella': 'bakeri-stella', 'savvy-marina': 'savvy-marina', 'sangath-accolade': 'new:19015',      # live GujRERA unit lists, 21 Oct 2026
 }
 BLOCK_HINT = {'shilp-twin-towers': {'East Block': 'A', 'West tower': None}}
 
 def _pfx(u):
-    m = re.match(r'\s*([A-Za-z][A-Za-z0-9]*?)\s*[- ]\s*\d', u)
+    m = re.match(r'\s*([A-Za-z][A-Za-z0-9]*?)\s*[- ]\s*\d', u) or re.match(r'\s*([A-Za-z]{1,2})(?=\d{3,}\s*$)', u)     # A-1001, T1-201, or A1001
     return m.group(1).upper() if m else None
 
 def flat_nos(pid, label, blk=None, dec=None):
@@ -126,6 +127,15 @@ def tower_counts(pid, label, blk=None):
     b = hint[label] if label in hint else (match(label, B) or (list(B)[0] if len(B) == 1 else None))
     if not b: return None
     share = len([x for x in _parts(b) if x]) if '+' in b or '&' in b else 1
+    if share > 1:      # a block shared by several towers whose unit numbers carry the tower letter (A1001, B-204): count this tower's own units,
+        me = label.upper().replace('TOWER', '').replace('BLOCK', '').replace('WING', '').strip()      # plus the shared ground-level units (shops)
+        parts = set(_parts(b)); L = B[b]
+        if me in parts and any(_pfx(u) == me for u in L):
+            own = [u for u in L if _pfx(u) == me]
+            c = counts(own); c0 = counts([u for u in L if _pfx(u) not in parts])
+            c[0] = c.get(0, 0) + c0.get(0, 0)
+            if not c[0]: del c[0]
+            return (c, share, b)
     return (counts(B[b]), share, b)
 
 def stack_from(c, share, block, top=None, start_label='Floor', kind='residential', ground_use=None, nos=None):

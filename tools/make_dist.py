@@ -118,7 +118,7 @@ open(OUT + '/home.html', 'w', encoding='utf-8').write(
     '</head><body><p>This page has moved to <a href="/">galaxyestatesproperties.co.in</a>.</p></body></html>\n')
 
 # ---------- custom domain for GitHub Pages ----------
-open(OUT + '/CNAME', 'w').write('galaxyestatesproperties.co.in\n')
+open(OUT + '/CNAME', 'w').write('galaxyestatesproperties.co.in')
 
 # ---------- sitemap + robots for search engines ----------
 import datetime
