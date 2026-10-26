@@ -694,6 +694,10 @@ if os.path.exists(_SW):
     T3D["shivalik-wave"] = json.load(open(_SW, encoding="utf-8"))
     import facades as _FA; _FA.apply("shivalik-wave", T3D["shivalik-wave"])
     import rera_attach as _RA; _RA.apply("shivalik-wave", T3D["shivalik-wave"])
+# Antonia: model built from the developer's brochure (tools/antonia/); replaces the generic form
+_AN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "antonia", "t3d.json")
+if os.path.exists(_AN):
+    T3D["antonia"] = json.load(open(_AN, encoding="utf-8"))
 T3D["shivalik-shantigram"]["note"] = ("Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, "
     "skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; "
     "the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.")
@@ -754,6 +758,18 @@ def t3d_section(p):
   </div>
 </section>
 <script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
+
+def gallery_section(p):
+    """brochure images and building highlights for projects that have tools/<id>/gallery.json"""
+    if not p.get("gallery"): return ""
+    g = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), p["id"], "gallery.json"), encoding="utf-8"))
+    items = "".join(f'<button type="button" class="gallery-item" data-lightbox="{p['id']}" data-caption="{E(c)}"><img src="assets/img/ext/{f}.webp" alt="{E(p['name'])}: {E(c.lower())}" loading="lazy"/><figcaption>{E(c)}</figcaption></button>' for f, c in g["gallery"])
+    hl = "".join(f'<li><i class="fas fa-check" aria-hidden="true"></i> {E(h)}</li>' for h in g["highlights"])
+    return (f'<section class="section bg-alt" id="gallery"><div class="container">'
+            f'<div class="section-header seq"><span class="section-tag">From the developer\u2019s brochure</span><h2>Inside {E(p['name'])}</h2>'
+            f'<p>Tap any image to view it full screen.</p></div><div class="gallery reveal">{items}</div>'
+            f'<h3 class="detail-h reveal">Building at a glance</h3><ul class="check-list reveal">{hl}</ul>'
+            f'<p class="detail-source reveal">Images and plans: {E(p['developer'])} brochure. Renders are artistic impressions.</p></div></section>\n')
 
 def property_page(p):
     _, area = area_of(p)
@@ -826,7 +842,7 @@ def property_page(p):
   </div>
 </section>
 {t3d_section(p)}
-{mapsec}
+{gallery_section(p)}{mapsec}
 <section class="section">
   <div class="container">
     <div class="contact-grid">

@@ -203,11 +203,12 @@ AHD = [
   dict(id="antonia", name="Antonia", developer="Antonia Infra LLP", market="ahmedabad",
        cats=["Ahmedabad & Gandhinagar", "Commercial"], label="Offices & showrooms", city="Ahmedabad", country="India",
        location="Vaishnodevi Circle, S.G. Highway, Ahmedabad", mapq="Antonia, Vaishnodevi Circle, Ahmedabad",
-       price="On request", priceLabel="Upcoming: RERA registration pending", size="Floor plates for 3 to 5 offices per floor", possession="On request",
+       price="On request", priceLabel="Upcoming: RERA registration pending", size='Offices 1,400 – 3,234 sq.ft.; showrooms 1,210 – 2,576 sq.ft. (super built-up)', possession="On request",
        rera="Not yet listed on GujRERA (checked 15 Oct 2026). We will share prices once it is registered.", regLabel="RERA",
-       total="About 181 (8 showrooms + 173 offices, from the developer's floor plans)", available=ASK_AVAIL, build="42 floors · billed as Gujarat's tallest commercial tower",
-       mix=[("Showrooms (floors 1–2)", "On request", "On request", ""), ("Offices (floors 3–42)", "On request", "On request", "")],
-       source="Antonia Infra official site (antoniainfra.com: 42 floors, floor-by-floor layout); " + AHD_SRC, hue=225),
+       total="181: 8 showrooms and 173 offices (developer's brochure)", available=ASK_AVAIL, build="G+42 · 147.65 m to the terrace · 4 basements · billed as Gujarat's tallest commercial tower",
+       mix=[('Showrooms, floors 1–2 (4 per floor)', '1,210 – 2,576 sq.ft. super built-up', 'On request', ''), ('Offices, floors 3–20 and 22–31 (5 per floor)', '1,400 – 2,479 sq.ft. super built-up', 'On request', ''), ('Large offices, floors 32–42 (3 per floor)', '2,479 – 3,234 sq.ft. super built-up', 'On request', '')],
+       source='Antonia Infra LLP brochure (June 2026: renders, floor plans, unit tables and section drawing) and official site (antoniainfra.com); checked 26 Oct 2026', hue=225,
+       gallery=True),   # brochure images and highlights: tools/antonia/gallery.json; 3D: tools/antonia/t3d.json
   # ---- added 15 Oct 2026: S.G. Highway / Bodakdev
   dict(id="anamika-high-point", name="Anamika High Point", developer="Constera Realty Pvt. Ltd.", market="ahmedabad",
        cats=["Ahmedabad & Gandhinagar", "4 BHK", "5 BHK"], label="4 & 5 BHK", city="Ahmedabad", country="India",
