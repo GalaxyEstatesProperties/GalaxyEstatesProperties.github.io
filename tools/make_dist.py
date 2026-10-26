@@ -109,6 +109,14 @@ if '<base href' not in h:
     h = h.replace('<meta charset="UTF-8"/>', '<meta charset="UTF-8"/>\n<base href="/"/>\n<meta http-equiv="refresh" content="6;url=/"/>', 1)
     open(p404, 'w', encoding='utf-8').write(h)
 
+# ---------- old home-page address (home.html, used by the first version of the site) sends visitors and Google to / ----------
+open(OUT + '/home.html', 'w', encoding='utf-8').write(
+    '<!DOCTYPE html>\n<html lang="en"><head><meta charset="UTF-8"/>\n'
+    '<title>Galaxy Estates Properties</title>\n'
+    '<link rel="canonical" href="https://galaxyestatesproperties.co.in/"/>\n'
+    '<meta http-equiv="refresh" content="0;url=/"/>\n'
+    '</head><body><p>This page has moved to <a href="/">galaxyestatesproperties.co.in</a>.</p></body></html>\n')
+
 # ---------- custom domain for GitHub Pages ----------
 open(OUT + '/CNAME', 'w').write('galaxyestatesproperties.co.in\n')
 
@@ -116,7 +124,7 @@ open(OUT + '/CNAME', 'w').write('galaxyestatesproperties.co.in\n')
 import datetime
 URL = 'https://galaxyestatesproperties.co.in/'
 today = datetime.date.today().isoformat()
-pages = sorted(os.path.basename(f) for f in glob.glob(OUT + '/*.html') if not f.endswith(('404.html', 'search.html')))
+pages = sorted(os.path.basename(f) for f in glob.glob(OUT + '/*.html') if not f.endswith(('404.html', 'search.html', 'home.html')))
 with open(OUT + '/sitemap.xml', 'w') as sm:
     sm.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for pgf in pages:
