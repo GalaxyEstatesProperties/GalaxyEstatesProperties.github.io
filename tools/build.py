@@ -156,7 +156,7 @@ def head(title, desc, page, extra="", fname="index"):
 <meta property="og:description" content="{E(desc)}"/>
 <meta property="og:image" content="{IMG}2023/07/Landscape-Green.jpg"/>
 <meta property="og:url" content="{SITE_URL}{"" if fname=="index" else fname+".html"}"/>
-<link rel="canonical" href="{SITE_URL}{"" if fname=="index" else fname+".html"}"/>
+{'<meta name="robots" content="noindex"/>' if fname=="404" else f'<link rel="canonical" href="{SITE_URL}{"" if fname=="index" else fname+".html"}"/>'}
 <link rel="icon" type="image/svg+xml" href="{LOGO}"/>
 <link rel="preconnect" href="https://township.homedeliveryrealtors.com"/>
 <link rel="stylesheet" href="assets/vendor/fonts.css"/>
@@ -177,14 +177,14 @@ def nav(solid=False):
     return f"""
 <header class="navbar{' solid' if solid else ''}" id="navbar">
   <div class="container navbar-container">
-    <a href="index.html" class="logo" aria-label="Galaxy Estates Properties home">
+    <a href="/" class="logo" aria-label="Galaxy Estates Properties home">
       <img src="{LOGO}" alt="" class="logo-img" width="44" height="44"/>
       <span class="logo-text"><b>Galaxy Estates</b><small>Properties</small></span>
     </a>
     <div class="nav-menu-wrap" id="navMenu">
       <nav aria-label="Main">
         <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+          <li><a href="/" class="nav-link" data-page="home">Home</a></li>
           <li class="has-dropdown">
             <button type="button" class="nav-link" aria-expanded="false" aria-haspopup="true">Properties <i class="fas fa-chevron-down"></i></button>
             <ul class="dropdown">
@@ -273,7 +273,7 @@ def footer():
   <div class="container">
     <div class="footer-grid stagger">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><img src="{LOGO}" alt="" class="logo-img" width="44" height="44"/><span class="logo-text"><b>Galaxy Estates</b><small>Properties</small></span></a>
+        <a href="/" class="logo"><img src="{LOGO}" alt="" class="logo-img" width="44" height="44"/><span class="logo-text"><b>Galaxy Estates</b><small>Properties</small></span></a>
         <p>Authorised channel partner for Adani Shantigram, advising buyers on homes and investments across Ahmedabad and GIFT City, on buying or selling land across Gujarat, and on property abroad.</p>
         <div class="socials">
           <a href="#" data-whatsapp target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -283,7 +283,7 @@ def footer():
       <div class="footer-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="projects.html">All properties</a></li>
           <li><a href="shantigram.html">Adani Shantigram</a></li>
           <li><a href="gift-city.html">GIFT City</a></li>
@@ -779,8 +779,8 @@ def property_page(p):
     cpage = CB.page_for(p["country"]) if p["market"] == "abroad" else None
     cname = next((c["title"] for c in CB.COUNTRIES if c["slug"] + ".html" == cpage), "")
     sep = '<i class="fas fa-chevron-right"></i>'
-    crumbs = (f'<a href="index.html">Home</a>{sep}<a href="global.html">Global</a>{sep}<a href="{cpage}">{E(cname)}</a>{sep}' if cpage
-              else f'<a href="index.html">Home</a>{sep}<a href="projects.html">Properties</a>{sep}')
+    crumbs = (f'<a href="/">Home</a>{sep}<a href="global.html">Global</a>{sep}<a href="{cpage}">{E(cname)}</a>{sep}' if cpage
+              else f'<a href="/">Home</a>{sep}<a href="projects.html">Properties</a>{sep}')
     guide = (f'<p class="detail-source reveal"><a href="{cpage}"><i class="fas fa-book-open" aria-hidden="true"></i> Buying in {E(cname)} from India: rules, costs, developers and ongoing projects</a></p>' if cpage else '')
     body = f"""<section class="page-hero prop-hero">
   <div class="page-hero-bg" style="background-image:url('{p['img']}')"></div>

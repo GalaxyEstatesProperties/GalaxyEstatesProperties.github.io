@@ -259,7 +259,7 @@ def build_body(c, ALL, card):
   <div class="page-hero-bg" style="background-image:url('{hero['img']}')"></div>
   <div class="page-hero-overlay"></div>
   <div class="container page-hero-content">
-    <div class="breadcrumb hs"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><a href="global.html">Global</a><i class="fas fa-chevron-right"></i><span>{E(c['title'])}</span></div>
+    <div class="breadcrumb hs"><a href="/">Home</a><i class="fas fa-chevron-right"></i><a href="global.html">Global</a><i class="fas fa-chevron-right"></i><span>{E(c['title'])}</span></div>
     <span class="section-tag hs">Property guide for Indian investors</span>
     <h1>{E(c['title'])}</h1>
     <p class="hs">{E(c['lead'])}</p>
