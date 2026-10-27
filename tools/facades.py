@@ -65,11 +65,12 @@ FACADE = {
   'venus-the-universe': F('#cbbcab', '#e6ddd1', '#3a4855'),
   'shilp-business-gateway': G('#5a7f9f', '#c9a46a'),
   # abroad
-  'binghatti-burj-jacob': G('#7da2c4', '#e7eef4'),
+  'binghatti-burj-jacob': G('#6f97bd', '#f1f4f7', style='piers', wall='#d9e2ea'),   # pale blue glass between white vertical fins (Binghatti renders)
+  'binghatti-mercedes-city': G('#34506e', '#e3e8ee', balc=0.5, balcD=1.6),   # Vision Iconic: glass in a silver frame, silver-railed balconies (Binghatti renders)
   'danube-bayz-101': G('#8fa9c0', '#e5ebf0'),
   'danube-diamondz': G('#a9c3d8', '#f2f4f6'),
-  'danube-shahrukhz': G('#3b4e63', '#c9a46a'),
-  'emaar-valo': F('#e8e4dc', '#d2ccc1', '#2b3a48', balc=0.7),
+  'danube-shahrukhz': G('#2f4258', '#c9a46a'),   # dark glass with gold bands at every floor (Danube renders)
+  'emaar-valo': G('#4d6a86', '#eef0f2', wall='#dfe3e6', balc=0.55, balcD=1.8),   # glass with silver mullions and glass-railed balconies (Emaar renders)
   'dcondo-vite': F('#e7dccb', '#f3ede4', '#3c4b58'),
   'newport-residences': G('#4d6177', '#c9b48f', balc=0.4),
   'trx-residences': F('#e9e9e6', '#d6d7d4', '#3e5366', balc=0.6),

@@ -520,6 +520,9 @@ def make(ALL):
     import pl_models as PLM          # third round: GIFT City and Ahmedabad projects from the developers' key plans (pl_models.py)
     for pid in PLM.PIDS:
         if pid in P and pid in out: out[pid] = PLM.build(pid, P[pid], out[pid])
+    import intl_models as IM        # Dubai towers drawn to their published form (intl_models.py)
+    for pid in IM.PIDS:
+        if pid in P and pid in out: out[pid] = IM.build(pid, P[pid], out[pid])
     import facades as FA            # facade colours and treatment from each project's render (facades.py)
     for pid, cfg in out.items(): FA.apply(pid, cfg)
     import rera_attach as RA        # registered carpet and balcony area of every flat (Gujarat RERA unit lists)

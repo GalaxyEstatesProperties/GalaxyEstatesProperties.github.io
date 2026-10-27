@@ -16,7 +16,7 @@ def shape():
     a0, a1, n = math.radians(45), math.radians(215), 20
     steps = [round(190 - i * 150 / (n - 1), 1) for i in range(n)]
     return dict(podR=72, plazaR=round(math.sqrt(2966 / math.pi), 1),
-                shaft=dict(x=round(50 * math.cos(math.radians(25)), 1), y=round(50 * math.sin(math.radians(25)), 1), w=34, d=24, ang=round(math.radians(-65), 4)),
+                shaft=dict(x=round(50 * math.cos(math.radians(25)), 1), y=round(50 * math.sin(math.radians(25)), 1), w=34, d=24, r=6, ang=round(math.radians(-65), 4)),
                 spine=dict(r1=40, r2=66, a0=round(a0, 4), a1=round(a1, 4), steps=steps))
 
 PARCEL = [(-100, 85), (100, 85), (120, -195), (95, -485), (-135, -425), (-115, -245)]
@@ -40,8 +40,9 @@ def context():
     for x0, row in ((70, ne), (-78, sw)):
         for y, h in row:
             base = 10 if y < -380 else 14
-            C.append(dict(t='slab', x=x0, y=y + 9, w=40, d=16, r=8, h=h - base, z=base))
-            C.append(dict(t='slab', x=x0 + 1.5, y=y - 9, w=40, d=16, r=8, h=h - base - 9, z=base))
+            # each tower: two glass slabs side by side, each held in a silver frame over its ends and top, with the three-pointed star at the top corner
+            C.append(dict(t='mbt', x=x0, y=y + 8.5, w=40, d=15, r=8, h=h - base, z=base, star=True))
+            C.append(dict(t='mbt', x=x0 + 1.5, y=y - 8.5, w=40, d=15, r=8, h=h - base - 9, z=base))
     C.append(dict(t='label', text='Binghatti City: 11 more towers', x=10, y=-300, z=290, size=15))
     C.append(dict(t='label', text='Al Ain Road (E66)', x=330, y=-160, z=24, size=13))
     C.append(dict(t='label', text='Grand Promenade', x=0, y=-420, z=30, size=12))
