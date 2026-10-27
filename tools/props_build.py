@@ -267,7 +267,7 @@ AHD = [
        rera="Registered on GujRERA (ref. MAA06869): we confirm the current number before you book", regLabel="RERA",
        total=ASK_UNITS, available=ASK_AVAIL, build="80-acre gated plotted community",
        mix=[("Plot", "510 sq.yd.", "₹56 Lakh*", ""), ("Plot", "1,014 sq.yd.", "₹1.10 Cr*", "")],
-       source="Arvind SmartSpaces project page and the 360 Realtors listing (80 acres); " + AHD_SRC, hue=85),
+       source="Arvind SmartSpaces project page and property listings (80 acres); " + AHD_SRC, hue=85),
   dict(id="arvind-aqua-city", name="Arvind Aqua City", developer="Arvind SmartSpaces Ltd.", market="ahmedabad",
        cats=["Ahmedabad & Gandhinagar", "Weekend villas & plots", "Villas & townhouses"], label="Weekend plots & villas", city="Ahmedabad", country="India",
        location="Near Kadi Dam, Kalyangadh, off Kadi–Thol Road, Ahmedabad", mapq="Arvind Aqua City, Kalyangadh, Ahmedabad",

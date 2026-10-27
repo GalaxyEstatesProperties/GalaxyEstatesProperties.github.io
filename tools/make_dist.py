@@ -52,38 +52,7 @@ for font in glob.glob(OUT + '/assets/vendor/webfonts/*.woff2'):
     os.replace(tmp, font)
 print(f'icons kept: {len(codes)} (css {len(css)//1024}KB -> {len(css2)//1024}KB)')
 
-# ---------- self-host pictures that were linked from another website (faster, and they cannot disappear) ----------
-import urllib.request, io
-from PIL import Image as _Im
-EXT_HOST = 'https://township.homedeliveryrealtors.com'
-CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ext_cache'); os.makedirs(CACHE, exist_ok=True)
-os.makedirs(OUT + '/assets/img/ext', exist_ok=True)
-files = glob.glob(OUT + '/*.html') + glob.glob(OUT + '/assets/*.js') + glob.glob(OUT + '/assets/*.css')
-urls = set()
-for f in files: urls |= set(re.findall(re.escape(EXT_HOST) + r'/wp-content/[^"\'\s)<>]+', open(f, encoding='utf-8').read()))
-local = {}
-for u in sorted(urls):
-    slug = re.sub(r'[^a-z0-9]+', '-', os.path.splitext(u.split('/uploads/')[-1])[0].lower()).strip('-')
-    raw = os.path.join(CACHE, slug)
-    if not os.path.exists(raw):
-        req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'})
-        open(raw, 'wb').write(urllib.request.urlopen(req, timeout=60).read())
-    im = _Im.open(raw); im = im.convert('RGBA') if im.mode in ('P', 'LA', 'RGBA') else im.convert('RGB')
-    if im.width > 1600: im = im.resize((1600, round(im.height * 1600 / im.width)), _Im.LANCZOS)
-    im.save(OUT + f'/assets/img/ext/{slug}.webp', 'WEBP', quality=80, method=6)
-    j = im.convert('RGB'); j.thumbnail((1200, 1200)); j.save(OUT + f'/assets/img/ext/{slug}.jpg', 'JPEG', quality=82, optimize=True, progressive=True)
-    local[u] = slug
-def _swap(t):
-    t = re.sub(r'(<meta (?:property|name)="(?:og:image|twitter:image)" content=")' + re.escape(EXT_HOST) + r'/wp-content/[^"]+', lambda m: m.group(1) + 'https://galaxyestatesproperties.co.in/assets/img/ext/' + local[m.group(0)[len(m.group(1)):]] + '.jpg', t)
-    t = re.sub(r'("image"\s*:\s*")' + re.escape(EXT_HOST) + r'/wp-content/[^"]+', lambda m: m.group(1) + 'https://galaxyestatesproperties.co.in/assets/img/ext/' + local[m.group(0)[len(m.group(1)):]] + '.jpg', t)
-    for u, slug in local.items(): t = t.replace(u, 'assets/img/ext/' + slug + '.webp')
-    t = t.replace(' ' + EXT_HOST + ' ', ' ')          # no longer needed in the content-security policy
-    return t.replace('<link rel="preconnect" href="' + EXT_HOST + '"/>\n', '').replace('<link rel="preconnect" href="' + EXT_HOST + '"/>', '')
-for f in files:
-    t = open(f, encoding='utf-8').read(); t2 = _swap(t)
-    if f.endswith('.css'): t2 = t2.replace('assets/img/ext/', 'img/ext/')     # stylesheet paths are relative to assets/
-    if t2 != t: open(f, 'w', encoding='utf-8').write(t2)
-print('self-hosted pictures:', len(local))
+# (pictures are kept in assets/img/ext; nothing is fetched from other websites)
 
 # ---------- minify our own CSS / JS ----------
 own = [f for f in glob.glob(OUT + '/assets/*.js') + glob.glob(OUT + '/assets/*.css')]

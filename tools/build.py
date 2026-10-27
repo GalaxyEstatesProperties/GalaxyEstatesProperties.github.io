@@ -10,45 +10,45 @@ SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
 OUT = '/home/claude/galaxy-estates-properties'
 
 LOGO = "assets/logo.svg"
-IMG = "https://township.homedeliveryrealtors.com/wp-content/uploads/"
+IMG = "https://galaxyestatesproperties.co.in/assets/img/ext/"   # self-hosted pictures
 
 PROJECTS = [
   dict(id="aster-neo", name="Aster Neo", cats=["2 BHK"], label="2 BHK", price="₹78 Lakhs*", priceLabel="Onwards, all inclusive",
        size="1205 sq.ft. (690 sq.ft. carpet)", possession="Ready to move", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA11924/070623",
-       img=IMG+"2026/03/aster-1024x819.png", color="#7FB3D5"),
+       img="assets/img/ext/2026-03-aster-1024x819.webp", color="#7FB3D5"),
   dict(id="embrace", name="Embrace", cats=["3 BHK"], label="3 BHK", price="₹1.42 Cr*", priceLabel="Onwards, all inclusive",
        size="100 sq.m. (1082 sq.ft. carpet)", possession="Nov 2027", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA12526/251023",
-       img=IMG+"2024/04/1920x1080-Birds-Eye-View-2-e1711971183783-768x604.jpg", color="#9B8AD6"),
+       img="assets/img/ext/2024-04-1920x1080-birds-eye-view-2-e1711971183783-768x604.webp", color="#9B8AD6"),
   dict(id="elysium-novus", name="Elysium Novus", cats=["3 BHK"], label="3 BHK", price="₹1.23 Cr*", priceLabel="Onwards, all inclusive",
        size="975 – 1105 sq.ft. carpet", possession="Apr 2029", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Urban Development Authority/RAA14729/270125/311228",
-       img=IMG+"2025/05/Untitled-design-24-1024x768.png", color="#6FC2B0"),
+       img="assets/img/ext/2025-05-untitled-design-24-1024x768.webp", color="#6FC2B0"),
   dict(id="greenfield", name="Greenfield", cats=["3 BHK", "4 BHK"], label="3 BHK + 4 BHK", price="₹1.73 Cr*", priceLabel="Onwards, all inclusive",
        size="2653 sq.ft. (1380 sq.ft. carpet)", possession="Dec 2029", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA14879/250225/311229",
-       img=IMG+"2025/05/WhatsApp-Image-2025-05-12-at-1.54.53-PM.jpeg", color="#8BC34A"),
+       img="assets/img/ext/2025-05-whatsapp-image-2025-05-12-at-1-54-53-pm.webp", color="#8BC34A"),
   dict(id="ambrosia", name="Ambrosia", cats=["4 BHK"], label="4 BHK", price="₹2.49 Cr*", priceLabel="Onwards, all inclusive",
        size="3208 – 3707 sq.ft. (1784 – 2062 sq.ft. carpet)", possession="Jan 2027", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA10833/201022",
-       img=IMG+"2023/07/Landscape-Green.jpg", color="#E8A87C"),
+       img="assets/img/ext/2023-07-landscape-green.webp", color="#E8A87C"),
   dict(id="amogha", name="Amogha", cats=["3 BHK"], label="3 BHK", price="On request", priceLabel="Ask for resale availability",
        size="624.09 – 776.40 sq.ft. RERA carpet", possession="Completed", rera="PR/GJ/AHMEDABAD/DASKROI/AUDA/RAA08011/EX1/260224/280225",
        img="", color="#B0BEC5"),
   dict(id="paarijat", name="Paarijat", cats=["4 BHK"], label="4 BHK", price="₹2.49 Cr*", priceLabel="Onwards, all inclusive",
        size="3230 sq.ft. (1713 sq.ft. carpet)", possession="Ready to move", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA10759/121022",
-       img=IMG+"2023/07/ggg-2-1-e1688386931572.webp", color="#F28FAD"),
+       img="assets/img/ext/2023-07-ggg-2-1-e1688386931572.webp", color="#F28FAD"),
   dict(id="shilp-skyline", name="Skyline", cats=["4 BHK"], label="4 BHK", price="₹2.23 Cr*", priceLabel="Onwards, all inclusive",
        size="3100 sq.ft. (1595 sq.ft. carpet)", possession="Sep 2029", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA14084/020924/300929",
-       img=IMG+"2025/05/WhatsApp-Image-2025-05-12-at-2.57.06-PM.jpeg", color="#5DADE2"),
+       img="assets/img/ext/2025-05-whatsapp-image-2025-05-12-at-2-57-06-pm.webp", color="#5DADE2"),
   dict(id="belrosa", name="Belrosa", cats=["4 BHK"], label="4 BHK", price="₹5.32 Cr*", priceLabel="Onwards",
        size="5450 – 6800 sq.ft. (3000 – 3740 sq.ft. carpet)", possession="Sep 2030", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA15538/180725/310530",
-       img=IMG+"2025/08/Untitled-design-768x702.png", color="#C9A962"),
+       img="assets/img/ext/2025-08-untitled-design-768x702.webp", color="#C9A962"),
   dict(id="shivalik-shantigram", name="Shivalik Shantigram, Signature Collection", cats=["4 BHK", "5 BHK"], label="4 & 5 BHK + 6 BHK penthouses", price="Price on call", priceLabel="Box price shared on call",
        size="4,147.57 – 11,953.54 sq.ft. RERA area", possession="Dec 2031 (tentative)", rera="Not yet received (developer’s sheet, Oct 2026). We confirm the registration before any booking",
        img="", color="#C8925E"),
   dict(id="north-park", name="The North Park", cats=["Villas"], label="Villas", price="On request", priceLabel="4 BHK villas",
        size="550 sq. yard saleable area", possession="On request", rera="PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA01824/010318",
-       img=IMG+"2025/05/Untitled-design-2.png", color="#D4AC6E"),
+       img="assets/img/ext/2025-05-untitled-design-2.webp", color="#D4AC6E"),
   dict(id="west-park", name="The West Park", cats=["Villas"], label="Villas", price="On request", priceLabel="Build-to-suit villas",
        size="648 sq. yard onwards", possession="On request", rera="PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA11300/020323",
-       img=IMG+"2023/07/Villa-Render-1024x819.jpg", color="#E0C38C"),
+       img="assets/img/ext/2023-07-villa-render-1024x819.webp", color="#E0C38C"),
 ]
 import new_listings as NL
 PROJECTS += [dict(p, img='', color='#C9A962') for p in NL.SH_NEW]
@@ -126,7 +126,7 @@ GATE_HASH = "sha256-" + base64.b64encode(hashlib.sha256(JS_GATE.encode()).digest
 CSP = ("default-src 'self'; "
        f"script-src 'self' '{GATE_HASH}' https://www.googletagmanager.com; "
        "style-src 'self' 'unsafe-inline'; "
-       "img-src 'self' data: blob: https://township.homedeliveryrealtors.com https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
+       "img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
        "font-src 'self' data:; "
        "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
        "frame-src https://maps.google.com https://www.google.com; "
@@ -154,11 +154,10 @@ def head(title, desc, page, extra="", fname="index"):
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="{E(title)}"/>
 <meta property="og:description" content="{E(desc)}"/>
-<meta property="og:image" content="{IMG}2023/07/Landscape-Green.jpg"/>
+<meta property="og:image" content="{IMG}2023-07-landscape-green.jpg"/>
 <meta property="og:url" content="{SITE_URL}{"" if fname=="index" else fname+".html"}"/>
 {'<meta name="robots" content="noindex"/>' if fname=="404" else f'<link rel="canonical" href="{SITE_URL}{"" if fname=="index" else fname+".html"}"/>'}
 <link rel="icon" type="image/svg+xml" href="{LOGO}"/>
-<link rel="preconnect" href="https://township.homedeliveryrealtors.com"/>
 <link rel="stylesheet" href="assets/vendor/fonts.css"/>
 <link rel="stylesheet" href="assets/vendor/fa/all.min.css"/>
 <script>{JS_GATE}</script>
