@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Make the deployable copy of the site in /home/claude/site-dist:
+"""Make the deployable copy of the site in the website folder:
    - copies the built site
    - trims Font Awesome to the icons actually used (CSS rules + font glyphs)
    - minifies CSS and JS with esbuild
    - stamps asset URLs with a version so browsers fetch fresh files after each update
 """
 import os, re, shutil, subprocess, glob, hashlib, sys
-SRC = '/home/claude/galaxy-estates-properties'
-OUT = '/home/claude/galaxyestatesproperties.github.io'
+WORK = os.environ.get('GALAXY_WORKDIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # folder holding the site folders
+SRC = os.path.join(WORK, 'galaxy-estates-properties')
+OUT = os.path.join(WORK, 'galaxyestatesproperties.github.io')
 SKIP = {'preview.bat', 'preview.sh', 'serve.ps1', 'serve.py'}   # local-preview helpers, not needed online
 
 if os.path.isdir(OUT):

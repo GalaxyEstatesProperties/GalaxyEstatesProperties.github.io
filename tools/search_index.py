@@ -1,6 +1,7 @@
 """assets/search-index.json: every page of the site (and its main sections) for the site search, built from the generated HTML."""
 import re, json, glob, os, html
-SRC = '/home/claude/galaxy-estates-properties'
+WORK = os.environ.get('GALAXY_WORKDIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # folder holding the site folders
+SRC = os.path.join(WORK, 'galaxy-estates-properties')
 SKIP = {'404.html', 'search.html'}
 def text(h): return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', h))).strip()
 def run(projects):

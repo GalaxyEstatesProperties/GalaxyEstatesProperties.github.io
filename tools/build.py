@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Assemble the Galaxy Estates Properties static site from shared partials + page bodies."""
 import json, html, os, re, sys
+WORK = os.environ.get('GALAXY_WORKDIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # folder holding the site folders
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import land_build as L
 import global_build as G
 import props_build as PB
 
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
-OUT = '/home/claude/galaxy-estates-properties'
+OUT = os.path.join(WORK, 'galaxy-estates-properties')
 
 LOGO = "assets/logo.svg"
 IMG = "https://galaxyestatesproperties.co.in/assets/img/ext/"   # self-hosted pictures
