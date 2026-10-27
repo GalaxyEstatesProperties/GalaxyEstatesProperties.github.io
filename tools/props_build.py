@@ -254,7 +254,7 @@ AHD = [
        location="Govindpura, 10 minutes from New Karnavati Club, Ahmedabad", mapq="23.088869,72.2842321",
        price="1,350 – 7,000 sq.yd", priceLabel="Villa plots (developer's sheet)", size="Villa plots of 1,350 – 7,000 sq.yd (size plan: 1,318 – 12,616 sq.yd super built-up) · villas of 280 – 710 sq.yd super built-up", possession="Dec 2026 (developer) · under construction",
        rera="Not published by the developer: we confirm it on GujRERA before you book", regLabel="RERA",
-       total="319 villa plots", available=ASK_AVAIL, build="200 acres in six phases beside a lake · 319 villa plots with the villa built by the developer (construction compulsory) · clubhouse and seven landscaped brooks",
+       total="320 villa plots (project sheet: 319)", available=ASK_AVAIL, build="200 acres in six phases beside a lake · 320 villa plots on the size plan with the villa built by the developer (construction compulsory) · clubhouse and seven landscaped brooks",
        imgnote="Official image from A. Shridhar Group.",
        mix=[("Francolin villa (DPA Design Studio)", "3 BHK 640 · 4 BHK 710 sq.yd super built-up", "", ""), ("Goldfinch villa (R+R Architects)", "3 BHK 625 · 4 BHK 690 sq.yd super built-up", "", ""),
             ("Hummingbird villa (R+R Architects)", "2 BHK 320 · 3 BHK 415 · 4 BHK 475 sq.yd super built-up", "", ""), ("Woodpecker villa (DPA Design Studio)", "2 BHK 415 · 3 BHK 475 · 4 BHK 575 sq.yd super built-up", "", ""),
