@@ -702,6 +702,10 @@ if os.path.exists(_SW):
 _AN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "antonia", "t3d.json")
 if os.path.exists(_AN):
     T3D["antonia"] = json.load(open(_AN, encoding="utf-8"))
+# Bakeri Stella: model built from the developer's brochure floor plans (tools/bakeri_stella/); replaces the generic form
+_BS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bakeri_stella", "t3d.json")
+if os.path.exists(_BS):
+    T3D["bakeri-stella"] = json.load(open(_BS, encoding="utf-8"))
 # Kalrav plotting projects (A. Shridhar): plot-by-plot site maps built from the developer's layouts (kalrav/kbuild.py)
 _KD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "kalrav", "t3d")
 for _f in sorted(os.listdir(_KD)) if os.path.isdir(_KD) else []:
