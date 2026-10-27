@@ -84,7 +84,8 @@ for p in PB.GIFT + PB.AHD + PB.INTL:
     p.setdefault("img", ""); p.setdefault("color", "#C9A962")
     p["blurb"] = (f"{p['name']} by {p['developer']} in {p['location']}, {p['country']}. {p['build']}. "
                   if p['developer'] and p['developer'] != 'Ask us' else f"{p['name']} in {p['location']}, {p['country']}. {p['build']}. ") + \
-                 f"Checked against: {p['source']}. Prices and availability change, so ask us for the current price sheet."
+                 (f"Checked against: {p['source']}. Plot availability changes, so ask us for the current list." if p.get("noprice") else
+                  f"Checked against: {p['source']}. Prices and availability change, so ask us for the current price sheet.")
 ALL = PROJECTS + PB.GIFT + PB.AHD + PB.INTL
 import official as OFF
 _NEW = {p["id"] for p in NL.SH_NEW + NL.GIFT_NEW}
@@ -364,9 +365,9 @@ def modals():
         <div><dt>Available</dt><dd data-d="avail"></dd></div>
         <div><dt>Possession</dt><dd data-d="poss"></dd></div>
       </dl>
-      <h3 class="detail-h">Unit types, sizes and prices</h3>
+      <h3 class="detail-h" data-d="mixh">Unit types, sizes and prices</h3>
       <div class="mix-wrap"><table class="mix-table">
-        <thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th></tr></thead>
+        <thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col" data-d="pth">Price</th><th scope="col">Available</th></tr></thead>
         <tbody data-d="mix"></tbody>
       </table></div>
       <div class="detail-specs">
@@ -374,7 +375,7 @@ def modals():
         <div class="wide" data-d="buildwrap"><small>Project</small><strong data-d="build"></strong></div>
         <div class="wide"><small data-d="reglabel">RERA</small><strong data-d="rera" style="font-size:.8rem;word-break:break-word"></strong></div>
       </div>
-      <p class="detail-source">Source: <span data-d="source"></span>. Prices and availability change; we confirm both before you book.</p>
+      <p class="detail-source">Source: <span data-d="source"></span>. <span data-d="srcnote">Prices and availability change; we confirm both before you book.</span></p>
       <div class="btn-row">
         <button type="button" class="cta-btn primary" data-d="enquire"><i class="fas fa-calendar-alt"></i> Enquire</button>
         <a class="cta-btn wa" data-d="wa" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
@@ -630,7 +631,9 @@ AHD_AREA = {"maruti-360": ("bodakdev-ahmedabad", "Bodakdev, Ahmedabad"), "gala-i
             "antonia": ("sg-highway-ahmedabad", "S.G. Highway, Ahmedabad"),
             "anamika-high-point": ("sg-highway-bodakdev-ahmedabad", "S.G. Highway, Bodakdev, Ahmedabad"), "ashridhar-wynn": ("sindhu-bhavan-road-ahmedabad", "Sindhu Bhavan Road, Ahmedabad"),
             "suryam-the-banyan": ("bodakdev-ahmedabad", "Bodakdev, Ahmedabad"),
-            "ashridhar-kalrav-seasons": ("thol-ahmedabad", "Thol, Ahmedabad"), "ashridhar-kalrav-nest": ("north-ahmedabad", "Govindpura, North Ahmedabad"),
+            "ashridhar-kalrav-seasons": ("thol-ahmedabad", "Lakshmanpura, near Thol, Ahmedabad"), "ashridhar-kalrav-nest": ("north-ahmedabad", "Govindpura, near Thol, Ahmedabad"),
+            "ashridhar-kalrav-alpines": ("nandoli-ahmedabad", "Nandoli, near Shilaj, Ahmedabad"), "ashridhar-kalrav-treasure": ("bhavanpur-ahmedabad", "Bhavanpur, near Thol, Ahmedabad"),
+            "ashridhar-kalrav-trails": ("chandrasan-ahmedabad", "Chandrasan, near Thol, Ahmedabad"), "ashridhar-kalrav-farms": ("jhaloda-ahmedabad", "Jhaloda, near Thol, Ahmedabad"),
             "arvind-forreste": ("nasmed-gandhinagar", "Nasmed, Gandhinagar"), "arvind-uplands-3": ("nal-sarovar-ahmedabad", "Nal Sarovar Road, Ahmedabad"),
             "arvind-aqua-city": ("kadi-thol-road-ahmedabad", "Kadi–Thol Road, Ahmedabad"), "bsafal-rethal-greens": ("sanand-ahmedabad", "Sanand, Ahmedabad"),
             "suryam-repose": ("thol-ahmedabad", "Greater Thol, Ahmedabad"), "suryam-the-sage": ("thol-ahmedabad", "Greater Thol, Ahmedabad"),
@@ -651,6 +654,7 @@ for p in ALL: p["page"] = page_url(p)
 def kind_words(p):
     if "Commercial" in p["cats"] and p["id"] != "navratna-gulmohar": return "offices and showrooms" if p["market"] != "abroad" else "offices"
     if p["id"] == "navratna-gulmohar": return "homes, offices and shops"
+    if "residential plots" in p["label"]: return "residential plots"
     if "Weekend villas & plots" in p["cats"]: return "weekend villas and plots" if "Villas & townhouses" in p["cats"] else "weekend and farm plots"
     if "Villas & townhouses" in p["cats"] and p["market"] != "abroad": return "villas"
     return p["label"].lower().replace("bhk", "BHK") + (" flats" if p["market"] != "abroad" and "BHK" in p["label"] else "")
@@ -697,6 +701,11 @@ if os.path.exists(_SW):
 _AN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "antonia", "t3d.json")
 if os.path.exists(_AN):
     T3D["antonia"] = json.load(open(_AN, encoding="utf-8"))
+# Kalrav plotting projects (A. Shridhar): plot-by-plot site maps built from the developer's layouts (kalrav/kbuild.py)
+_KD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "kalrav", "t3d")
+for _f in sorted(os.listdir(_KD)) if os.path.isdir(_KD) else []:
+    if _f.startswith("ashridhar-kalrav-") and _f.endswith(".json"):
+        T3D[_f[:-5]] = json.load(open(os.path.join(_KD, _f), encoding="utf-8"))
 T3D["shivalik-shantigram"]["note"] = ("Model drawn from the developer’s brochure (V4.0, Oct 2026): tower positions from the typical-floor site plan, 4.3 m floor to floor, 138.5 m tall, two amenity floors, "
     "skip floor 16 and the four-level penthouse on top. Sizes are to scale; facade finishes are simplified. Surroundings (golf course, township roads, Narmada canal, nearby buildings) are from OpenStreetMap; "
     "the site position follows the brochure’s aerial plan and is approximate. Prices are shared on call. RERA registration is not yet received.")
@@ -738,17 +747,23 @@ write_town_sites()
 def t3d_section(p):
     c = T3D.get(p["id"])
     if not c: return ""
+    land = bool(c.get("land"))
+    if land:
+        head = f"""<div class="section-header seq"><span class="section-tag">3D site map</span><h2>Pick any plot</h2>
+      <p>Every plot of {E(p['name'])} on its real site, with its number and size. Tap or click a plot, or choose a block from the list, to see the plots in it. Drag to turn the map, pinch or scroll to zoom.</p></div>"""
+    else:
+        head = f"""<div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>{"Pick any floor" if len(c["towers"]) == 1 else "Pick any tower and floor"}</h2>
+      <p>Tap or click a floor in the model, or choose it from the lists, to see {'that floor’s offices and shops' if c.get('kind') == 'commercial' else 'the homes on that floor'}, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>"""
     return f"""<section class="section bg-alt" id="floors">
   <div class="container">
-    <div class="section-header seq"><span class="section-tag">3D floor explorer</span><h2>{"Pick any floor" if len(c["towers"]) == 1 else "Pick any tower and floor"}</h2>
-      <p>Tap or click a floor in the model, or choose it from the lists, to see {'that floor’s offices and shops' if c.get('kind') == 'commercial' else 'the homes on that floor'}, with sizes, prices and height. Drag to turn the model, pinch or scroll to zoom.</p></div>
+    {head}
     <div class="t3d reveal" data-t3d="t3d-{p['id']}">
-      <div class="t3d-stage" aria-label="3D model of {E(p['name'])}"></div>
+      <div class="t3d-stage" aria-label="{"3D site map" if land else "3D model"} of {E(p['name'])}"></div>
       <div class="t3d-side">
         <div class="t3d-pick">
-          <label>Tower<select name="t3d-tower"></select></label>
-          <label>Floor<select name="t3d-floor"></select></label>
-          <div class="t3d-steps"><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
+          <label>{"Block" if land else "Tower"}<select name="t3d-tower"></select></label>
+          <label{" hidden" if land else ""}>Floor<select name="t3d-floor"></select></label>
+          <div class="t3d-steps"{" hidden" if land else ""}><button type="button" class="cta-btn ghost small" data-t3d-step="1" aria-label="One floor up"><i class="fas fa-arrow-up"></i></button><button type="button" class="cta-btn ghost small" data-t3d-step="-1" aria-label="One floor down"><i class="fas fa-arrow-down"></i></button></div>
         </div>
         <div class="t3d-panel" aria-live="polite"></div>
       </div>
@@ -759,25 +774,45 @@ def t3d_section(p):
 <script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
 
 def gallery_section(p):
-    """brochure images and building highlights for projects that have tools/<id>/gallery.json"""
-    if not p.get("gallery"): return ""
-    g = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), p["id"], "gallery.json"), encoding="utf-8"))
-    items = "".join(f'<button type="button" class="gallery-item" data-lightbox="{p['id']}" data-caption="{E(c)}"><img src="assets/img/ext/{f}.webp" alt="{E(p['name'])}: {E(c.lower())}" loading="lazy"/><figcaption>{E(c)}</figcaption></button>' for f, c in g["gallery"])
+    """images and highlights for projects that have <id>/gallery.json (optional keys: tag, title, glance, credit, nearby, nearby_src)"""
+    gf = os.path.join(os.path.dirname(os.path.abspath(__file__)), p["id"], "gallery.json")
+    if not p.get("gallery") or not os.path.exists(gf): return ""
+    g = json.load(open(gf, encoding="utf-8"))
+    items = "".join(f'<button type="button" class="gallery-item" data-lightbox="{p['id']}" data-caption="{E(c)}"><img src="assets/img/ext/{f}.webp" alt="{E(p['name'])}: {E(c[0].lower() + c[1:])}" loading="lazy"/><figcaption>{E(c)}</figcaption></button>' for f, c in g["gallery"])
     hl = "".join(f'<li><i class="fas fa-check" aria-hidden="true"></i> {E(h)}</li>' for h in g["highlights"])
+    near = ""
+    if g.get("nearby"):
+        near = (f'<h3 class="detail-h reveal">Drive times</h3><ul class="check-list reveal">' +
+                "".join(f'<li><i class="fas fa-car" aria-hidden="true"></i> {E(n)}: {E(t)}</li>' for n, t in g["nearby"]) + '</ul>' +
+                (f'<p class="detail-source reveal">{E(g["nearby_src"])}</p>' if g.get("nearby_src") else ''))
     return (f'<section class="section bg-alt" id="gallery"><div class="container">'
-            f'<div class="section-header seq"><span class="section-tag">From the developer\u2019s brochure</span><h2>Inside {E(p['name'])}</h2>'
+            f'<div class="section-header seq"><span class="section-tag">{E(g.get("tag", "From the developer’s brochure"))}</span><h2>{E(g.get("title", "Inside " + p["name"]))}</h2>'
             f'<p>Tap any image to view it full screen.</p></div><div class="gallery reveal">{items}</div>'
-            f'<h3 class="detail-h reveal">Building at a glance</h3><ul class="check-list reveal">{hl}</ul>'
-            f'<p class="detail-source reveal">Images and plans: {E(p['developer'])} brochure. Renders are artistic impressions.</p></div></section>\n')
+            f'<h3 class="detail-h reveal">{E(g.get("glance", "Building at a glance"))}</h3><ul class="check-list reveal">{hl}</ul>{near}'
+            f'<p class="detail-source reveal">{E(g.get("credit", "Images and plans: " + p["developer"] + " brochure. Renders are artistic impressions."))}</p></div></section>\n')
 
 def property_page(p):
     _, area = area_of(p)
     words = kind_words(p)
-    title = f"{p['name']}, {area} – {p['label']}, Price & RERA | Galaxy Estates Properties"
-    desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['price']} {p['priceLabel']}. Sizes {p['size']}. "
-            f"Possession {p['possession']}. Call +91 84880 62309.")[:300]
-    rows = "".join(f"<tr><th scope=\"row\">{E(r[0])}</th><td>{E(r[1])}</td><td>{E(r[2])}</td><td>{E(r[3] or 'Ask us')}</td></tr>" for r in p["mix"])
+    nop = bool(p.get("noprice")); plots = nop and "Villas & townhouses" not in p["cats"]
+    if nop:
+        title = f"{p['name']}, {area} – {p['label']}, {'Plot Sizes' if plots else 'Villa & Plot Sizes'}{' & 3D Site Map' if p['id'] in T3D else ''} | Galaxy Estates Properties"
+        desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['size']}. {p['total']}. "
+                f"Possession {p['possession']}. Call +91 84880 62309.")[:300]
+        rows = "".join(f"<tr><th scope=\"row\">{E(r[0])}</th><td>{E(r[1])}</td><td>{E(r[3] or 'Ask us')}</td></tr>" for r in p["mix"])
+    else:
+        title = f"{p['name']}, {area} – {p['label']}, Price & RERA | Galaxy Estates Properties"
+        desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['price']} {p['priceLabel']}. Sizes {p['size']}. "
+                f"Possession {p['possession']}. Call +91 84880 62309.")[:300]
+        rows = "".join(f"<tr><th scope=\"row\">{E(r[0])}</th><td>{E(r[1])}</td><td>{E(r[2])}</td><td>{E(r[3] or 'Ask us')}</td></tr>" for r in p["mix"])
+    mixh = (f"{E(p['name'])} plot sizes" if plots else f"{E(p['name'])} villas and plot sizes") if nop else f"{E(p['name'])} unit types, sizes and prices"
+    mixth = ('<th scope="col">Plots</th><th scope="col">Size</th><th scope="col">Available</th>' if plots else '<th scope="col">Villa or plot</th><th scope="col">Size</th><th scope="col">Available</th>') if nop \
+        else '<th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th>'
+    wa_ask = ("the layout, plot sizes and availability" if plots else "villa and plot sizes and availability") if nop else "the price sheet and availability"
+    lead = ("Get the layout, plot sizes and a private site visit." if plots else "Get the villa plans, plot sizes and a private site visit.") if nop else "Get the current price sheet, floor plans and a private site visit."
+    d3txt = "3D site map" if (p['id'] in T3D and T3D[p['id']].get('land')) else "3D floor explorer"
     near = [q for q in ALL if q["market"] == p["market"] and q["id"] != p["id"]][:3]
+    if p["id"].startswith("ashridhar-kalrav-"): near = [q for q in ALL if q["id"].startswith("ashridhar-kalrav-") and q["id"] != p["id"]][:3]
     if len(near) < 3: near += [q for q in ALL if q["id"] != p["id"] and q not in near][:3 - len(near)]
     import urllib.parse as _u
     gopen = "https://www.google.com/maps/search/?api=1&query=" + _u.quote_plus(p["mapq"])
@@ -827,14 +862,14 @@ def property_page(p):
       </div>
       {('<p class="travel-refund"><i class="fas fa-plane"></i> <span><strong>Travel cost refunded.</strong> Fly out to see it before you buy: when your purchase completes through us, we refund your travel cost for the visit.</span></p>') if p['market'] == 'abroad' else ''}
       <div class="btn-row">
-        <button type="button" class="cta-btn primary" data-enquire="{p['id']}"><i class="fas fa-calendar-alt"></i> Book a site visit</button>{('<a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> 3D floor explorer</a>' if p['id'] in T3D else '')}
-        <a class="cta-btn wa" data-whatsapp="Hello, I'd like the price sheet and availability for {E(p['name'])} ({E(area)})." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <button type="button" class="cta-btn primary" data-enquire="{p['id']}"><i class="fas fa-calendar-alt"></i> Book a site visit</button>{(f'<a class="cta-btn ghost" href="#floors"><i class="fas fa-cube"></i> {d3txt}</a>' if p['id'] in T3D else '')}
+        <a class="cta-btn wa" data-whatsapp="Hello, I'd like {wa_ask} for {E(p['name'])} ({E(area)})." href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
   </div>
   <div class="container">
-    <h2 class="detail-h reveal">{E(p['name'])} unit types, sizes and prices</h2>
-    <div class="mix-wrap reveal"><table class="mix-table"><thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th></tr></thead><tbody>{rows}</tbody></table></div>
+    <h2 class="detail-h reveal">{mixh}</h2>
+    <div class="mix-wrap reveal"><table class="mix-table"><thead><tr>{mixth}</tr></thead><tbody>{rows}</tbody></table></div>
     <p class="detail-source reveal">{E(p['blurb'])}</p>
     {OFF.block(p, E)}
     {guide}
@@ -845,7 +880,7 @@ def property_page(p):
 <section class="section">
   <div class="container">
     <div class="contact-grid">
-      <div class="panel reveal"><h2 class="detail-h" style="margin-top:0">Ask about {E(p['name'])}</h2><p class="lead">Get the current price sheet, floor plans and a private site visit. Your enquiry goes straight to our team.</p>{form('pp', p['name'])}</div>
+      <div class="panel reveal"><h2 class="detail-h" style="margin-top:0">Ask about {E(p['name'])}</h2><p class="lead">{lead} Your enquiry goes straight to our team.</p>{form('pp', p['name'])}</div>
       <div class="panel reveal" style="--d:.1s"><h2 class="detail-h" style="margin-top:0">More properties like this</h2><div class="prop-more">{''.join(f'<a href="{q["page"]}" class="prop-more-item"><img src="{q["img"]}" alt="{E(q["name"])}" loading="lazy" width="160" height="110"/><span><strong>{E(q["name"])}</strong><small>{E(q["label"])} · {E(area_of(q)[1])}</small></span></a>' for q in near)}</div>
       <p style="margin-top:18px"><a class="cta-btn ghost small" href="projects.html">See all properties</a></p></div>
     </div>
@@ -857,7 +892,12 @@ def property_page(p):
                 else "Land in Gujarat — Buy" if "Weekend villas & plots" in p["cats"] and "Villas & townhouses" not in p["cats"] else "Villas" if "Villas & townhouses" in p["cats"] else "4 BHK Apartments" if "4 BHK" in p["cats"]
                 else "3 BHK Apartments" if "3 BHK" in p["cats"] else "2 BHK Apartments")
     body = body.replace("<option selected>3 BHK Apartments</option>", "<option>3 BHK Apartments</option>").replace(f"<option>{interest}</option>", f"<option selected>{interest}</option>", 1)
-    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + footer() + overlays() + scripts((THREE + f'<script src="{T3D[p["id"]]["geo"]["file"]}"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
+    foot = footer()
+    if nop:     # no prices anywhere on these pages, the general disclaimer included
+        foot = foot.replace("Project details, prices, floor plans and RERA numbers", "Project details, plot and villa sizes, layouts and RERA numbers").replace(
+            "Prices marked * are indicative and subject to change, and availability is confirmed at the time of booking.", "Availability is confirmed at the time of booking.")
+        assert "price" not in foot.lower()
+    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + foot + overlays() + scripts((THREE + f'<script src="{T3D[p["id"]]["geo"]["file"]}"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
 
 # ---------------------------------------------------------------- search-friendly content (home page)
 def plink(pid, text=None):
@@ -869,7 +909,7 @@ HOME_FAQ = [
   ("Are these projects RERA registered?",
    "Every listing shows its Gujarat RERA number, and we check it on the GujRERA portal before you book. Where a developer has not published the number (Antonia, some weekend-plot projects and pre-launches), the listing says so and we confirm the registration with you before any booking."),
   ("Where can I buy a weekend home or plot near Ahmedabad?",
-   "Most weekend villas and plots are around Thol, Kadi Road and Sanand, 30 to 60 minutes from S.G. Highway: Kalrav Seasons and Kalrav Nest by A. Shridhar, Arvind Aqua City and Arvind Uplands 3.0, Suryam Repose and The Sage, Safal Rethal Greens and Shivalik Farmland. Arvind Forreste in Nasmed is close to Gandhinagar and Kalol. Plots start at about ₹50 Lakh."),
+   "Most weekend villas and plots are around Thol, Kadi Road and Sanand, 30 to 60 minutes from S.G. Highway: the Kalrav series by A. Shridhar (Kalrav Seasons, Kalrav Nest, Kalrav Farms, Kalrav Trails and Kalrav Treasure), Arvind Aqua City and Arvind Uplands 3.0, Suryam Repose and The Sage, Safal Rethal Greens and Shivalik Farmland. Arvind Forreste in Nasmed is close to Gandhinagar and Kalol, and Kalrav Alpines in Nandoli, near Shilaj, has plots for a home closer to the city."),
   ("What does a 4 BHK flat in Ahmedabad cost?",
    "On our current list, 4 BHK homes start at about ₹2.23 Cr* at Skyline in Adani Shantigram and ₹2.77 Cr* at Trogon Centre Court. Prices marked * are as published by the developer and change often, so ask us for the latest price sheet."),
   ("Can NRIs buy property in Ahmedabad?",
@@ -918,7 +958,7 @@ def seo_home():
       ("Luxury properties in Shantigram", f"Adani Shantigram is a gated township between Ahmedabad and Gandhinagar with a golf course and a lake. Compare {plink('belrosa')}, {plink('shilp-skyline')} and {plink('ambrosia')}, or villas at {plink('north-park')}, in the <a href=\"shantigram.html\">3D township map</a>."),
       ("Offices and showrooms on S.G. Highway", f"Vaishnodevi Circle is the city's newest business address, with {plink('shivalik-wave')}, {plink('trogon-twin-towers')} and the upcoming {plink('antonia')}; {plink('shilp-business-gateway')} near Nirma University; on Sindhu Bhavan Road, {plink('ashridhar-wynn')}; at Nehru Nagar, {plink('venus-stratum')}. At Iscon Cross Road, {plink('navratna-gulmohar')} combines offices, shops and homes."),
       ("New projects in GIFT City", f"Homes near India's first international financial centre: {plink('sobha-elysia')}, {plink('shivalik-presente')}, {plink('savvy-marina')}, {plink('bakeri-stella')}, {plink('shivalik-skyview')}, {plink('shilp-north-sky')} and {plink('nila-vida')}, with prices and RERA numbers. See the <a href=\"gift-city.html\">GIFT City 3D map</a>."),
-      ("Weekend homes, plots and land", f"Weekend villas and plots near Thol, Kadi and Sanand: {plink('ashridhar-kalrav-seasons')}, {plink('arvind-aqua-city')}, {plink('suryam-repose')} and {plink('shivalik-farmland')} (<a href=\"projects.html#weekend-villas-plots\">all weekend homes</a>). We also handle residential plots, farm land, industrial and commercial land in all 34 districts, with title and document checks before you pay. See <a href=\"land.html\">land for sale in Gujarat</a>."),
+      ("Weekend homes, plots and land", f"Weekend villas and plots near Thol, Kadi and Sanand: the Kalrav series by A. Shridhar ({plink('ashridhar-kalrav-seasons')}, {plink('ashridhar-kalrav-nest')}, {plink('ashridhar-kalrav-farms')}, {plink('ashridhar-kalrav-trails')} and {plink('ashridhar-kalrav-treasure')}; the plot projects have a 3D map of every plot), {plink('arvind-aqua-city')}, {plink('suryam-repose')} and {plink('shivalik-farmland')} (<a href=\"projects.html#weekend-villas-plots\">all weekend homes</a>). We also handle residential plots, farm land, industrial and commercial land in all 34 districts, with title and document checks before you pay. See <a href=\"land.html\">land for sale in Gujarat</a>."),
       ("Property abroad for Indian buyers", f"Dubai, Singapore, Monaco, Phuket, Pattaya and Kuala Lumpur, from developers such as Emaar, Binghatti, Danube and CDL. Start with {plink('binghatti-burj-jacob')}, {plink('danube-bayz-101')} and {plink('emaar-valo')}, or browse <a href=\"global.html\">all markets</a>."),
     ]
     grid = "".join(f'<article class="seo-col reveal" style="--d:{(i % 3) * .06:.2f}s"><h3>{E(t)}</h3><p>{b}</p></article>' for i, (t, b) in enumerate(cols))
@@ -981,7 +1021,7 @@ def build():
     os.makedirs(os.path.join(OUT, 'assets'), exist_ok=True)
     keys = ("id", "name", "developer", "market", "city", "country", "location", "cats", "label", "price", "priceLabel", "size", "possession",
             "rera", "regLabel", "total", "available", "build", "mix", "source", "img", "color", "hue", "blurb", "mapq", "page")
-    data = [{k: p[k] for k in keys} for p in ALL]
+    data = [{**{k: p[k] for k in keys}, **({"noprice": True} if p.get("noprice") else {})} for p in ALL]
     with open(os.path.join(OUT, 'assets', 'data.js'), 'w', encoding='utf-8') as f:
         f.write("/* Property data for every listing (India and abroad). The cards and the detail pop-up read from here.\n   To show live stock, edit \"available\" (and the 4th value in each \"mix\" row) and reload the page. */\nwindow.SITE_PROJECTS = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n")
     ctx = {

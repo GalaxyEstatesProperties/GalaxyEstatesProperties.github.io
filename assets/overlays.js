@@ -66,9 +66,9 @@ document.body.insertAdjacentHTML("beforeend",`<div class="modal-overlay" id="mod
         <div><dt>Available</dt><dd data-d="avail"></dd></div>
         <div><dt>Possession</dt><dd data-d="poss"></dd></div>
       </dl>
-      <h3 class="detail-h">Unit types, sizes and prices</h3>
+      <h3 class="detail-h" data-d="mixh">Unit types, sizes and prices</h3>
       <div class="mix-wrap"><table class="mix-table">
-        <thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th></tr></thead>
+        <thead><tr><th scope="col">Unit type</th><th scope="col">Size</th><th scope="col" data-d="pth">Price</th><th scope="col">Available</th></tr></thead>
         <tbody data-d="mix"></tbody>
       </table></div>
       <div class="detail-specs">
@@ -76,7 +76,7 @@ document.body.insertAdjacentHTML("beforeend",`<div class="modal-overlay" id="mod
         <div class="wide" data-d="buildwrap"><small>Project</small><strong data-d="build"></strong></div>
         <div class="wide"><small data-d="reglabel">RERA</small><strong data-d="rera" style="font-size:.8rem;word-break:break-word"></strong></div>
       </div>
-      <p class="detail-source">Source: <span data-d="source"></span>. Prices and availability change; we confirm both before you book.</p>
+      <p class="detail-source">Source: <span data-d="source"></span>. <span data-d="srcnote">Prices and availability change; we confirm both before you book.</span></p>
       <div class="btn-row">
         <button type="button" class="cta-btn primary" data-d="enquire"><i class="fas fa-calendar-alt"></i> Enquire</button>
         <a class="cta-btn wa" data-d="wa" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
