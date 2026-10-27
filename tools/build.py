@@ -7,7 +7,7 @@ import global_build as G
 import props_build as PB
 
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
-OUT = '/home/claude/vr-realtors'
+OUT = '/home/claude/galaxy-estates-properties'
 
 LOGO = "assets/logo.svg"
 IMG = "https://township.homedeliveryrealtors.com/wp-content/uploads/"

@@ -6,7 +6,7 @@
    - stamps asset URLs with a version so browsers fetch fresh files after each update
 """
 import os, re, shutil, subprocess, glob, hashlib, sys
-SRC = '/home/claude/vr-realtors'
+SRC = '/home/claude/galaxy-estates-properties'
 OUT = '/home/claude/galaxyestatesproperties.github.io'
 SKIP = {'preview.bat', 'preview.sh', 'serve.ps1', 'serve.py'}   # local-preview helpers, not needed online
 
