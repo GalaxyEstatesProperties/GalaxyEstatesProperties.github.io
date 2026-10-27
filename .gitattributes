@@ -1,5 +1,10 @@
-# GitHub language statistics: count our own (minified) CSS and JavaScript, and the Python build source
+# GitHub language statistics (Linguist)
+# Count our own CSS and JavaScript (minified by tools/make_dist.py, still hand-written source)
 assets/*.js linguist-generated=false linguist-detectable=true
 assets/*.css linguist-generated=false linguist-detectable=true
-tools/*.py linguist-detectable=true
+# Python build tools, including the per-project model generators in sub-folders
+tools/**/*.py linguist-detectable=true linguist-language=Python
+# Google Apps Script back end for the land listings: it is JavaScript
+*.gs linguist-language=JavaScript linguist-detectable=true
+# Third-party libraries are not our code
 assets/vendor/** linguist-vendored
