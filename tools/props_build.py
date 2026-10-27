@@ -541,5 +541,4 @@ INTL = [
 ]
 
 # Markets on the Global page without a fully verified project yet: shown as 'shortlist on request' tiles
-MORE_MARKETS = [("london", "London"), ("paris", "Paris & Riviera"), ("morocco", "Morocco"), ("bali", "Bali"), ("indonesia", "Jakarta"),
-                ("nz", "New Zealand"), ("georgia", "Georgia"), ("germany", "Germany")]
+MORE_MARKETS = [("london", "London"), ("paris", "Paris & Riviera"), ("morocco", "Morocco"), ("indonesia", "Jakarta")]
