@@ -788,11 +788,22 @@ def gallery_section(p):
     pid = p["id"]
     if g.get("images"):
         KIND = {"exterior": "Exterior", "interior": "Interior", "amenity": "Amenity", "view": "View", "plan": "Plan"}
+        n = len(g["images"])
+        def tile_cls(i):
+            """widen the last tiles so the grid has no empty cells: 2 columns (lead tile = 1 full row) and 4 columns (lead = 2x2)"""
+            c = []
+            if n % 2 == 0 and i == n - 1: c.append("w2")
+            after = n - 5                                   # tiles below the lead block in the 4-column layout
+            if after == 1 and i == n - 1: c.append("w4f")
+            elif after > 1:
+                k = (-(n + 3)) % 4
+                if i >= n - k: c.append("w4")
+            return (" " + " ".join(c)) if c else ""
         items = "".join(
-            f'<button type="button" class="gallery-item" data-lightbox="{pid}" data-src="assets/img/g/{pid}/{im["f"]}.webp" data-caption="{E(im["cap"])}">'
+            f'<button type="button" class="gallery-item{tile_cls(i)}" data-lightbox="{pid}" data-src="assets/img/g/{pid}/{im["f"]}.webp" data-caption="{E(im["cap"])}">'
             f'<img src="assets/img/g/{pid}/{im["f"]}-t.webp" width="{im["tw"]}" height="{im["th"]}" alt="{E(p["name"])}: {E(im["cap"][0].lower() + im["cap"][1:])}" loading="lazy" decoding="async"/>'
-            f'<span class="g-kind">{KIND.get(im.get("kind"), "")}</span><figcaption>{E(im["cap"])}</figcaption></button>' for im in g["images"])
-        n = len(g["images"]); uhd = sum(1 for im in g["images"] if max(im["w"], im["h"]) >= 3000)
+            f'<span class="g-kind">{KIND.get(im.get("kind"), "")}</span><figcaption>{E(im["cap"])}</figcaption></button>' for i, im in enumerate(g["images"]))
+        uhd = sum(1 for im in g["images"] if max(im["w"], im["h"]) >= 3000)
         res = (f'{n} official images, all HD' + (f' ({uhd} of them UHD originals)' if uhd else '') + '. Tap any image to view it full screen.')
         gallery = f'<div class="gallery gallery-hd reveal">{items}</div>'
     else:
