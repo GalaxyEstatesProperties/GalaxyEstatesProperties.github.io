@@ -779,22 +779,45 @@ def t3d_section(p):
 <script type="application/json" id="t3d-{p['id']}">{json.dumps(c, ensure_ascii=False)}</script>"""
 
 def gallery_section(p):
-    """images and highlights for projects that have <id>/gallery.json (optional keys: tag, title, glance, credit, nearby, nearby_src)"""
+    """official images and specifications for projects that have <id>/gallery.json.
+    New format (gk.py): images = [{f, cap, kind, w, h, fw, fh, tw, th}] served from assets/img/g/<id>/ (NN.webp up to 2560 px, NN-t.webp preview),
+    optional specs [[k, v]], specs_src, highlights, glance, nearby, nearby_src, credit, source. Old format: gallery = [[file, caption]] in assets/img/ext/."""
     gf = os.path.join(os.path.dirname(os.path.abspath(__file__)), p["id"], "gallery.json")
-    if not p.get("gallery") or not os.path.exists(gf): return ""
+    if not os.path.exists(gf): return ""
     g = json.load(open(gf, encoding="utf-8"))
-    items = "".join(f'<button type="button" class="gallery-item" data-lightbox="{p['id']}" data-caption="{E(c)}"><img src="assets/img/ext/{f}.webp" alt="{E(p['name'])}: {E(c[0].lower() + c[1:])}" loading="lazy"/><figcaption>{E(c)}</figcaption></button>' for f, c in g["gallery"])
-    hl = "".join(f'<li><i class="fas fa-check" aria-hidden="true"></i> {E(h)}</li>' for h in g["highlights"])
+    pid = p["id"]
+    if g.get("images"):
+        KIND = {"exterior": "Exterior", "interior": "Interior", "amenity": "Amenity", "view": "View", "plan": "Plan"}
+        items = "".join(
+            f'<button type="button" class="gallery-item" data-lightbox="{pid}" data-src="assets/img/g/{pid}/{im["f"]}.webp" data-caption="{E(im["cap"])}">'
+            f'<img src="assets/img/g/{pid}/{im["f"]}-t.webp" width="{im["tw"]}" height="{im["th"]}" alt="{E(p["name"])}: {E(im["cap"][0].lower() + im["cap"][1:])}" loading="lazy" decoding="async"/>'
+            f'<span class="g-kind">{KIND.get(im.get("kind"), "")}</span><figcaption>{E(im["cap"])}</figcaption></button>' for im in g["images"])
+        n = len(g["images"]); uhd = sum(1 for im in g["images"] if max(im["w"], im["h"]) >= 3000)
+        res = (f'{n} official images, all HD' + (f' ({uhd} of them UHD originals)' if uhd else '') + '. Tap any image to view it full screen.')
+        gallery = f'<div class="gallery gallery-hd reveal">{items}</div>'
+    else:
+        items = "".join(f'<button type="button" class="gallery-item" data-lightbox="{pid}" data-caption="{E(c)}"><img src="assets/img/ext/{f}.webp" alt="{E(p['name'])}: {E(c[0].lower() + c[1:])}" loading="lazy"/><figcaption>{E(c)}</figcaption></button>' for f, c in g["gallery"])
+        res = 'Tap any image to view it full screen.'
+        gallery = f'<div class="gallery reveal">{items}</div>'
+    hl = ""
+    if g.get("highlights"):
+        hl = (f'<h3 class="detail-h reveal">{E(g.get("glance", "At a glance"))}</h3><ul class="check-list reveal">' +
+              "".join(f'<li><i class="fas fa-check" aria-hidden="true"></i> {E(h)}</li>' for h in g["highlights"]) + '</ul>')
+    spec = ""
+    if g.get("specs"):
+        spec = (f'<h3 class="detail-h reveal">Specifications</h3><dl class="spec-list reveal">' +
+                "".join(f'<div><dt>{E(k)}</dt><dd>{E(v)}</dd></div>' for k, v in g["specs"]) + '</dl>' +
+                (f'<p class="detail-source reveal">{E(g["specs_src"])}</p>' if g.get("specs_src") else ''))
     near = ""
     if g.get("nearby"):
         near = (f'<h3 class="detail-h reveal">Drive times</h3><ul class="check-list reveal">' +
                 "".join(f'<li><i class="fas fa-car" aria-hidden="true"></i> {E(n)}: {E(t)}</li>' for n, t in g["nearby"]) + '</ul>' +
                 (f'<p class="detail-source reveal">{E(g["nearby_src"])}</p>' if g.get("nearby_src") else ''))
+    src = (f' <a class="text-link" href="{E(g["source"])}" target="_blank" rel="noopener nofollow">See the developer’s page</a>.' if g.get("source") else '')
+    credit = f'<p class="detail-source reveal">{E(g.get("credit", "Images: " + p["developer"] + ". Renders are artistic impressions."))}{src}</p>'
     return (f'<section class="section bg-alt" id="gallery"><div class="container">'
-            f'<div class="section-header seq"><span class="section-tag">{E(g.get("tag", "From the developer’s brochure"))}</span><h2>{E(g.get("title", "Inside " + p["name"]))}</h2>'
-            f'<p>Tap any image to view it full screen.</p></div><div class="gallery reveal">{items}</div>'
-            f'<h3 class="detail-h reveal">{E(g.get("glance", "Building at a glance"))}</h3><ul class="check-list reveal">{hl}</ul>{near}'
-            f'<p class="detail-source reveal">{E(g.get("credit", "Images and plans: " + p["developer"] + " brochure. Renders are artistic impressions."))}</p></div></section>\n')
+            f'<div class="section-header seq"><span class="section-tag">{E(g.get("tag", "Official photos and renders"))}</span><h2>{E(g.get("title", p["name"] + " in pictures"))}</h2>'
+            f'<p>{res}</p></div>{gallery}{credit}{hl}{spec}{near}</div></section>\n')
 
 def property_page(p):
     _, area = area_of(p)
