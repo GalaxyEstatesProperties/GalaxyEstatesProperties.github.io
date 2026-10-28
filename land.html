@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+CE4Es6UaMpxI84udVYkuX8s/zke12bZlhvokdX0iE0=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; frame-src https://maps.google.com https://www.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+CE4Es6UaMpxI84udVYkuX8s/zke12bZlhvokdX0iE0=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; frame-src https://maps.google.com https://www.google.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXRN29DKLR"></script>
 <script src="assets/ga.js?v=044f713e"></script>
@@ -22,9 +22,9 @@
 <link rel="canonical" href="https://galaxyestatesproperties.co.in/land.html"/>
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg"/>
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
-<link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=37047cb0"/>
+<link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=d536ec81"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=d6d3d81e"/>
+<link rel="stylesheet" href="assets/style.css?v=5a3225df"/>
 <link rel="stylesheet" href="assets/motion.css?v=d75238c3"/>
 
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css?v=ec929f11"/>
@@ -403,7 +403,8 @@
       <p>Fill in the details from your 7/12 or property card and draw the land on the map. We check the details, then publish your land on this page with its boundary, a 3D view and its FSI. Your phone number is never shown: buyers contact us, and we call you.</p>
     </div>
     <div class="ls-wrap panel reveal">
-    <form class="inquiry-form ls-form" data-land-sell data-custom novalidate>
+    <form class="inquiry-form ls-form" data-land-sell data-custom novalidate data-post="https://formsubmit.co/samirdabhi2309@gmail.com" data-cc="director@galaxyestatesproperties.co.in" data-docmax="8" data-docmb="9">
+      <p class="ls-restored" data-ls-restored hidden><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> <span>We kept the details you entered earlier on this device; add any documents again before sending.</span> <button type="button" class="text-link" data-ls-fresh>Start afresh</button></p>
       <fieldset><legend>1. You</legend>
         <div class="form-row"><div class="form-group"><input id="ls-name" name="name" type="text" placeholder=" " autocomplete="name" maxlength="80"/><label for="ls-name">Full name (as on the 7/12) *</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-phone" name="phone" type="tel" placeholder=" " inputmode="tel" autocomplete="tel" maxlength="20"/><label for="ls-phone">Mobile number (kept private) *</label><span class="field-error" aria-live="polite"></span></div></div>
         <div class="form-row"><div class="form-group"><input id="ls-email" name="email" type="email" placeholder=" " autocomplete="email" maxlength="120"/><label for="ls-email">Email (optional)</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><select id="ls-role" name="role"><option value="Owner">Owner</option><option value="Joint owner">Joint owner</option><option value="Power of attorney holder">Power of attorney holder</option><option value="Broker with written mandate">Broker with the owner&#x27;s written mandate</option></select><label for="ls-role">You are</label><span class="field-error" aria-live="polite"></span></div></div>
@@ -413,9 +414,16 @@
           <div class="form-group"><input id="ls-district" name="district" type="text" list="ls-districts" placeholder=" " autocomplete="off" maxlength="40"/><datalist id="ls-districts"><option value="Ahmedabad"></option><option value="Amreli"></option><option value="Anand"></option><option value="Aravalli"></option><option value="Banaskantha"></option><option value="Bharuch"></option><option value="Bhavnagar"></option><option value="Botad"></option><option value="Chhota Udaipur"></option><option value="Dahod"></option><option value="Dang"></option><option value="Devbhumi Dwarka"></option><option value="Gandhinagar"></option><option value="Gir Somnath"></option><option value="Jamnagar"></option><option value="Junagadh"></option><option value="Kheda"></option><option value="Kutch"></option><option value="Mahisagar"></option><option value="Mehsana"></option><option value="Morbi"></option><option value="Narmada"></option><option value="Navsari"></option><option value="Panchmahal"></option><option value="Patan"></option><option value="Porbandar"></option><option value="Rajkot"></option><option value="Sabarkantha"></option><option value="Surat"></option><option value="Surendranagar"></option><option value="Tapi"></option><option value="Vadodara"></option><option value="Valsad"></option><option value="Vav-Tharad"></option></datalist><label for="ls-district">District *</label><span class="field-error" aria-live="polite"></span></div></div>
         <div class="form-row"><div class="form-group"><input id="ls-taluka" name="taluka" type="text" placeholder=" " maxlength="60"/><label for="ls-taluka">Taluka *</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-village" name="village" type="text" placeholder=" " maxlength="60"/><label for="ls-village">Village / town *</label><span class="field-error" aria-live="polite"></span></div></div>
         <div class="form-row"><div class="form-group"><input id="ls-survey" name="survey" type="text" placeholder=" " maxlength="60"/><label for="ls-survey">Survey / block no. (7/12)</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-pcard" name="pcard" type="text" placeholder=" " maxlength="60"/><label for="ls-pcard">Property card / city survey no.</label><span class="field-error" aria-live="polite"></span></div></div>
-        <div class="form-group"><input id="ls-tp" name="tp" type="text" placeholder=" " maxlength="80"/><label for="ls-tp">TP scheme and final plot no. (if any)</label><span class="field-error" aria-live="polite"></span></div>
         <div class="form-row"><div class="form-group"><input id="ls-areaValue" name="areaValue" type="text" placeholder=" " inputmode="decimal" maxlength="20"/><label for="ls-areaValue">Area as on the 7/12 *</label><span class="field-error" aria-live="polite"></span></div>
           <div class="form-group"><select id="ls-areaUnit" name="areaUnit"><option value="has" selected>Hectare-are-sq.m, e.g. 0-80-94</option><option value="sqm">sq.m</option><option value="sqyd">sq.yd (vaar)</option><option value="sqft">sq.ft</option><option value="guntha">guntha</option><option value="vigha16">vigha = 16 guntha</option><option value="vigha20">vigha = 20 guntha</option><option value="acre">acre</option><option value="hectare">hectare</option></select><label for="ls-areaUnit">Unit *</label><span class="field-error" aria-live="polite"></span></div></div>
+        <div class="form-group"><select id="ls-tpStatus" name="tpStatus"><option value="none">Not in a TP scheme / not sure</option><option value="fp">In a TP scheme: final plot (FP) allotted</option><option value="draft">In a draft TP scheme: FP proposed</option></select><label for="ls-tpStatus">Town Planning (TP) scheme</label><span class="field-error" aria-live="polite"></span></div>
+        <div class="ls-tp" data-ls-tp hidden>
+          <p class="ls-help">In a TP scheme the authority deducts part of the original land (kapat) for roads and public use, and the land on the ground becomes the final plot. Enter the FP details from the F form and draw the final plot boundary on the map: we check your drawing against the FP area and show the deduction from the 7/12.</p>
+          <div class="form-row"><div class="form-group"><input id="ls-tpNo" name="tpNo" type="text" placeholder=" " maxlength="60"/><label for="ls-tpNo">TP scheme no. and name</label><span class="field-error" aria-live="polite"></span></div><div class="form-group"><input id="ls-fpNo" name="fpNo" type="text" placeholder=" " maxlength="30"/><label for="ls-fpNo">Final plot (FP) no.</label><span class="field-error" aria-live="polite"></span></div></div>
+          <div class="form-row"><div class="form-group"><input id="ls-fpArea" name="fpArea" type="text" placeholder=" " inputmode="decimal" maxlength="20"/><label for="ls-fpArea">Final plot area (F form)</label><span class="field-error" aria-live="polite"></span></div>
+            <div class="form-group"><select id="ls-fpUnit" name="fpUnit"><option value="sqm" selected>sq.m</option><option value="sqyd">sq.yd (vaar)</option><option value="sqft">sq.ft</option><option value="guntha">guntha</option><option value="vigha16">vigha = 16 guntha</option><option value="vigha20">vigha = 20 guntha</option><option value="acre">acre</option><option value="hectare">hectare</option></select><label for="ls-fpUnit">Unit</label><span class="field-error" aria-live="polite"></span></div></div>
+          <p class="ls-tpded" data-ls-tpded aria-live="polite"></p>
+        </div>
         <div class="form-row"><div class="form-group"><input id="ls-price" name="price" type="text" placeholder=" " inputmode="numeric" maxlength="14"/><label for="ls-price">Asking price in ₹ (e.g. 25000000) *</label><span class="field-error" aria-live="polite"></span></div>
           <div class="form-group"><select id="ls-priceUnit" name="priceUnit"><option value="total">Total for the land</option><option value="sqyd">Per sq.yd</option><option value="sqm">Per sq.m</option><option value="vigha16">Per vigha</option><option value="acre">Per acre</option></select><label for="ls-priceUnit">Price is *</label><span class="field-error" aria-live="polite"></span></div></div>
         <p class="ls-price" data-ls-price aria-live="polite"></p>
@@ -439,11 +447,20 @@
         <div class="ls-fsi" data-ls-fsi aria-live="polite"></div>
         <span class="field-error" data-err="map" aria-live="polite"></span>
       </fieldset>
+      <fieldset class="ls-docs"><legend>5. Documents (optional)</legend>
+        <p class="ls-help">Attach the 7/12, 8-A, property card, F form, Index 2, Index 6, zoning certificate or any other land paper. Photos or PDFs, up to 8 files and 9 MB in all; photos are reduced automatically. Documents come only to our team by email and are never published.</p>
+        <div class="ls-docpick"><label class="cta-btn ghost small" for="ls-docs"><i class="fas fa-paperclip"></i> Add documents</label>
+          <input id="ls-docs" class="ls-docinput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,image/*,application/pdf" data-ls-docinput/>
+          <span class="ls-docsum" data-ls-docsum aria-live="polite">No documents added</span></div>
+        <ul class="ls-doclist" data-ls-doclist></ul>
+        <span class="field-error" data-err="docs" aria-live="polite"></span>
+      </fieldset>
       <div class="form-group"><textarea id="ls-notes" name="notes" rows="3" maxlength="600" placeholder=" "></textarea><label for="ls-notes">Anything buyers should know (water, power, fencing, title status)</label></div>
       <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
       <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
-      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day. <i class="fas fa-lock"></i> Your phone number and email are never published or shared without your consent.</p>
+      <p class="ls-sending" data-ls-sending role="status" hidden><i class="fas fa-spinner fa-spin"></i> Sending your land details and documents to our team. This can take up to a minute: please keep this page open.</p>
+      <p class="form-note">We check the drawn area against the 7/12 area (or the final plot area in a TP scheme), the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day. <i class="fas fa-lock"></i> Your phone number and email are never published or shared without your consent.</p>
     </form>
     <div class="form-success ls-done" data-ls-done role="status" hidden>
       <i class="fas fa-check-circle"></i><h3></h3><p></p>
@@ -605,12 +622,12 @@
 </button>
 <script src="assets/overlays.js?v=b664831b"></script>
 <script src="assets/data.js?v=a8f1a795"></script>
-<script src="assets/main.js?v=c2019564"></script>
+<script src="assets/main.js?v=8f6e6a41"></script>
 <script src="assets/motion.js?v=f5b4690b"></script>
 <script src="assets/search.js?v=24759367" defer></script>
 <script src="assets/land.js?v=ccfebecc"></script>
 <script src="assets/vendor/leaflet/leaflet.js?v=5a640ff8"></script>
 <script src="assets/vendor/three.min.js?v=7a7802bf"></script>
-<script src="assets/land-market.js?v=cd6b3d57"></script>
+<script src="assets/land-market.js?v=3883b0b3"></script>
 </body>
 </html>

@@ -343,6 +343,12 @@ def land_market():
   </div>
 </section>"""
 
+AREA_UNITS = [("has", "Hectare-are-sq.m, e.g. 0-80-94"), ("sqm", "sq.m"), ("sqyd", "sq.yd (vaar)"), ("sqft", "sq.ft"), ("guntha", "guntha"),
+              ("vigha16", "vigha = 16 guntha"), ("vigha20", "vigha = 20 guntha"), ("acre", "acre"), ("hectare", "hectare")]
+DOC_MAX, DOC_MB = 8, 9           # FormSubmit accepts up to 10 MB of attachments per message: keep a margin
+LEAD_POST = "https://formsubmit.co/samirdabhi2309@gmail.com"     # plain multipart post: the only FormSubmit route documented for attachments
+LEAD_CC = "director@galaxyestatesproperties.co.in"
+
 def land_sell(idp="ls"):
     dl = ''.join(f'<option value="{E(d)}"></option>' for d in DISTRICTS)
     auth = ''.join(f'<option value="{k}">{E(v)}</option>' for k, v in [("AUDA", "AUDA / AMC (Ahmedabad)"), ("GUDA", "GUDA (Gandhinagar, outside GMC limits)"),
@@ -363,7 +369,8 @@ def land_sell(idp="ls"):
       <p>Fill in the details from your 7/12 or property card and draw the land on the map. We check the details, then publish your land on this page with its boundary, a 3D view and its FSI. Your phone number is never shown: buyers contact us, and we call you.</p>
     </div>
     <div class="ls-wrap panel reveal">
-    <form class="inquiry-form ls-form" data-land-sell data-custom novalidate>
+    <form class="inquiry-form ls-form" data-land-sell data-custom novalidate data-post="{E(LEAD_POST)}" data-cc="{E(LEAD_CC)}" data-docmax="{DOC_MAX}" data-docmb="{DOC_MB}">
+      <p class="ls-restored" data-ls-restored hidden><i class="fas fa-clock-rotate-left" aria-hidden="true"></i> <span>We kept the details you entered earlier on this device; add any documents again before sending.</span> <button type="button" class="text-link" data-ls-fresh>Start afresh</button></p>
       <fieldset><legend>1. You</legend>
         <div class="form-row">{t('name', 'Full name (as on the 7/12)', True, 'autocomplete="name" maxlength="80"')}{t('phone', 'Mobile number (kept private)', True, 'inputmode="tel" autocomplete="tel" maxlength="20"', 'tel')}</div>
         <div class="form-row">{t('email', 'Email (optional)', False, 'autocomplete="email" maxlength="120"', 'email')}{s('role', 'You are', o([("Owner", "Owner"), ("Joint owner", "Joint owner"), ("Power of attorney holder", "Power of attorney holder"), ("Broker with written mandate", "Broker with the owner's written mandate")]))}</div>
@@ -373,9 +380,16 @@ def land_sell(idp="ls"):
           {g('district', 'District *', f'<input id="{idp}-district" name="district" type="text" list="{idp}-districts" placeholder=" " autocomplete="off" maxlength="40"/><datalist id="{idp}-districts">{dl}</datalist>')}</div>
         <div class="form-row">{t('taluka', 'Taluka', True, 'maxlength="60"')}{t('village', 'Village / town', True, 'maxlength="60"')}</div>
         <div class="form-row">{t('survey', 'Survey / block no. (7/12)', False, 'maxlength="60"')}{t('pcard', 'Property card / city survey no.', False, 'maxlength="60"')}</div>
-        {t('tp', 'TP scheme and final plot no. (if any)', False, 'maxlength="80"')}
         <div class="form-row">{t('areaValue', 'Area as on the 7/12', True, 'inputmode="decimal" maxlength="20"')}
-          {s('areaUnit', 'Unit', ''.join(f'<option value="{k}"{" selected" if k == "has" else ""}>{E(v)}</option>' for k, v in [("has", "Hectare-are-sq.m, e.g. 0-80-94"), ("sqm", "sq.m"), ("sqyd", "sq.yd (vaar)"), ("sqft", "sq.ft"), ("guntha", "guntha"), ("vigha16", "vigha = 16 guntha"), ("vigha20", "vigha = 20 guntha"), ("acre", "acre"), ("hectare", "hectare")]), True)}</div>
+          {s('areaUnit', 'Unit', ''.join(f'<option value="{k}"{" selected" if k == "has" else ""}>{E(v)}</option>' for k, v in AREA_UNITS), True)}</div>
+        {s('tpStatus', 'Town Planning (TP) scheme', o([("none", "Not in a TP scheme / not sure"), ("fp", "In a TP scheme: final plot (FP) allotted"), ("draft", "In a draft TP scheme: FP proposed")]))}
+        <div class="ls-tp" data-ls-tp hidden>
+          <p class="ls-help">In a TP scheme the authority deducts part of the original land (kapat) for roads and public use, and the land on the ground becomes the final plot. Enter the FP details from the F form and draw the final plot boundary on the map: we check your drawing against the FP area and show the deduction from the 7/12.</p>
+          <div class="form-row">{t('tpNo', 'TP scheme no. and name', False, 'maxlength="60"')}{t('fpNo', 'Final plot (FP) no.', False, 'maxlength="30"')}</div>
+          <div class="form-row">{t('fpArea', 'Final plot area (F form)', False, 'inputmode="decimal" maxlength="20"')}
+            {s('fpUnit', 'Unit', ''.join(f'<option value="{k}"{" selected" if k == "sqm" else ""}>{E(v)}</option>' for k, v in AREA_UNITS if k != 'has'))}</div>
+          <p class="ls-tpded" data-ls-tpded aria-live="polite"></p>
+        </div>
         <div class="form-row">{t('price', 'Asking price in ₹ (e.g. 25000000)', True, 'inputmode="numeric" maxlength="14"')}
           {s('priceUnit', 'Price is', o([("total", "Total for the land"), ("sqyd", "Per sq.yd"), ("sqm", "Per sq.m"), ("vigha16", "Per vigha"), ("acre", "Per acre")]), True)}</div>
         <p class="ls-price" data-ls-price aria-live="polite"></p>
@@ -399,11 +413,20 @@ def land_sell(idp="ls"):
         <div class="ls-fsi" data-ls-fsi aria-live="polite"></div>
         <span class="field-error" data-err="map" aria-live="polite"></span>
       </fieldset>
+      <fieldset class="ls-docs"><legend>5. Documents (optional)</legend>
+        <p class="ls-help">Attach the 7/12, 8-A, property card, F form, Index 2, Index 6, zoning certificate or any other land paper. Photos or PDFs, up to {DOC_MAX} files and {DOC_MB} MB in all; photos are reduced automatically. Documents come only to our team by email and are never published.</p>
+        <div class="ls-docpick"><label class="cta-btn ghost small" for="{idp}-docs"><i class="fas fa-paperclip"></i> Add documents</label>
+          <input id="{idp}-docs" class="ls-docinput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,image/*,application/pdf" data-ls-docinput/>
+          <span class="ls-docsum" data-ls-docsum aria-live="polite">No documents added</span></div>
+        <ul class="ls-doclist" data-ls-doclist></ul>
+        <span class="field-error" data-err="docs" aria-live="polite"></span>
+      </fieldset>
       <div class="form-group"><textarea id="{idp}-notes" name="notes" rows="3" maxlength="600" placeholder=" "></textarea><label for="{idp}-notes">Anything buyers should know (water, power, fencing, title status)</label></div>
       <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
       <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
-      <p class="form-note">We check the drawn area against the 7/12 area, the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day. <i class="fas fa-lock"></i> Your phone number and email are never published or shared without your consent.</p>
+      <p class="ls-sending" data-ls-sending role="status" hidden><i class="fas fa-spinner fa-spin"></i> Sending your land details{' '}and documents to our team. This can take up to a minute: please keep this page open.</p>
+      <p class="form-note">We check the drawn area against the 7/12 area (or the final plot area in a TP scheme), the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day. <i class="fas fa-lock"></i> Your phone number and email are never published or shared without your consent.</p>
     </form>
     <div class="form-success ls-done" data-ls-done role="status" hidden>
       <i class="fas fa-check-circle"></i><h3></h3><p></p>
