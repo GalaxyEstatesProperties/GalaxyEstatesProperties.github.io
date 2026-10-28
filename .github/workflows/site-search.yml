@@ -1,0 +1,37 @@
+# Keeps the site search and the sitemap complete: after every push that changes a page or the project list,
+# rebuild assets/search-index.json and sitemap.xml from the published files and commit them if they changed.
+name: Site search index
+on:
+  push:
+    branches: [main]
+    paths: ['*.html', 'assets/data.js', 'tools/site_search.py', '.github/workflows/site-search.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: site-search
+  cancel-in-progress: false
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Rebuild the search index and sitemap
+        run: python3 tools/site_search.py
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet -- assets/search-index.json sitemap.xml; then echo "Search index already up to date"; exit 0; fi
+          git config user.name "Galaxy Estates Properties"
+          git config user.email "director@galaxyestatesproperties.co.in"
+          git add assets/search-index.json sitemap.xml
+          git commit -m "Search index and sitemap: rebuilt from the published pages"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          # a push made with the workflow token may not start a Pages build on its own: ask for one
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" || true
+        env:
+          GH_TOKEN: ${{ github.token }}
