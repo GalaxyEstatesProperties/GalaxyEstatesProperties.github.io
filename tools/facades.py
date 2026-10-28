@@ -65,7 +65,7 @@ FACADE = {
   'venus-the-universe': F('#cbbcab', '#e6ddd1', '#3a4855'),
   'shilp-business-gateway': G('#5a7f9f', '#c9a46a'),
   # abroad
-  'binghatti-burj-jacob': G('#6f97bd', '#f1f4f7', style='piers', wall='#d9e2ea'),   # pale blue glass between white vertical fins (Binghatti renders)
+  'binghatti-burj-jacob': G('#7a5560', '#7fe9ff', style='piers', wall='#211d1f', slab='#3a3134', glow=1, bay=6.2),   # night renders: dark bronze piers, rose-tinted glass, lines of cyan light (Jacob & Co. / Binghatti)
   'binghatti-mercedes-city': G('#34506e', '#e3e8ee', balc=0.5, balcD=1.6),   # Vision Iconic: glass in a silver frame, silver-railed balconies (Binghatti renders)
   'danube-bayz-101': G('#8fa9c0', '#e5ebf0'),
   'danube-diamondz': G('#a9c3d8', '#f2f4f6'),
