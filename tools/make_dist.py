@@ -14,7 +14,7 @@ SKIP = {'preview.bat', 'preview.sh', 'serve.ps1', 'serve.py'}   # local-preview 
 if os.path.isdir(OUT):
     keep_git = os.path.join(OUT, '.git')
     for n in os.listdir(OUT):
-        if n == '.git' or n == 'CNAME': continue
+        if n in ('.git', 'CNAME', '.github'): continue     # the repo's own GitHub workflows are kept
         p = os.path.join(OUT, n)
         shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
 else:
@@ -90,6 +90,9 @@ open(OUT + '/home.html', 'w', encoding='utf-8').write(
 # ---------- custom domain for GitHub Pages ----------
 open(OUT + '/CNAME', 'w').write('galaxyestatesproperties.co.in')
 
+# ---------- GitHub workflow that rebuilds the search index on every push (kept with the build tools) ----------
+_GH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dot_github')
+if os.path.isdir(_GH): shutil.copytree(_GH, os.path.join(OUT, '.github'), dirs_exist_ok=True)
 # ---------- sitemap + robots for search engines ----------
 import datetime
 URL = 'https://galaxyestatesproperties.co.in/'
@@ -109,9 +112,9 @@ for n in ('README.txt',):   # internal notes stay off the public site
 TOOLS = OUT + '/tools'
 os.makedirs(TOOLS, exist_ok=True)
 SPD = os.path.dirname(os.path.abspath(__file__))
-for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'bmc_city.py', 'country_build.py', 'new_listings.py', 'sitegeo.py', 'forms.py', 'rera_floors.py', 'shgeom.py', 'sh_models.py', 'gm_models.py', 'gmfit.py', 'facades.py', 'gj_models.py', 'intl_models.py', 'plan_cells.py', 'en_cells.py', 'search_index.py', 'satfetch.py', 'make_dist.py', 'land-listings-apps-script.gs'):
+for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'bmc_city.py', 'country_build.py', 'new_listings.py', 'sitegeo.py', 'forms.py', 'rera_floors.py', 'shgeom.py', 'sh_models.py', 'gm_models.py', 'gmfit.py', 'facades.py', 'gj_models.py', 'intl_models.py', 'plan_cells.py', 'en_cells.py', 'search_index.py', 'site_search.py', 'satfetch.py', 'make_dist.py', 'land-listings-apps-script.gs'):
     shutil.copy2(os.path.join(SPD, n), os.path.join(TOOLS, n))
-for d in ['shivalik_wave', 'antonia', 'kalrav/t3d'] + sorted(x for x in os.listdir(SPD) if x.startswith('ashridhar-kalrav-')):   # data the build reads (3D models, galleries)
+for d in ['shivalik_wave', 'antonia', 'bakeri_stella', 'kalrav/t3d'] + sorted(x for x in os.listdir(SPD) if x.startswith('ashridhar-kalrav-')):   # data the build reads (3D models, galleries)
     if os.path.isdir(os.path.join(SPD, d)):
         shutil.copytree(os.path.join(SPD, d), os.path.join(TOOLS, d), dirs_exist_ok=True)
 open(TOOLS + '/README.md', 'w').write("""# Site source
