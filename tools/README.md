@@ -18,3 +18,6 @@ cd GalaxyEstatesProperties.github.io
 You own GalaxyEstatesProperties/GalaxyEstatesProperties.github.io and are not a member of any organizations.
 
 <!-- rest of your README content -->
+git add README.md
+git commit -m "Add ownership statement to README"
+git push origin main   # or whichever branch you are working on
