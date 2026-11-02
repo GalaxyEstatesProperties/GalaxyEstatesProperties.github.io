@@ -131,7 +131,7 @@ CSP = ("default-src 'self'; "
        "img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
        "font-src 'self' data:; "
        "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
-       "frame-src https://maps.google.com https://www.google.com; "
+       "frame-src 'self' https://formsubmit.co https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests")
 
 SITE_URL = "https://galaxyestatesproperties.co.in/"

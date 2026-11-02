@@ -345,7 +345,9 @@ def land_market():
 
 AREA_UNITS = [("has", "Hectare-are-sq.m, e.g. 0-80-94"), ("sqm", "sq.m"), ("sqyd", "sq.yd (vaar)"), ("sqft", "sq.ft"), ("guntha", "guntha"),
               ("vigha16", "vigha = 16 guntha"), ("vigha20", "vigha = 20 guntha"), ("acre", "acre"), ("hectare", "hectare")]
-DOC_MAX, DOC_MB = 8, 9           # FormSubmit accepts up to 10 MB of attachments per message: keep a margin
+DOC_MAX, DOC_MB = 10, 9          # FormSubmit accepts up to 10 MB of attachments per message: keep a margin
+DOC_TYPES = [("7/12 utara", "7/12"), ("Form 8-A", "8-A"), ("Property card", "Property card"), ("F form (TP scheme)", "F form"), ("Index 2", "Index 2"),
+             ("Index 6", "Index 6"), ("Zoning certificate", "Zoning certificate"), ("NA order", "NA order"), ("Title search report", "Title report"), ("Other", "Other paper")]
 LEAD_POST = "https://formsubmit.co/samirdabhi2309@gmail.com"     # plain multipart post: the only FormSubmit route documented for attachments
 LEAD_CC = "director@galaxyestatesproperties.co.in"
 
@@ -380,13 +382,13 @@ def land_sell(idp="ls"):
           {g('district', 'District *', f'<input id="{idp}-district" name="district" type="text" list="{idp}-districts" placeholder=" " autocomplete="off" maxlength="40"/><datalist id="{idp}-districts">{dl}</datalist>')}</div>
         <div class="form-row">{t('taluka', 'Taluka', True, 'maxlength="60"')}{t('village', 'Village / town', True, 'maxlength="60"')}</div>
         <div class="form-row">{t('survey', 'Survey / block no. (7/12)', False, 'maxlength="60"')}{t('pcard', 'Property card / city survey no.', False, 'maxlength="60"')}</div>
-        <div class="form-row">{t('areaValue', 'Area as on the 7/12', True, 'inputmode="decimal" maxlength="20"')}
+        <div class="form-row">{g('areaValue', '<span data-ls-arealabel>Area as on the 7/12 or property card *</span>', '<input id="' + idp + '-areaValue" name="areaValue" type="text" placeholder=" " inputmode="decimal" maxlength="20"/>')}
           {s('areaUnit', 'Unit', ''.join(f'<option value="{k}"{" selected" if k == "has" else ""}>{E(v)}</option>' for k, v in AREA_UNITS), True)}</div>
         {s('tpStatus', 'Town Planning (TP) scheme', o([("none", "Not in a TP scheme / not sure"), ("fp", "In a TP scheme: final plot (FP) allotted"), ("draft", "In a draft TP scheme: FP proposed")]))}
         <div class="ls-tp" data-ls-tp hidden>
-          <p class="ls-help">In a TP scheme the authority deducts part of the original land (kapat) for roads and public use, and the land on the ground becomes the final plot. Enter the FP details from the F form and draw the final plot boundary on the map: we check your drawing against the FP area and show the deduction from the 7/12.</p>
+          <p class="ls-help">In a TP scheme the authority deducts part of the original land (kapat) for roads and public use, and the land on the ground becomes the final plot (FP). Enter the FP details from the F form and draw the final plot boundary on the map, not the old survey number: we check your drawing and the FSI against the FP area, and show the deduction from the 7/12. If you only have the FP area, the 7/12 area can be left blank.</p>
           <div class="form-row">{t('tpNo', 'TP scheme no. and name', False, 'maxlength="60"')}{t('fpNo', 'Final plot (FP) no.', False, 'maxlength="30"')}</div>
-          <div class="form-row">{t('fpArea', 'Final plot area (F form)', False, 'inputmode="decimal" maxlength="20"')}
+          <div class="form-row">{g('fpArea', '<span data-ls-fplabel>Final plot area (F form)</span>', '<input id="' + idp + '-fpArea" name="fpArea" type="text" placeholder=" " inputmode="decimal" maxlength="20"/>')}
             {s('fpUnit', 'Unit', ''.join(f'<option value="{k}"{" selected" if k == "sqm" else ""}>{E(v)}</option>' for k, v in AREA_UNITS if k != 'has'))}</div>
           <p class="ls-tpded" data-ls-tpded aria-live="polite"></p>
         </div>
@@ -413,11 +415,12 @@ def land_sell(idp="ls"):
         <div class="ls-fsi" data-ls-fsi aria-live="polite"></div>
         <span class="field-error" data-err="map" aria-live="polite"></span>
       </fieldset>
-      <fieldset class="ls-docs"><legend>5. Documents (optional)</legend>
-        <p class="ls-help">Attach the 7/12, 8-A, property card, F form, Index 2, Index 6, zoning certificate or any other land paper. Photos or PDFs, up to {DOC_MAX} files and {DOC_MB} MB in all; photos are reduced automatically. Documents come only to our team by email and are never published.</p>
-        <div class="ls-docpick"><label class="cta-btn ghost small" for="{idp}-docs"><i class="fas fa-paperclip"></i> Add documents</label>
+      <fieldset class="ls-docs"><legend>5. Land papers (optional, speeds up verification)</legend>
+        <p class="ls-help">Tap a paper to attach its photo or PDF: 7/12, 8-A, property card, F form, Index 2, Index 6, zoning certificate, NA order, title report or any other. Up to {DOC_MAX} files and {DOC_MB} MB in all; phone photos are reduced automatically. Papers come only to our team by email and are never published.</p>
+        <div class="ls-doctypes" role="group" aria-label="Attach a land paper">{''.join(f'<button type="button" class="ls-doctype" data-doc-pick="{E(v)}"><i class="fas fa-file-arrow-up" aria-hidden="true"></i><span>{E(l)}</span><b data-doc-n></b></button>' for v, l in DOC_TYPES)}</div>
+        <div class="ls-docpick"><label class="cta-btn ghost small" for="{idp}-docs"><i class="fas fa-paperclip"></i> Add several files</label>
           <input id="{idp}-docs" class="ls-docinput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.heic,.heif,image/*,application/pdf" data-ls-docinput/>
-          <span class="ls-docsum" data-ls-docsum aria-live="polite">No documents added</span></div>
+          <span class="ls-docsum" data-ls-docsum aria-live="polite">No papers added</span></div>
         <ul class="ls-doclist" data-ls-doclist></ul>
         <span class="field-error" data-err="docs" aria-live="polite"></span>
       </fieldset>
@@ -425,7 +428,9 @@ def land_sell(idp="ls"):
       <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
       <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
-      <p class="ls-sending" data-ls-sending role="status" hidden><i class="fas fa-spinner fa-spin"></i> Sending your land details{' '}and documents to our team. This can take up to a minute: please keep this page open.</p>
+      <p class="ls-sending" data-ls-sending role="status" hidden><i class="fas fa-spinner fa-spin"></i> <span>Sending your land details and papers to our team. This can take up to a minute: please keep this page open.</span></p>
+      <div class="ls-fail" data-ls-fail role="alert" hidden><p><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> <span data-ls-failmsg></span></p>
+        <div class="ls-failact"><button type="submit" class="cta-btn primary small"><i class="fas fa-rotate-right"></i> Send again</button><a href="#" class="cta-btn ghost small" data-whatsapp="" data-ls-wa target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Send on WhatsApp</a></div></div>
       <p class="form-note">We check the drawn area against the 7/12 area (or the final plot area in a TP scheme), the map link against the boundary, and the location against the authority you chose. Our team verifies every land before it is published, usually within a day. <i class="fas fa-lock"></i> Your phone number and email are never published or shared without your consent.</p>
     </form>
     <div class="form-success ls-done" data-ls-done role="status" hidden>
