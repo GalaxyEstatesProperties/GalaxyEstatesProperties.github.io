@@ -787,14 +787,15 @@ def gallery_section(p):
     g = json.load(open(gf, encoding="utf-8"))
     pid = p["id"]
     if g.get("images"):
-        KIND = {"exterior": "Exterior", "interior": "Interior", "amenity": "Amenity", "view": "View", "plan": "Plan"}
+        KIND = {"exterior": "Exterior", "interior": "Interior", "amenity": "Amenity", "view": "View", "plan": "Plan", "site": "Site photo"}
         n = len(g["images"])
         def tile_cls(i):
             """widen the last tiles so the grid has no empty cells: 2 columns (lead tile = 1 full row) and 4 columns (lead = 2x2)"""
             c = []
             if n % 2 == 0 and i == n - 1: c.append("w2")
             after = n - 5                                   # tiles below the lead block in the 4-column layout
-            if after == 1 and i == n - 1: c.append("w4f")
+            if n in (3, 4) and i >= (1 if n == 3 else 3): c.append("w4")     # few images: fill the 2x2 block beside the lead
+            elif after == 1 and i == n - 1: c.append("w4f")
             elif after > 1:
                 k = (-(n + 3)) % 4
                 if i >= n - k: c.append("w4")
@@ -804,7 +805,7 @@ def gallery_section(p):
             f'<img src="assets/img/g/{pid}/{im["f"]}-t.webp" width="{im["tw"]}" height="{im["th"]}" alt="{E(p["name"])}: {E(im["cap"][0].lower() + im["cap"][1:])}" loading="lazy" decoding="async"/>'
             f'<span class="g-kind">{KIND.get(im.get("kind"), "")}</span><figcaption>{E(im["cap"])}</figcaption></button>' for i, im in enumerate(g["images"]))
         uhd = sum(1 for im in g["images"] if max(im["w"], im["h"]) >= 3000)
-        res = (f'{n} official images, all HD' + (f' ({uhd} of them UHD originals)' if uhd else '') + '. Tap any image to view it full screen.')
+        res = g.get('res') or (f'{n} official images, all HD' + (f' ({uhd} of them UHD originals)' if uhd else '') + '. Tap any image to view it full screen.')
         gallery = f'<div class="gallery gallery-hd reveal">{items}</div>'
     else:
         items = "".join(f'<button type="button" class="gallery-item" data-lightbox="{pid}" data-caption="{E(c)}"><img src="assets/img/ext/{f}.webp" alt="{E(p['name'])}: {E(c[0].lower() + c[1:])}" loading="lazy"/><figcaption>{E(c)}</figcaption></button>' for f, c in g["gallery"])
@@ -846,7 +847,7 @@ def property_page(p):
         rows = "".join(f"<tr><th scope=\"row\">{E(r[0])}</th><td>{E(r[1])}</td><td>{E(r[2])}</td><td>{E(r[3] or 'Ask us')}</td></tr>" for r in p["mix"])
     mixh = (f"{E(p['name'])} plot sizes" if plots else f"{E(p['name'])} villas and plot sizes") if nop else f"{E(p['name'])} unit types, sizes and prices"
     mixth = ('<th scope="col">Plots</th><th scope="col">Size</th><th scope="col">Available</th>' if plots else '<th scope="col">Villa or plot</th><th scope="col">Size</th><th scope="col">Available</th>') if nop \
-        else '<th scope="col">Unit type</th><th scope="col">Size</th><th scope="col">Price</th><th scope="col">Available</th>'
+        else ('<th scope="col">Unit type</th><th scope="col">' + E(p.get('mixSizeHead', 'Size')) + '</th><th scope="col">' + E(p.get('mixPriceHead', 'Price')) + '</th><th scope="col">Available</th>')
     wa_ask = ("the layout, plot sizes and availability" if plots else "villa and plot sizes and availability") if nop else "the price sheet and availability"
     lead = ("Get the layout, plot sizes and a private site visit." if plots else "Get the villa plans, plot sizes and a private site visit.") if nop else "Get the current price sheet, floor plans and a private site visit."
     d3txt = "3D site map" if (p['id'] in T3D and T3D[p['id']].get('land')) else "3D floor explorer"

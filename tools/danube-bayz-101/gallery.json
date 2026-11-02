@@ -1,0 +1,178 @@
+{
+ "source": "https://danubeproperties.com/portfolio/bayz101/",
+ "credit": "Images: Danube Properties official renders, from the project page and the official Bayz 101 brochure. Renders are artistic impressions.",
+ "title": "Bayz 101 by Danube in pictures",
+ "specs": [
+  [
+   "Tower",
+   "101 levels in Business Bay, a two-minute walk from Business Bay metro"
+  ],
+  [
+   "Homes",
+   "1,346 apartments: studio, 1, 2, 3 and 4 bedrooms"
+  ],
+  [
+   "Amenities",
+   "40+ including infinity pool, aquatic gym, bowling centre, golf simulator, library, tennis and pickleball courts, sky observation deck, sky meditation, outdoor cinema, content-creation studio, kids’ day care and splash pad"
+  ],
+  [
+   "Completion",
+   "June 2028"
+  ],
+  [
+   "Payment plan",
+   "30/70"
+  ],
+  [
+   "Drive times",
+   "Business Bay metro 1 min, Burj Khalifa 2 min, Dubai Mall 3 min, City Walk 5 min, Dubai Frame 8 min"
+  ]
+ ],
+ "specs_src": "Specifications: Danube Properties official project page and brochure (Oct 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Bayz 101 on Sheikh Zayed Road, with Burj Khalifa beyond",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Day_view-1.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "The tower at dusk beside Burj Khalifa and Downtown Dubai",
+   "kind": "exterior",
+   "w": 2852,
+   "h": 1604,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/03/Bayz101.pdf#page=27"
+  },
+  {
+   "f": "03",
+   "cap": "Rising above the morning mist over Business Bay",
+   "kind": "exterior",
+   "w": 2666,
+   "h": 1499,
+   "fw": 2560,
+   "fh": 1439,
+   "tw": 800,
+   "th": 450,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/03/Bayz101.pdf#page=5"
+  },
+  {
+   "f": "04",
+   "cap": "Lobby",
+   "kind": "interior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Lobby-15.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "Living and dining room",
+   "kind": "interior",
+   "w": 3280,
+   "h": 1310,
+   "fw": 2560,
+   "fh": 1022,
+   "tw": 800,
+   "th": 320,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/03/Bayz101.pdf#page=10"
+  },
+  {
+   "f": "06",
+   "cap": "Studio apartment",
+   "kind": "interior",
+   "w": 3086,
+   "h": 1289,
+   "fw": 2560,
+   "fh": 1069,
+   "tw": 800,
+   "th": 334,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/03/Bayz101.pdf#page=9"
+  },
+  {
+   "f": "07",
+   "cap": "Private pool on an apartment balcony, facing Burj Khalifa",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Balcony-6.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "Infinity pool at night with the Downtown skyline",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 900,
+   "fw": 1920,
+   "fh": 900,
+   "tw": 800,
+   "th": 375,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Pool-6.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "Indoor gym",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 900,
+   "fw": 1920,
+   "fh": 900,
+   "tw": 800,
+   "th": 375,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Gym-6.jpg"
+  },
+  {
+   "f": "10",
+   "cap": "Bowling centre",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 900,
+   "fw": 1920,
+   "fh": 900,
+   "tw": 800,
+   "th": 375,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Bowling.jpg"
+  },
+  {
+   "f": "11",
+   "cap": "Library",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 900,
+   "fw": 1920,
+   "fh": 900,
+   "tw": 800,
+   "th": 375,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Library-3.jpg"
+  },
+  {
+   "f": "12",
+   "cap": "Tennis court, with Burj Khalifa beyond",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 900,
+   "fw": 1920,
+   "fh": 900,
+   "tw": 800,
+   "th": 375,
+   "url": "https://danubeproperties.com/wp-content/uploads/2024/02/Tennis-2.jpg"
+  }
+ ]
+}

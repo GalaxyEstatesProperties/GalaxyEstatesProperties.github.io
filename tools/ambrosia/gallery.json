@@ -1,0 +1,170 @@
+{
+ "source": "https://www.adanirealty.com/residential-projects/ahmedabad/ambrosia",
+ "title": "Ambrosia in pictures",
+ "credit": "Images: Adani Realty, from the official project page: renders are artistic impressions; site photos are marked.",
+ "specs": [
+  [
+   "Configuration",
+   "4 BHK Ultra-Luxury Apartments"
+  ],
+  [
+   "Possession",
+   "January 2027"
+  ],
+  [
+   "Unit Size (RERA Carpet Area)",
+   "1671.6-1902.19 sq ft"
+  ],
+  [
+   "Project Area",
+   "9952 sq m"
+  ]
+ ],
+ "specs_src": "Specifications: Adani Realty official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Elevation",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1047,
+   "fw": 1920,
+   "fh": 1047,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/outdoor/7_1980-x-1080_1.ashx"
+  },
+  {
+   "f": "02",
+   "cap": "Swimming pool",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1047,
+   "fw": 1920,
+   "fh": 1047,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/outdoor/4_1980-x-1080_1.ashx"
+  },
+  {
+   "f": "03",
+   "cap": "Gazebo",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1047,
+   "fw": 1920,
+   "fh": 1047,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/outdoor/8_1980-x-1080_1.ashx"
+  },
+  {
+   "f": "04",
+   "cap": "Box cricket",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1047,
+   "fw": 1920,
+   "fh": 1047,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/outdoor/9_1980-x-1080_1.ashx"
+  },
+  {
+   "f": "05",
+   "cap": "Living room",
+   "kind": "interior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/interior/living-room.ashx"
+  },
+  {
+   "f": "06",
+   "cap": "Bedroom",
+   "kind": "interior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/interior/bedroom.ashx"
+  },
+  {
+   "f": "07",
+   "cap": "Club",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1047,
+   "fw": 1920,
+   "fh": 1047,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/interior/02-1980-x-1080.ashx"
+  },
+  {
+   "f": "08",
+   "cap": "Gym",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1047,
+   "fw": 1920,
+   "fh": 1047,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/carousel-images/interior/08-1980-x-1080.ashx"
+  },
+  {
+   "f": "09",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/aug-project-status/image1.ashx"
+  },
+  {
+   "f": "10",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/aug-project-status/image2.ashx"
+  },
+  {
+   "f": "11",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/aug-project-status/image3.ashx"
+  },
+  {
+   "f": "12",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/ambrosia/aug-project-status/image4.ashx"
+  }
+ ]
+}

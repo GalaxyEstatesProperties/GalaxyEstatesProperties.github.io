@@ -1,0 +1,138 @@
+{
+ "source": "https://www.emaar.com/en/properties/valo-at-dubai-creek-harbour",
+ "credit": "Images: Emaar Properties official renders, from the project page and the official Valo brochure. Renders are artistic impressions.",
+ "title": "Valo at Dubai Creek Harbour in pictures",
+ "specs": [
+  [
+   "Location",
+   "Creek Beach district, Dubai Creek Harbour, next to the main plaza"
+  ],
+  [
+   "Homes",
+   "1, 2 and 3-bedroom apartments with large terraces, and 3-bedroom townhouses"
+  ],
+  [
+   "Amenities",
+   "A 6,000 sq m amenities podium: pools and kids’ pool, indoor and outdoor gym, multipurpose room, yoga area, BBQ and picnic area, flexible lawn, kids’ play area and common garden"
+  ],
+  [
+   "Design",
+   "Locally sourced materials, shaded balconies and tinted windows"
+  ],
+  [
+   "Drive times",
+   "Ras Al Khor Wildlife Sanctuary 5 min, Burj Khalifa 10 min, Dubai airport 15 min, Al Maktoum airport 40 min"
+  ]
+ ],
+ "specs_src": "Specifications: Emaar official project page and the Valo brochure (Oct 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Valo’s entrance, beside the main plaza",
+   "kind": "exterior",
+   "w": 1620,
+   "h": 832,
+   "fw": 1620,
+   "fh": 832,
+   "tw": 800,
+   "th": 411,
+   "url": "https://www.emaar.com/cms-media/uploads/383232_hero_slide_0_3d3805c08b_prod.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Lawns and gardens between the buildings",
+   "kind": "amenity",
+   "w": 1903,
+   "h": 1300,
+   "fw": 1903,
+   "fh": 1300,
+   "tw": 800,
+   "th": 547,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=9"
+  },
+  {
+   "f": "03",
+   "cap": "Shaded garden walk",
+   "kind": "amenity",
+   "w": 1902,
+   "h": 1302,
+   "fw": 1902,
+   "fh": 1302,
+   "tw": 800,
+   "th": 548,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=6"
+  },
+  {
+   "f": "04",
+   "cap": "Pool area",
+   "kind": "amenity",
+   "w": 1903,
+   "h": 1301,
+   "fw": 1903,
+   "fh": 1301,
+   "tw": 800,
+   "th": 547,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=14"
+  },
+  {
+   "f": "05",
+   "cap": "Terrace overlooking Dubai Creek Harbour",
+   "kind": "view",
+   "w": 1902,
+   "h": 1300,
+   "fw": 1902,
+   "fh": 1300,
+   "tw": 800,
+   "th": 547,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=13"
+  },
+  {
+   "f": "06",
+   "cap": "Living room",
+   "kind": "interior",
+   "w": 1900,
+   "h": 1303,
+   "fw": 1900,
+   "fh": 1303,
+   "tw": 800,
+   "th": 549,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=10"
+  },
+  {
+   "f": "07",
+   "cap": "Bedroom opening onto the terrace",
+   "kind": "interior",
+   "w": 1903,
+   "h": 1302,
+   "fw": 1903,
+   "fh": 1302,
+   "tw": 800,
+   "th": 547,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=12"
+  },
+  {
+   "f": "08",
+   "cap": "Dubai Creek Harbour from above",
+   "kind": "view",
+   "w": 1627,
+   "h": 1302,
+   "fw": 1627,
+   "fh": 1302,
+   "tw": 800,
+   "th": 640,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=5"
+  },
+  {
+   "f": "09",
+   "cap": "Dubai Creek Marina at night",
+   "kind": "view",
+   "w": 1902,
+   "h": 1303,
+   "fw": 1902,
+   "fh": 1303,
+   "tw": 800,
+   "th": 548,
+   "url": "https://www.emaar.com/cms-media/uploads/383250_brochure_File_74bf62e8b9_prod.pdf#page=2"
+  }
+ ]
+}

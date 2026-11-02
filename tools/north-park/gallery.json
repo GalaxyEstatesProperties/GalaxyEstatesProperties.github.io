@@ -1,0 +1,170 @@
+{
+ "source": "https://www.adanirealty.com/residential-projects/ahmedabad/the-north-park",
+ "title": "The North Park in pictures",
+ "credit": "Images: Adani Realty, from the official project page: renders are artistic impressions; site photos are marked.",
+ "specs": [
+  [
+   "Configuration",
+   "4 BHK Villas"
+  ],
+  [
+   "Possession",
+   "October 2027"
+  ],
+  [
+   "Unit Size (RERA Carpet Area)",
+   "3374.81 - 3791.26 sq ft"
+  ],
+  [
+   "Project Area",
+   "16862.8 sq m"
+  ]
+ ],
+ "specs_src": "Specifications: Adani Realty official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Villa street with Type B villas",
+   "kind": "exterior",
+   "w": 4200,
+   "h": 2824,
+   "fw": 2560,
+   "fh": 1721,
+   "tw": 800,
+   "th": 538,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/exterior/villa-b-street-view-1.ashx"
+  },
+  {
+   "f": "02",
+   "cap": "Modern-style Type A 4 BHK villa at dusk",
+   "kind": "exterior",
+   "w": 4200,
+   "h": 2823,
+   "fw": 2560,
+   "fh": 1721,
+   "tw": 800,
+   "th": 538,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/exterior/individual-villa-night.ashx"
+  },
+  {
+   "f": "03",
+   "cap": "Entry gate",
+   "kind": "exterior",
+   "w": 4200,
+   "h": 2823,
+   "fw": 2560,
+   "fh": 1721,
+   "tw": 800,
+   "th": 538,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/exterior/entry-gate-view.ashx"
+  },
+  {
+   "f": "04",
+   "cap": "Villa fronts",
+   "kind": "exterior",
+   "w": 4200,
+   "h": 1958,
+   "fw": 2560,
+   "fh": 1193,
+   "tw": 800,
+   "th": 373,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/exterior/villa-front-view_day.ashx"
+  },
+  {
+   "f": "05",
+   "cap": "Terrace",
+   "kind": "amenity",
+   "w": 4200,
+   "h": 2823,
+   "fw": 2560,
+   "fh": 1721,
+   "tw": 800,
+   "th": 538,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/exterior/terrace-view.ashx"
+  },
+  {
+   "f": "06",
+   "cap": "Living room",
+   "kind": "interior",
+   "w": 2023,
+   "h": 1147,
+   "fw": 2023,
+   "fh": 1147,
+   "tw": 800,
+   "th": 454,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/interior/i1.ashx"
+  },
+  {
+   "f": "07",
+   "cap": "Dining room",
+   "kind": "interior",
+   "w": 2023,
+   "h": 1147,
+   "fw": 2023,
+   "fh": 1147,
+   "tw": 800,
+   "th": 454,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/interior/i3.ashx"
+  },
+  {
+   "f": "08",
+   "cap": "Bedroom",
+   "kind": "interior",
+   "w": 2023,
+   "h": 1147,
+   "fw": 2023,
+   "fh": 1147,
+   "tw": 800,
+   "th": 454,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/interior/i11.ashx"
+  },
+  {
+   "f": "09",
+   "cap": "Living room",
+   "kind": "interior",
+   "w": 2023,
+   "h": 1147,
+   "fw": 2023,
+   "fh": 1147,
+   "tw": 800,
+   "th": 454,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/exterior/interior/i13.ashx"
+  },
+  {
+   "f": "10",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/aug-project-status/image(1).ashx"
+  },
+  {
+   "f": "11",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/aug-project-status/image(2).ashx"
+  },
+  {
+   "f": "12",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 4000,
+   "h": 3000,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-north-park/aug-project-status/image(3).ashx"
+  }
+ ]
+}

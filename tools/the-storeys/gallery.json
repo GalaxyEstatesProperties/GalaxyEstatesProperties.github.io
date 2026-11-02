@@ -1,0 +1,74 @@
+{
+ "source": "https://www.adanirealty.com/residential-projects/ahmedabad/the-storeys",
+ "title": "The Storeys in pictures",
+ "credit": "Images: Adani Realty, from the official project page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Configuration",
+   "4/5 BHK Single-storeyed Homes & Duplex Homes"
+  ],
+  [
+   "Possession",
+   "Completed"
+  ],
+  [
+   "Unit Size (RERA Carpet Area)",
+   "3541.76 - 5997.76 sq ft"
+  ],
+  [
+   "Project Area",
+   "5484 sq m"
+  ]
+ ],
+ "specs_src": "Specifications: Adani Realty official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Elevation",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys/carousel-images/outdoor/the-storey-1.ashx"
+  },
+  {
+   "f": "02",
+   "cap": "Sky Deck on Terrace",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys/carousel-images/outdoor/sky-deck-on-terrace.ashx"
+  },
+  {
+   "f": "03",
+   "cap": "Master bedroom",
+   "kind": "interior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys/carousel-images/interior/master-bedroom.ashx"
+  },
+  {
+   "f": "04",
+   "cap": "West tower double height living room",
+   "kind": "interior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys/carousel-images/interior/west-tower-double-height-living-room.ashx"
+  }
+ ]
+}

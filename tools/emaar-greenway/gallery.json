@@ -1,0 +1,134 @@
+{
+ "source": "https://www.emaar.com/en/properties/greenway-at-emaar-south",
+ "credit": "Images: Emaar Properties official renders, from the official Greenway brochure. Renders are artistic impressions.",
+ "title": "Greenway at Emaar South in pictures",
+ "specs": [
+  [
+   "Community",
+   "Gated enclave of 232 townhouses arranged in clusters of four, around a district park and mosque"
+  ],
+  [
+   "Homes",
+   "3-bedroom townhouses up to 3,093 sq ft built-up; 4-bedroom end units up to 3,513 sq ft"
+  ],
+  [
+   "Amenities",
+   "Kids’ play areas, retail plaza and kiosks, skate park and multi-purpose court, events area"
+  ],
+  [
+   "Location",
+   "Emaar South, beside Expo City Dubai: Al Maktoum airport 7 min, Expo City 10 min, Dubai Marina 20 min"
+  ]
+ ],
+ "specs_src": "Specifications: Emaar official project page and the Greenway brochure (Oct 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Townhouses around the community park",
+   "kind": "exterior",
+   "w": 2562,
+   "h": 1602,
+   "fw": 2560,
+   "fh": 1601,
+   "tw": 800,
+   "th": 500,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=6"
+  },
+  {
+   "f": "02",
+   "cap": "A cluster of four townhouses",
+   "kind": "exterior",
+   "w": 2464,
+   "h": 1602,
+   "fw": 2464,
+   "fh": 1602,
+   "tw": 800,
+   "th": 520,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=11"
+  },
+  {
+   "f": "03",
+   "cap": "Parkland and paths from above",
+   "kind": "amenity",
+   "w": 1514,
+   "h": 1601,
+   "fw": 1514,
+   "fh": 1601,
+   "tw": 757,
+   "th": 800,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=3"
+  },
+  {
+   "f": "04",
+   "cap": "Pool and shaded cabanas",
+   "kind": "amenity",
+   "w": 2462,
+   "h": 1604,
+   "fw": 2462,
+   "fh": 1604,
+   "tw": 800,
+   "th": 521,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=18"
+  },
+  {
+   "f": "05",
+   "cap": "Skate park",
+   "kind": "amenity",
+   "w": 2462,
+   "h": 1604,
+   "fw": 2462,
+   "fh": 1604,
+   "tw": 800,
+   "th": 521,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=20"
+  },
+  {
+   "f": "06",
+   "cap": "Kids’ play area",
+   "kind": "amenity",
+   "w": 1513,
+   "h": 1603,
+   "fw": 1513,
+   "fh": 1603,
+   "tw": 755,
+   "th": 800,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=19"
+  },
+  {
+   "f": "07",
+   "cap": "Living and dining room",
+   "kind": "interior",
+   "w": 2464,
+   "h": 1603,
+   "fw": 2464,
+   "fh": 1603,
+   "tw": 800,
+   "th": 520,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=16"
+  },
+  {
+   "f": "08",
+   "cap": "Bedroom with terrace",
+   "kind": "interior",
+   "w": 2463,
+   "h": 1602,
+   "fw": 2463,
+   "fh": 1602,
+   "tw": 800,
+   "th": 520,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=15"
+  },
+  {
+   "f": "09",
+   "cap": "Floor-to-ceiling windows onto the garden",
+   "kind": "interior",
+   "w": 1513,
+   "h": 1604,
+   "fw": 1513,
+   "fh": 1604,
+   "tw": 755,
+   "th": 800,
+   "url": "https://www.emaar.com/cms-media/uploads/Greenway_brochure.pdf#page=14"
+  }
+ ]
+}

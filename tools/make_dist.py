@@ -130,7 +130,7 @@ os.makedirs(TOOLS, exist_ok=True)
 SPD = os.path.dirname(os.path.abspath(__file__))
 for n in ('build.py', 'props_build.py', 'land_build.py', 'global_build.py', 't3d_auto.py', 'official.py', 'bmc_city.py', 'country_build.py', 'new_listings.py', 'sitegeo.py', 'forms.py', 'rera_floors.py', 'shgeom.py', 'sh_models.py', 'gm_models.py', 'gmfit.py', 'facades.py', 'gj_models.py', 'intl_models.py', 'plan_cells.py', 'en_cells.py', 'search_index.py', 'site_search.py', 'satfetch.py', 'make_dist.py', 'land-listings-apps-script.gs'):
     shutil.copy2(os.path.join(SPD, n), os.path.join(TOOLS, n))
-for d in ['shivalik_wave', 'antonia', 'bakeri_stella', 'kalrav/t3d'] + sorted(x for x in os.listdir(SPD) if x.startswith('ashridhar-kalrav-')):   # data the build reads (3D models, galleries)
+for d in ['shivalik_wave', 'antonia', 'bakeri_stella', 'kalrav/t3d'] + sorted(x for x in os.listdir(SPD) if x.startswith('ashridhar-kalrav-') or os.path.exists(os.path.join(SPD, x, 'gallery.json'))):   # data the build reads (3D models, galleries)
     if os.path.isdir(os.path.join(SPD, d)):
         shutil.copytree(os.path.join(SPD, d), os.path.join(TOOLS, d), dirs_exist_ok=True)
 open(TOOLS + '/README.md', 'w').write("""# Site source

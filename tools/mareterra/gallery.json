@@ -1,0 +1,154 @@
+{
+ "source": "https://mareterra.com/en",
+ "credit": "Images: SAM L’Anse du Portier (mareterra.com): photographs of the finished district and site, and the developer’s renders. Aerial photograph © Philippe Chancel.",
+ "title": "Mareterra in pictures",
+ "specs": [
+  [
+   "District",
+   "Six-hectare sea extension at Le Portier, Monaco, inaugurated in December 2024"
+  ],
+  [
+   "Homes",
+   "Le Renzo by Renzo Piano Building Workshop, the residences of Les Jardins d’Eau, a limited number of seaside villas, and townhouses with interior patios"
+  ],
+  [
+   "Designers",
+   "Master plan by Valode & Pistre Architectes; buildings by Renzo Piano Building Workshop; landscape by Michel Desvigne Paysagiste"
+  ],
+  [
+   "Landscape",
+   "800 trees, 27,000 m² of planted areas, 19,000 m² of pedestrian space and 600 m of cycle path"
+  ],
+  [
+   "Energy",
+   "Sea-water geothermal heating and cooling, 9,000 m² of solar panels, 50% of rainwater reused, about 200 electric-car charging points"
+  ],
+  [
+   "Certifications",
+   "BREEAM, HQE Aménagement, EVE, BiodiverCity and Ports Propres"
+  ]
+ ],
+ "specs_src": "Specifications: Mareterra official site (Facts & Figures, Residences, Design & Architecture), Oct 2026.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Mareterra at night, after completion (photo: Philippe Chancel)",
+   "kind": "exterior",
+   "w": 2560,
+   "h": 1920,
+   "fw": 2560,
+   "fh": 1920,
+   "tw": 800,
+   "th": 600,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2026/02/06154505/Mareterra_%C2%A9Philippe-Chancel_6-scaled.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "The district from the sea, beside Larvotto",
+   "kind": "exterior",
+   "w": 2000,
+   "h": 1125,
+   "fw": 2000,
+   "fh": 1125,
+   "tw": 800,
+   "th": 450,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/06/10043103/0055-ST036_COMP_V002_Web_2000x1125.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "The seafront promenade",
+   "kind": "amenity",
+   "w": 2000,
+   "h": 1125,
+   "fw": 2000,
+   "fh": 1125,
+   "tw": 800,
+   "th": 450,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/06/11185138/0055-ST038_COMP_V002_Web.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Villas along a garden street",
+   "kind": "exterior",
+   "w": 2001,
+   "h": 1001,
+   "fw": 2001,
+   "fh": 1001,
+   "tw": 800,
+   "th": 400,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/01/30213754/02_FactsFigures_Hero-2.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "The new marina (photo, July 2024)",
+   "kind": "view",
+   "w": 2560,
+   "h": 1707,
+   "fw": 2560,
+   "fh": 1707,
+   "tw": 800,
+   "th": 533,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2024/10/16073928/Port-Vue-densemble-2024-07-16%E2%99%A5-scaled.jpg"
+  },
+  {
+   "f": "06",
+   "cap": "Reflecting pool beneath the pines",
+   "kind": "amenity",
+   "w": 2000,
+   "h": 1000,
+   "fw": 2000,
+   "fh": 1000,
+   "tw": 800,
+   "th": 400,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/02/24153141/05_Calder_01.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "Pine garden and pavilion",
+   "kind": "amenity",
+   "w": 2000,
+   "h": 1000,
+   "fw": 2000,
+   "fh": 1000,
+   "tw": 800,
+   "th": 400,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/02/24153144/05_Calder_02.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "Shaded paths through the hill garden",
+   "kind": "amenity",
+   "w": 2000,
+   "h": 1000,
+   "fw": 2000,
+   "fh": 1000,
+   "tw": 800,
+   "th": 400,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/05/21212648/01_FactsFigures_Hero-1.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "The hill garden being planted (photo, January 2024)",
+   "kind": "amenity",
+   "w": 2560,
+   "h": 1707,
+   "fw": 2560,
+   "fh": 1707,
+   "tw": 800,
+   "th": 533,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2024/02/07135138/Colline-Plantations-2024-01-03%E2%99%A5%E2%99%A5-scaled.jpg"
+  },
+  {
+   "f": "10",
+   "cap": "Architectural model of the district",
+   "kind": "plan",
+   "w": 2000,
+   "h": 1000,
+   "fw": 2000,
+   "fh": 1000,
+   "tw": 800,
+   "th": 400,
+   "url": "https://d1u5b0fvjmceqx.cloudfront.net/wp-content/uploads/2020/01/20232851/01_DesignArchitecture_Hero.jpg"
+  }
+ ]
+}

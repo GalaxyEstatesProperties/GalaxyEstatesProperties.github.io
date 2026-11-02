@@ -1,0 +1,110 @@
+{
+ "source": "https://www.adanirealty.com/residential-projects/ahmedabad/the-storeys-golf-coast",
+ "title": "The Storeys Golf Coast in pictures",
+ "credit": "Images: Adani Realty, from the official project page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Configuration",
+   "4 BHK - Simplex 5 BHK - Duplex"
+  ],
+  [
+   "Possession",
+   "December 2028"
+  ],
+  [
+   "Unit Size (RERA Carpet Area)",
+   "3500.74 - 6466.41 sq ft"
+  ],
+  [
+   "Project Area",
+   "4950.22 sq m"
+  ]
+ ],
+ "specs_src": "Specifications: Adani Realty official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The towers from the golf course",
+   "kind": "view",
+   "w": 2064,
+   "h": 1376,
+   "fw": 2064,
+   "fh": 1376,
+   "tw": 800,
+   "th": 533,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/feature-images/golf-course-view.ashx"
+  },
+  {
+   "f": "02",
+   "cap": "Balcony view over the Narmada canal",
+   "kind": "view",
+   "w": 1920,
+   "h": 1042,
+   "fw": 1920,
+   "fh": 1042,
+   "tw": 800,
+   "th": 434,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/new-renders/balconyview.ashx"
+  },
+  {
+   "f": "03",
+   "cap": "The towers beside the Narmada canal",
+   "kind": "view",
+   "w": 1982,
+   "h": 1500,
+   "fw": 1982,
+   "fh": 1500,
+   "tw": 800,
+   "th": 605,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/feature-images/canal-view.ashx"
+  },
+  {
+   "f": "04",
+   "cap": "The towers above the canal at dusk",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 689,
+   "fw": 1920,
+   "fh": 689,
+   "tw": 800,
+   "th": 287,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/new-renders/elevation.ashx"
+  },
+  {
+   "f": "05",
+   "cap": "Garden",
+   "kind": "amenity",
+   "w": 1919,
+   "h": 938,
+   "fw": 1919,
+   "fh": 938,
+   "tw": 800,
+   "th": 391,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/new-renders/garden.ashx"
+  },
+  {
+   "f": "06",
+   "cap": "The canal and golf course from above",
+   "kind": "view",
+   "w": 1920,
+   "h": 766,
+   "fw": 1920,
+   "fh": 766,
+   "tw": 800,
+   "th": 319,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/new-renders/the-view.ashx"
+  },
+  {
+   "f": "07",
+   "cap": "North tower duplex living room",
+   "kind": "interior",
+   "w": 2500,
+   "h": 2500,
+   "fw": 2500,
+   "fh": 2500,
+   "tw": 800,
+   "th": 800,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/the-storeys-golf-coast/feature-images/north-tower--duplex-1-1.ashx"
+  }
+ ]
+}

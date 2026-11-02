@@ -1,0 +1,130 @@
+{
+ "source": "https://www.emaar.com/en/properties/palmiera-2-at-the-oasis",
+ "credit": "Images: Emaar Properties official renders, from the project page and the official Palmiera 2 brochure. Renders are artistic impressions.",
+ "title": "Palmiera 2 at The Oasis in pictures",
+ "specs": [
+  [
+   "Homes",
+   "4-bedroom villas with basement levels and open floor plans, on generous plots facing the canals and parks"
+  ],
+  [
+   "Community",
+   "The Oasis by Emaar: 100 million sq ft (9.4 million sq m) with over 7,000 residences, swimmable lagoons, beaches, linear parks and a gym"
+  ],
+  [
+   "Access",
+   "Sheikh Zayed bin Hamdan Road (D54) and the future Al Khail Road (E44) extension"
+  ]
+ ],
+ "specs_src": "Specifications: Emaar official project page and the Palmiera 2 brochure (Oct 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The Oasis from above: villas along the canals and lagoons",
+   "kind": "exterior",
+   "w": 2136,
+   "h": 1203,
+   "fw": 2136,
+   "fh": 1203,
+   "tw": 800,
+   "th": 451,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=7"
+  },
+  {
+   "f": "02",
+   "cap": "Arrival drive through the landscape",
+   "kind": "exterior",
+   "w": 2136,
+   "h": 1203,
+   "fw": 2136,
+   "fh": 1203,
+   "tw": 800,
+   "th": 451,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=6"
+  },
+  {
+   "f": "03",
+   "cap": "A 4-bedroom villa, street façade",
+   "kind": "exterior",
+   "w": 2136,
+   "h": 1203,
+   "fw": 2136,
+   "fh": 1203,
+   "tw": 800,
+   "th": 451,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=13"
+  },
+  {
+   "f": "04",
+   "cap": "A second villa façade",
+   "kind": "exterior",
+   "w": 2136,
+   "h": 1202,
+   "fw": 2136,
+   "fh": 1202,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=12"
+  },
+  {
+   "f": "05",
+   "cap": "A third villa façade",
+   "kind": "exterior",
+   "w": 2136,
+   "h": 1202,
+   "fw": 2136,
+   "fh": 1202,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=14"
+  },
+  {
+   "f": "06",
+   "cap": "Villa garden and private pool at dusk",
+   "kind": "exterior",
+   "w": 1620,
+   "h": 832,
+   "fw": 1620,
+   "fh": 832,
+   "tw": 800,
+   "th": 411,
+   "url": "https://www.emaar.com/cms-media/uploads/383832_hero_slide_0_809fbb3270_prod.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "Living area opening onto the garden and pool",
+   "kind": "interior",
+   "w": 2136,
+   "h": 1203,
+   "fw": 2136,
+   "fh": 1203,
+   "tw": 800,
+   "th": 451,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=16"
+  },
+  {
+   "f": "08",
+   "cap": "Swimmable lagoon beach",
+   "kind": "amenity",
+   "w": 2136,
+   "h": 1203,
+   "fw": 2136,
+   "fh": 1203,
+   "tw": 800,
+   "th": 451,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=10"
+  },
+  {
+   "f": "09",
+   "cap": "Lagoon pool from above",
+   "kind": "amenity",
+   "w": 2136,
+   "h": 1202,
+   "fw": 1891,
+   "fh": 958,
+   "tw": 800,
+   "th": 405,
+   "url": "https://www.emaar.com/cms-media/uploads/383954_brochure_File_7ce4a7685f_prod.pdf#page=2"
+  }
+ ]
+}

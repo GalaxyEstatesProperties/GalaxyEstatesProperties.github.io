@@ -1,0 +1,158 @@
+{
+ "source": "https://www.adanirealty.com/residential-projects/ahmedabad/amogha",
+ "title": "Amogha in pictures",
+ "credit": "Images: Adani Realty, from the official project page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Configuration",
+   "3 BHK Apartments"
+  ],
+  [
+   "Possession",
+   "Completed"
+  ],
+  [
+   "Unit Size (RERA Carpet Area)",
+   "624.09 - 776.400 sq ft"
+  ],
+  [
+   "Project Area",
+   "13865 sq m"
+  ]
+ ],
+ "specs_src": "Specifications: Adani Realty official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Exterior view",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/amogha_cover-image.ashx"
+  },
+  {
+   "f": "02",
+   "cap": "Multipurpose lawn",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/multi-purpose-lawn.ashx"
+  },
+  {
+   "f": "03",
+   "cap": "Kids play zone",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/amogha_04.ashx"
+  },
+  {
+   "f": "04",
+   "cap": "Balcony",
+   "kind": "view",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/amogha_06.ashx"
+  },
+  {
+   "f": "05",
+   "cap": "Butterfly friendly landscaping",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/amogha_07.ashx"
+  },
+  {
+   "f": "06",
+   "cap": "Clubhouse",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/clubhouse.ashx"
+  },
+  {
+   "f": "07",
+   "cap": "Expansive view",
+   "kind": "view",
+   "w": 1980,
+   "h": 1080,
+   "fw": 1980,
+   "fh": 1080,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/amogha_01.ashx"
+  },
+  {
+   "f": "08",
+   "cap": "Swimming pool",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/shaded-swimming-pool.ashx"
+  },
+  {
+   "f": "09",
+   "cap": "Gym",
+   "kind": "amenity",
+   "w": 1980,
+   "h": 1080,
+   "fw": 1980,
+   "fh": 1080,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/interior/gym.ashx"
+  },
+  {
+   "f": "10",
+   "cap": "Multipurpose hall",
+   "kind": "amenity",
+   "w": 1980,
+   "h": 1080,
+   "fw": 1980,
+   "fh": 1080,
+   "tw": 800,
+   "th": 436,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/interior/multi-purpose-hall.ashx"
+  },
+  {
+   "f": "11",
+   "cap": "Green passages",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.adanirealty.com/-/media/project/realty/residential/ahmedabad/amogha/carousel-images/outdoor/walkway.ashx"
+  }
+ ]
+}
