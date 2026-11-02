@@ -8,11 +8,13 @@ import numpy as np
 from shapely.geometry import Polygon, MultiPolygon, box, LineString, Point
 from shapely.ops import unary_union, split
 from shapely import affinity
-sys.path.insert(0, '/home/claude/stella')
+import os
+WORK = os.environ.get('GALAXY_WORKDIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))  # folder holding the site folders
+sys.path.insert(0, os.path.join(WORK, 'stella'))
 from geom import mask, polys, to_m
 import neighbors as NB
 
-PAGE = '/home/claude/gep/bakeri-stella-gift-city-gandhinagar.html'
+PAGE = os.path.join(WORK, 'gep/bakeri-stella-gift-city-gandhinagar.html')
 K = 2.0855                                      # brochure display px (2000-wide view of the 150 dpi page) -> 300 dpi px
 def disp(pts): return [tuple(p) for p in to_m(np.array(pts, float) * K)]
 
@@ -76,7 +78,7 @@ def local(P, t):
     return R2(q)
 
 # ------------------------------------------------------------------ stacks: keep the Gujarat RERA unit numbers and carpet areas already on the page
-so = open('/home/claude/stella/old_page.html', encoding='utf-8').read()     # the page before this model (RERA unit lists)
+so = open(os.path.join(WORK, 'stella/old_page.html'), encoding='utf-8').read()     # the page before this model (RERA unit lists)
 OLD = json.loads(re.search(r'<script type="application/json" id="t3d-bakeri-stella">(.*?)</script>', so, re.S).group(1))
 s = open(PAGE, encoding='utf-8').read()
 m = re.search(r'(<script type="application/json" id="t3d-bakeri-stella">)(.*?)(</script>)', s, re.S)
@@ -200,7 +202,7 @@ prism(front, Z[1] - 1.3, 1.3, NAVY)
 def geo_to_model(P):
     q = affinity.translate(P, -GX, -GY)
     return affinity.rotate(q, -ROT, origin=(0, 0))
-G = json.load(open('/home/claude/stella/geo_gift.json'))
+G = json.load(open(os.path.join(WORK, 'stella/geo_gift.json')))
 w0 = G['water'][0]
 river = Polygon([(w0[i], w0[i + 1]) for i in range(0, len(w0), 2)]).buffer(0).intersection(Point(GX, GY).buffer(1250))
 rv = geo_to_model(river)
@@ -263,5 +265,5 @@ if __name__ == '__main__':
     s2 = re.sub(r'(<div class="t3d reveal" data-t3d="t3d-bakeri-stella">.*?</div>\s*</div>\s*</div>\s*<p class="detail-source">)(.*?)(</p>)',
                 lambda mm: mm.group(1) + cfg['note'] + mm.group(3), s2, count=1, flags=re.S)
     open(PAGE, 'w', encoding='utf-8').write(s2)
-    json.dump(cfg, open('/home/claude/stella/t3d.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    json.dump(cfg, open(os.path.join(WORK, 'stella/t3d.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     print('towers', [(t['id'], len(t['stack'])) for t in towers], 'context', len(ctx), 'kB', len(out) // 1024, 'F2 area', round(F2.area), 'POD', round(POD.area))

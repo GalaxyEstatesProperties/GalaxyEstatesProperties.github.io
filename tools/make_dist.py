@@ -78,6 +78,7 @@ def ver(path):
 for f in glob.glob(OUT + '/*.html'):
     h = open(f, encoding='utf-8').read()
     h = re.sub(r'<img(?![^>]*decoding=)', '<img decoding="async"', h)   # decode images off the main thread
+    h = re.sub(r'\n?[ \t]*<!--[^>]*-->', '', h)   # no HTML comments in the published pages
     h = re.sub(r'(src|href)="(assets/[^"?#]+\.(?:js|css))"', lambda m: f'{m.group(1)}="{m.group(2)}?v={ver(m.group(2))}"', h)
     open(f, 'w', encoding='utf-8').write(h)
 # ---------- 404: works at any depth and sends visitors home after a few seconds ----------

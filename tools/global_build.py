@@ -263,8 +263,7 @@ def projects_list(mid):
         rows.append(f'<li class="mp-row"><span class="mp-top"><span class="mp-dev">{E(p["dev"])}</span><span class="mp-st st-{p["st"]}">{ST[p["st"]]}</span></span>'
                     f'{name}<span class="mp-meta">{E(p["where"])} · {E(p["price"])} · {E(p["when"])}</span>{src}</li>')
     n = sum(1 for p in PROJECTS.get(mid, []) if 'name' in p)
-    return (f'<h4>Current projects <span class="mp-count">{n}</span></h4><ul class="mkt-projects">{"".join(rows)}</ul>'
-            '<p class="mp-foot">Prices and dates as published by the developer or the linked source (checked Oct 2026). Ask us for live availability.</p>') if rows else ''
+    return f'<h4>Current projects <span class="mp-count">{n}</span></h4><ul class="mkt-projects">{"".join(rows)}</ul>' if rows else ''
 
 
 def world_svg(cls='gmap wmap', labels=True, interactive=True):
