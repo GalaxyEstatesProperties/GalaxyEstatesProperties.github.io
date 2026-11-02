@@ -59,7 +59,7 @@ for p in PROJECTS:
     poss = ("ready to move" if p["possession"].startswith("Ready")
             else "possession date on request" if p["possession"] == "On request"
             else f"possession {p['possession']}")
-    p["blurb"] = f"{p['name']} is a {kind} inside Adani Shantigram, {poss}. Sizes: {p['size']}. Starting prices marked * are indicative (as published by Adani Realty, checked 11 Oct 2026); ask us for the current price sheet."
+    p["blurb"] = f"{p['name']} is a {kind} inside Adani Shantigram, {poss}. Sizes: {p['size'].rstrip('.')}. Starting prices marked * are indicative (as published by Adani Realty, checked 11 Oct 2026); ask us for the current price sheet."
 
 for p in PROJECTS:
     p.update(PB.SH_EXTRA.get(p["id"], {}))
@@ -70,7 +70,7 @@ for p in PROJECTS:
     poss = ("ready to move" if p["possession"].startswith("Ready")
             else "possession date on request" if p["possession"] == "On request"
             else f"possession {p['possession']}")
-    p["blurb"] = f"{p['name']} is a {kind} inside Adani Shantigram, {poss}. Sizes: {p['size']}. Prices marked * are indicative, as published by the developer (checked 12 Oct 2026); ask us for the current price sheet."
+    p["blurb"] = f"{p['name']} is a {kind} inside Adani Shantigram, {poss}. Sizes: {p['size'].rstrip('.')}. Prices marked * are indicative, as published by the developer (checked 12 Oct 2026); ask us for the current price sheet."
     p.setdefault("total", PB.ASK_UNITS); p.setdefault("available", PB.ASK_AVAIL); p.setdefault("build", "")
     p["cats"] = ["Adani Shantigram"] + [("Villas & townhouses" if c == "Villas" else ("1-2 BHK / studio" if c == "2 BHK" else c)) for c in p["cats"]]
     if p["id"] == "shivalik-shantigram":
@@ -837,12 +837,12 @@ def property_page(p):
     nop = bool(p.get("noprice")); plots = nop and "Villas & townhouses" not in p["cats"]
     if nop:
         title = f"{p['name']}, {area} – {p['label']}, {'Plot Sizes' if plots else 'Villa & Plot Sizes'}{' & 3D Site Map' if p['id'] in T3D else ''} | Galaxy Estates Properties"
-        desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['size']}. {p['total']}. "
+        desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['size'].rstrip('.')}. {p['total']}. "
                 f"Possession {p['possession']}. Call +91 84880 62309.")[:300]
         rows = "".join(f"<tr><th scope=\"row\">{E(r[0])}</th><td>{E(r[1])}</td><td>{E(r[3] or 'Ask us')}</td></tr>" for r in p["mix"])
     else:
         title = f"{p['name']}, {area} – {p['label']}, Price & RERA | Galaxy Estates Properties"
-        desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['price']} {p['priceLabel']}. Sizes {p['size']}. "
+        desc = (f"{p['name']} by {p['developer']}: {words} in {area}. {p['price']} {p['priceLabel']}. Sizes {p['size'].rstrip('.')}. "
                 f"Possession {p['possession']}. Call +91 84880 62309.")[:300]
         rows = "".join(f"<tr><th scope=\"row\">{E(r[0])}</th><td>{E(r[1])}</td><td>{E(r[2])}</td><td>{E(r[3] or 'Ask us')}</td></tr>" for r in p["mix"])
     mixh = (f"{E(p['name'])} plot sizes" if plots else f"{E(p['name'])} villas and plot sizes") if nop else f"{E(p['name'])} unit types, sizes and prices"
@@ -880,7 +880,7 @@ def property_page(p):
     <div class="breadcrumb hs">{crumbs}<span>{E(p['name'])}</span></div>
     <span class="section-tag hs">{E(p['label'])} · {E(area)}</span>
     <h1>{E(p['name'])}</h1>
-    <p class="hs">{E(words[0].upper() + words[1:])} in {E(area)} by {E(p['developer'])}. {E(p['build'])}.</p>
+    <p class="hs">{E(words[0].upper() + words[1:])} in {E(area)} by {E(p['developer'].rstrip('.'))}. {E(p['build'])}.</p>
   </div>
 </section>
 

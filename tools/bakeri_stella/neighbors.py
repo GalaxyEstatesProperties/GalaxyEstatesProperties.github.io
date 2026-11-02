@@ -1,8 +1,10 @@
 import json, re, math, glob
 from shapely.geometry import Polygon, box
 from shapely import affinity
+import os
+WORK = os.environ.get('GALAXY_WORKDIR', os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))  # folder holding the site folders
 def cfg(slug):
-    f = [g for g in glob.glob('/home/claude/gep/*.html') if re.search(r'id="t3d-%s"' % re.escape(slug), open(g).read())][0]
+    f = [g for g in glob.glob(os.path.join(WORK, 'gep/*.html')) if re.search(r'id="t3d-%s"' % re.escape(slug), open(g).read())][0]
     s = open(f).read()
     return json.loads(re.search(r'<script type="application/json" id="t3d-%s">(.*?)</script>' % re.escape(slug), s, re.S).group(1)), f
 def footprints(c):
