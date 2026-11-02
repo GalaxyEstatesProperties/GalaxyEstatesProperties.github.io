@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="assets/vendor/fonts.css?v=5d64a87b"/>
 <link rel="stylesheet" href="assets/vendor/fa/all.min.css?v=d536ec81"/>
 <script>(function(d){var h=d.documentElement,c=h.classList;c.add('js');try{history.scrollRestoration='manual'}catch(e){}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('mo')}catch(e){c.add('mo')}try{if(sessionStorage.getItem('ge_seen'))c.add('seen')}catch(e){}window.__geFS=setTimeout(function(){c.remove('mo');c.add('is-ready')},4500)})(document);</script>
-<link rel="stylesheet" href="assets/style.css?v=5a3225df"/>
+<link rel="stylesheet" href="assets/style.css?v=7c5578aa"/>
 <link rel="stylesheet" href="assets/motion.css?v=d75238c3"/>
 
 </head>
@@ -489,6 +489,19 @@
 </section>
 
 
+<section class="section" id="showcase">
+  <div class="container">
+    <div class="section-header seq"><span class="section-tag">3D showcase</span><h2>See the view from every floor</h2><p>Turn the model, then pick a floor to fly to its balcony.</p></div>
+    <div class="mv-wrap reveal">
+      <model-viewer id="mv" src="assets/models/galaxy-residence.glb" alt="3D render of a residential tower with balconies" camera-controls touch-action="pan-y" interaction-prompt="none" shadow-intensity="1" exposure="1.1" camera-orbit="30deg 75deg 105m" camera-target="0m 19m 2m" interpolation-decay="140" min-camera-orbit="auto 20deg 14m" max-camera-orbit="auto 95deg 150m">
+        <div class="mv-ui"><p><small>Floor view</small><b id="mvf">Whole building</b></p><button type="button" class="cta-btn primary small" data-enquire="Site visit (3D showcase)" data-interest="Site visit"><i class="fas fa-calendar-check"></i> Book Site Visit</button></div>
+      </model-viewer>
+      <div class="mv-views" role="group" aria-label="View selector"><button type="button" aria-pressed="false" data-v="0m 4.7m 9m|0deg 84deg 24m|1st floor balcony">1st Floor</button><button type="button" aria-pressed="false" data-v="0m 17.5m 9m|-12deg 80deg 26m|5th floor balcony">5th Floor</button><button type="button" aria-pressed="false" data-v="0m 36.7m 9m|15deg 84deg 26m|Top floor balcony">Top Floor</button></div>
+    </div>
+  </div>
+</section>
+<script type="module" src="assets/vendor/model-viewer/model-viewer.min.js"></script>
+<script src="assets/showcase.js" defer></script>
 <section class="section cta-section">
   <div class="stars" aria-hidden="true"></div>
   <div class="container">

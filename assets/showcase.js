@@ -1,0 +1,1 @@
+document.querySelectorAll('.mv-views button').forEach(b=>b.onclick=()=>{const[t,o,l]=b.dataset.v.split('|'),m=document.getElementById('mv');m.cameraTarget=t;m.cameraOrbit=o;document.getElementById('mvf').textContent=l;document.querySelectorAll('.mv-views button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
