@@ -141,7 +141,7 @@ PROJECTS = {
          src='https://metropolitan.realestate/media/news/tower-b-sobha-seahaven-new-launch-in-dubai/'),
     dict(dev='Meraas', name='Nad Al Sheba Gardens, phases 5 & 6', where='Nad Al Sheba, Dubai', st='build', price='3-bed townhouses from AED 4.18M', when='Completion 2027',
          src='https://metropolitan.realestate/media/news/nad-al-sheba-gardens-5-6-exciting-new-launch-in-dubai/'),
-    dict(dev='Binghatti', name='Burj Binghatti Jacob & Co Residences', where='Business Bay, Dubai', st='build', price='2-bed from AED 8.4M', when='Handover Q2 2027', page='binghatti-burj-jacob-dubai.html'),
+    dict(dev='Binghatti', name='Burj Binghatti Jacob & Co Residences', where='Business Bay, Dubai', st='build', price='2-bed from AED 8.2M', when='Handover Q2 2027', page='binghatti-burj-jacob-dubai.html'),
     dict(dev='Binghatti', name='Mercedes-Benz Places | Binghatti City', where='Nad Al Sheba, Meydan, Dubai', st='build', price='studios from AED 1.35M', when='Built in 3 phases', page='binghatti-mercedes-city-dubai.html'),
     dict(dev='Aldar', name='Fahid Beach Residences', where='Fahid Island, Abu Dhabi', st='build', price='1-bed from AED 3.5M', when='Handover Q1 2029 · plan 10/55/35',
          src='https://insiderealty.ae/en/projects/aldar-fahid-beach-residences-abu-dhabi'),

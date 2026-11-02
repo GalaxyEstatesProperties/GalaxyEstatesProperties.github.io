@@ -45,70 +45,97 @@ def burj_jacob(cfg):
     halves = {'W': [[0, A], [-A + C, A], [-A, A - C], [-A, -A + C], [-A + C, -A], [0, -A], [0, -K], [-K, -K], [-K, K], [0, K]],
               'E': [[0, A], [0, K], [K, K], [K, -K], [0, -K], [0, -A], [A - C, -A], [A, -A + C], [A, A - C], [A - C, A]]}
     hdeg = {'W': 180, 'E': 0}
-    VILLA = ('Emerald Villa (2 bedrooms, 3,347 sq ft), Sapphire Villa (2 bedrooms + study, 3,351 sq ft) or Ruby Villa (3 bedrooms, 3,314 sq ft); '
-             'which of the three is on this floor is on the developer’s availability sheet')
-    MANSION = 'Diamond Sky Mansion (4 bedrooms) or Fleurs de Jardin Sky Mansion (6 bedrooms), 7,032 sq ft each, half a floor'
-    st = [dict(label='Ground floor', kind='M', use='Grand lobby with lobby lounge, concierge and valet arrival', h=6.0)]
-    st += [dict(label=f'Podium level {i}', kind='M', use='Podium: parking and building services (there are also 6 basement levels of parking)') for i in range(1, 6)]
-    for lv in range(6, 83):            # quarter-floor villas
+    # Developer's brochure (Burj Binghatti Jacob & Co Residences, 68 pages): the vertical diagram gives every floor (GF, podium 1-5, pool, service,
+    # sky garden, 83 residential floors R-01 to R-83, 6 mechanical floors, sky lounge, spa, gym, penthouses; 560 m total height) and the unit pages
+    # give levels, bedrooms, areas, parking and prices. The unit pages count levels one higher than the diagram's floor numbers
+    # (Billionaire: diagram floors 101-102 = levels 102 & 103); levels here follow the unit pages, so they match the price sheet.
+    U = {'E': dict(n='Emerald Villa', bed='2 bedrooms, 3 bathrooms', area='1,738 sq ft suite + 1,599 sq ft terrace & pool = 3,337 sq ft', park=2, price='AED 8,200,000 to 11,920,000 (average 9,964,000)'),
+         'S': dict(n='Sapphire Villa', bed='2.5 bedrooms (with study and storage room), 3 bathrooms', area='1,732 sq ft suite + 1,602 sq ft terrace & pool = 3,335 sq ft', park=2, price='AED 8,400,000 to 10,980,000 (average 9,679,000)'),
+         'R': dict(n='Ruby Villa', bed='3 bedrooms, 4 bathrooms', area='2,090 sq ft suite + 1,209 sq ft terrace & pool = 3,299 sq ft', park=2, price='AED 13,999,999 to 17,239,999 (average 15,494,999)'),
+         'D': dict(n='Diamond Sky Mansion', bed='4 bedrooms, 7 bathrooms', area='5,176 sq ft suite + 1,800 sq ft terrace & pool = 6,976 sq ft', park=4, price='On request'),
+         'F': dict(n='Fleurs de Jardin Sky Mansion', bed='6 bedrooms, 9 bathrooms', area='5,176 sq ft suite + 1,800 sq ft terrace & pool = 6,976 sq ft', park=4, price='AED 31,000,000 to 36,100,000 (average 33,716,667)'),
+         'A': dict(n='Astronomia Sky Penthouse', bed='5 bedrooms, 7 bathrooms', area='10,290 sq ft suite + 1,517 sq ft terrace & pool = 11,807 sq ft', park=6, price='AED 175,000,000'),
+         'B': dict(n='The Billionaire Sky Penthouse', bed='7 bedrooms, 10 bathrooms', area='20,788 sq ft suite + 1,681 sq ft balcony = 22,469 sq ft', park=12, price='AED 750,000,000')}
+    def rows(k, extra):
+        u = U[k]
+        return [['Home', f"{u['n']}: {u['bed']}, private infinity pool"], ['Area', u['area']], ['Price (brochure)', u['price']], ['Parking', f"{u['park']} bays"]] + extra
+    def villa_floor(lv, kinds):
         order = sorted(q, key=lambda k: ['north', 'east', 'south', 'west'].index(_compass(_bearing(qdeg[k], rot))))
-        cells = [q[k] for k in order]; bear = [_bearing(qdeg[k], rot) for k in order]
-        L = dict(label=f'Level {lv}', kind='A', unit='villa', nos=[f'{_compass(a).capitalize()}-facing villa' for a in bear],
-                 plan=dict(cells=cells),
-                 frows=[[['Home', VILLA], ['Outlook', f'Faces {_compass(a, 8)}, towards {_outlook(a)}'], ['Private pool', 'Each home has its own infinity pool (factsheet: private pools in all units)'],
-                         ['Arrival', 'Opens from a private lift (Jacob & Co.)']] for a in bear])
-        if lv % 8 == 6: L['fac'] = {'slab': '#7fe9ff', 'slabGlow': 1}     # lit lines framing the tall facade panels, as on the night renders
-        st.append(L)
-    for lv in range(83, 97):           # sky mansions, two a floor
+        bear = [_bearing(qdeg[k], rot) for k in order]
+        if kinds == 'R':
+            fr = [rows('R', [['Outlook', f'Faces {_compass(a, 8)}, towards {_outlook(a)}']]) for a in bear]
+            nos = [f'{_compass(a).capitalize()} Ruby Villa' for a in bear]
+        else:
+            fr = [[['Home', 'Emerald Villa (2 bedrooms, 3 bathrooms) or Sapphire Villa (2.5 bedrooms with study, 3 bathrooms); each with its own infinity pool. '
+                            'The brochure has two of each per floor: one facing Downtown and Burj Khalifa, one facing Dubai Creek Harbour'],
+                   ['Area', 'Emerald 3,337 sq ft · Sapphire 3,335 sq ft (suite + terrace & pool)'], ['Price (brochure)', 'Emerald from AED 8.2M · Sapphire from AED 8.4M'],
+                   ['Parking', '2 bays'], ['Outlook', f'Faces {_compass(a, 8)}, towards {_outlook(a)}']] for a in bear]
+            nos = [f'{_compass(a).capitalize()} villa' for a in bear]
+        return dict(label=f'Level {lv}', kind='A', unit='villa' if kinds != 'R' else 'ruby', nos=nos, plan=dict(cells=[q[k] for k in order]), frows=fr)
+    def mansion_floor(lv):
         order = sorted(halves, key=lambda k: COMPASS8.index(_compass(_bearing(hdeg[k], rot), 8)))
         bear = [_bearing(hdeg[k], rot) for k in order]
-        st.append(dict(label=f'Level {lv}', kind='A', unit='mansion', nos=[f'{_compass(a, 8).capitalize()} sky mansion' for a in bear],
-                       plan=dict(cells=[halves[k] for k in order]),
-                       frows=[[['Home', MANSION], ['Outlook', f'180° views facing {_compass(a, 8)}, towards {_outlook(a, 80)}'], ['Private pool', 'Private infinity pool']] for a in bear],
-                       fac={'slab': '#7fe9ff', 'slabGlow': 1} if lv in (83, 90) else None))
-    st.append(dict(label='Levels 97–99: sky amenities', kind='M', levels=3,
-                   use='Near the summit, just below the Sky Penthouses (Jacob & Co.): a 900 sq m fitness centre, a 1,200 sq m spa and pool retreat and a 640 sq m VIP Sky Lounge. '
-                       'Which of the three is on which of these levels is not published.'))
-    for lv in (100, 101):
-        st.append(dict(label=f'Level {lv}', kind='A', unit='astro', nos=['Astronomia Sky Penthouse'], plan=dict(cells=[plan]),
-                       frows=[[['Home', 'Astronomia Sky Penthouse: a full floor, 5 bedrooms, 14,195 sq ft'], ['Outlook', '360° views: Burj Khalifa, Downtown, Business Bay, Dubai Creek Harbour, the Water Canal and Dubai Design District'],
-                               ['Private pool', 'Private infinity pool']]]))
-    st.append(dict(label='Levels 102–103', kind='P', levels=2, unit='bill', nos=['Billionaire Sky Penthouse'], plan=dict(cells=[plan]),
-                   frows=[[['Home', 'The Billionaire Sky Penthouse: a duplex over the top two floors, 7 bedrooms, 27,800 sq ft'], ['Outlook', '360° views over all of Dubai']]],
+        fr = [[['Home', 'Diamond Sky Mansion (4 bedrooms, 7 bathrooms) or Fleurs de Jardin Sky Mansion (6 bedrooms, 9 bathrooms), half a floor, private infinity pool'],
+               ['Area', '5,176 sq ft suite + 1,800 sq ft terrace & pool = 6,976 sq ft'], ['Price (brochure)', 'Fleurs de Jardin AED 31M to 36.1M · Diamond on request'],
+               ['Parking', '4 bays'], ['Outlook', f'180° views facing {_compass(a, 8)}, towards {_outlook(a, 80)}']] for a in bear]
+        return dict(label=f'Level {lv}', kind='A', unit='mansion', nos=[f'{_compass(a, 8).capitalize()} sky mansion' for a in bear],
+                    plan=dict(cells=[halves[k] for k in order]), frows=fr)
+    MECH = 'Mechanical floor (brochure vertical diagram): no homes'
+    st = [dict(label='Ground floor', kind='M', use='Grand lobby with lobby lounge, concierge and valet arrival', h=6.0)]
+    st += [dict(label=f'Podium {i}', kind='M', use='Podium (brochure vertical diagram): parking and building services; there are also 6 basement levels') for i in range(1, 6)]
+    st.append(dict(label='Level 7: swimming pool', kind='M', use='Swimming Pool 01: 34 × 9 m pool and 9 × 9 m kids’ pool (brochure vertical diagram)', fac={'slab': '#7fe9ff', 'slabGlow': 1}))
+    st.append(dict(label='Level 8: services', kind='M', use='Service floor (brochure vertical diagram)'))
+    st.append(dict(label='Level 9: sky garden', kind='M', use='Sky Garden 1 (brochure vertical diagram)'))
+    plan_ = ([('ES', lv) for lv in range(10, 19)] + [('X', 19)] + [('ES', lv) for lv in range(20, 44)] + [('X', 44), ('X', 45)] + [('ES', lv) for lv in range(46, 49)] +
+             [('R', lv) for lv in range(49, 70)] + [('X', 70), ('X', 71)] + [('R', lv) for lv in range(72, 83)] + [('M', lv) for lv in range(83, 86)] +
+             [('X', 86), ('X', 87)] + [('M', lv) for lv in range(88, 97)])
+    for k, lv in plan_:
+        if k == 'X': st.append(dict(label=f'Level {lv}', kind='M', sub='Mechanical floor', use=MECH)); continue
+        e = villa_floor(lv, 'R' if k == 'R' else 'ES') if k in ('ES', 'R') else mansion_floor(lv)
+        if lv in (48, 82, 96): e['fac'] = {'slab': '#7fe9ff', 'slabGlow': 1}
+        st.append(e)
+    st.append(dict(label='Level 97: VIP Sky Lounge', kind='M', use='VIP Sky Lounge, 643 sq m (6,921 sq ft) (brochure vertical diagram)'))
+    st.append(dict(label='Level 98: spa & pool', kind='M', use='Spa and Swimming Pool 02, 1,200 sq m (12,916 sq ft): the stratospheric infinity pool (brochure)'))
+    st.append(dict(label='Level 99: gym', kind='M', use='Gym, 897 sq m (9,655 sq ft) (brochure vertical diagram)'))
+    for lv, nm in ((100, 'Penthouse 01'), (101, 'Penthouse 02')):
+        st.append(dict(label=f'Level {lv}', kind='A', unit='astro', nos=[f'Astronomia Sky Penthouse ({nm})'], plan=dict(cells=[plan]),
+                       frows=[rows('A', [['Outlook', '360° views: Burj Khalifa, Downtown, Dubai Creek Harbour, the Dubai Water Canal and Dubai Design District']])]))
+    st.append(dict(label='Levels 102–103', kind='P', levels=2, unit='bill', nos=['The Billionaire Sky Penthouse (Penthouse 03)'], plan=dict(cells=[plan]),
+                   frows=[rows('B', [['Outlook', '360° views over Burj Khalifa, Downtown, Business Bay, Dubai Creek Harbour, the Water Canal and Dubai Design District']])],
                    fac={'slab': '#7fe9ff', 'slabGlow': 1}))
     for L in st:
         if L.get('fac') is None: L.pop('fac', None)
     cfg['stack'] = st; t.pop('stack', None)
     cfg['floorH'] = 4.2
     t.update(w=43, d=43, pts=plan, shape='rect', type='villa', crown=dict(type='lattice', rw=4.6, rh=9.0, low=0.42, corner=1.0, mid=0.88))
-    t['height'] = 557
-    cfg['height'] = 557
+    t['height'] = 560
+    cfg['height'] = 560
     cfg['hSrc'] = None
     cfg['flatWord'] = ''; cfg['homeWord'] = 'Home'
     cfg['startFloor'] = 'Level 60'
     cfg['camY'] = 250
-    cfg['cellsNote'] = ('Drawn from the developer’s description: on the villa floors one home sits round each corner of the lift core, on the mansion floors one on each half, '
-                        'and the penthouses take whole floors. Detailed floor plans are not published, so the outlines are indicative.')
+    cfg['cellsNote'] = ('Drawn from the developer’s brochure: quarter-floor villas sit one round each corner of the lift core, the sky mansions take half a floor each and the '
+                        'penthouses whole floors; the brochure’s floor plans for each type are in the gallery below. Which corner each type takes is indicative.')
+    AV = 'Ask for live availability'
     cfg['units'] = {
-        'villa': dict(name='Quarter-floor villas: Emerald, Sapphire and Ruby', short='2 – 7 bedroom homes, 104 levels', perFloor='4 homes',
-                      rows=[['Emerald Villa', '2 bedrooms · 3,347 sq ft · 70 homes'], ['Sapphire Villa', '2 bedrooms + study · 3,351 sq ft · 70 homes'],
-                            ['Ruby Villa', '3 bedrooms · 3,314 sq ft · 132 homes'], ['Sky gardens', '4 in the tower (their levels are not published)']],
-                      avail='Ask for live availability'),
+        'villa': dict(name='Emerald and Sapphire Villas (quarter floors)', short='Emerald & Sapphire villas', perFloor='4 homes',
+                      rows=[['Emerald Villa', '2 bed · 3,337 sq ft · from AED 8.2M'], ['Sapphire Villa', '2.5 bed · 3,335 sq ft · from AED 8.4M'], ['Levels', '12 to 48 (brochure)']], avail=AV),
+        'ruby': dict(name='Ruby Villas (quarter floors)', short='Ruby villas', perFloor='4 homes',
+                     rows=[['Ruby Villa', '3 bed · 3,299 sq ft · from AED 13,999,999'], ['Levels', '49 to 82 (brochure)']], avail=AV),
         'mansion': dict(name='Sky Mansions: Diamond and Fleurs de Jardin', short='Sky Mansions', perFloor='2 homes',
-                        rows=[['Diamond Sky Mansion', '4 bedrooms · 7,032 sq ft · half a floor'], ['Fleurs de Jardin Sky Mansion', '6 bedrooms · 7,032 sq ft · half a floor'],
-                              ['Where', 'Levels 83 to 96']], avail='Ask for live availability'),
+                        rows=[['Diamond Sky Mansion', '4 bed · 6,976 sq ft · on request'], ['Fleurs de Jardin Sky Mansion', '6 bed · 6,976 sq ft · from AED 31M'], ['Levels', '83 to 96 (brochure)']], avail=AV),
         'astro': dict(name='Astronomia Sky Penthouse', short='Sky Penthouse', perFloor='1 home (the whole floor)',
-                      rows=[['Astronomia Sky Penthouse', '5 bedrooms · 14,195 sq ft · 2 in the tower']], avail='Ask for live availability'),
+                      rows=[['Astronomia Sky Penthouse', '5 bed · 11,807 sq ft · AED 175M'], ['Levels', '100 and 101']], avail=AV),
         'bill': dict(name='The Billionaire Sky Penthouse', short='Sky Penthouse', perFloor='1 home over two floors',
-                     rows=[['Billionaire Sky Penthouse', '7 bedrooms · 27,800 sq ft · the top two floors']], avail='Ask for live availability'),
+                     rows=[['The Billionaire Sky Penthouse', '7 bed · 22,469 sq ft · AED 750M'], ['Levels', '102 and 103']], avail=AV),
     }
-    cfg['note'] = ('Model built from published figures. Jacob & Co. (official page) for the residences and amenities; the developer’s factsheet for the stack: ground + 5 podium levels + '
-                   '98 floors (104 levels, 4.2 m floor to floor, about 437 m to the roof), the 18,700 sq ft floor plate, 1 to 4 homes a floor, the sky mansions on levels 83–96 and the '
-                   'Billionaire penthouse on the top two floors; 557 m to the top of the crown (Wikipedia). Levels are counted from the ground, with the podium as levels 1–5. '
-                   'The crown is drawn as on the renders: a lattice of diamond-shaped frames, lit at night, rising from the roof into points, highest at the corners. '
-                   'The plan is turned to the building outline mapped on OpenStreetMap at the site; views are named from the bearings of the landmarks from the tower '
-                   '(Burj Khalifa to the west-north-west, Dubai Creek Harbour to the east-north-east). '
-                   'Position: the project’s Google Maps pin in Business Bay. Surroundings (roads, water, parks, existing buildings) are from OpenStreetMap.')
+    cfg['note'] = ('Model built from the developer’s brochure. Stack: its vertical diagram, floor by floor: ground, podium levels 1–5, the swimming pool, service and sky-garden '
+                   'floors, 83 residential floors (Emerald and Sapphire Villas, then Ruby Villas, then the Diamond and Fleurs de Jardin Sky Mansions), six mechanical floors, '
+                   'the VIP Sky Lounge, the spa and pool, the gym, two Astronomia Sky Penthouses and the two-floor Billionaire Sky Penthouse; 560 m total height. '
+                   'Levels are numbered as on the brochure’s unit pages, one higher than the floor numbers on its diagram. Areas, parking and prices: the brochure’s unit pages. '
+                   'Floor to floor 4.2 m (developer’s factsheet). The crown is drawn as on the renders: a lattice of diamond-shaped frames, lit at night. '
+                   'The plan is turned to the building outline mapped on OpenStreetMap; views are named from the bearings of the landmarks from the tower. '
+                   'Position: the project’s Google Maps pin in Business Bay. Surroundings are from OpenStreetMap.')
     return cfg
 
 def valo(cfg):
