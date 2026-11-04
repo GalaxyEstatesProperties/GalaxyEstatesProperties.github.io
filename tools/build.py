@@ -410,7 +410,7 @@ def card(p, delay=0):
     else:
         media = (f'<div class="project-art" style="--hue:{p.get("hue", 40)}" aria-hidden="true"><span class="pa-city">{E(p["city"])}</span>' +
                  (f'<span class="pa-country">{E(p["country"])}</span>' if p["country"] != p["city"] else '') + '</div>')
-    corner = (f'<a class="project-3d-link" href="shantigram.html?focus={p["id"]}#explorer"><i class="fas fa-cube"></i> View in 3D</a>' if sh
+    corner = (f'<a class="project-3d-link" href="shantigram.html#focus-{p["id"]}"><i class="fas fa-cube"></i> View in 3D</a>' if sh
               else f'<span class="project-flag"><i class="fas {"fa-earth-asia" if abroad else ("fa-leaf" if "Weekend villas & plots" in p["cats"] else "fa-city")}"></i> {"International" if abroad else ("GIFT City" if p["market"] == "gift" else ("Commercial" if "Commercial" in p["cats"] else ("Weekend homes" if "Weekend villas & plots" in p["cats"] else "Ahmedabad")))}</span>')
     import urllib.parse as _u
     maplink = f'<a class="project-map" href="https://www.google.com/maps/search/?api=1&amp;query={_u.quote_plus(p["mapq"])}" target="_blank" rel="noopener noreferrer" aria-label="{E(p["name"])} on Google Maps">Map</a>'

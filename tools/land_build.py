@@ -379,10 +379,10 @@ def land_sell(idp="ls"):
       </fieldset>
       <fieldset><legend>2. The land (from the 7/12 or property card)</legend>
         <div class="form-row">{s('type', 'Land type', o([(x, x) for x in ["Agricultural (old tenure)", "Agricultural (new tenure)", "NA residential", "NA commercial", "NA industrial", "Final plot in a TP scheme"]]), True)}
-          {g('district', 'District *', f'<input id="{idp}-district" name="district" type="text" list="{idp}-districts" placeholder=" " autocomplete="off" maxlength="40"/><datalist id="{idp}-districts">{dl}</datalist>')}</div>
+          {g('district', 'District *', f'<input id="{idp}-district" name="district" type="text" list="{idp}-districts" placeholder=" " autocomplete="off" maxlength="40"/>')}<datalist id="{idp}-districts">{dl}</datalist></div>
         <div class="form-row">{t('taluka', 'Taluka', True, 'maxlength="60"')}{t('village', 'Village / town', True, 'maxlength="60"')}</div>
         <div class="form-row">{t('survey', 'Survey / block no. (7/12)', False, 'maxlength="60"')}{t('pcard', 'Property card / city survey no.', False, 'maxlength="60"')}</div>
-        <div class="form-row">{g('areaValue', '<span data-ls-arealabel>Area as on the 7/12 or property card *</span>', '<input id="' + idp + '-areaValue" name="areaValue" type="text" placeholder=" " inputmode="decimal" maxlength="20"/>')}
+        <div class="form-row">{g('areaValue', '<span data-ls-arealabel>Area on the 7/12 or property card *</span>', '<input id="' + idp + '-areaValue" name="areaValue" type="text" placeholder=" " inputmode="decimal" maxlength="20"/>')}
           {s('areaUnit', 'Unit', ''.join(f'<option value="{k}"{" selected" if k == "has" else ""}>{E(v)}</option>' for k, v in AREA_UNITS), True)}</div>
         {s('tpStatus', 'Town Planning (TP) scheme', o([("none", "Not in a TP scheme / not sure"), ("fp", "In a TP scheme: final plot (FP) allotted"), ("draft", "In a draft TP scheme: FP proposed")]))}
         <div class="ls-tp" data-ls-tp hidden>
@@ -424,7 +424,7 @@ def land_sell(idp="ls"):
         <ul class="ls-doclist" data-ls-doclist></ul>
         <span class="field-error" data-err="docs" aria-live="polite"></span>
       </fieldset>
-      <div class="form-group"><textarea id="{idp}-notes" name="notes" rows="3" maxlength="600" placeholder=" "></textarea><label for="{idp}-notes">Anything buyers should know (water, power, fencing, title status)</label></div>
+      <div class="form-group"><textarea id="{idp}-notes" name="notes" rows="3" maxlength="600" placeholder=" "></textarea><label for="{idp}-notes">Notes: water, power, fencing, title</label></div>
       <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I am the owner, or have the owner's written permission, and these details match the 7/12 / property card. I agree that the land, its boundary and price are shown on this website; my phone number and email stay private.</span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
       <div class="form-actions"><button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> <span class="btn-label">Check and post my land</span></button></div>
