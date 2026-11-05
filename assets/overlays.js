@@ -37,6 +37,7 @@ document.body.insertAdjacentHTML("beforeend",`<div class="modal-overlay" id="mod
   </div>
   <div class="form-group"><textarea id="m-message" name="message" rows="3" placeholder=" "></textarea><label for="m-message">Message (optional)</label></div>
   <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I agree that Galaxy Estates Properties may use these details only to answer this enquiry, by call, WhatsApp or email. <a href="privacy.html" target="_blank">Privacy notice</a></span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
+  <label class="ls-check ls-consent"><input type="checkbox" name="insights"/> <span>Optional: also share my approximate city and device type, so Galaxy Estates Properties can plan where it advertises.</span></label>
   <div class="form-actions">
     <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
   </div>

@@ -130,7 +130,7 @@ CSP = ("default-src 'self'; "
        "style-src 'self' 'unsafe-inline'; "
        "img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
        "font-src 'self' data:; "
-       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://script.google.com https://script.googleusercontent.com; "
+       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
        "frame-src 'self' https://formsubmit.co https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests")
 
@@ -257,6 +257,7 @@ def form(idp, project="General enquiry"):
   </div>
   <div class="form-group"><textarea id="{idp}-message" name="message" rows="3" placeholder=" "></textarea><label for="{idp}-message">Message (optional)</label></div>
   <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I agree that Galaxy Estates Properties may use these details only to answer this enquiry, by call, WhatsApp or email. <a href="privacy.html" target="_blank">Privacy notice</a></span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
+  <label class="ls-check ls-consent"><input type="checkbox" name="insights"/> <span>Optional: also share my approximate city and device type, so Galaxy Estates Properties can plan where it advertises.</span></label>
   <div class="form-actions">
     <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
   </div>
