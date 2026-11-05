@@ -464,10 +464,10 @@ def global_form(idp='g'):
     </div>
   </div>
   <div class="form-group"><textarea id="{idp}-message" name="message" rows="3" placeholder=" "></textarea><label for="{idp}-message">Anything else we should know (optional)</label></div>
+  <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I agree that Galaxy Estates Properties may use these details only to answer this enquiry, by call, WhatsApp or email. <a href="privacy.html" target="_blank">Privacy notice</a></span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
   <div class="form-actions">
     <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
   </div>
-  <p class="form-note"><i class="fas fa-lock"></i> Your data is secure. We never share your details with anyone without your consent. Every enquiry is checked only to make sure it comes from a genuine buyer, not a fake one. To stop spam, we also note your device type and approximate location with the enquiry.</p>
 </form>
 <div class="form-success" role="status">
   <i class="fas fa-check-circle"></i><h3>Enquiry sent</h3><p data-s="msg"></p>

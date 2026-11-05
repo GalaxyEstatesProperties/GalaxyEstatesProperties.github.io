@@ -130,7 +130,7 @@ CSP = ("default-src 'self'; "
        "style-src 'self' 'unsafe-inline'; "
        "img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
        "font-src 'self' data:; "
-       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://api.callmebot.com https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
+       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://script.google.com https://script.googleusercontent.com; "
        "frame-src 'self' https://formsubmit.co https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests")
 
@@ -144,7 +144,6 @@ def head(title, desc, page, extra="", fname="index"):
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <meta http-equiv="Content-Security-Policy" content="{CSP}"/>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QXRN29DKLR"></script>
 <script src="assets/ga.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <meta name="google-site-verification" content="HE9_46DcpVA3ongsECA8PNhgCoWHJfCqUYxHAGLrgRI"/>
@@ -257,10 +256,10 @@ def form(idp, project="General enquiry"):
     </div>
   </div>
   <div class="form-group"><textarea id="{idp}-message" name="message" rows="3" placeholder=" "></textarea><label for="{idp}-message">Message (optional)</label></div>
+  <label class="ls-check ls-consent"><input type="checkbox" name="consent"/> <span>I agree that Galaxy Estates Properties may use these details only to answer this enquiry, by call, WhatsApp or email. <a href="privacy.html" target="_blank">Privacy notice</a></span><span class="field-error" data-err="consent" aria-live="polite"></span></label>
   <div class="form-actions">
     <button type="submit" class="submit-btn wa-submit"><i class="fas fa-paper-plane"></i> <span class="btn-label">Send enquiry</span></button>
   </div>
-  <p class="form-note"><i class="fas fa-lock"></i> Your data is secure. We never share your details with anyone without your consent. Every enquiry is checked only to make sure it comes from a genuine buyer, not a fake one. To stop spam, we also note your device type and approximate location with the enquiry.</p>
 </form>
 <div class="form-success" role="status">
   <i class="fas fa-check-circle"></i><h3>Enquiry sent</h3><p data-s="msg"></p>
@@ -320,6 +319,7 @@ def footer():
     </div>
     <div class="footer-bottom reveal">
       <span>© <span data-year>2026</span> Galaxy Estates Properties. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy notice</a> · <button type="button" data-analytics-choice>Cookie choice</button></span>
       <span>Kalol · Gandhinagar · Ahmedabad · Gujarat</span>
     </div>
   </div>
@@ -621,6 +621,7 @@ PAGES = {
   "about":        dict(title="Real Estate Agent in Kalol & Ahmedabad – Er. Samir Dabhi | Galaxy Estates Properties", desc="Galaxy Estates Properties, Kalol: property advisor Er. Samir Dabhi for luxury homes, offices, land and industrial plots in Ahmedabad and Gandhinagar, and property abroad.", page="about"),
   "search":       dict(title="Search | Galaxy Estates Properties", desc="Search every property, area, developer and guide on Galaxy Estates Properties.", page="search", extra_head='<meta name="robots" content="noindex, follow"/>\n'),
   "contact":      dict(title="Contact a Property Advisor in Kalol & Ahmedabad | Galaxy Estates Properties", desc="Call or WhatsApp +91 84880 62309 to book a site visit for flats, offices or land in Ahmedabad, Gandhinagar and GIFT City. Office in Kalol, Gujarat.", page="contact"),
+  "privacy":      dict(title="Privacy Notice | Galaxy Estates Properties", desc="How Galaxy Estates Properties collects, uses and protects your personal data, your rights, and whom to contact, under the DPDP Act 2023 and DPDP Rules 2025.", page="privacy"),
 }
 
 # ---------------------------------------------------------------- one page per project (for Google: each project name can rank)
