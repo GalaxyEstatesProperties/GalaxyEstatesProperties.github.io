@@ -1,0 +1,43 @@
+{
+ "source": "https://shivalikgroup.com/projects/presente",
+ "title": "Shivalik Présenté in pictures",
+ "credit": "Images: Shivalik Group, from the official Présenté page. Renders are artistic impressions.",
+ "res": "2 official HD images (the developer publishes no others in HD). Tap any image to view it full screen.",
+ "specs": [
+  [
+   "Homes",
+   "54 residences, a limited collection of private waterfront homes"
+  ],
+  [
+   "Views",
+   "Facing the Sabarmati riverfront, with views over the heart of GIFT City"
+  ]
+ ],
+ "specs_src": "Specifications: Shivalik Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Présenté and its terraced balconies",
+   "kind": "exterior",
+   "w": 1913,
+   "h": 963,
+   "fw": 1909,
+   "fh": 960,
+   "tw": 800,
+   "th": 402,
+   "url": "https://shivalikgroup.com/presente/Vantage.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "A riverfront balcony at dusk",
+   "kind": "view",
+   "w": 1913,
+   "h": 961,
+   "fw": 1910,
+   "fh": 958,
+   "tw": 800,
+   "th": 401,
+   "url": "https://shivalikgroup.com/presente/Riverfront.jpg"
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "source": "https://shivalikgroup.com/projects/skyview",
+ "title": "Shivalik Skyview in pictures",
+ "credit": "Images: Shivalik Group, from the official Skyview page. Renders are artistic impressions.",
+ "res": "3 official images, HD (Shivalik publishes them at 1280 px). Tap any image to view it full screen.",
+ "specs": [
+  [
+   "Building",
+   "G+34 residential tower with a drone-inspired form, in the GIFT City SEZ"
+  ],
+  [
+   "Homes",
+   "2 and 3 BHK, 875 – 1,524 sq ft RERA area; almost every room opens to a balcony"
+  ],
+  [
+   "Penthouses",
+   "12 duplex penthouses on the top floors, with private terraces up to 650 sq ft"
+  ],
+  [
+   "Status",
+   "Under construction (Shivalik Group)"
+  ]
+ ],
+ "specs_src": "Specifications: Shivalik Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The tower at dusk",
+   "kind": "exterior",
+   "w": 1280,
+   "h": 896,
+   "fw": 1280,
+   "fh": 892,
+   "tw": 800,
+   "th": 558,
+   "url": "https://shivalikgroup.com/about-project/about-skyview1.png"
+  },
+  {
+   "f": "02",
+   "cap": "The tower from above, with its four wings",
+   "kind": "exterior",
+   "w": 1280,
+   "h": 896,
+   "fw": 1280,
+   "fh": 896,
+   "tw": 800,
+   "th": 560,
+   "url": "https://shivalikgroup.com/about-project/about-skyview3.png"
+  },
+  {
+   "f": "03",
+   "cap": "Living room",
+   "kind": "interior",
+   "w": 1280,
+   "h": 896,
+   "fw": 1280,
+   "fh": 896,
+   "tw": 800,
+   "th": 560,
+   "url": "https://shivalikgroup.com/about-project/about-skyview2.png"
+  }
+ ]
+}
