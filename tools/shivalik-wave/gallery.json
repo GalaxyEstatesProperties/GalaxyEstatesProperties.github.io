@@ -1,0 +1,114 @@
+{
+ "source": "https://shivalikgroup.com/projects/wave",
+ "title": "Shivalik Wave in pictures",
+ "credit": "Images: Shivalik Group, from the official Wave page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Building",
+   "G+29 office tower with a wave-shaped facade, at the Vaishnodevi junction of S.G. Highway and S.P. Ring Road"
+  ],
+  [
+   "Offices",
+   "942 – 1,873 sq ft"
+  ],
+  [
+   "Showrooms",
+   "1,457 – 3,744 sq ft"
+  ],
+  [
+   "Atriums and lifts",
+   "Two triple-height atriums and 20 high-speed elevators"
+  ],
+  [
+   "Status",
+   "Under construction (Shivalik Group)"
+  ]
+ ],
+ "specs_src": "Specifications: Shivalik Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Shivalik Wave above the Vaishnodevi junction at sunrise",
+   "kind": "exterior",
+   "w": 2500,
+   "h": 1406,
+   "fw": 2500,
+   "fh": 1406,
+   "tw": 800,
+   "th": 450,
+   "url": "https://shivalikgroup.com/newproject/wave-new.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "The wave-shaped glass facade",
+   "kind": "exterior",
+   "w": 1200,
+   "h": 1688,
+   "fw": 1200,
+   "fh": 1688,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1771928016418_Wave%203.png"
+  },
+  {
+   "f": "03",
+   "cap": "The tower at dusk",
+   "kind": "exterior",
+   "w": 1200,
+   "h": 1688,
+   "fw": 1200,
+   "fh": 1688,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1771928023611_Wave%204.png"
+  },
+  {
+   "f": "04",
+   "cap": "Showrooms at the base of the tower",
+   "kind": "exterior",
+   "w": 1200,
+   "h": 1688,
+   "fw": 1200,
+   "fh": 1688,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1771928011044_Wave%202.png"
+  },
+  {
+   "f": "05",
+   "cap": "Detail of the curved facade",
+   "kind": "exterior",
+   "w": 1200,
+   "h": 1688,
+   "fw": 1200,
+   "fh": 1688,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1771928038711_Wave%207.png"
+  },
+  {
+   "f": "06",
+   "cap": "Landscaped entrance court",
+   "kind": "amenity",
+   "w": 1200,
+   "h": 1688,
+   "fw": 1200,
+   "fh": 1688,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1771928033125_Wave%206.png"
+  },
+  {
+   "f": "07",
+   "cap": "Lobby lounge",
+   "kind": "interior",
+   "w": 1200,
+   "h": 1688,
+   "fw": 1200,
+   "fh": 1688,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1771928027502_Wave%205.png"
+  }
+ ]
+}

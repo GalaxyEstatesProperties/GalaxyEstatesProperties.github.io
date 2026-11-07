@@ -1,0 +1,47 @@
+{
+ "source": "https://shivalikgroup.com/projects/farmland",
+ "title": "Shivalik Farmland in pictures",
+ "credit": "Images: Shivalik Group, from the official Farmland page. Renders are artistic impressions.",
+ "res": "2 official HD images (the developer publishes no others in HD). Tap any image to view it full screen.",
+ "specs": [
+  [
+   "Plots",
+   "600 – 1,183 sq yd farm plots at Sachana, Viramgam"
+  ],
+  [
+   "Access",
+   "1.5 km from the Sanand–Viramgam highway, about 45 minutes from S.G. Highway"
+  ],
+  [
+   "Status",
+   "Under construction (Shivalik Group)"
+  ]
+ ],
+ "specs_src": "Specifications: Shivalik Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Entrance gate",
+   "kind": "exterior",
+   "w": 2400,
+   "h": 1464,
+   "fw": 2400,
+   "fh": 1464,
+   "tw": 800,
+   "th": 488,
+   "url": "https://shivalikgroup.com/farmland/farmland_gate.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Garden walk inside the estate",
+   "kind": "amenity",
+   "w": 2400,
+   "h": 1464,
+   "fw": 2400,
+   "fh": 1464,
+   "tw": 800,
+   "th": 488,
+   "url": "https://shivalikgroup.com/farmland/farmland_garden.jpg"
+  }
+ ]
+}

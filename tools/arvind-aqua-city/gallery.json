@@ -1,0 +1,91 @@
+{
+ "source": "https://arvindsmartspaces.com/ahmedabad/arvind-aqua-city",
+ "title": "Arvind Aqua City in pictures",
+ "credit": "Images: Arvind SmartSpaces, from the official Aqua City page. Renders are artistic impressions.",
+ "res": "6 official images, HD (Arvind SmartSpaces publishes them at 1723 px). Tap any image to view it full screen.",
+ "specs": [
+  [
+   "Estate",
+   "Premium plots and villas over 500+ acres in Kalyangadh, Ahmedabad"
+  ],
+  [
+   "Centrepiece",
+   "A central lake at the heart of the community"
+  ]
+ ],
+ "specs_src": "Specifications: Arvind SmartSpaces official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The central lake",
+   "kind": "view",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/09/gallery10-1.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Villas along the water",
+   "kind": "exterior",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/09/gallery05.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "Leisure pavilion by the lake",
+   "kind": "amenity",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/09/Leisure.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Curved pavilion beside the lagoon",
+   "kind": "amenity",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/09/gallery11.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "The lakeside promenade",
+   "kind": "amenity",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/09/gallery06.jpg"
+  },
+  {
+   "f": "06",
+   "cap": "Arrival building",
+   "kind": "exterior",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/09/gallery12.jpg"
+  }
+ ]
+}
