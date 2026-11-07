@@ -1,0 +1,158 @@
+{
+ "source": "https://trogongroup.com/residential",
+ "title": "Trogon Centre Court in pictures",
+ "credit": "Images: Trogon Group, from the official Centre Court page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Design",
+   "Lifestyle design by Andy Fisher Workshop, an international architect with over 30 years of work in Europe and Asia"
+  ]
+ ],
+ "specs_src": "Specifications: Trogon Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The two towers of Centre Court",
+   "kind": "exterior",
+   "w": 1800,
+   "h": 1200,
+   "fw": 1800,
+   "fh": 1200,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/intro-section.webp"
+  },
+  {
+   "f": "02",
+   "cap": "Arrival court",
+   "kind": "exterior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-10.webp"
+  },
+  {
+   "f": "03",
+   "cap": "Garden lawn from above",
+   "kind": "amenity",
+   "w": 2400,
+   "h": 1200,
+   "fw": 2400,
+   "fh": 1200,
+   "tw": 800,
+   "th": 400,
+   "url": "https://trogongroup.com/assets/media/residential/banner-image.webp"
+  },
+  {
+   "f": "04",
+   "cap": "Lawn between the towers",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-09.webp"
+  },
+  {
+   "f": "05",
+   "cap": "Pergola lounge deck",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-12.webp"
+  },
+  {
+   "f": "06",
+   "cap": "Basketball court",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-01.webp"
+  },
+  {
+   "f": "07",
+   "cap": "Entrance lobby",
+   "kind": "interior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-03.webp"
+  },
+  {
+   "f": "08",
+   "cap": "Lounge",
+   "kind": "interior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-06.webp"
+  },
+  {
+   "f": "09",
+   "cap": "Club dining room",
+   "kind": "interior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-11.webp"
+  },
+  {
+   "f": "10",
+   "cap": "Multipurpose hall",
+   "kind": "interior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-14.webp"
+  },
+  {
+   "f": "11",
+   "cap": "Gym",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-13.webp"
+  },
+  {
+   "f": "12",
+   "cap": "Yoga room",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/residential/gallery-07.webp"
+  }
+ ]
+}

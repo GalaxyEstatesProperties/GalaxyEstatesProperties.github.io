@@ -1,0 +1,106 @@
+{
+ "source": "https://trogongroup.com/mercantile",
+ "title": "Trogon Twin Towers in pictures",
+ "credit": "Images: Trogon Group, from the official Twin Towers page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Building",
+   "Two towers 125 metres tall, about 1.8 million sq ft in all"
+  ],
+  [
+   "Spaces",
+   "Retail, mid-level terrace dining and offices of varied, expandable footprints"
+  ],
+  [
+   "Features",
+   "A foyer on each floor, destination-controlled high-speed elevators, multi-level parking, green building design, facade lighting, a creche and hi-tech surveillance"
+  ]
+ ],
+ "specs_src": "Specifications: Trogon Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The twin towers above the greenery",
+   "kind": "exterior",
+   "w": 2133,
+   "h": 1200,
+   "fw": 2133,
+   "fh": 1200,
+   "tw": 800,
+   "th": 450,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_15.webp"
+  },
+  {
+   "f": "02",
+   "cap": "Looking up the towers",
+   "kind": "exterior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_04.webp"
+  },
+  {
+   "f": "03",
+   "cap": "The curved retail podium",
+   "kind": "exterior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_01.webp"
+  },
+  {
+   "f": "04",
+   "cap": "The towers from above at night",
+   "kind": "exterior",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_12.webp"
+  },
+  {
+   "f": "05",
+   "cap": "Tree-lined plaza",
+   "kind": "amenity",
+   "w": 2100,
+   "h": 1200,
+   "fw": 2100,
+   "fh": 1200,
+   "tw": 800,
+   "th": 457,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_02.webp"
+  },
+  {
+   "f": "06",
+   "cap": "Plaza walk under the trees",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_10.webp"
+  },
+  {
+   "f": "07",
+   "cap": "Plaza seating at dusk",
+   "kind": "amenity",
+   "w": 1620,
+   "h": 1080,
+   "fw": 1620,
+   "fh": 1080,
+   "tw": 800,
+   "th": 533,
+   "url": "https://trogongroup.com/assets/media/merchantile/gallery_09.webp"
+  }
+ ]
+}
