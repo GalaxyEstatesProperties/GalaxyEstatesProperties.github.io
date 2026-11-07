@@ -309,7 +309,7 @@ def footer():
           <li><i class="fas fa-phone"></i><a href="tel:+918488062309" data-phone>+91 84880 62309</a></li>
           <li><i class="fab fa-whatsapp"></i><a href="#" data-whatsapp target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></li>
           <li><i class="fas" aria-hidden="true"><svg viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true" style="vertical-align:-.125em"><path d="M48 96h416a32 32 0 0 1 32 32v16L256 288 16 144v-16a32 32 0 0 1 32-32zM16 181.3 256 325.3l240-144V384a32 32 0 0 1-32 32H48a32 32 0 0 1-32-32z"/></svg></i><a href="mailto:director@galaxyestatesproperties.co.in" style="min-width:0;overflow-wrap:anywhere">director@galaxyestatesproperties.co.in</a></li>
-          <li><i class="fas fa-map-marker-alt"></i><span>Office: Kalol, Gujarat</span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span>Office: Kalol, Gandhinagar</span></li>
         </ul>
       </div>
     </div>
@@ -321,7 +321,7 @@ def footer():
     <div class="footer-bottom reveal">
       <span>© <span data-year>2026</span> Galaxy Estates Properties. All rights reserved.</span>
       <span><a href="privacy.html">Privacy notice</a> · <button type="button" data-analytics-choice>Cookie choice</button></span>
-      <span>Kalol · Gandhinagar · Ahmedabad · Gujarat</span>
+      <span>Ahmedabad · Gandhinagar · GIFT City · Dubai · Thailand</span>
     </div>
   </div>
 </footer>
@@ -611,7 +611,7 @@ def explorer_ui(legend_title, legend_sub, modes=("day", "dusk", "night"), views=
 THREE = '<script src="assets/vendor/three.min.js"></script>\n'
 
 PAGES = {
-  "index":        dict(title="Properties in Ahmedabad – Luxury Flats, Offices & Land | Galaxy Estates Properties", desc="New and luxury properties in Ahmedabad and Gandhinagar: 4 & 5 BHK flats in Adani Shantigram, Bodakdev and S.G. Highway, offices, GIFT City homes and land across Gujarat. Call +91 84880 62309.", page="home"),
+  "index":        dict(title="Property in Ahmedabad, GIFT City & Dubai – Luxury Flats, Offices & Land | Galaxy Estates Properties", desc="Property advisors for Ahmedabad, Gandhinagar, GIFT City, Dubai and Thailand: 4 & 5 BHK flats in Adani Shantigram, Bodakdev and S.G. Highway, offices and land across Gujarat. Call +91 84880 62309.", page="home"),
   "projects":     dict(title="New Projects in Ahmedabad, GIFT City & Abroad – Prices & RERA | Galaxy Estates Properties", desc=f"{len(ALL)} new and luxury projects with prices, sizes, RERA numbers and availability: flats in Ahmedabad, offices on S.G. Highway, weekend villas and plots, Adani Shantigram, GIFT City and homes abroad.", page="projects"),
   "shantigram":   dict(title="Luxury Properties in Adani Shantigram, Ahmedabad – 3D Map & Prices | Galaxy Estates", desc="Luxury 2, 3, 4 BHK flats and villas in Adani Shantigram, Ahmedabad: Belrosa, Skyline, Embrace, The North Park and more, with prices, RERA and an interactive 3D township map.", page="shantigram", scripts=THREE + '<script src="assets/geo-shantigram.js"></script>\n<script src="assets/navmap.js"></script>\n<script src="assets/town-sites.js"></script>\n<script src="assets/shantigram.js"></script>\n'),
   "gift-city":    dict(title="GIFT City Flats & Offices, Gandhinagar – Prices & 3D Map | Galaxy Estates Properties", desc="Buy flats and offices in GIFT City, Gandhinagar: Sobha Elysia, Vida by Nila Spaces and more, with prices, RERA numbers and an interactive 3D map of India's first IFSC.", page="gift-city", scripts=THREE + '<script src="assets/geo-gift.js"></script>\n<script src="assets/navmap.js"></script>\n<script src="assets/town-sites.js"></script>\n<script src="assets/gift-city.js"></script>\n'),
@@ -619,9 +619,9 @@ PAGES = {
   "global":       dict(title="Global Property for Indian Investors — Dubai, London, Singapore & More | Galaxy Estates Properties", desc="Buy homes and investment property in Dubai, London, Paris, Monaco, Singapore, Phuket, Pattaya, Kuala Lumpur and more. Market guides, developers, LRS guidance and shortlists from Galaxy Estates Properties.", page="global", scripts='<script src="assets/land.js"></script>\n<script src="assets/global.js"></script>\n'),
   "404":          dict(title="Page not found | Galaxy Estates Properties", desc="The page you were looking for could not be found.", page="404"),
   "virtual-tours":dict(title="Virtual Tours & 3D Renderings | Galaxy Estates Properties", desc="Sample flat walkthroughs, drone tours and 3D renderings of Adani Shantigram projects, plus interactive 3D models of Shantigram and GIFT City.", page="virtual-tours"),
-  "about":        dict(title="Real Estate Agent in Kalol & Ahmedabad – Er. Samir Dabhi | Galaxy Estates Properties", desc="Galaxy Estates Properties, Kalol: property advisor Er. Samir Dabhi for luxury homes, offices, land and industrial plots in Ahmedabad and Gandhinagar, and property abroad.", page="about"),
+  "about":        dict(title="Property Advisor in Ahmedabad, GIFT City, Dubai & Thailand – Er. Samir Dabhi | Galaxy Estates Properties", desc="Galaxy Estates Properties: property advisor Er. Samir Dabhi for luxury homes, offices, land and industrial plots in Ahmedabad, Gandhinagar and GIFT City, and property in Dubai and Thailand.", page="about"),
   "search":       dict(title="Search | Galaxy Estates Properties", desc="Search every property, area, developer and guide on Galaxy Estates Properties.", page="search", extra_head='<meta name="robots" content="noindex, follow"/>\n'),
-  "contact":      dict(title="Contact a Property Advisor in Kalol & Ahmedabad | Galaxy Estates Properties", desc="Call or WhatsApp +91 84880 62309 to book a site visit for flats, offices or land in Ahmedabad, Gandhinagar and GIFT City. Office in Kalol, Gujarat.", page="contact"),
+  "contact":      dict(title="Contact a Property Advisor – Ahmedabad, GIFT City, Dubai & Thailand | Galaxy Estates Properties", desc="Call or WhatsApp +91 84880 62309 to book a site visit for flats, offices or land in Ahmedabad, Gandhinagar and GIFT City, or to ask about property in Dubai and Thailand.", page="contact"),
   "privacy":      dict(title="Privacy Notice | Galaxy Estates Properties", desc="How Galaxy Estates Properties collects, uses and protects your personal data, your rights, and whom to contact, under the DPDP Act 2023 and DPDP Rules 2025.", page="privacy"),
 }
 
@@ -862,8 +862,8 @@ def property_page(p):
     mapsec = ""
     if p["country"] == "India":
         mapsec = '<section class="section bg-alt" id="location"><div class="container">' + map_block(
-            f"Where {E(p['name'])} is", f"{E(loc)}. Pick a view to see it on the live Google map, or the route from our office in Kalol.",
-            [("fa-map-marker-alt", p["name"], area, "q", p["mapq"], None, 15), ("fa-route", "Route from our office", "Drive from Kalol", "d", "Kalol, Gujarat", p["mapq"])],
+            f"Where {E(p['name'])} is", f"{E(loc)}. Pick a view to see it on the live Google map, or the drive from Ahmedabad airport.",
+            [("fa-map-marker-alt", p["name"], area, "q", p["mapq"], None, 15), ("fa-plane", "From the airport", "Drive from SVPI Airport", "d", "Sardar Vallabhbhai Patel International Airport, Ahmedabad", p["mapq"])],
             "Location from Google Maps. Ask us to arrange a site visit.") + '</div></section>'
     ld = {"@context": "https://schema.org", "@type": "RealEstateListing", "name": p["name"], "url": SITE_URL + p["page"],
           "image": SITE_URL + p["img"], "description": desc,
@@ -939,7 +939,7 @@ def property_page(p):
         foot = foot.replace("Project details, prices, floor plans and RERA numbers", "Project details, plot and villa sizes, layouts and RERA numbers").replace(
             "Prices marked * are indicative and subject to change, and availability is confirmed at the time of booking.", "Availability is confirmed at the time of booking.")
         assert "price" not in foot.lower()
-    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + foot + overlays() + scripts((THREE + f'<script src="{T3D[p["id"]]["geo"]["file"]}"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
+    return head(title, desc, "projects", fname=p["page"][:-5]) + nav() + '<main id="main">\n' + enhance(body) + '\n</main>\n' + foot + overlays() + scripts((f'<script src="{T3D[p["id"]]["geo"]["file"]}"></script>\n<script src="assets/tower3d.js"></script>\n') if p['id'] in T3D else '')
 
 # ---------------------------------------------------------------- search-friendly content (home page)
 def plink(pid, text=None):
@@ -963,7 +963,7 @@ HOME_FAQ = [
 AHD_AREAS = [("Bodakdev", "380054"), ("Thaltej", "380059"), ("Bopal, Ambli & Shela", "380058"), ("Satellite & Jodhpur", "380015"),
              ("Navrangpura", "380009"), ("Ellisbridge", "380006"), ("Paldi", "380007"), ("Memnagar", "380052"), ("Naranpura", "380013"),
              ("Ghatlodia", "380061"), ("Sola", "380060"), ("Gota", "382481"), ("Chandkheda", "382424"), ("Motera & Sabarmati", "380005"),
-             ("Maninagar", "380008"), ("Shahibag", "380004"), ("Vaishnodevi & Shantigram", "382421"), ("Kalol", "382721")]
+             ("Maninagar", "380008"), ("Shahibag", "380004"), ("Vaishnodevi & Shantigram", "382421")]
 GUJ_CITIES = ["Gandhinagar", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Mehsana", "Anand", "Nadiad", "Bharuch", "Vapi", "Kutch"]
 IND_CITIES = ["Mumbai", "Pune", "Delhi NCR", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Indore", "Jaipur", "Udaipur"]
 NRI_PLACES = ["USA (New Jersey, New York, California, Texas)", "UK (London, Leicester)", "Canada (Toronto, Brampton)", "Australia (Sydney, Melbourne)",
@@ -971,12 +971,11 @@ NRI_PLACES = ["USA (New Jersey, New York, California, Texas)", "UK (London, Leic
 NRI_COUNTRIES = ["United States", "United Kingdom", "Canada", "Australia", "New Zealand", "United Arab Emirates", "Singapore", "Kenya", "Tanzania", "Uganda"]
 def area_served_ld():
     """Areas and PIN codes for search engines only (schema.org areaServed); not shown on the page."""
-    out = ["Ahmedabad", "GIFT City", "Gujarat", "India"]
+    out = ["Ahmedabad", "Gandhinagar", "GIFT City", "Dubai", "Thailand", "Gujarat", "India"]   # main markets first (owner, Nov 2026)
     for name, pin in AHD_AREAS:
-        city = "Kalol" if name == "Kalol" else "Ahmedabad"
-        out.append({"@type": "Place", "name": f"{name}, {city}",
-                    "address": {"@type": "PostalAddress", "addressLocality": city, "postalCode": pin, "addressRegion": "Gujarat", "addressCountry": "IN"}})
-    out += [{"@type": "City", "name": c} for c in GUJ_CITIES + IND_CITIES]
+        out.append({"@type": "Place", "name": f"{name}, Ahmedabad",
+                    "address": {"@type": "PostalAddress", "addressLocality": "Ahmedabad", "postalCode": pin, "addressRegion": "Gujarat", "addressCountry": "IN"}})
+    out += [{"@type": "City", "name": c} for c in GUJ_CITIES + IND_CITIES if c not in out]
     out += [{"@type": "Country", "name": c} for c in NRI_COUNTRIES]
     return out
 
@@ -1011,7 +1010,7 @@ def seo_home():
     <div class="section-header seq">
       <span class="section-tag">Property in Ahmedabad</span>
       <h2>Finding the right property in Ahmedabad and Gandhinagar</h2>
-      <p>From our office in Kalol we cover new projects, resale and land across the twin cities. Here is where each kind of property is, and the projects we can show you now.</p>
+      <p>We cover new projects, resale and land across Ahmedabad, Gandhinagar and GIFT City. Here is where each kind of property is, and the projects we can show you now.</p>
     </div>
     <div class="seo-grid">{grid}</div>
     <h3 class="seo-faq-h reveal">Questions buyers ask us</h3>
@@ -1027,7 +1026,7 @@ BUSINESS_LD = {"@context": "https://schema.org", "@type": "RealEstateAgent", "na
   "address": {"@type": "PostalAddress", "addressLocality": "Kalol", "addressRegion": "Gujarat", "addressCountry": "IN"},
   "areaServed": area_served_ld(),
   "founder": {"@type": "Person", "name": "Er. Samir Dabhi"},
-  "description": "Property advisors for luxury flats, offices and land in Ahmedabad, Gandhinagar and GIFT City, and property abroad."}
+  "description": "Property advisors for luxury flats, offices and land in Ahmedabad, Gandhinagar and GIFT City, and for property in Dubai and Thailand."}
 
 def split_words(inner):
     """Wrap each word of a headline in a mask-reveal span. A <span class="highlight|shimmer"> keeps its own gradient per word."""
@@ -1080,7 +1079,7 @@ def build():
                         label="Buy or sell land", icon="fa-signs-post", enquire="Land in Gujarat", interest="Land in Gujarat — Buy",
                         wa="Hello, I would like to buy or sell land in Gujarat.", tag="Land desk"),
         "LAND_MAP": L.hero_map(), "LAND_TICKER": L.ticker(), "LAND_REGIONS": L.region_cards(), "LAND_FAQ": L.faq(),
-        "HOME_TICKER": L.ticker(["Adani Shantigram", "GIFT City", "Land across Gujarat", "Dubai", "London", "Singapore", "Phuket", "Monaco", "Documents checked first", "Kalol · Gandhinagar · Ahmedabad"], "What we do"),
+        "HOME_TICKER": L.ticker(["Adani Shantigram", "GIFT City", "Land across Gujarat", "Dubai", "London", "Singapore", "Phuket", "Monaco", "Documents checked first", "Ahmedabad · Gandhinagar · Dubai · Thailand"], "What we do"),
         "FORM_LAND": L.land_form('l'), "LAND_MARKET": L.land_market(), "LAND_SELL": L.land_sell(), "LAND_CARD": L.home_land_card(), "LAND_PROMO": L.projects_land_banner(),
         "MAP_LAND": map_block("Land areas across Gujarat",
             "Pick an area to open the live Google map, then use the button to explore it full screen. Ask us for a site visit once you have a shortlist.",

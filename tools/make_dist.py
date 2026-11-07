@@ -81,6 +81,9 @@ for f in glob.glob(OUT + '/*.html'):
     h = re.sub(r'\n?[ \t]*<!--[^>]*-->', '', h)   # no HTML comments in the published pages
     h = re.sub(r'(src|href)="(assets/[^"?#]+\.(?:js|css))"', lambda m: f'{m.group(1)}="{m.group(2)}?v={ver(m.group(2))}"', h)
     h = re.sub(r'<script src="(assets/[^"]+)"></script>', r'<script src="\1" defer></script>', h)   # our scripts never hold up the first paint
+    m = re.search(r"<div class=\"page-hero-bg\" style=\"background-image:url\('(assets/[^']+)'\)", h)   # the hero photo is the largest paint: fetch it with the stylesheets
+    if m and 'as="image"' not in h:
+        h = re.sub(r'(<link rel="stylesheet")', f'<link rel="preload" as="image" href="{m.group(1)}" fetchpriority="high"/>\n\\1', h, count=1)
     open(f, 'w', encoding='utf-8').write(h)
 # ---------- 404: works at any depth and sends visitors home after a few seconds ----------
 p404 = OUT + '/404.html'
