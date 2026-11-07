@@ -1,0 +1,151 @@
+{
+ "source": "https://consterarealty.com/anamikahighpoint/",
+ "title": "Anamika High Point in pictures",
+ "credit": "Images: Constera Realty, from the official Anamika High Point page. Renders are artistic impressions.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The towers of Anamika High Point",
+   "kind": "exterior",
+   "w": 6000,
+   "h": 5752,
+   "fw": 2560,
+   "fh": 2454,
+   "tw": 800,
+   "th": 767,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/Cam49.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "The towers above Bodakdev",
+   "kind": "view",
+   "w": 3350,
+   "h": 1973,
+   "fw": 2560,
+   "fh": 1508,
+   "tw": 800,
+   "th": 471,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/main-bg.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "The towers from the entrance drive",
+   "kind": "exterior",
+   "w": 6667,
+   "h": 4000,
+   "fw": 2560,
+   "fh": 1536,
+   "tw": 800,
+   "th": 480,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/Cam12.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Garden court between the towers",
+   "kind": "amenity",
+   "w": 7501,
+   "h": 4000,
+   "fw": 2560,
+   "fh": 1365,
+   "tw": 800,
+   "th": 427,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/Cam50.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "Podium garden from above",
+   "kind": "amenity",
+   "w": 3419,
+   "h": 2051,
+   "fw": 2560,
+   "fh": 1536,
+   "tw": 800,
+   "th": 480,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/Cam04.jpg"
+  },
+  {
+   "f": "06",
+   "cap": "Swimming pool",
+   "kind": "amenity",
+   "w": 2990,
+   "h": 1593,
+   "fw": 2560,
+   "fh": 1364,
+   "tw": 800,
+   "th": 426,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/Cam26.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "Children's play area",
+   "kind": "amenity",
+   "w": 3076,
+   "h": 2050,
+   "fw": 2560,
+   "fh": 1706,
+   "tw": 800,
+   "th": 533,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/Cam32.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "Gym",
+   "kind": "amenity",
+   "w": 3867,
+   "h": 2181,
+   "fw": 2560,
+   "fh": 1444,
+   "tw": 800,
+   "th": 451,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/GYM_TIF0.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "Café",
+   "kind": "amenity",
+   "w": 3867,
+   "h": 2175,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/cafe_tifo.jpg"
+  },
+  {
+   "f": "10",
+   "cap": "Living room",
+   "kind": "interior",
+   "w": 5000,
+   "h": 2500,
+   "fw": 2560,
+   "fh": 1280,
+   "tw": 800,
+   "th": 400,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/living.jpg"
+  },
+  {
+   "f": "11",
+   "cap": "Balcony at dusk",
+   "kind": "view",
+   "w": 5000,
+   "h": 2500,
+   "fw": 2560,
+   "fh": 1280,
+   "tw": 800,
+   "th": 400,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/background/balcony1.jpg"
+  },
+  {
+   "f": "12",
+   "cap": "Typical floor plan",
+   "kind": "plan",
+   "w": 6603,
+   "h": 3304,
+   "fw": 2560,
+   "fh": 1281,
+   "tw": 800,
+   "th": 400,
+   "url": "https://consterarealty.com/anamikahighpoint/assets/images/layout/3.jpg"
+  }
+ ]
+}

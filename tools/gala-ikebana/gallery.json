@@ -1,0 +1,126 @@
+{
+ "source": "https://galainfra.com/project/gala-ikebana/",
+ "title": "Gala Ikebana in pictures",
+ "credit": "Images: Gala Group, from the official Ikebana page: renders are artistic impressions; drone photos are from the developer's October 2025 site update.",
+ "specs": [
+  [
+   "Homes",
+   "Exclusive 5 BHK luxury residences"
+  ],
+  [
+   "Location",
+   "Sindhu Bhavan Road, Ahmedabad, near The Gateway"
+  ]
+ ],
+ "specs_src": "Specifications: Gala Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Ikebana at night",
+   "kind": "exterior",
+   "w": 1896,
+   "h": 816,
+   "fw": 1896,
+   "fh": 816,
+   "tw": 800,
+   "th": 344,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/jpeg-optimizer_Cam_028_NightFinal2-1.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "The planted balconies",
+   "kind": "exterior",
+   "w": 1350,
+   "h": 755,
+   "fw": 1350,
+   "fh": 755,
+   "tw": 800,
+   "th": 447,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/jpeg-optimizer_Cam_001Final-ezgif.com-optiwebp.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "The tower above Sindhu Bhavan Road (drone photo, Oct 2025)",
+   "kind": "site",
+   "w": 5280,
+   "h": 2970,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008105158_0044_D.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Aerial view of the site (drone photo)",
+   "kind": "site",
+   "w": 5280,
+   "h": 2970,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008110220_0069_D.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "The tower from the road (drone photo)",
+   "kind": "site",
+   "w": 5280,
+   "h": 2970,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008110631_0081_D.jpg"
+  },
+  {
+   "f": "06",
+   "cap": "The tower rising (drone photo)",
+   "kind": "site",
+   "w": 5280,
+   "h": 2970,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008110706_0083_D.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "Upper floors under construction (drone photo)",
+   "kind": "site",
+   "w": 5280,
+   "h": 2970,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008110459_0078_D.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "The roof slab (drone photo)",
+   "kind": "site",
+   "w": 5280,
+   "h": 2970,
+   "fw": 2560,
+   "fh": 1440,
+   "tw": 800,
+   "th": 450,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008112135_0111_D.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "Looking straight down on the site (drone photo)",
+   "kind": "site",
+   "w": 1350,
+   "h": 757,
+   "fw": 1350,
+   "fh": 757,
+   "tw": 800,
+   "th": 449,
+   "url": "https://galainfra.com/wp-content/uploads/2023/01/DJI_20251008111037_0095_D1.JPG"
+  }
+ ]
+}

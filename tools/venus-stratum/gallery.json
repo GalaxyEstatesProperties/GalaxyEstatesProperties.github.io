@@ -1,0 +1,44 @@
+{
+ "source": "https://www.venusinfra.in/stratum",
+ "title": "Stratum @ Venus Grounds in pictures",
+ "credit": "Images: Venus Group, from the official Stratum page. Renders are artistic impressions.",
+ "res": "3 official images, HD (Venus publishes them at 1600 px). Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Stratum at night",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/2c0db547-fcbf-4bad-b228-ef793e76c8a3/stratum-2.jpeg"
+  },
+  {
+   "f": "02",
+   "cap": "The glass facade and entrance",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/38a0bc68-bd2b-44cf-8b94-594c6a603352/stratum-1.jpeg"
+  },
+  {
+   "f": "03",
+   "cap": "The building above the evening traffic",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/d06717e3-612b-401a-aefd-dd3b829c7743/stratum-3.jpeg"
+  }
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "source": "https://www.venusinfra.in/the-universe",
+ "title": "The Universe by Venus in pictures",
+ "credit": "Images: Venus Group, from the official The Universe page. Renders are artistic impressions.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The twin towers at dusk",
+   "kind": "exterior",
+   "w": 3000,
+   "h": 2308,
+   "fw": 2560,
+   "fh": 1969,
+   "tw": 800,
+   "th": 615,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/5724f177-8494-4ea3-a323-40893b603f9c/universe-gallery-26.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "The towers on the Ahmedabad skyline",
+   "kind": "exterior",
+   "w": 8684,
+   "h": 4133,
+   "fw": 2560,
+   "fh": 1218,
+   "tw": 800,
+   "th": 381,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/9c38261e-cecc-4d4f-8cac-f974dc38ff0c/universe-gallery-27.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "The towers from the road",
+   "kind": "exterior",
+   "w": 3000,
+   "h": 2000,
+   "fw": 2560,
+   "fh": 1707,
+   "tw": 800,
+   "th": 533,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/cdb55009-45ab-4f36-b406-d8a65d0c8b0c/universe-gallery-2.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Retail podium at street level",
+   "kind": "exterior",
+   "w": 3000,
+   "h": 1500,
+   "fw": 2560,
+   "fh": 1280,
+   "tw": 800,
+   "th": 400,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/b314e4a5-e6e9-44b5-9e3a-fc0ef158325f/universe-gallery-3.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "The towers at night",
+   "kind": "exterior",
+   "w": 1858,
+   "h": 846,
+   "fw": 1858,
+   "fh": 846,
+   "tw": 800,
+   "th": 364,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/c77034b5-0aea-4609-82f4-e00cba983716/universe-hero-new.png"
+  },
+  {
+   "f": "06",
+   "cap": "Night view from the junction",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/3c95253a-bb96-4fa3-9153-dfcdaebe4c3a/universe-3.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "The towers lit up at night",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/8daf45dd-2700-4882-8fae-a0f5cbe16389/universe-4.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "The tower above the evening traffic",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/fb0cbf16-f4be-4699-9f16-88de5d37e430/universe-2.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "Swimming pool at night",
+   "kind": "amenity",
+   "w": 1536,
+   "h": 1024,
+   "fw": 1536,
+   "fh": 1024,
+   "tw": 800,
+   "th": 533,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/a77eb4b1-87dc-460d-9cf1-a437bd519c5c/universe-pool.jpg"
+  },
+  {
+   "f": "10",
+   "cap": "The clubhouse",
+   "kind": "amenity",
+   "w": 1600,
+   "h": 800,
+   "fw": 1600,
+   "fh": 800,
+   "tw": 800,
+   "th": 400,
+   "url": "https://www.venusinfra.in/__l5e/assets-v1/2fb99f23-afe3-41c8-9f93-0df286e0cfbd/universe-club.jpg"
+  }
+ ]
+}
