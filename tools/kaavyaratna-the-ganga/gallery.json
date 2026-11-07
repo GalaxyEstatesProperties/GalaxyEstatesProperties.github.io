@@ -1,0 +1,103 @@
+{
+ "source": "https://www.kaavyaratna.com/the-ganga",
+ "title": "The Ganga in pictures",
+ "credit": "Images: Kaavyaratna Group, from the official The Ganga page. Renders are artistic impressions.",
+ "res": "6 official images, all HD renders. Tap any image to view it full screen.",
+ "specs": [
+  [
+   "Building",
+   "G+27 tower with an arched crown, on a three-road corner"
+  ],
+  [
+   "Spaces",
+   "Offices, showrooms, a rooftop restaurant and a Hyatt Regency hotel"
+  ],
+  [
+   "Office sizes",
+   "1,618 – 2,549 sq ft super built-up"
+  ],
+  [
+   "Amenities",
+   "Five high-speed elevators, observation deck, terrace garden, centralised DCS cooling, double-height entrance and car parking"
+  ],
+  [
+   "Status",
+   "Newly launched (Kaavyaratna)"
+  ]
+ ],
+ "specs_src": "Specifications: Kaavyaratna Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The Ganga from the road at dusk",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 1200,
+   "fw": 1600,
+   "fh": 1200,
+   "tw": 800,
+   "th": 600,
+   "url": "https://ik.imagekit.io/xzsikjxn8/kv/assets/img/projects/ganga/gallery/exterior/5.webp?v=1.2"
+  },
+  {
+   "f": "02",
+   "cap": "Aerial view with the rooftop garden",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1030,
+   "fw": 1920,
+   "fh": 1030,
+   "tw": 800,
+   "th": 429,
+   "url": "https://ik.imagekit.io/xzsikjxn8/kv/assets/img/projects/ganga/ganga.webp"
+  },
+  {
+   "f": "03",
+   "cap": "The arched glass crown",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 1200,
+   "fw": 1600,
+   "fh": 1200,
+   "tw": 800,
+   "th": 600,
+   "url": "https://ik.imagekit.io/xzsikjxn8/kv/assets/img/projects/ganga/gallery/exterior/2.webp?v=1.2"
+  },
+  {
+   "f": "04",
+   "cap": "The tower from the corner",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 1200,
+   "fw": 1600,
+   "fh": 1200,
+   "tw": 800,
+   "th": 600,
+   "url": "https://ik.imagekit.io/xzsikjxn8/kv/assets/img/projects/ganga/gallery/exterior/3.webp?v=1.2"
+  },
+  {
+   "f": "05",
+   "cap": "The tower above the trees",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 1200,
+   "fw": 1600,
+   "fh": 1200,
+   "tw": 800,
+   "th": 600,
+   "url": "https://ik.imagekit.io/xzsikjxn8/kv/assets/img/projects/ganga/gallery/exterior/4.webp?v=1.2"
+  },
+  {
+   "f": "06",
+   "cap": "The Ganga on the GIFT City skyline",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 900,
+   "fw": 1920,
+   "fh": 900,
+   "tw": 800,
+   "th": 375,
+   "url": "https://ik.imagekit.io/xzsikjxn8/kv/assets/img/projects/ganga/video-bg.webp?v=1.2"
+  }
+ ]
+}
