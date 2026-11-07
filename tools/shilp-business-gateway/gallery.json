@@ -1,0 +1,139 @@
+{
+ "source": "https://www.shilpgroup.com/projects/commercial/shilp-business-gateway",
+ "credit": "Images: Shilp Group, from the official Shilp Business Gateway brochure (renders are artistic impressions) and the construction photos on shilpgroup.com.",
+ "title": "Shilp Business Gateway in pictures",
+ "specs": [
+  [
+   "Building",
+   "Office building on SG Highway (Vaishnodevi) with shops on the lower floors and a double-height lobby"
+  ],
+  [
+   "Office sizes",
+   "2,303 to 5,082 sq ft"
+  ],
+  [
+   "Amenities",
+   "Café, lounge, business centre, indoor games, a director's lounge with its own lift"
+  ],
+  [
+   "Construction",
+   "70% complete (Shilp Group)"
+  ],
+  [
+   "Connectivity",
+   "About 10 minutes from the metro"
+  ]
+ ],
+ "specs_src": "Specifications: Shilp Group official project page (Nov 2026).",
+ "res": "Official images, all HD: renders and plans from the Shilp Business Gateway brochure, and construction photos from Shilp Group. Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The building on SG Highway",
+   "kind": "exterior",
+   "w": 2992,
+   "h": 2200,
+   "fw": 2560,
+   "fh": 1882,
+   "tw": 800,
+   "th": 588,
+   "url": "https://drive.google.com/file/d/1rclHVLqBi36-eB8sAJveWfSmj91Qhjbo/view#page=4&crop=0-0-0.68-1"
+  },
+  {
+   "f": "02",
+   "cap": "Corner view with the shopfronts",
+   "kind": "exterior",
+   "w": 2992,
+   "h": 2468,
+   "fw": 2541,
+   "fh": 2028,
+   "tw": 800,
+   "th": 638,
+   "url": "https://drive.google.com/file/d/1rclHVLqBi36-eB8sAJveWfSmj91Qhjbo/view#page=3&crop=0.55-0.17-0.95-0.83"
+  },
+  {
+   "f": "03",
+   "cap": "Side elevation",
+   "kind": "exterior",
+   "w": 2995,
+   "h": 2483,
+   "fw": 2549,
+   "fh": 2081,
+   "tw": 800,
+   "th": 653,
+   "url": "https://drive.google.com/file/d/1rclHVLqBi36-eB8sAJveWfSmj91Qhjbo/view#page=5&crop=0.05-0.15-0.46-0.83"
+  },
+  {
+   "f": "04",
+   "cap": "Double-height entrance lobby",
+   "kind": "interior",
+   "w": 2988,
+   "h": 2134,
+   "fw": 2560,
+   "fh": 1828,
+   "tw": 800,
+   "th": 571,
+   "url": "https://drive.google.com/file/d/1rclHVLqBi36-eB8sAJveWfSmj91Qhjbo/view#page=6&crop=0.3-0-1-1"
+  },
+  {
+   "f": "05",
+   "cap": "Ground and first floor plans",
+   "kind": "plan",
+   "w": 2992,
+   "h": 1496,
+   "fw": 2560,
+   "fh": 1280,
+   "tw": 800,
+   "th": 400,
+   "url": "https://drive.google.com/file/d/1rclHVLqBi36-eB8sAJveWfSmj91Qhjbo/view#page=7&crop=0-0-1-1"
+  },
+  {
+   "f": "06",
+   "cap": "Twelfth floor and corporate floor plans",
+   "kind": "plan",
+   "w": 2992,
+   "h": 1496,
+   "fw": 2560,
+   "fh": 1280,
+   "tw": 800,
+   "th": 400,
+   "url": "https://drive.google.com/file/d/1rclHVLqBi36-eB8sAJveWfSmj91Qhjbo/view#page=9&crop=0-0-1-1"
+  },
+  {
+   "f": "07",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/shilp-business-gateway/GATEWAY___2__1793181278151_1t8f3f.webp"
+  },
+  {
+   "f": "08",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/shilp-business-gateway/GATEWAY___1__1793181283076_w62xgq.webp"
+  },
+  {
+   "f": "09",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/shilp-business-gateway/GATEWAY___3__1793181287181_62z1mr.webp"
+  }
+ ]
+}

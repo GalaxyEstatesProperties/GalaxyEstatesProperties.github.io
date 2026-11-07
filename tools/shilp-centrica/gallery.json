@@ -1,0 +1,175 @@
+{
+ "source": "https://www.shilpgroup.com/projects/commercial/shilp-centrica",
+ "credit": "Images: Shilp Group, from the official Shilp Centrica brochure (renders are artistic impressions) and the construction photos on shilpgroup.com.",
+ "title": "Shilp Centrica in pictures",
+ "specs": [
+  [
+   "Building",
+   "29 storeys of offices with a business centre, terrace garden, cafeteria, open dining and gym on the 30th floor"
+  ],
+  [
+   "Offices",
+   "From 1,800 sq ft, square and rectangular layouts"
+  ],
+  [
+   "Lifts",
+   "10 automatic lifts, double-height lounge and foyer"
+  ],
+  [
+   "Location",
+   "DTA, GIFT City: two-road corner, close to the metro station"
+  ],
+  [
+   "Construction",
+   "65% complete (Shilp Group)"
+  ]
+ ],
+ "specs_src": "Specifications: Shilp Group official project page (Nov 2026).",
+ "res": "Official images, all HD: renders and plans from the Shilp Centrica brochure, and construction photos from Shilp Group. Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Shilp Centrica at dusk, on its two-road corner",
+   "kind": "exterior",
+   "w": 2990,
+   "h": 2225,
+   "fw": 2560,
+   "fh": 1905,
+   "tw": 800,
+   "th": 595,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=3&crop=0-0-0.8-1"
+  },
+  {
+   "f": "02",
+   "cap": "The podium and entrance at dusk",
+   "kind": "exterior",
+   "w": 2982,
+   "h": 1775,
+   "fw": 2560,
+   "fh": 1524,
+   "tw": 800,
+   "th": 476,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=6&crop=0-0-1-1"
+  },
+  {
+   "f": "03",
+   "cap": "The tower from the road",
+   "kind": "exterior",
+   "w": 2463,
+   "h": 2996,
+   "fw": 2105,
+   "fh": 2501,
+   "tw": 673,
+   "th": 800,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=2&crop=0.03-0.03-0.49-0.97"
+  },
+  {
+   "f": "04",
+   "cap": "The tower at night",
+   "kind": "exterior",
+   "w": 2856,
+   "h": 2992,
+   "fw": 2366,
+   "fh": 2560,
+   "tw": 739,
+   "th": 800,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=7&crop=0.08-0.06-0.58-0.94"
+  },
+  {
+   "f": "05",
+   "cap": "Front elevation",
+   "kind": "exterior",
+   "w": 2993,
+   "h": 2904,
+   "fw": 2478,
+   "fh": 2476,
+   "tw": 800,
+   "th": 799,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=8&crop=0.4-0.06-0.94-0.94"
+  },
+  {
+   "f": "06",
+   "cap": "Aerial view of the tower",
+   "kind": "exterior",
+   "w": 2688,
+   "h": 2550,
+   "fw": 2371,
+   "fh": 2382,
+   "tw": 796,
+   "th": 800,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=7&crop=0.6-0.43-0.92-0.94"
+  },
+  {
+   "f": "07",
+   "cap": "Double-height entrance lounge",
+   "kind": "interior",
+   "w": 2997,
+   "h": 1236,
+   "fw": 2537,
+   "fh": 1046,
+   "tw": 800,
+   "th": 330,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=5&crop=0.11-0.08-0.89-0.62"
+  },
+  {
+   "f": "08",
+   "cap": "GIFT City around the site",
+   "kind": "view",
+   "w": 2570,
+   "h": 2996,
+   "fw": 2148,
+   "fh": 2501,
+   "tw": 687,
+   "th": 800,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=4&crop=0.49-0.03-0.97-0.97"
+  },
+  {
+   "f": "09",
+   "cap": "Typical floor plans",
+   "kind": "plan",
+   "w": 2982,
+   "h": 1775,
+   "fw": 2560,
+   "fh": 1524,
+   "tw": 800,
+   "th": 476,
+   "url": "https://drive.google.com/file/d/13EnYXaXyh0LkBX-bZcZsfAgogQpP-dQG/view#page=13&crop=0-0-1-1"
+  },
+  {
+   "f": "10",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/shilp-centrica/vlcsnap_2026_10_26_19h15m29s313_11zon_1793081246492_4sna11.webp"
+  },
+  {
+   "f": "11",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/shilp-centrica/vlcsnap_2026_10_26_19h14m08s944_11zon_1793081248531_2hfa86.webp"
+  },
+  {
+   "f": "12",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/shilp-centrica/vlcsnap_2026_10_26_19h13m31s169_11zon_1793081249655_ynuayk.webp"
+  }
+ ]
+}

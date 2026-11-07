@@ -1,0 +1,179 @@
+{
+ "source": "https://www.shilpgroup.com/projects/residential/shilp-skyline",
+ "credit": "Images: Shilp Group, from the official Skyline brochure (renders are artistic impressions) and the construction photos on shilpgroup.com.",
+ "title": "Skyline in pictures",
+ "specs": [
+  [
+   "Homes",
+   "4 BHK; Shilp lists the 4 BHK at 3,071 sq ft, and Adani Realty lists RERA areas of 1,479.28 to 2,349.76 sq ft"
+  ],
+  [
+   "Project area",
+   "8,300.24 sq m"
+  ],
+  [
+   "Amenities",
+   "Podium garden, swimming pool, lounge deck and open garden"
+  ],
+  [
+   "Possession",
+   "September 2029 (Adani Realty); RERA completion date 30 January 2030"
+  ],
+  [
+   "Construction",
+   "35% complete; sample house ready (Shilp Group)"
+  ],
+  [
+   "Location",
+   "Centre of Adani Shantigram, overlooking the greens"
+  ]
+ ],
+ "specs_src": "Specifications: Shilp Group and Adani Realty official project pages (Nov 2026).",
+ "res": "Official images, all HD: renders and plans from the Skyline brochure, and construction photos from Shilp Group. Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The three towers of Skyline",
+   "kind": "exterior",
+   "w": 3123,
+   "h": 2155,
+   "fw": 2515,
+   "fh": 1702,
+   "tw": 800,
+   "th": 541,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=9&crop=0.2-0.08-0.82-0.9"
+  },
+  {
+   "f": "02",
+   "cap": "A Skyline tower",
+   "kind": "exterior",
+   "w": 3027,
+   "h": 3259,
+   "fw": 2378,
+   "fh": 2467,
+   "tw": 771,
+   "th": 800,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=4&crop=0.01-0.03-0.48-1.0"
+  },
+  {
+   "f": "03",
+   "cap": "The towers above the gardens",
+   "kind": "exterior",
+   "w": 2940,
+   "h": 3264,
+   "fw": 2272,
+   "fh": 2393,
+   "tw": 760,
+   "th": 800,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=8&crop=0.01-0.0-0.48-1.0"
+  },
+  {
+   "f": "04",
+   "cap": "Arrival and entrance from the road",
+   "kind": "exterior",
+   "w": 3133,
+   "h": 1668,
+   "fw": 2521,
+   "fh": 1272,
+   "tw": 800,
+   "th": 404,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=7&crop=0.01-0.0-0.99-1.0"
+  },
+  {
+   "f": "05",
+   "cap": "Podium garden between the towers",
+   "kind": "amenity",
+   "w": 3121,
+   "h": 2050,
+   "fw": 2560,
+   "fh": 1613,
+   "tw": 800,
+   "th": 504,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=12&crop=0.06-0.13-0.64-0.86"
+  },
+  {
+   "f": "06",
+   "cap": "Swimming pool",
+   "kind": "amenity",
+   "w": 3128,
+   "h": 1632,
+   "fw": 2469,
+   "fh": 1247,
+   "tw": 800,
+   "th": 404,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=14&crop=0-0-1-1"
+  },
+  {
+   "f": "07",
+   "cap": "Lounge deck",
+   "kind": "amenity",
+   "w": 3116,
+   "h": 1368,
+   "fw": 2560,
+   "fh": 1061,
+   "tw": 800,
+   "th": 332,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=13&crop=0.06-0.13-0.94-0.87"
+  },
+  {
+   "f": "08",
+   "cap": "Typical floor plan",
+   "kind": "plan",
+   "w": 3128,
+   "h": 1632,
+   "fw": 2560,
+   "fh": 1336,
+   "tw": 800,
+   "th": 417,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=11&crop=0-0-1-1"
+  },
+  {
+   "f": "09",
+   "cap": "Typical 4 BHK unit plan",
+   "kind": "plan",
+   "w": 3122,
+   "h": 1920,
+   "fw": 2560,
+   "fh": 1574,
+   "tw": 800,
+   "th": 492,
+   "url": "https://drive.google.com/file/d/1Dk6Jzq8KCNeaS_PyL0orMuWLcJoC4Byo/view#page=15&crop=0.02-0.04-0.8-0.96"
+  },
+  {
+   "f": "10",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/skyline/SKYLINE__1__1793185745293_rrk6j4.webp"
+  },
+  {
+   "f": "11",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/skyline/SKYLINE__2__1793185750830_2cu3b7.webp"
+  },
+  {
+   "f": "12",
+   "cap": "Construction progress (site photo)",
+   "kind": "site",
+   "w": 1600,
+   "h": 900,
+   "fw": 1600,
+   "fh": 900,
+   "tw": 800,
+   "th": 450,
+   "url": "https://rmuprxtzeefgpqnhxiqz.supabase.co/storage/v1/object/public/shilp-images/shilp/projects/skyline/SKYLINE__3__1793185753858_wq853e.webp"
+  }
+ ]
+}
