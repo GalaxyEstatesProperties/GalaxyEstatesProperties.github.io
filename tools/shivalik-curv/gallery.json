@@ -1,0 +1,106 @@
+{
+ "source": "https://shivalikgroup.com/projects/curv",
+ "title": "Shivalik Curv in pictures",
+ "credit": "Images: Shivalik Group, from the official Curv page and brochure. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Building",
+   "Twisted office tower, which Shivalik calls India's first, in GIFT City"
+  ],
+  [
+   "Offices",
+   "997 – 15,570 sq ft, on column-free floor plates"
+  ],
+  [
+   "Atrium",
+   "A 350-foot vertical atrium that brings daylight into the core"
+  ],
+  [
+   "Podium",
+   "Landscaped podium with retail and shaded seating"
+  ],
+  [
+   "Facade and lifts",
+   "High-performance glazing to cut heat gain; high-speed elevators"
+  ],
+  [
+   "Status",
+   "Under construction (Shivalik Group)"
+  ]
+ ],
+ "specs_src": "Specifications: Shivalik Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The twisted tower above GIFT City at sunrise",
+   "kind": "exterior",
+   "w": 2160,
+   "h": 1536,
+   "fw": 2160,
+   "fh": 1536,
+   "tw": 800,
+   "th": 569,
+   "url": "https://shivalikgroup.com/projects/curv#brochure-page=6"
+  },
+  {
+   "f": "02",
+   "cap": "Entrance with the Curv sign",
+   "kind": "exterior",
+   "w": 1280,
+   "h": 1800,
+   "fw": 1280,
+   "fh": 1800,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1770124673134_1769688702043_Photos%203.png"
+  },
+  {
+   "f": "03",
+   "cap": "Atrium lobby",
+   "kind": "interior",
+   "w": 1280,
+   "h": 1800,
+   "fw": 1280,
+   "fh": 1800,
+   "tw": 569,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1770124681086_1769688710703_Photos%204.png"
+  },
+  {
+   "f": "04",
+   "cap": "An office floor with full-height glass",
+   "kind": "interior",
+   "w": 1280,
+   "h": 1800,
+   "fw": 1280,
+   "fh": 1797,
+   "tw": 570,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1770124689123_1769688718413_Photos%205.png"
+  },
+  {
+   "f": "05",
+   "cap": "Lounge",
+   "kind": "amenity",
+   "w": 1280,
+   "h": 1800,
+   "fw": 1280,
+   "fh": 1796,
+   "tw": 570,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1770124697995_1769688730763_Photos%206.png"
+  },
+  {
+   "f": "06",
+   "cap": "Café and dining",
+   "kind": "amenity",
+   "w": 1280,
+   "h": 1800,
+   "fw": 1280,
+   "fh": 1796,
+   "tw": 570,
+   "th": 800,
+   "url": "https://d1d09q7vt7sqxk.cloudfront.net/projects/documents/1770124722364_1769688739453_Photos%207.png"
+  }
+ ]
+}

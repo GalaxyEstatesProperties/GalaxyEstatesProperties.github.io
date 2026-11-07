@@ -1,0 +1,79 @@
+{
+ "source": "https://savvygroup.in/savvy-marina/",
+ "title": "Savvy Marina in pictures",
+ "credit": "Images: Savvy Group, from the official Savvy Marina page. Renders are artistic impressions.",
+ "res": "4 official images, all HD (the developer publishes no other HD images). Tap any image to view it full screen.",
+ "specs": [
+  [
+   "Location",
+   "GIFT City SEZ, on the Sabarmati waterfront; Savvy Group calls it the first waterfront development in GIFT City"
+  ],
+  [
+   "Homes",
+   "Apartments, duplexes and penthouses; duplexes and penthouses have a private pool and a wide balcony"
+  ],
+  [
+   "Club",
+   "50,000 sq ft club with business lounge, gym, yoga room, movie theatre, café, art gallery and infinity pool"
+  ],
+  [
+   "Building",
+   "Grand entrance foyer, three high-speed elevators, centralised air conditioning, jogging tracks"
+  ],
+  [
+   "Who can buy",
+   "Dual-use SEZ permission lets non-SEZ buyers live and invest here"
+  ]
+ ],
+ "specs_src": "Specifications: Savvy Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "GIFT City from a Savvy Marina balcony",
+   "kind": "view",
+   "w": 1920,
+   "h": 1000,
+   "fw": 1920,
+   "fh": 1000,
+   "tw": 800,
+   "th": 417,
+   "url": "https://savvygroup.in/savvy-marina/media/images/advantages/advantages-img.webp"
+  },
+  {
+   "f": "02",
+   "cap": "A bedroom",
+   "kind": "interior",
+   "w": 1680,
+   "h": 1033,
+   "fw": 1680,
+   "fh": 1033,
+   "tw": 800,
+   "th": 492,
+   "url": "https://savvygroup.in/savvy-marina/media/images/about-marina/project-1.webp"
+  },
+  {
+   "f": "03",
+   "cap": "Private pool in a duplex",
+   "kind": "interior",
+   "w": 1680,
+   "h": 1033,
+   "fw": 1680,
+   "fh": 1033,
+   "tw": 800,
+   "th": 492,
+   "url": "https://savvygroup.in/savvy-marina/media/images/about-marina/project-2.webp"
+  },
+  {
+   "f": "04",
+   "cap": "A wide balcony with a skyline view",
+   "kind": "view",
+   "w": 1680,
+   "h": 1033,
+   "fw": 1680,
+   "fh": 1033,
+   "tw": 800,
+   "th": 492,
+   "url": "https://savvygroup.in/savvy-marina/media/images/about-marina/project-3.webp"
+  }
+ ]
+}
