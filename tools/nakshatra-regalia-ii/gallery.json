@@ -1,0 +1,32 @@
+{
+ "source": "https://regalia.co.in/",
+ "title": "Nakshatra Regalia II in pictures",
+ "credit": "Images: Nakshatra Group, from the official Regalia site. Renders are artistic impressions.",
+ "res": "2 official HD images. Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Regalia II's towers on their curved podium at night",
+   "kind": "exterior",
+   "w": 2200,
+   "h": 1350,
+   "fw": 2200,
+   "fh": 1350,
+   "tw": 800,
+   "th": 491,
+   "url": "https://regalia.co.in/assets/img/regalia-ii-banner.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Aerial view of the towers and podium",
+   "kind": "exterior",
+   "w": 1600,
+   "h": 911,
+   "fw": 1600,
+   "fh": 911,
+   "tw": 800,
+   "th": 456,
+   "url": "https://regalia.co.in/assets/img/regalia-about.jpg"
+  }
+ ]
+}
