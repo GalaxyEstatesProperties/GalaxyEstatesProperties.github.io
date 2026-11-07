@@ -316,7 +316,7 @@ def land_market():
       <p>Each land is shown with its own boundary as the owner drew it, its area checked against the 7/12, and the maximum FSI for its zone. Ask us for the documents and a site visit.</p>
       <p class="lm-count" data-lm-count></p>
     </div>
-    <div class="lm-grid" data-lm-list aria-live="polite"><div class="lm-empty"><i class="fas fa-spinner fa-spin"></i><p>Loading land listings…</p></div></div>
+    <div class="lm-grid" data-lm-list aria-live="polite"><p class="sr-only">Loading land listings…</p><div class="lm-skel" aria-hidden="true"><span class="skel-bar"></span><span class="skel-bar"></span><span class="skel-bar"></span></div><div class="lm-skel" aria-hidden="true"><span class="skel-bar"></span><span class="skel-bar"></span><span class="skel-bar"></span></div><div class="lm-skel" aria-hidden="true"><span class="skel-bar"></span><span class="skel-bar"></span><span class="skel-bar"></span></div></div>
   </div>
 
   <div class="modal-overlay land-detail" id="landDetail" aria-hidden="true">
