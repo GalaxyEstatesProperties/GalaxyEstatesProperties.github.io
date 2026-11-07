@@ -1,0 +1,44 @@
+{
+ "source": "https://suryam.in/microsite/The-Banyan.html",
+ "title": "The Banyan in pictures",
+ "credit": "Images: Suryam Group, from the official The Banyan page. Renders are artistic impressions.",
+ "res": "3 official images, HD (Suryam publishes them at 1250 × 1875 px). Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Double-height living room",
+   "kind": "interior",
+   "w": 1250,
+   "h": 1682,
+   "fw": 1250,
+   "fh": 1682,
+   "tw": 595,
+   "th": 800,
+   "url": "https://suryam.in/microsite/img/the-banyan/gallery/the-banyan-11.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Duplex living and staircase",
+   "kind": "interior",
+   "w": 1250,
+   "h": 1875,
+   "fw": 1250,
+   "fh": 1875,
+   "tw": 533,
+   "th": 800,
+   "url": "https://suryam.in/microsite/img/the-banyan/gallery/the-banyan-03.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "Balcony lounge",
+   "kind": "view",
+   "w": 1250,
+   "h": 1875,
+   "fw": 1250,
+   "fh": 1875,
+   "tw": 533,
+   "th": 800,
+   "url": "https://suryam.in/microsite/img/the-banyan/gallery/the-banyan-04.jpg"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "source": "https://arvindsmartspaces.com/ahmedabad/arvind-uplands-3-0",
+ "title": "Arvind Uplands 3.0 in pictures",
+ "credit": "Images: Arvind SmartSpaces, from the official Uplands 3.0 page. Renders are artistic impressions.",
+ "res": "5 official images, HD (Arvind SmartSpaces publishes them at 1723 px). Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The golf course",
+   "kind": "amenity",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2024/07/gallery.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Fountain lawn and clubhouse",
+   "kind": "amenity",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2023/09/05.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "Clubhouse pool deck",
+   "kind": "amenity",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2023/09/04.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Entrance drive",
+   "kind": "exterior",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2023/09/03.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "A villa on a plot",
+   "kind": "exterior",
+   "w": 1723,
+   "h": 969,
+   "fw": 1723,
+   "fh": 969,
+   "tw": 800,
+   "th": 450,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2023/09/02.jpg"
+  }
+ ]
+}

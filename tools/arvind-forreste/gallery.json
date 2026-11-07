@@ -1,0 +1,174 @@
+{
+ "source": "https://arvindsmartspaces.com/gandhinagar/arvind-forreste",
+ "title": "Arvind Forreste in pictures",
+ "credit": "Images: Arvind SmartSpaces, from the official Forreste page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Estate",
+   "Forest-themed weekend villa community over 110 acres"
+  ],
+  [
+   "Villas",
+   "Type A 2 BHK and 4 BHK villas and Type B 1 BHK studio villas"
+  ],
+  [
+   "Clubhouse",
+   "Café, restaurant, lounge with a library, banquet hall, kids' zone, spa, pool and pool deck"
+  ],
+  [
+   "Sports",
+   "Badminton, table tennis, billiards, futsal court, rock climbing, archery and an outdoor skating rink"
+  ],
+  [
+   "RERA",
+   "Forreste PR/GJ/GANDHINAGAR/GANDHINAGAR/AUDA/RAA06788/A4R/161123; Forreste 5 PR/GJ/GANDHINAGAR/KALOL/AUDA/RAA10718/300922"
+  ]
+ ],
+ "specs_src": "Specifications: Arvind SmartSpaces official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "Club deck",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1902,
+   "fh": 1024,
+   "tw": 800,
+   "th": 431,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-01_Club-Deck-View.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Club and sports courts from above",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1016,
+   "tw": 800,
+   "th": 423,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-02_Club-Aerial-Sports-Amenity-View.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "The clubhouse",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-03_Club-View.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Pool deck",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-06_Pool-Deck-View.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "Deck café",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-04_Deck-Cafe-View.jpg"
+  },
+  {
+   "f": "06",
+   "cap": "Fountain court",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-05_Fountain-View.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "Tree house",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/View-07_Tree-House.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "Type A 4 BHK villa, front",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/Type-A-4-BHK-Front.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "Type A 4 BHK villa, side",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/Type-A-4-BHK-Side.jpg"
+  },
+  {
+   "f": "10",
+   "cap": "Type A 2 BHK villa, front",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/Type-A-2-BHK-Front.jpg"
+  },
+  {
+   "f": "11",
+   "cap": "Type A 2 BHK villa, side",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/Type-A-2-BHK-Side.jpg"
+  },
+  {
+   "f": "12",
+   "cap": "Type B 1 BHK studio villa",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1024,
+   "fw": 1920,
+   "fh": 1024,
+   "tw": 800,
+   "th": 427,
+   "url": "https://www.arvindsmartspaces.com/wp-content/uploads/2022/01/Type-B-1-BHK-Studio-Front.jpg"
+  }
+ ]
+}

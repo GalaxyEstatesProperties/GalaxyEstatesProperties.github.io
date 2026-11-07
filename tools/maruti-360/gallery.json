@@ -1,0 +1,32 @@
+{
+ "source": "https://maruti360.com/",
+ "title": "Maruti 360 in pictures",
+ "credit": "Images: Maruti Buildcon, from the official Maruti 360 site. Renders are artistic impressions.",
+ "res": "2 official HD images (the developer publishes no others in HD). Tap any image to view it full screen.",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The twin towers of Maruti 360",
+   "kind": "exterior",
+   "w": 1536,
+   "h": 1132,
+   "fw": 1536,
+   "fh": 1132,
+   "tw": 800,
+   "th": 590,
+   "url": "https://maruti360.com/wp-content/uploads/2024/05/Inside-2.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Rooftop pavilion above the city",
+   "kind": "amenity",
+   "w": 2560,
+   "h": 1464,
+   "fw": 2560,
+   "fh": 1464,
+   "tw": 800,
+   "th": 458,
+   "url": "https://maruti360.com/wp-content/uploads/2024/05/main-banner-scaled.webp"
+  }
+ ]
+}

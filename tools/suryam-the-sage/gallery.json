@@ -1,0 +1,162 @@
+{
+ "source": "https://sage.repose.in/",
+ "title": "The Sage by Repose in pictures",
+ "credit": "Images: Suryam Group, from the official The Sage by Repose page. Renders are artistic impressions.",
+ "specs": [
+  [
+   "Plots",
+   "1,800 sq yd plots for courtyard villas, at Lohr near Greater Thol"
+  ],
+  [
+   "Campus",
+   "Set among 100-year-old trees, with designed street-scapes and wellness infrastructure"
+  ]
+ ],
+ "specs_src": "Specifications: Suryam Group official project page (Nov 2026).",
+ "images": [
+  {
+   "f": "01",
+   "cap": "The campus among old trees, from above",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1512,
+   "fw": 1920,
+   "fh": 1512,
+   "tw": 800,
+   "th": 630,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-11.jpg"
+  },
+  {
+   "f": "02",
+   "cap": "Entrance gate",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1280,
+   "fw": 1920,
+   "fh": 1280,
+   "tw": 800,
+   "th": 533,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-6.jpg"
+  },
+  {
+   "f": "03",
+   "cap": "Boundary wall with The Sage sign",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 897,
+   "fw": 1920,
+   "fh": 897,
+   "tw": 800,
+   "th": 374,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-4.jpg"
+  },
+  {
+   "f": "04",
+   "cap": "Entrance court",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-1.jpg"
+  },
+  {
+   "f": "05",
+   "cap": "A tree-lined internal street",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-12.jpg"
+  },
+  {
+   "f": "06",
+   "cap": "A courtyard villa",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-13.jpg"
+  },
+  {
+   "f": "07",
+   "cap": "Courtyard villa with hanging greens",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-16.jpg"
+  },
+  {
+   "f": "08",
+   "cap": "Inside a villa courtyard",
+   "kind": "exterior",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-15.jpg"
+  },
+  {
+   "f": "09",
+   "cap": "Sculpture court and drop-off",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-2.jpg"
+  },
+  {
+   "f": "10",
+   "cap": "Pavilion over the lily pond",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-5.jpg"
+  },
+  {
+   "f": "11",
+   "cap": "Lily pond garden",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-7.jpg"
+  },
+  {
+   "f": "12",
+   "cap": "Lawn walk",
+   "kind": "amenity",
+   "w": 1920,
+   "h": 1080,
+   "fw": 1920,
+   "fh": 1080,
+   "tw": 800,
+   "th": 450,
+   "url": "https://sage.repose.in/img/gallery-slider/sage-by-repose-3.jpg"
+  }
+ ]
+}
