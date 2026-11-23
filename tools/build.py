@@ -282,19 +282,20 @@ def footer():
         </div>
       </div>
       <div class="footer-col">
-        <h4>Explore</h4>
+        <h3>Explore</h3>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="projects.html">All properties</a></li>
           <li><a href="shantigram.html">Adani Shantigram</a></li>
           <li><a href="gift-city.html">GIFT City</a></li>
           <li><a href="land.html">Land in Gujarat</a></li>
+          <li><a href="industrial-land-ahmedabad-gandhinagar.html">Industrial land</a></li>
           <li><a href="global.html">Global property</a></li>
           <li><a href="virtual-tours.html">Virtual tours</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>About</h4>
+        <h3>About</h3>
         <ul>
           <li><a href="about.html">About us</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -304,7 +305,7 @@ def footer():
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h3>Contact</h3>
         <ul class="footer-contact">
           <li><i class="fas fa-phone"></i><a href="tel:+918488062309" data-phone>+91 84880 62309</a></li>
           <li><i class="fab fa-whatsapp"></i><a href="#" data-whatsapp target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></li>
