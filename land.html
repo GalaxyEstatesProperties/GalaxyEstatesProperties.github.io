@@ -52,7 +52,16 @@
               <li><a href="gift-city.html" data-page="gift-city"><i class="fas fa-city"></i><span><strong>GIFT City</strong><small>India's first IFSC, in 3D</small></span></a></li>
             </ul>
           </li>
-          <li><a href="land.html" class="nav-link" data-page="land">Gujarat Land</a></li>
+          <li class="has-dropdown">
+            <button type="button" class="nav-link" aria-expanded="false" aria-haspopup="true">Gujarat Land <i class="fas fa-chevron-down"></i></button>
+            <ul class="dropdown">
+              <li><a href="land.html" data-page="land"><i class="fas fa-map-location-dot"></i><span><strong>All Gujarat land</strong><small>Land for sale in all 34 districts</small></span></a></li>
+              <li><a href="industrial-land-ahmedabad-gandhinagar.html" data-page="industrial-land-ahmedabad-gandhinagar"><i class="fas fa-industry"></i><span><strong>Industrial plots</strong><small>Factories, sheds and plants</small></span></a></li>
+              <li><a href="land.html#land-residential"><i class="fas fa-house"></i><span><strong>Residential and commercial plots</strong><small>NA plots, showrooms and offices</small></span></a></li>
+              <li><a href="land.html#land-tp"><i class="fas fa-draw-polygon"></i><span><strong>TP scheme plots</strong><small>Final plots in Town Planning schemes</small></span></a></li>
+              <li><a href="land.html#land-agri"><i class="fas fa-seedling"></i><span><strong>Agricultural land</strong><small>Farm land for eligible buyers</small></span></a></li>
+            </ul>
+          </li>
           <li class="has-dropdown">
             <button type="button" class="nav-link" aria-expanded="false" aria-haspopup="true">Global <i class="fas fa-chevron-down"></i></button>
             <ul class="dropdown">
@@ -205,7 +214,7 @@
 
 <div class="section-divider"></div>
 
-<section class="section bg-alt">
+<section class="section bg-alt" id="land-types">
   <div class="container">
     <div class="section-header seq">
       <span class="section-tag">Land types</span>
@@ -213,10 +222,11 @@
       <p>Each kind of land has its own paperwork. Pick the one you have or want, and we start from there.</p>
     </div>
     <div class="land-types">
-      <div class="expertise-item spot reveal"><div class="icon-ring"><i class="fas fa-map-pin"></i></div><h3>NA &amp; residential plots</h3><p>Converted plots in approved layouts, ready for a home or a small project.</p></div>
-      <div class="expertise-item spot reveal"><div class="icon-ring"><i class="fas fa-seedling"></i></div><h3>Agricultural land</h3><p>Farm land for eligible buyers. Farmer status and tenure are checked first.</p></div>
+      <div class="expertise-item spot reveal" id="land-residential" style="scroll-margin-top:110px"><div class="icon-ring"><i class="fas fa-map-pin"></i></div><h3>NA &amp; residential plots</h3><p>Converted plots in approved layouts, ready for a home or a small project.</p></div>
+      <div class="expertise-item spot reveal" id="land-agri" style="scroll-margin-top:110px"><div class="icon-ring"><i class="fas fa-seedling"></i></div><h3>Agricultural land</h3><p>Farm land for eligible buyers. Farmer status and tenure are checked first.</p></div>
       <div class="expertise-item spot reveal"><div class="icon-ring"><i class="fas fa-industry"></i></div><h3>Industrial land</h3><p>Plots for factories and warehouses near industrial estates, ports and highways. <a href="industrial-land-ahmedabad-gandhinagar.html">Industrial land in Ahmedabad and Gandhinagar</a></p></div>
-      <div class="expertise-item spot reveal"><div class="icon-ring"><i class="fas fa-store"></i></div><h3>Commercial land</h3><p>Highway-touch and city-edge parcels for showrooms, offices and retail.</p></div>
+      <div class="expertise-item spot reveal" id="land-commercial" style="scroll-margin-top:110px"><div class="icon-ring"><i class="fas fa-store"></i></div><h3>Commercial land</h3><p>Highway-touch and city-edge parcels for showrooms, offices and retail.</p></div>
+      <div class="expertise-item spot reveal" id="land-tp" style="scroll-margin-top:110px"><div class="icon-ring"><i class="fas fa-map"></i></div><h3>TP scheme plots</h3><p>Final plots (FP) in a Town Planning scheme, allotted or still proposed. We check the scheme status, the FP number and any TP deduction.</p></div>
       <div class="expertise-item spot reveal"><div class="icon-ring"><i class="fas fa-draw-polygon"></i></div><h3>Bulk &amp; development land</h3><p>Larger parcels for developers and investors, including layouts and township sites.</p></div>
     </div>
   </div>
