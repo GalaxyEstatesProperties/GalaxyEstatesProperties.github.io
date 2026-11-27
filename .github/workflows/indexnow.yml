@@ -1,0 +1,29 @@
+# After each successful Pages deploy, tell Bing (IndexNow) which pages changed, so they are crawled sooner.
+# Sends only public page addresses. The key in the site root is public by design.
+name: IndexNow
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  workflow_dispatch:   # "Run workflow" sends every indexable page once
+permissions:
+  contents: read
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+jobs:
+  ping:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+      - name: Tell Bing which pages changed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python3 tools/indexnow.py --all
+          else
+            python3 tools/indexnow.py --base HEAD~1 --head HEAD
+          fi
