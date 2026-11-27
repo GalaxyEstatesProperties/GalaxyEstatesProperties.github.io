@@ -126,11 +126,11 @@ import hashlib, base64
 GATE_HASH = "sha256-" + base64.b64encode(hashlib.sha256(JS_GATE.encode()).digest()).decode()
 # Content-Security-Policy: only this site's own scripts run; data may go only to the lead email service.
 CSP = ("default-src 'self'; "
-       f"script-src 'self' '{GATE_HASH}' https://www.googletagmanager.com; "
+       f"script-src 'self' '{GATE_HASH}' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms; "
        "style-src 'self' 'unsafe-inline'; "
-       "img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com; "
+       "img-src 'self' data: blob: https://server.arcgisonline.com https://tile.openstreetmap.org https://*.google-analytics.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com; "
        "font-src 'self' data:; "
-       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com; "
+       "connect-src 'self' https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://formsubmit.co https://ipapi.co https://ipwho.is https://script.google.com https://script.googleusercontent.com https://*.clarity.ms https://c.bing.com; "
        "frame-src 'self' https://formsubmit.co https://maps.google.com https://www.google.com; "
        "media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests")
 
