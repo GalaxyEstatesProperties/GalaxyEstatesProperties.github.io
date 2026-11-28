@@ -27,3 +27,17 @@ jobs:
           else
             python3 tools/indexnow.py --base HEAD~1 --head HEAD
           fi
+                - name: Submit URLs to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "yourdomain.com",
+              "key": "59dbd5e314b2442ba3f407d4b7d96d1b",
+              "keyLocation": "https://yourdomain.com/59dbd5e314b2442ba3f407d4b7d96d1b.txt",
+              "urlList": [
+                "https://yourdomain.com/",
+                "https://yourdomain.com/page-2",
+                "https://yourdomain.com/page-3"
+              ]
+            }'
